@@ -1,0 +1,41 @@
+MDPVI:ComputeV:Starting to compute value function, memory:  total 16 free 13 max 1037
+MDPVI:ComputeV:Start iteration 0, memory:  total 16 free 13 max 1037
+MDPVF:computeValueFunction:After 0 iterations, delta = 23.014879930877683 min 1 = 0.0 max 31020 = 33.0148811340332, memory:  total 16 free 10 max 1037
+MDPVI:ComputeV:Start iteration 1, memory:  total 16 free 10 max 1037
+MDPVF:computeValueFunction:After 1 iterations, delta = 13.008516460061074 min 584 = 0.0 max 31020 = 39.54450607299805, memory:  total 16 free 12 max 1037
+MDPVI:ComputeV:Start iteration 2, memory:  total 16 free 12 max 1037
+MDPVF:computeValueFunction:After 2 iterations, delta = 8.263498564004898 min 1672 = 0.0 max 31020 = 41.30340576171875, memory:  total 16 free 14 max 1037
+MDPVI:ComputeV:Start iteration 3, memory:  total 16 free 14 max 1037
+MDPVF:computeValueFunction:After 3 iterations, delta = 6.665924531841281 min 1672 = 0.0 max 31020 = 41.73411178588867, memory:  total 16 free 11 max 1037
+MDPVI:ComputeV:Start iteration 4, memory:  total 16 free 11 max 1037
+MDPVF:computeValueFunction:After 4 iterations, delta = 6.016052977848055 min 1672 = 0.0 max 31020 = 41.830657958984375, memory:  total 16 free 13 max 1037
+MDPVI:ComputeV:Start iteration 5, memory:  total 16 free 13 max 1037
+MDPVF:computeValueFunction:After 5 iterations, delta = 5.646701096439362 min 1672 = 0.0 max 31020 = 41.85076904296875, memory:  total 16 free 11 max 1037
+MDPVI:ComputeV:Start iteration 6, memory:  total 16 free 11 max 1037
+MDPVF:computeValueFunction:After 6 iterations, delta = 5.347082284259798 min 1672 = 0.0 max 31020 = 41.85471725463867, memory:  total 16 free 13 max 1037
+MDPVI:ComputeV:Start iteration 7, memory:  total 16 free 13 max 1037
+MDPVF:computeValueFunction:After 7 iterations, delta = 4.678228958527246 min 1672 = 0.0 max 31020 = 41.8554573059082, memory:  total 16 free 10 max 1037
+MDPVI:ComputeV:Start iteration 8, memory:  total 16 free 10 max 1037
+MDPVF:computeValueFunction:After 8 iterations, delta = 3.2872275890509286 min 1672 = 0.0 max 31020 = 41.855587005615234, memory:  total 16 free 12 max 1037
+MDPVI:ComputeV:Start iteration 9, memory:  total 16 free 12 max 1037
+MDPVF:computeValueFunction:After 9 iterations, delta = 1.8918134571711178 min 1672 = 0.0 max 14629 = 41.85560989379883, memory:  total 16 free 14 max 1037
+MDPVI:ComputeV:Start iteration 10, memory:  total 16 free 14 max 1037
+MDPVF:computeValueFunction:After 10 iterations, delta = 0.8736094805399546 min 1672 = 0.0 max 10533 = 41.855613708496094, memory:  total 16 free 11 max 1037
+MDPVI:ComputeV:Start iteration 11, memory:  total 16 free 11 max 1037
+MDPVF:computeValueFunction:After 11 iterations, delta = 0.35450607814789237 min 1672 = 0.0 max 6437 = 41.855613708496094, memory:  total 16 free 13 max 1037
+MDPVI:ComputeV:Start iteration 12, memory:  total 16 free 13 max 1037
+MDPVF:computeValueFunction:After 12 iterations, delta = 0.15245300483703517 min 1672 = 0.0 max 6437 = 41.855613708496094, memory:  total 16 free 11 max 1037
+MDPVI:ComputeV:Start iteration 13, memory:  total 16 free 11 max 1037
+MDPVF:computeValueFunction:After 13 iterations, delta = 0.05071794875463098 min 1672 = 0.0 max 6437 = 41.855613708496094, memory:  total 16 free 13 max 1037
+MDPVI:ComputeV:Start iteration 14, memory:  total 16 free 13 max 1037
+MDPVF:computeValueFunction:After 14 iterations, delta = 0.014535903771715653 min 1672 = 0.0 max 6437 = 41.855613708496094, memory:  total 16 free 10 max 1037
+MDPVI:ComputeV:Start iteration 15, memory:  total 16 free 10 max 1037
+MDPVF:computeValueFunction:After 15 iterations, delta = 0.00379849274953159 min 1672 = 0.0 max 6437 = 41.855613708496094, memory:  total 16 free 12 max 1037
+MDPVI:ComputeV:Start iteration 16, memory:  total 16 free 12 max 1037
+MDPVF:computeValueFunction:After 16 iterations, delta = 9.227026303619823E-4 min 1672 = 0.0 max 6437 = 41.855613708496094, memory:  total 16 free 14 max 1037
+MDPVF:VI:MDP value iteration done - iterations 0 delta 9.227026303619823E-4, memory:  total 16 free 14 max 1037
+FSVI:initHeurisitc:Initialization time was 13218
+FSVI:VI:Starting FSVI target ADR = -0.001
+FSVI:VI:FSVI: Iteration 0 |Vn| = 11 time 1 V changes 11 max delta 6.754 depth 10 V(b0) 0.36 CPU time 1 CPU total 1 #backups 11 |BS| 610 memory:  total 16 free 2 max 1037
+FSVI:VI:FSVI: Iteration 1 |Vn| = 20 time 6 V changes 20 max delta 1.31 depth 9 V(b0) 0.52 CPU time 6 CPU total 8 #backups 21 |BS| 1137 memory:  total 46 free 15 max 1037
+FSVI:VI:Finished FSVI - time : 8 |V| = 20 backups = 21 GComputations = 103 Dot products = 12920

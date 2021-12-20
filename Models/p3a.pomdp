@@ -1,0 +1,68 @@
+# Shoot - Full stack - 3
+
+discount: 0.999
+
+values: reward
+
+states: f zero one two three 
+
+actions: wait shoot1 shoot2 shoot3 
+
+observations: nothing f
+
+# Full stack
+
+start: 0 0 0 0 1
+
+E: f
+
+
+T: wait
+0.1 0.0 0.0 0.0 0.0 
+0.0 0.3 0.7 0.0 0.0 
+0.0 0.0 0.2 0.8 0.0 
+0.0 0.0 0.0 0.1 0.9 
+0.0 0.0 0.0 0.0 1.0 
+ 
+T: shoot1
+1.0 0.0 0.0 0.0 0.0
+1.0 0.0 0.0 0.0 0.0
+0.0 1.0 0.0 0.0 0.0
+0.0 0.0 1.0 0.0 0.0
+0.0 0.0 0.0 1.0 0.0
+
+T: shoot2
+1.0 0.0 0.0 0.0 0.0
+1.0 0.0 0.0 0.0 0.0
+1.0 0.0 0.0 0.0 0.0
+0.0 1.0 0.0 0.0 0.0
+0.0 0.0 1.0 0.0 0.0
+
+T: shoot3
+1.0 0.0 0.0 0.0 0.0
+1.0 0.0 0.0 0.0 0.0
+1.0 0.0 0.0 0.0 0.0
+1.0 0.0 0.0 0.0 0.0
+0.0 1.0 0.0 0.0 0.0
+
+O: *
+0.0 1.0 
+1.0 0.0 
+1.0 0.0 
+1.0 0.0  
+1.0 0.0  
+
+O: wait : f
+1.0 0.0 
+ 
+R: shoot1 : one : * : * 1.0
+R: shoot1 : two : * : * 1.0
+R: shoot1 : three : * : * 1.0
+
+R: shoot2 : one : * : * 1.0
+R: shoot2 : two : * : * 2.0
+R: shoot2 : three : * : * 2.0
+
+R: shoot3 : one : * : * 1.0
+R: shoot3 : two : * : * 2.0
+R: shoot3 : three : * : * 3.0

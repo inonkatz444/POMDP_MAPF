@@ -1,0 +1,121 @@
+# Information Gathering and Pentest POMDP
+#
+# Number of machines M = 1
+# Number of exploits E = 1
+# Time steps T = 50
+#
+discount: 0.950000
+values: reward
+
+# Actions
+#   0 Terminate
+#   1 Exploit-M0-winNT4ser-sp5-MSRPC4-IDA
+#   2 Probe-M0-TCPPort445
+#   3 OSDetect-M0
+
+# Observations
+#   0 no-obs
+#   1 agent-installed
+#   2 no-agent
+#   3 not-responding
+#   4 open-port
+#   5 closed-port
+#   6 nmap-winnt
+#   7 undetected
+
+# States
+# Index  Probability
+#     0  0.000000000000000000  terminal
+#     1  0.020000000000000018  M0con_winNT4ser-sp5
+#     2  0.424926475145526228  M0con_winNT4ser-sp5_p445-MSRPC4
+#     3  0.555073524854473699  M0con_winNT4ser-sp5_p445-MSRPC4-IDA
+#     4  0.000000000000000000  M0con-agent
+#        1.000000000000000000
+
+
+states:
+
+terminal
+M0con_winNT4ser-sp5
+M0con_winNT4ser-sp5_p445-MSRPC4
+M0con_winNT4ser-sp5_p445-MSRPC4-IDA
+M0con-agent
+
+
+actions:
+
+Terminate
+Exploit-M0-winNT4ser-sp5-MSRPC4-IDA
+Probe-M0-TCPPort445
+OSDetect-M0
+
+
+observations:
+
+no-obs
+agent-installed
+no-agent
+not-responding
+open-port
+closed-port
+nmap-winnt
+undetected
+
+
+start:
+
+0.00000000000000000000 0.02000000000000001776 0.42492647514552622789 0.55507352485447369883 0.00000000000000000000 
+
+
+# State Transitions
+# ACTION : START-STATE : END-STATE  PROBABILITY
+
+T : Terminate : * : terminal  1.0
+
+T : Exploit-M0-winNT4ser-sp5-MSRPC4-IDA identity
+T : Exploit-M0-winNT4ser-sp5-MSRPC4-IDA : M0con_winNT4ser-sp5_p445-MSRPC4-IDA : *  0.0
+T : Exploit-M0-winNT4ser-sp5-MSRPC4-IDA : M0con_winNT4ser-sp5_p445-MSRPC4-IDA : M0con-agent  1.0
+
+T : Probe-M0-TCPPort445 identity
+
+T : OSDetect-M0 identity
+
+
+
+# Observation Probabilities
+# ACTION : STATE : OBSERVATION  PROBABILITY
+
+O : Terminate : * : no-obs  1.0
+
+O : Exploit-M0-winNT4ser-sp5-MSRPC4-IDA : * : no-agent  1.0
+O : Exploit-M0-winNT4ser-sp5-MSRPC4-IDA : M0con-agent : *  0.0
+O : Exploit-M0-winNT4ser-sp5-MSRPC4-IDA : M0con-agent : agent-installed  1.0
+
+O : Probe-M0-TCPPort445 : * : closed-port  1.0
+O : Probe-M0-TCPPort445 : M0con_winNT4ser-sp5_p445-MSRPC4 : *  0.0
+O : Probe-M0-TCPPort445 : M0con_winNT4ser-sp5_p445-MSRPC4 : open-port  1.0
+O : Probe-M0-TCPPort445 : M0con_winNT4ser-sp5_p445-MSRPC4-IDA : *  0.0
+O : Probe-M0-TCPPort445 : M0con_winNT4ser-sp5_p445-MSRPC4-IDA : open-port  1.0
+
+O : OSDetect-M0 : * : undetected  1.0
+O : OSDetect-M0 : M0con_winNT4ser-sp5 : *  0.0
+O : OSDetect-M0 : M0con_winNT4ser-sp5 : nmap-winnt  1.0
+O : OSDetect-M0 : M0con_winNT4ser-sp5_p445-MSRPC4 : *  0.0
+O : OSDetect-M0 : M0con_winNT4ser-sp5_p445-MSRPC4 : nmap-winnt  1.0
+O : OSDetect-M0 : M0con_winNT4ser-sp5_p445-MSRPC4-IDA : *  0.0
+O : OSDetect-M0 : M0con_winNT4ser-sp5_p445-MSRPC4-IDA : nmap-winnt  1.0
+
+
+
+# Rewards
+# ACTION : START-STATE : END-STATE : OBSERVATION  REWARD
+
+R : Terminate : * : * : *  0
+
+R : Exploit-M0-winNT4ser-sp5-MSRPC4-IDA : * : * : *  -10
+R : Exploit-M0-winNT4ser-sp5-MSRPC4-IDA : M0con_winNT4ser-sp5_p445-MSRPC4-IDA : M0con-agent : *  5000.000
+
+R : Probe-M0-TCPPort445 : * : * : *  -10
+
+R : OSDetect-M0 : * : * : *  -50
+

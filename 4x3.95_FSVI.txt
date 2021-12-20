@@ -1,0 +1,62 @@
+MDPVF:VI:Started loading QMDP value function, memory:  total 266 free 259 max 4250
+MDPVF:makeVectors:Started creating Q function vectors, memory:  total 266 free 256 max 4250
+MDPVF:makeVectors:Done creating for action 0, memory:  total 266 free 256 max 4250
+MDPVF:makeVectors:Done creating for action 1, memory:  total 266 free 256 max 4250
+MDPVF:makeVectors:Done creating for action 2, memory:  total 266 free 256 max 4250
+MDPVF:makeVectors:Done creating for action 3, memory:  total 266 free 256 max 4250
+MDPVF:VI:QMDP value function loaded successfully, memory:  total 266 free 256 max 4250
+FSVI:initHeurisitc:Initialization time was 50
+FSVI:VI:Starting FSVI target ADR = 100.0
+FSVI:VI:FSVI: Iteration 0 |Vn| = 13 time 0 V changes 102 max delta 1.717 depth 100 V(b0) 0.48 CPU time 0 CPU total 0 #backups 101 |BS| 141 memory:  total 266 free 248 max 4250
+FSVI:VI:FSVI: Iteration 1 |Vn| = 22 time 0 V changes 202 max delta 0.408 depth 100 V(b0) 1.47 CPU time 0 CPU total 0 #backups 202 |BS| 235 memory:  total 266 free 262 max 4250
+FSVI:VI:FSVI: Iteration 2 |Vn| = 32 time 0 V changes 298 max delta 0.206 depth 100 V(b0) 1.63 CPU time 0 CPU total 0 #backups 303 |BS| 317 memory:  total 266 free 257 max 4250
+FSVI:VI:FSVI: Iteration 3 |Vn| = 43 time 0 V changes 392 max delta 0.081 depth 100 V(b0) 1.76 CPU time 0 CPU total 0 #backups 404 |BS| 427 memory:  total 266 free 250 max 4250
+FSVI:VI:FSVI: Iteration 4 |Vn| = 58 time 0 V changes 485 max delta 0.065 depth 100 V(b0) 1.82 CPU time 0 CPU total 0 #backups 505 |BS| 535 memory:  total 266 free 244 max 4250
+FSVI:VI:FSVI: Iteration 5 |Vn| = 60 time 0 V changes 583 max delta 0.041 depth 100 V(b0) 1.85 CPU time 0 CPU total 0 #backups 606 |BS| 591 memory:  total 266 free 240 max 4250
+FSVI:VI:FSVI: Iteration 6 |Vn| = 83 time 0 V changes 683 max delta 0.014 depth 100 V(b0) 1.86 CPU time 0 CPU total 0 #backups 707 |BS| 668 memory:  total 266 free 236 max 4250
+FSVI:VI:FSVI: Iteration 7 |Vn| = 119 time 0 V changes 776 max delta 0.013 depth 100 V(b0) 1.88 CPU time 0 CPU total 0 #backups 808 |BS| 748 memory:  total 266 free 231 max 4250
+FSVI:VI:FSVI: Iteration 8 |Vn| = 118 time 0 V changes 871 max delta 0.014 depth 100 V(b0) 1.88 CPU time 0 CPU total 0 #backups 909 |BS| 876 memory:  total 266 free 226 max 4250
+FSVI:VI:FSVI: Iteration 9 |Vn| = 154 time 0 V changes 965 max delta 0.001 depth 100 V(b0) 1.88 CPU time 0 CPU total 0 #backups 1010 |BS| 883 memory:  total 266 free 224 max 4250
+FSVI:VI:FSVI: Iteration 10 |Vn| = 166 time 0 V changes 1064 max delta 0.007 depth 100 V(b0) 1.88 CPU time 0 CPU total 0 #backups 1111 |BS| 958 memory:  total 266 free 220 max 4250
+FSVI:VI:FSVI: Iteration 11 |Vn| = 208 time 0 V changes 1162 max delta 0.007 depth 100 V(b0) 1.88 CPU time 0 CPU total 0 #backups 1212 |BS| 991 memory:  total 266 free 216 max 4250
+FSVI:VI:FSVI: Iteration 12 |Vn| = 129 time 0 V changes 1259 max delta 0.005 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 1313 |BS| 1048 memory:  total 266 free 211 max 4250
+FSVI:VI:FSVI: Iteration 13 |Vn| = 153 time 0 V changes 1353 max delta 0.002 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 1414 |BS| 1084 memory:  total 266 free 209 max 4250
+FSVI:VI:FSVI: Iteration 14 |Vn| = 161 time 0 V changes 1441 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 1515 |BS| 1138 memory:  total 266 free 205 max 4250
+FSVI:VI:FSVI: Iteration 15 |Vn| = 211 time 0 V changes 1530 max delta 0.003 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 1616 |BS| 1175 memory:  total 266 free 202 max 4250
+FSVI:VI:FSVI: Iteration 16 |Vn| = 240 time 0 V changes 1619 max delta 0.003 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 1717 |BS| 1209 memory:  total 266 free 198 max 4250
+FSVI:VI:FSVI: Iteration 17 |Vn| = 265 time 0 V changes 1693 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 1818 |BS| 1267 memory:  total 266 free 194 max 4250
+FSVI:VI:FSVI: Iteration 18 |Vn| = 260 time 0 V changes 1785 max delta 0.003 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 1919 |BS| 1316 memory:  total 266 free 190 max 4250
+FSVI:VI:FSVI: Iteration 19 |Vn| = 258 time 0 V changes 1873 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 2020 |BS| 1401 memory:  total 266 free 185 max 4250
+FSVI:VI:FSVI: Iteration 20 |Vn| = 298 time 0 V changes 1956 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 2121 |BS| 1473 memory:  total 266 free 178 max 4250
+FSVI:VI:FSVI: Iteration 21 |Vn| = 351 time 0 V changes 2047 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 2222 |BS| 1485 memory:  total 266 free 175 max 4250
+FSVI:VI:FSVI: Iteration 22 |Vn| = 392 time 0 V changes 2142 max delta 0.003 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 2323 |BS| 1527 memory:  total 266 free 171 max 4250
+FSVI:VI:FSVI: Iteration 23 |Vn| = 405 time 0 V changes 2226 max delta 0.002 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 2424 |BS| 1587 memory:  total 266 free 165 max 4250
+FSVI:VI:FSVI: Iteration 24 |Vn| = 408 time 0 V changes 2312 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 2525 |BS| 1625 memory:  total 266 free 160 max 4250
+FSVI:VI:FSVI: Iteration 25 |Vn| = 403 time 0 V changes 2399 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 2626 |BS| 1636 memory:  total 266 free 155 max 4250
+FSVI:VI:FSVI: Iteration 26 |Vn| = 354 time 0 V changes 2482 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 2727 |BS| 1709 memory:  total 266 free 149 max 4250
+FSVI:VI:FSVI: Iteration 27 |Vn| = 395 time 0 V changes 2570 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 2828 |BS| 1736 memory:  total 266 free 144 max 4250
+FSVI:VI:FSVI: Iteration 28 |Vn| = 422 time 0 V changes 2660 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 2929 |BS| 1736 memory:  total 266 free 141 max 4250
+FSVI:VI:FSVI: Iteration 29 |Vn| = 417 time 0 V changes 2753 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 3030 |BS| 1773 memory:  total 266 free 136 max 4250
+FSVI:VI:FSVI: Iteration 30 |Vn| = 431 time 0 V changes 2834 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 3131 |BS| 1816 memory:  total 266 free 128 max 4250
+FSVI:VI:FSVI: Iteration 31 |Vn| = 428 time 0 V changes 2927 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 3232 |BS| 1834 memory:  total 266 free 123 max 4250
+FSVI:VI:FSVI: Iteration 32 |Vn| = 442 time 0 V changes 3016 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 3333 |BS| 1834 memory:  total 266 free 121 max 4250
+FSVI:VI:FSVI: Iteration 33 |Vn| = 429 time 0 V changes 3100 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 3434 |BS| 1890 memory:  total 266 free 112 max 4250
+FSVI:VI:FSVI: Iteration 34 |Vn| = 432 time 0 V changes 3186 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 3535 |BS| 1959 memory:  total 266 free 255 max 4250
+FSVI:VI:FSVI: Iteration 35 |Vn| = 455 time 0 V changes 3277 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 3636 |BS| 1965 memory:  total 266 free 250 max 4250
+FSVI:VI:FSVI: Iteration 36 |Vn| = 476 time 0 V changes 3351 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 3737 |BS| 1990 memory:  total 266 free 244 max 4250
+FSVI:VI:FSVI: Iteration 37 |Vn| = 508 time 0 V changes 3437 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 3838 |BS| 2014 memory:  total 266 free 239 max 4250
+FSVI:VI:FSVI: Iteration 38 |Vn| = 525 time 0 V changes 3524 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 3939 |BS| 2071 memory:  total 266 free 232 max 4250
+FSVI:VI:FSVI: Iteration 39 |Vn| = 520 time 0 V changes 3621 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 0 #backups 4040 |BS| 2104 memory:  total 266 free 226 max 4250
+FSVI:VI:FSVI: Iteration 40 |Vn| = 482 time 0 V changes 3712 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 1 #backups 4141 |BS| 2127 memory:  total 266 free 220 max 4250
+FSVI:VI:FSVI: Iteration 41 |Vn| = 480 time 0 V changes 3808 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 1 #backups 4242 |BS| 2127 memory:  total 266 free 216 max 4250
+FSVI:VI:FSVI: Iteration 42 |Vn| = 516 time 0 V changes 3898 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 1 #backups 4343 |BS| 2155 memory:  total 266 free 212 max 4250
+FSVI:VI:FSVI: Iteration 43 |Vn| = 530 time 0 V changes 3986 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 1 #backups 4444 |BS| 2220 memory:  total 266 free 204 max 4250
+FSVI:VI:FSVI: Iteration 44 |Vn| = 575 time 0 V changes 4073 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 1 #backups 4545 |BS| 2258 memory:  total 266 free 198 max 4250
+FSVI:VI:FSVI: Iteration 45 |Vn| = 586 time 0 V changes 4162 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 1 #backups 4646 |BS| 2322 memory:  total 266 free 189 max 4250
+FSVI:VI:FSVI: Iteration 46 |Vn| = 637 time 0 V changes 4247 max delta 0.001 depth 100 V(b0) 1.89 CPU time 0 CPU total 1 #backups 4747 |BS| 2346 memory:  total 266 free 184 max 4250
+FSVI:VI:FSVI: Iteration 47 |Vn| = 676 time 0 V changes 4336 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 1 #backups 4848 |BS| 2352 memory:  total 266 free 180 max 4250
+FSVI:VI:FSVI: Iteration 48 |Vn| = 654 time 0 V changes 4418 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 1 #backups 4949 |BS| 2394 memory:  total 266 free 173 max 4250
+FSVI:VI:FSVI: Iteration 49 |Vn| = 668 time 0 V changes 4499 max delta 0.0 depth 100 V(b0) 1.89 CPU time 0 CPU total 1 #backups 5050 |BS| 2401 memory:  total 266 free 169 max 4250
+FSVI:VI:Finished FSVI - time : 1 |V| = 668 backups = 5050 GComputations = 20620 Dot products = 0
+POMDP:computeAverageDiscountedReward:After 500 tests. ADR 0.435, stdev 0.45244 SE 0.04047 time 0
+POMDPSolver:main:ADR = 0.43484364889200616

@@ -1,0 +1,722 @@
+RestrictedPOMDP:<init>:Started initializing restricted POMDPs, Variables = <X0,X1,X2,Y0,Y1,Y2,Rock0,Rock1,Rock2,Rock3,Rock5,Rock6,Rock7,>, Actions = North,East,South,West,CheckRock0,CheckRock1,CheckRock2,CheckRock3,CheckRock5,CheckRock6,CheckRock7,Sample,
+FactoredPOMDP:learnReward:Done learning reward for action North vertexes 1, memory:  total 998 free 579 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action East vertexes 1, memory:  total 998 free 579 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action South vertexes 1, memory:  total 998 free 579 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action West vertexes 1, memory:  total 998 free 579 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock0 vertexes 1, memory:  total 998 free 579 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock1 vertexes 1, memory:  total 998 free 579 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock2 vertexes 1, memory:  total 998 free 579 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock3 vertexes 1, memory:  total 998 free 579 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock5 vertexes 1, memory:  total 998 free 579 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock6 vertexes 1, memory:  total 998 free 579 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock7 vertexes 1, memory:  total 998 free 579 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action Sample vertexes 34, memory:  total 998 free 573 max 1037
+FactoredPOMDP:learnRewards: done learning rewards, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a North, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a East, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a South, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a West, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock0, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock1, relevant vertex 174, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock2, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock3, relevant vertex 134, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock5, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock6, relevant vertex 138, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock7, relevant vertex 178, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 573 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a Sample, relevant vertex 161, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 551 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning all partial action diagrams, memory:  total 998 free 991 max 1037
+FactoredPOMDP:initADDs:Finished intializing. Time - 1.150135975
+MDPVI:ComputeV:Starting to compute value function, memory:  total 998 free 974 max 1037
+MDPVI:ComputeV:Start iteration 0, memory:  total 998 free 974 max 1037
+MDPVF:computeValueFunction:After 0 iterations, delta = 38.58176797866821 min 1 = 0.0 max 7423 = 48.00593185424805, memory:  total 998 free 895 max 1037
+MDPVI:ComputeV:Start iteration 1, memory:  total 998 free 895 max 1037
+MDPVF:computeValueFunction:After 1 iterations, delta = 19.408425159454346 min 1 = 0.0 max 7423 = 48.00593185424805, memory:  total 998 free 810 max 1037
+MDPVI:ComputeV:Start iteration 2, memory:  total 998 free 810 max 1037
+MDPVF:computeValueFunction:After 2 iterations, delta = 19.118751831054688 min 1 = 0.0 max 7935 = 57.006805419921875, memory:  total 998 free 725 max 1037
+MDPVI:ComputeV:Start iteration 3, memory:  total 998 free 725 max 1037
+MDPVF:computeValueFunction:After 3 iterations, delta = 19.023157939910888 min 1 = 0.0 max 7679 = 57.05203628540039, memory:  total 998 free 917 max 1037
+MDPVI:ComputeV:Start iteration 4, memory:  total 998 free 917 max 1037
+MDPVF:computeValueFunction:After 4 iterations, delta = 18.928041057586668 min 1 = 0.0 max 8191 = 65.91857147216797, memory:  total 998 free 837 max 1037
+MDPVI:ComputeV:Start iteration 5, memory:  total 998 free 837 max 1037
+MDPVF:computeValueFunction:After 5 iterations, delta = 18.833401193618773 min 1 = 0.0 max 8191 = 65.91857147216797, memory:  total 998 free 751 max 1037
+MDPVI:ComputeV:Start iteration 6, memory:  total 998 free 751 max 1037
+MDPVF:computeValueFunction:After 6 iterations, delta = 9.655206236839295 min 1 = 0.0 max 8191 = 65.91857147216797, memory:  total 998 free 945 max 1037
+MDPVI:ComputeV:Start iteration 7, memory:  total 998 free 945 max 1037
+MDPVF:computeValueFunction:After 7 iterations, delta = 9.606930646896362 min 1 = 0.0 max 8191 = 65.91857147216797, memory:  total 998 free 859 max 1037
+MDPVI:ComputeV:Start iteration 8, memory:  total 998 free 859 max 1037
+MDPVF:computeValueFunction:After 8 iterations, delta = 9.558896079063416 min 1 = 0.0 max 8191 = 65.91857147216797, memory:  total 998 free 778 max 1037
+MDPVI:ComputeV:Start iteration 9, memory:  total 998 free 778 max 1037
+MDPVF:computeValueFunction:After 9 iterations, delta = 9.51110158443451 min 1 = 0.0 max 8191 = 65.91857147216797, memory:  total 998 free 968 max 1037
+MDPVI:ComputeV:Start iteration 10, memory:  total 998 free 968 max 1037
+MDPVF:computeValueFunction:After 10 iterations, delta = 9.4635462141037 min 1 = 0.0 max 8191 = 65.91857147216797, memory:  total 998 free 887 max 1037
+MDPVI:ComputeV:Start iteration 11, memory:  total 998 free 887 max 1037
+MDPVF:computeValueFunction:After 11 iterations, delta = 9.416228070259095 min 1 = 0.0 max 8191 = 65.91857147216797, memory:  total 998 free 806 max 1037
+MDPVI:ComputeV:Start iteration 12, memory:  total 998 free 806 max 1037
+MDPVF:computeValueFunction:After 12 iterations, delta = 9.369147152900696 min 1 = 0.0 max 8163 = 65.97456359863281, memory:  total 998 free 721 max 1037
+MDPVI:ComputeV:Start iteration 13, memory:  total 998 free 721 max 1037
+MDPVF:computeValueFunction:After 13 iterations, delta = 9.322301564216614 min 1 = 0.0 max 8132 = 66.01297760009766, memory:  total 998 free 916 max 1037
+MDPVI:ComputeV:Start iteration 14, memory:  total 998 free 916 max 1037
+MDPVF:computeValueFunction:After 14 iterations, delta = 9.137250261306761 min 1 = 0.0 max 8132 = 66.01297760009766, memory:  total 998 free 829 max 1037
+MDPVI:ComputeV:Start iteration 15, memory:  total 998 free 829 max 1037
+MDPVF:computeValueFunction:After 15 iterations, delta = 1.1971645164489715 min 1 = 0.0 max 8132 = 66.01297760009766, memory:  total 998 free 748 max 1037
+MDPVI:ComputeV:Start iteration 16, memory:  total 998 free 748 max 1037
+MDPVF:computeValueFunction:After 16 iterations, delta = 0.7257091903686543 min 1 = 0.0 max 8132 = 66.01297760009766, memory:  total 998 free 939 max 1037
+MDPVI:ComputeV:Start iteration 17, memory:  total 998 free 939 max 1037
+MDPVF:computeValueFunction:After 17 iterations, delta = 0.6211748695373558 min 1 = 0.0 max 8132 = 66.01297760009766, memory:  total 998 free 858 max 1037
+MDPVI:ComputeV:Start iteration 18, memory:  total 998 free 858 max 1037
+MDPVF:computeValueFunction:After 18 iterations, delta = 0.005140113830563564 min 1 = 0.0 max 8132 = 66.01297760009766, memory:  total 998 free 771 max 1037
+MDPVI:ComputeV:Start iteration 19, memory:  total 998 free 771 max 1037
+MDPVF:computeValueFunction:After 19 iterations, delta = 3.623962399501579E-6 min 1 = 0.0 max 8132 = 66.01297760009766, memory:  total 998 free 968 max 1037
+MDPVF:VI:MDP value iteration done - iterations 0 delta 3.623962399501579E-6, memory:  total 998 free 968 max 1037
+FSVI:initHeurisitc:Initialization time was 3888
+FSVI:VI:Starting FSVI target ADR = -0.001
+FSVI:VI:FSVI: Iteration 0 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 21 V(b0) 0.0 CPU time 0 CPU total 0 #backups 22 |BS| 2 memory:  total 998 free 916 max 1037
+FSVI:VI:FSVI: Iteration 1 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 30 V(b0) 0.0 CPU time 0 CPU total 0 #backups 53 |BS| 2 memory:  total 998 free 846 max 1037
+FSVI:VI:FSVI: Iteration 2 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 27 V(b0) 0.0 CPU time 0 CPU total 0 #backups 81 |BS| 2 memory:  total 998 free 783 max 1037
+FSVI:VI:FSVI: Iteration 3 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 35 V(b0) 0.0 CPU time 0 CPU total 0 #backups 117 |BS| 2 memory:  total 998 free 967 max 1037
+FSVI:VI:FSVI: Iteration 4 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 18 V(b0) 0.0 CPU time 0 CPU total 0 #backups 136 |BS| 2 memory:  total 998 free 915 max 1037
+FSVI:VI:FSVI: Iteration 5 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 14 V(b0) 0.0 CPU time 0 CPU total 1 #backups 151 |BS| 2 memory:  total 998 free 881 max 1037
+FSVI:VI:FSVI: Iteration 6 |Vn| = 21 time 0 V changes 21 max delta 9.329 depth 21 V(b0) 8.39 CPU time 0 CPU total 1 #backups 173 |BS| 2 memory:  total 998 free 811 max 1037
+FSVI:VI:FSVI: Iteration 7 |Vn| = 40 time 0 V changes 40 max delta 10.541 depth 29 V(b0) 10.23 CPU time 0 CPU total 1 #backups 203 |BS| 2 memory:  total 998 free 972 max 1037
+FSVI:VI:FSVI: Iteration 8 |Vn| = 69 time 1 V changes 69 max delta 3.235 depth 28 V(b0) 11.21 CPU time 1 CPU total 3 #backups 232 |BS| 2 memory:  total 998 free 764 max 1037
+FSVI:VI:FSVI: Iteration 9 |Vn| = 90 time 1 V changes 90 max delta 11.399 depth 21 V(b0) 11.22 CPU time 1 CPU total 4 #backups 254 |BS| 2 memory:  total 998 free 828 max 1037
+FSVI:VI:FSVI: Iteration 10 |Vn| = 108 time 2 V changes 108 max delta 11.879 depth 20 V(b0) 14.2 CPU time 2 CPU total 7 #backups 275 |BS| 2 memory:  total 998 free 928 max 1037
+FSVI:VI:FSVI: Iteration 11 |Vn| = 127 time 1 V changes 127 max delta 5.077 depth 23 V(b0) 16.7 CPU time 1 CPU total 8 #backups 299 |BS| 2 memory:  total 998 free 725 max 1037
+FSVI:VI:FSVI: Iteration 12 |Vn| = 140 time 1 V changes 140 max delta 0.576 depth 14 V(b0) 16.77 CPU time 1 CPU total 9 #backups 314 |BS| 2 memory:  total 998 free 853 max 1037
+FSVI:VI:FSVI: Iteration 13 |Vn| = 158 time 1 V changes 158 max delta 12.309 depth 21 V(b0) 16.77 CPU time 1 CPU total 11 #backups 336 |BS| 2 memory:  total 998 free 889 max 1037
+FSVI:VI:FSVI: Iteration 14 |Vn| = 172 time 1 V changes 172 max delta 12.309 depth 16 V(b0) 16.77 CPU time 1 CPU total 12 #backups 353 |BS| 2 memory:  total 998 free 733 max 1037
+FSVI:VI:FSVI: Iteration 15 |Vn| = 185 time 1 V changes 185 max delta 10.629 depth 18 V(b0) 16.77 CPU time 1 CPU total 14 #backups 372 |BS| 2 memory:  total 998 free 798 max 1037
+FSVI:VI:FSVI: Iteration 16 |Vn| = 195 time 0 V changes 195 max delta 0.059 depth 9 V(b0) 16.78 CPU time 0 CPU total 15 #backups 382 |BS| 2 memory:  total 998 free 955 max 1037
+FSVI:VI:FSVI: Iteration 17 |Vn| = 215 time 3 V changes 215 max delta 10.477 depth 20 V(b0) 17.77 CPU time 3 CPU total 18 #backups 403 |BS| 2 memory:  total 998 free 923 max 1037
+FSVI:VI:FSVI: Iteration 18 |Vn| = 236 time 3 V changes 236 max delta 4.944 depth 31 V(b0) 17.78 CPU time 3 CPU total 22 #backups 435 |BS| 2 memory:  total 998 free 804 max 1037
+FSVI:VI:FSVI: Iteration 19 |Vn| = 249 time 5 V changes 249 max delta 5.294 depth 25 V(b0) 17.78 CPU time 5 CPU total 27 #backups 461 |BS| 2 memory:  total 998 free 861 max 1037
+FSVI:VI:Finished FSVI - time : 27 |V| = 249 backups = 461 GComputations = 185418 Dot products = 788115
+RestrictedPOMDP:<init>:Started initializing restricted POMDPs, Variables = <X0,X1,X2,Y0,Y1,Y2,Rock0,Rock1,Rock2,Rock3,Rock4,Rock5,Rock7,>, Actions = North,East,South,West,CheckRock0,CheckRock1,CheckRock2,CheckRock3,CheckRock4,CheckRock5,CheckRock7,Sample,
+FactoredPOMDP:learnReward:Done learning reward for action North vertexes 1, memory:  total 998 free 739 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action East vertexes 1, memory:  total 998 free 739 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action South vertexes 1, memory:  total 998 free 739 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action West vertexes 1, memory:  total 998 free 739 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock0 vertexes 1, memory:  total 998 free 739 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock1 vertexes 1, memory:  total 998 free 739 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock2 vertexes 1, memory:  total 998 free 739 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock3 vertexes 1, memory:  total 998 free 739 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock4 vertexes 1, memory:  total 998 free 739 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock5 vertexes 1, memory:  total 998 free 739 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock7 vertexes 1, memory:  total 998 free 739 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action Sample vertexes 32, memory:  total 998 free 733 max 1037
+FactoredPOMDP:learnRewards: done learning rewards, memory:  total 998 free 733 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a North, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 733 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a East, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 733 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a South, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 733 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a West, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 733 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock0, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 733 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock1, relevant vertex 174, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 733 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock2, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 733 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock3, relevant vertex 134, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 733 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock4, relevant vertex 148, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 733 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock5, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 733 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock7, relevant vertex 178, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 728 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a Sample, relevant vertex 157, irelevant vertex 1, prob sum = 0.0, memory:  total 998 free 710 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning all partial action diagrams, memory:  total 929 free 859 max 1037
+FactoredPOMDP:initADDs:Finished intializing. Time - 1.285356322
+MDPVI:ComputeV:Starting to compute value function, memory:  total 929 free 843 max 1037
+MDPVI:ComputeV:Start iteration 0, memory:  total 929 free 843 max 1037
+MDPVF:computeValueFunction:After 0 iterations, delta = 38.72879146575928 min 1 = 0.0 max 7423 = 48.1507568359375, memory:  total 929 free 758 max 1037
+MDPVI:ComputeV:Start iteration 1, memory:  total 929 free 758 max 1037
+MDPVF:computeValueFunction:After 1 iterations, delta = 19.417409172058107 min 1 = 0.0 max 6015 = 48.1507568359375, memory:  total 929 free 679 max 1037
+MDPVI:ComputeV:Start iteration 2, memory:  total 929 free 679 max 1037
+MDPVF:computeValueFunction:After 2 iterations, delta = 19.31259623527527 min 1 = 0.0 max 7679 = 57.19686508178711, memory:  total 929 free 848 max 1037
+MDPVI:ComputeV:Start iteration 3, memory:  total 929 free 848 max 1037
+MDPVF:computeValueFunction:After 3 iterations, delta = 19.216032562255858 min 1 = 0.0 max 7679 = 57.19686508178711, memory:  total 929 free 768 max 1037
+MDPVI:ComputeV:Start iteration 4, memory:  total 929 free 768 max 1037
+MDPVF:computeValueFunction:After 4 iterations, delta = 19.1199515914917 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 683 max 1037
+MDPVI:ComputeV:Start iteration 5, memory:  total 929 free 683 max 1037
+MDPVF:computeValueFunction:After 5 iterations, delta = 19.02435143470764 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 859 max 1037
+MDPVI:ComputeV:Start iteration 6, memory:  total 929 free 859 max 1037
+MDPVF:computeValueFunction:After 6 iterations, delta = 18.929229249954222 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 773 max 1037
+MDPVI:ComputeV:Start iteration 7, memory:  total 929 free 773 max 1037
+MDPVF:computeValueFunction:After 7 iterations, delta = 18.74041139602661 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 692 max 1037
+MDPVI:ComputeV:Start iteration 8, memory:  total 929 free 692 max 1037
+MDPVF:computeValueFunction:After 8 iterations, delta = 18.64670753479004 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 608 max 1037
+MDPVI:ComputeV:Start iteration 9, memory:  total 929 free 608 max 1037
+MDPVF:computeValueFunction:After 9 iterations, delta = 18.55347379684448 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 784 max 1037
+MDPVI:ComputeV:Start iteration 10, memory:  total 929 free 784 max 1037
+MDPVF:computeValueFunction:After 10 iterations, delta = 18.368405532836917 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 698 max 1037
+MDPVI:ComputeV:Start iteration 11, memory:  total 929 free 698 max 1037
+MDPVF:computeValueFunction:After 11 iterations, delta = 18.27656471252441 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 617 max 1037
+MDPVI:ComputeV:Start iteration 12, memory:  total 929 free 617 max 1037
+MDPVF:computeValueFunction:After 12 iterations, delta = 9.369147152900696 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 789 max 1037
+MDPVI:ComputeV:Start iteration 13, memory:  total 929 free 789 max 1037
+MDPVF:computeValueFunction:After 13 iterations, delta = 9.322301564216614 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 703 max 1037
+MDPVI:ComputeV:Start iteration 14, memory:  total 929 free 703 max 1037
+MDPVF:computeValueFunction:After 14 iterations, delta = 9.137252941131592 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 623 max 1037
+MDPVI:ComputeV:Start iteration 15, memory:  total 929 free 623 max 1037
+MDPVF:computeValueFunction:After 15 iterations, delta = 0.6462926673889129 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 794 max 1037
+MDPVI:ComputeV:Start iteration 16, memory:  total 929 free 794 max 1037
+MDPVF:computeValueFunction:After 16 iterations, delta = 0.62987524032593 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 714 max 1037
+MDPVI:ComputeV:Start iteration 17, memory:  total 929 free 714 max 1037
+MDPVF:computeValueFunction:After 17 iterations, delta = 0.6267243194580061 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 628 max 1037
+MDPVI:ComputeV:Start iteration 18, memory:  total 929 free 628 max 1037
+MDPVF:computeValueFunction:After 18 iterations, delta = 3.7002563431087765E-6 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 929 free 805 max 1037
+MDPVF:VI:MDP value iteration done - iterations 0 delta 3.7002563431087765E-6, memory:  total 929 free 805 max 1037
+FSVI:initHeurisitc:Initialization time was 3714
+FSVI:VI:Starting FSVI target ADR = -0.001
+FSVI:VI:FSVI: Iteration 0 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 17 V(b0) 0.0 CPU time 0 CPU total 0 #backups 18 |BS| 2 memory:  total 929 free 762 max 1037
+FSVI:VI:FSVI: Iteration 1 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 22 V(b0) 0.0 CPU time 0 CPU total 0 #backups 41 |BS| 2 memory:  total 929 free 709 max 1037
+FSVI:VI:FSVI: Iteration 2 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 10 V(b0) 0.0 CPU time 0 CPU total 0 #backups 52 |BS| 2 memory:  total 929 free 687 max 1037
+FSVI:VI:FSVI: Iteration 3 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 21 V(b0) 0.0 CPU time 0 CPU total 0 #backups 74 |BS| 2 memory:  total 929 free 633 max 1037
+FSVI:VI:FSVI: Iteration 4 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 28 V(b0) 0.0 CPU time 0 CPU total 0 #backups 103 |BS| 2 memory:  total 929 free 816 max 1037
+FSVI:VI:FSVI: Iteration 5 |Vn| = 16 time 0 V changes 16 max delta 9.294 depth 22 V(b0) 7.21 CPU time 0 CPU total 0 #backups 126 |BS| 2 memory:  total 929 free 746 max 1037
+FSVI:VI:FSVI: Iteration 6 |Vn| = 37 time 0 V changes 37 max delta 9.093 depth 22 V(b0) 9.0 CPU time 0 CPU total 1 #backups 149 |BS| 2 memory:  total 929 free 665 max 1037
+FSVI:VI:FSVI: Iteration 7 |Vn| = 56 time 0 V changes 56 max delta 9.104 depth 20 V(b0) 9.0 CPU time 0 CPU total 1 #backups 170 |BS| 2 memory:  total 929 free 840 max 1037
+FSVI:VI:FSVI: Iteration 8 |Vn| = 79 time 0 V changes 79 max delta 3.629 depth 26 V(b0) 9.4 CPU time 0 CPU total 2 #backups 197 |BS| 2 memory:  total 929 free 706 max 1037
+FSVI:VI:FSVI: Iteration 9 |Vn| = 97 time 1 V changes 97 max delta 2.499 depth 23 V(b0) 9.52 CPU time 1 CPU total 3 #backups 221 |BS| 2 memory:  total 929 free 788 max 1037
+FSVI:VI:FSVI: Iteration 10 |Vn| = 128 time 2 V changes 128 max delta 9.312 depth 34 V(b0) 9.52 CPU time 2 CPU total 5 #backups 256 |BS| 2 memory:  total 929 free 737 max 1037
+FSVI:VI:FSVI: Iteration 11 |Vn| = 131 time 0 V changes 131 max delta 0.089 depth 14 V(b0) 9.52 CPU time 0 CPU total 6 #backups 271 |BS| 2 memory:  total 929 free 630 max 1037
+FSVI:VI:FSVI: Iteration 12 |Vn| = 145 time 1 V changes 145 max delta 9.635 depth 29 V(b0) 9.52 CPU time 1 CPU total 8 #backups 301 |BS| 2 memory:  total 929 free 642 max 1037
+FSVI:VI:FSVI: Iteration 13 |Vn| = 156 time 1 V changes 156 max delta 1.584 depth 16 V(b0) 9.52 CPU time 1 CPU total 10 #backups 318 |BS| 2 memory:  total 929 free 687 max 1037
+FSVI:VI:FSVI: Iteration 14 |Vn| = 167 time 1 V changes 167 max delta 9.586 depth 16 V(b0) 9.52 CPU time 1 CPU total 11 #backups 335 |BS| 2 memory:  total 929 free 813 max 1037
+FSVI:VI:FSVI: Iteration 15 |Vn| = 173 time 1 V changes 173 max delta 0.366 depth 15 V(b0) 9.52 CPU time 1 CPU total 12 #backups 351 |BS| 2 memory:  total 929 free 652 max 1037
+FSVI:VI:FSVI: Iteration 16 |Vn| = 189 time 2 V changes 189 max delta 8.537 depth 22 V(b0) 9.52 CPU time 2 CPU total 15 #backups 374 |BS| 2 memory:  total 929 free 651 max 1037
+FSVI:VI:FSVI: Iteration 17 |Vn| = 218 time 4 V changes 218 max delta 8.045 depth 34 V(b0) 12.86 CPU time 4 CPU total 19 #backups 409 |BS| 2 memory:  total 929 free 719 max 1037
+FSVI:VI:FSVI: Iteration 18 |Vn| = 233 time 4 V changes 233 max delta 8.76 depth 18 V(b0) 17.59 CPU time 4 CPU total 23 #backups 428 |BS| 2 memory:  total 929 free 817 max 1037
+FSVI:VI:FSVI: Iteration 19 |Vn| = 251 time 4 V changes 251 max delta 5.527 depth 17 V(b0) 22.69 CPU time 4 CPU total 28 #backups 446 |BS| 2 memory:  total 929 free 683 max 1037
+FSVI:VI:Finished FSVI - time : 28 |V| = 251 backups = 446 GComputations = 185949 Dot products = 848235
+RestrictedPOMDP:<init>:Started initializing restricted POMDPs, Variables = <X0,X1,X2,Y0,Y1,Y2,Rock1,Rock2,Rock3,Rock4,Rock5,Rock6,Rock7,>, Actions = North,East,South,West,CheckRock1,CheckRock2,CheckRock3,CheckRock4,CheckRock5,CheckRock6,CheckRock7,Sample,
+FactoredPOMDP:learnReward:Done learning reward for action North vertexes 1, memory:  total 929 free 788 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action East vertexes 1, memory:  total 929 free 788 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action South vertexes 1, memory:  total 929 free 788 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action West vertexes 1, memory:  total 929 free 788 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock1 vertexes 1, memory:  total 929 free 788 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock2 vertexes 1, memory:  total 929 free 788 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock3 vertexes 1, memory:  total 929 free 788 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock4 vertexes 1, memory:  total 929 free 788 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock5 vertexes 1, memory:  total 929 free 788 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock6 vertexes 1, memory:  total 929 free 788 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock7 vertexes 1, memory:  total 929 free 788 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action Sample vertexes 35, memory:  total 929 free 783 max 1037
+FactoredPOMDP:learnRewards: done learning rewards, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a North, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a East, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a South, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a West, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock1, relevant vertex 174, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock2, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock3, relevant vertex 134, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock4, relevant vertex 148, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock5, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock6, relevant vertex 138, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock7, relevant vertex 178, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 783 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a Sample, relevant vertex 163, irelevant vertex 1, prob sum = 0.0, memory:  total 929 free 761 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning all partial action diagrams, memory:  total 732 free 638 max 1037
+FactoredPOMDP:initADDs:Finished intializing. Time - 1.325391713
+MDPVI:ComputeV:Starting to compute value function, memory:  total 732 free 621 max 1037
+MDPVI:ComputeV:Start iteration 0, memory:  total 732 free 621 max 1037
+MDPVF:computeValueFunction:After 0 iterations, delta = 38.72564489364624 min 1 = 0.0 max 7807 = 47.9569206237793, memory:  total 732 free 540 max 1037
+MDPVI:ComputeV:Start iteration 1, memory:  total 732 free 540 max 1037
+MDPVF:computeValueFunction:After 1 iterations, delta = 19.408425159454346 min 1 = 0.0 max 7807 = 47.9569206237793, memory:  total 732 free 456 max 1037
+MDPVI:ComputeV:Start iteration 2, memory:  total 732 free 456 max 1037
+MDPVF:computeValueFunction:After 2 iterations, delta = 9.850748233795166 min 1 = 0.0 max 8063 = 56.957794189453125, memory:  total 732 free 574 max 1037
+MDPVI:ComputeV:Start iteration 3, memory:  total 732 free 574 max 1037
+MDPVF:computeValueFunction:After 3 iterations, delta = 9.80149432182312 min 1 = 0.0 max 7935 = 57.00302505493164, memory:  total 732 free 489 max 1037
+MDPVI:ComputeV:Start iteration 4, memory:  total 732 free 489 max 1037
+MDPVF:computeValueFunction:After 4 iterations, delta = 9.752487125396728 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 608 max 1037
+MDPVI:ComputeV:Start iteration 5, memory:  total 732 free 608 max 1037
+MDPVF:computeValueFunction:After 5 iterations, delta = 9.703724746704102 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 528 max 1037
+MDPVI:ComputeV:Start iteration 6, memory:  total 732 free 528 max 1037
+MDPVF:computeValueFunction:After 6 iterations, delta = 9.655206236839295 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 443 max 1037
+MDPVI:ComputeV:Start iteration 7, memory:  total 732 free 443 max 1037
+MDPVF:computeValueFunction:After 7 iterations, delta = 9.606930646896362 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 561 max 1037
+MDPVI:ComputeV:Start iteration 8, memory:  total 732 free 561 max 1037
+MDPVF:computeValueFunction:After 8 iterations, delta = 9.558896079063416 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 481 max 1037
+MDPVI:ComputeV:Start iteration 9, memory:  total 732 free 481 max 1037
+MDPVF:computeValueFunction:After 9 iterations, delta = 9.51110158443451 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 599 max 1037
+MDPVI:ComputeV:Start iteration 10, memory:  total 732 free 599 max 1037
+MDPVF:computeValueFunction:After 10 iterations, delta = 9.4635462141037 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 515 max 1037
+MDPVI:ComputeV:Start iteration 11, memory:  total 732 free 515 max 1037
+MDPVF:computeValueFunction:After 11 iterations, delta = 9.416228070259095 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 633 max 1037
+MDPVI:ComputeV:Start iteration 12, memory:  total 732 free 633 max 1037
+MDPVF:computeValueFunction:After 12 iterations, delta = 9.369147152900696 min 1 = 0.0 max 8180 = 65.88619232177734, memory:  total 732 free 553 max 1037
+MDPVI:ComputeV:Start iteration 13, memory:  total 732 free 553 max 1037
+MDPVF:computeValueFunction:After 13 iterations, delta = 9.322301564216614 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 468 max 1037
+MDPVI:ComputeV:Start iteration 14, memory:  total 732 free 468 max 1037
+MDPVF:computeValueFunction:After 14 iterations, delta = 9.137252941131592 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 587 max 1037
+MDPVI:ComputeV:Start iteration 15, memory:  total 732 free 587 max 1037
+MDPVF:computeValueFunction:After 15 iterations, delta = 1.1971645164489715 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 502 max 1037
+MDPVI:ComputeV:Start iteration 16, memory:  total 732 free 502 max 1037
+MDPVF:computeValueFunction:After 16 iterations, delta = 0.7257091903686543 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 625 max 1037
+MDPVI:ComputeV:Start iteration 17, memory:  total 732 free 625 max 1037
+MDPVF:computeValueFunction:After 17 iterations, delta = 0.6267243194580061 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 540 max 1037
+MDPVI:ComputeV:Start iteration 18, memory:  total 732 free 540 max 1037
+MDPVF:computeValueFunction:After 18 iterations, delta = 0.005140113830563564 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 456 max 1037
+MDPVI:ComputeV:Start iteration 19, memory:  total 732 free 456 max 1037
+MDPVF:computeValueFunction:After 19 iterations, delta = 3.7384033220178026E-6 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 574 max 1037
+MDPVF:VI:MDP value iteration done - iterations 0 delta 3.7384033220178026E-6, memory:  total 732 free 574 max 1037
+FSVI:initHeurisitc:Initialization time was 3879
+FSVI:VI:Starting FSVI target ADR = -0.001
+FSVI:VI:FSVI: Iteration 0 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 17 V(b0) 0.0 CPU time 0 CPU total 0 #backups 18 |BS| 2 memory:  total 732 free 532 max 1037
+FSVI:VI:FSVI: Iteration 1 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 25 V(b0) 0.0 CPU time 0 CPU total 0 #backups 44 |BS| 2 memory:  total 732 free 477 max 1037
+FSVI:VI:FSVI: Iteration 2 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 26 V(b0) 0.0 CPU time 0 CPU total 0 #backups 71 |BS| 2 memory:  total 732 free 620 max 1037
+FSVI:VI:FSVI: Iteration 3 |Vn| = 15 time 0 V changes 15 max delta 10.0 depth 14 V(b0) 7.25 CPU time 0 CPU total 0 #backups 86 |BS| 2 memory:  total 732 free 578 max 1037
+FSVI:VI:FSVI: Iteration 4 |Vn| = 23 time 0 V changes 23 max delta 7.339 depth 9 V(b0) 7.25 CPU time 0 CPU total 0 #backups 96 |BS| 2 memory:  total 732 free 549 max 1037
+FSVI:VI:FSVI: Iteration 5 |Vn| = 41 time 0 V changes 41 max delta 9.265 depth 19 V(b0) 8.98 CPU time 0 CPU total 1 #backups 116 |BS| 2 memory:  total 732 free 472 max 1037
+FSVI:VI:FSVI: Iteration 6 |Vn| = 62 time 1 V changes 62 max delta 9.472 depth 22 V(b0) 9.28 CPU time 1 CPU total 2 #backups 139 |BS| 2 memory:  total 732 free 486 max 1037
+FSVI:VI:FSVI: Iteration 7 |Vn| = 82 time 1 V changes 82 max delta 8.478 depth 25 V(b0) 9.42 CPU time 1 CPU total 4 #backups 165 |BS| 2 memory:  total 732 free 461 max 1037
+FSVI:VI:FSVI: Iteration 8 |Vn| = 96 time 1 V changes 96 max delta 9.279 depth 16 V(b0) 9.42 CPU time 1 CPU total 5 #backups 182 |BS| 2 memory:  total 732 free 457 max 1037
+FSVI:VI:FSVI: Iteration 9 |Vn| = 99 time 0 V changes 99 max delta 0.012 depth 7 V(b0) 9.42 CPU time 0 CPU total 6 #backups 190 |BS| 2 memory:  total 732 free 551 max 1037
+FSVI:VI:FSVI: Iteration 10 |Vn| = 124 time 2 V changes 124 max delta 17.068 depth 28 V(b0) 13.22 CPU time 2 CPU total 8 #backups 219 |BS| 2 memory:  total 732 free 481 max 1037
+FSVI:VI:FSVI: Iteration 11 |Vn| = 148 time 3 V changes 148 max delta 12.626 depth 29 V(b0) 13.72 CPU time 3 CPU total 12 #backups 249 |BS| 2 memory:  total 732 free 488 max 1037
+FSVI:VI:FSVI: Iteration 12 |Vn| = 172 time 3 V changes 172 max delta 7.556 depth 32 V(b0) 15.57 CPU time 3 CPU total 15 #backups 282 |BS| 2 memory:  total 732 free 467 max 1037
+FSVI:VI:FSVI: Iteration 13 |Vn| = 190 time 3 V changes 190 max delta 15.765 depth 28 V(b0) 15.57 CPU time 3 CPU total 19 #backups 311 |BS| 2 memory:  total 732 free 493 max 1037
+FSVI:VI:FSVI: Iteration 14 |Vn| = 203 time 3 V changes 203 max delta 6.094 depth 15 V(b0) 15.57 CPU time 3 CPU total 23 #backups 327 |BS| 2 memory:  total 732 free 538 max 1037
+FSVI:VI:FSVI: Iteration 15 |Vn| = 208 time 2 V changes 208 max delta 1.763 depth 16 V(b0) 15.57 CPU time 2 CPU total 25 #backups 344 |BS| 2 memory:  total 732 free 517 max 1037
+FSVI:VI:FSVI: Iteration 16 |Vn| = 240 time 12 V changes 240 max delta 17.836 depth 38 V(b0) 19.82 CPU time 12 CPU total 37 #backups 383 |BS| 2 memory:  total 732 free 391 max 1037
+FSVI:VI:FSVI: Iteration 17 |Vn| = 254 time 8 V changes 254 max delta 15.7 depth 14 V(b0) 19.95 CPU time 8 CPU total 45 #backups 398 |BS| 2 memory:  total 732 free 432 max 1037
+FSVI:VI:FSVI: Iteration 18 |Vn| = 262 time 5 V changes 262 max delta 3.681 depth 9 V(b0) 19.98 CPU time 5 CPU total 50 #backups 408 |BS| 2 memory:  total 732 free 464 max 1037
+FSVI:VI:FSVI: Iteration 19 |Vn| = 273 time 9 V changes 273 max delta 5.713 depth 12 V(b0) 21.24 CPU time 9 CPU total 60 #backups 421 |BS| 2 memory:  total 732 free 448 max 1037
+FSVI:VI:Finished FSVI - time : 60 |V| = 273 backups = 421 GComputations = 186516 Dot products = 945548
+RestrictedPOMDP:<init>:Started initializing restricted POMDPs, Variables = <X0,X1,X2,Y0,Y1,Y2,Rock0,Rock1,Rock2,Rock3,Rock4,Rock5,Rock6,>, Actions = North,East,South,West,CheckRock0,CheckRock1,CheckRock2,CheckRock3,CheckRock4,CheckRock5,CheckRock6,Sample,
+FactoredPOMDP:learnReward:Done learning reward for action North vertexes 1, memory:  total 732 free 478 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action East vertexes 1, memory:  total 732 free 478 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action South vertexes 1, memory:  total 732 free 478 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action West vertexes 1, memory:  total 732 free 478 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock0 vertexes 1, memory:  total 732 free 478 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock1 vertexes 1, memory:  total 732 free 478 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock2 vertexes 1, memory:  total 732 free 478 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock3 vertexes 1, memory:  total 732 free 478 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock4 vertexes 1, memory:  total 732 free 478 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock5 vertexes 1, memory:  total 732 free 478 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock6 vertexes 1, memory:  total 732 free 478 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action Sample vertexes 32, memory:  total 732 free 474 max 1037
+FactoredPOMDP:learnRewards: done learning rewards, memory:  total 732 free 474 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a North, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 474 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a East, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 474 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a South, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 470 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a West, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 470 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock0, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 470 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock1, relevant vertex 174, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 470 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock2, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 470 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock3, relevant vertex 134, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 470 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock4, relevant vertex 148, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 470 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock5, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 470 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock6, relevant vertex 138, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 470 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a Sample, relevant vertex 157, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 449 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning all partial action diagrams, memory:  total 732 free 496 max 1037
+FactoredPOMDP:initADDs:Finished intializing. Time - 1.573155347
+MDPVI:ComputeV:Starting to compute value function, memory:  total 732 free 479 max 1037
+MDPVI:ComputeV:Start iteration 0, memory:  total 732 free 479 max 1037
+MDPVF:computeValueFunction:After 0 iterations, delta = 48.28935667037964 min 1 = 0.0 max 7413 = 48.53201675415039, memory:  total 732 free 398 max 1037
+MDPVI:ComputeV:Start iteration 1, memory:  total 732 free 398 max 1037
+MDPVF:computeValueFunction:After 1 iterations, delta = 19.50595561027527 min 1 = 0.0 max 7413 = 48.53201675415039, memory:  total 732 free 314 max 1037
+MDPVI:ComputeV:Start iteration 2, memory:  total 732 free 314 max 1037
+MDPVF:computeValueFunction:After 2 iterations, delta = 19.408426246643067 min 1 = 0.0 max 7925 = 57.66926574707031, memory:  total 732 free 432 max 1037
+MDPVI:ComputeV:Start iteration 3, memory:  total 732 free 432 max 1037
+MDPVF:computeValueFunction:After 3 iterations, delta = 19.311384325027465 min 1 = 0.0 max 7669 = 57.715179443359375, memory:  total 732 free 347 max 1037
+MDPVI:ComputeV:Start iteration 4, memory:  total 732 free 347 max 1037
+MDPVF:computeValueFunction:After 4 iterations, delta = 19.214827003479005 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 466 max 1037
+MDPVI:ComputeV:Start iteration 5, memory:  total 732 free 466 max 1037
+MDPVF:computeValueFunction:After 5 iterations, delta = 19.118752393722534 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 386 max 1037
+MDPVI:ComputeV:Start iteration 6, memory:  total 732 free 386 max 1037
+MDPVF:computeValueFunction:After 6 iterations, delta = 19.023157653808592 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 301 max 1037
+MDPVI:ComputeV:Start iteration 7, memory:  total 732 free 301 max 1037
+MDPVF:computeValueFunction:After 7 iterations, delta = 18.833400382995606 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 419 max 1037
+MDPVI:ComputeV:Start iteration 8, memory:  total 732 free 419 max 1037
+MDPVF:computeValueFunction:After 8 iterations, delta = 18.64670753479004 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 339 max 1037
+MDPVI:ComputeV:Start iteration 9, memory:  total 732 free 339 max 1037
+MDPVF:computeValueFunction:After 9 iterations, delta = 18.55347379684448 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 457 max 1037
+MDPVI:ComputeV:Start iteration 10, memory:  total 732 free 457 max 1037
+MDPVF:computeValueFunction:After 10 iterations, delta = 18.459549846649168 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 373 max 1037
+MDPVI:ComputeV:Start iteration 11, memory:  total 732 free 373 max 1037
+MDPVF:computeValueFunction:After 11 iterations, delta = 18.367253551483152 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 491 max 1037
+MDPVI:ComputeV:Start iteration 12, memory:  total 732 free 491 max 1037
+MDPVF:computeValueFunction:After 12 iterations, delta = 0.6542891883850075 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 411 max 1037
+MDPVI:ComputeV:Start iteration 13, memory:  total 732 free 411 max 1037
+MDPVF:computeValueFunction:After 13 iterations, delta = 0.3664727783203148 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 326 max 1037
+MDPVI:ComputeV:Start iteration 14, memory:  total 732 free 326 max 1037
+MDPVF:computeValueFunction:After 14 iterations, delta = 0.2748398780822754 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 445 max 1037
+MDPVI:ComputeV:Start iteration 15, memory:  total 732 free 445 max 1037
+MDPVF:computeValueFunction:After 15 iterations, delta = 3.7384033220178026E-6 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 732 free 360 max 1037
+MDPVF:VI:MDP value iteration done - iterations 0 delta 3.7384033220178026E-6, memory:  total 732 free 360 max 1037
+FSVI:initHeurisitc:Initialization time was 3084
+FSVI:VI:Starting FSVI target ADR = -0.001
+FSVI:VI:FSVI: Iteration 0 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 16 V(b0) 0.0 CPU time 0 CPU total 0 #backups 17 |BS| 2 memory:  total 732 free 322 max 1037
+FSVI:VI:FSVI: Iteration 1 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 11 V(b0) 0.0 CPU time 0 CPU total 0 #backups 29 |BS| 2 memory:  total 732 free 495 max 1037
+FSVI:VI:FSVI: Iteration 2 |Vn| = 7 time 0 V changes 7 max delta 10.0 depth 15 V(b0) 4.88 CPU time 0 CPU total 0 #backups 45 |BS| 2 memory:  total 732 free 462 max 1037
+FSVI:VI:FSVI: Iteration 3 |Vn| = 21 time 0 V changes 21 max delta 9.152 depth 13 V(b0) 9.02 CPU time 0 CPU total 0 #backups 59 |BS| 2 memory:  total 732 free 407 max 1037
+FSVI:VI:FSVI: Iteration 4 |Vn| = 29 time 0 V changes 29 max delta 9.175 depth 14 V(b0) 9.02 CPU time 0 CPU total 0 #backups 74 |BS| 2 memory:  total 732 free 352 max 1037
+FSVI:VI:FSVI: Iteration 5 |Vn| = 52 time 0 V changes 52 max delta 9.563 depth 24 V(b0) 9.42 CPU time 0 CPU total 1 #backups 99 |BS| 2 memory:  total 732 free 434 max 1037
+FSVI:VI:FSVI: Iteration 6 |Vn| = 55 time 0 V changes 55 max delta 9.367 depth 14 V(b0) 9.47 CPU time 0 CPU total 1 #backups 114 |BS| 2 memory:  total 732 free 353 max 1037
+FSVI:VI:FSVI: Iteration 7 |Vn| = 78 time 1 V changes 78 max delta 18.623 depth 26 V(b0) 13.96 CPU time 1 CPU total 3 #backups 141 |BS| 2 memory:  total 732 free 389 max 1037
+FSVI:VI:FSVI: Iteration 8 |Vn| = 100 time 1 V changes 100 max delta 5.891 depth 30 V(b0) 14.52 CPU time 1 CPU total 4 #backups 172 |BS| 2 memory:  total 732 free 357 max 1037
+FSVI:VI:FSVI: Iteration 9 |Vn| = 117 time 2 V changes 117 max delta 2.371 depth 25 V(b0) 14.57 CPU time 2 CPU total 6 #backups 198 |BS| 2 memory:  total 732 free 473 max 1037
+FSVI:VI:FSVI: Iteration 10 |Vn| = 134 time 2 V changes 134 max delta 2.531 depth 24 V(b0) 15.07 CPU time 2 CPU total 9 #backups 223 |BS| 2 memory:  total 732 free 424 max 1037
+FSVI:VI:FSVI: Iteration 11 |Vn| = 151 time 2 V changes 151 max delta 7.885 depth 22 V(b0) 15.54 CPU time 2 CPU total 11 #backups 246 |BS| 2 memory:  total 732 free 334 max 1037
+FSVI:VI:FSVI: Iteration 12 |Vn| = 171 time 3 V changes 171 max delta 10.019 depth 25 V(b0) 17.47 CPU time 3 CPU total 15 #backups 272 |BS| 2 memory:  total 732 free 344 max 1037
+FSVI:VI:FSVI: Iteration 13 |Vn| = 182 time 2 V changes 182 max delta 2.798 depth 15 V(b0) 17.82 CPU time 2 CPU total 18 #backups 288 |BS| 2 memory:  total 732 free 446 max 1037
+FSVI:VI:FSVI: Iteration 14 |Vn| = 182 time 0 V changes 182 max delta 0.0 depth 5 V(b0) 17.82 CPU time 0 CPU total 19 #backups 294 |BS| 2 memory:  total 732 free 383 max 1037
+FSVI:VI:FSVI: Iteration 15 |Vn| = 205 time 4 V changes 205 max delta 4.457 depth 26 V(b0) 18.03 CPU time 4 CPU total 24 #backups 321 |BS| 2 memory:  total 732 free 312 max 1037
+FSVI:VI:FSVI: Iteration 16 |Vn| = 227 time 5 V changes 227 max delta 7.353 depth 26 V(b0) 18.14 CPU time 5 CPU total 29 #backups 348 |BS| 2 memory:  total 732 free 385 max 1037
+FSVI:VI:FSVI: Iteration 17 |Vn| = 240 time 5 V changes 240 max delta 8.248 depth 16 V(b0) 21.55 CPU time 5 CPU total 34 #backups 365 |BS| 2 memory:  total 732 free 361 max 1037
+FSVI:VI:FSVI: Iteration 18 |Vn| = 254 time 5 V changes 254 max delta 5.486 depth 18 V(b0) 21.66 CPU time 5 CPU total 40 #backups 384 |BS| 2 memory:  total 732 free 273 max 1037
+FSVI:VI:FSVI: Iteration 19 |Vn| = 262 time 4 V changes 262 max delta 4.138 depth 17 V(b0) 21.66 CPU time 4 CPU total 44 #backups 402 |BS| 2 memory:  total 732 free 308 max 1037
+FSVI:VI:Finished FSVI - time : 44 |V| = 262 backups = 402 GComputations = 187079 Dot products = 933776
+RestrictedPOMDP:<init>:Started initializing restricted POMDPs, Variables = <X0,X1,X2,Y0,Y1,Y2,Rock1,Rock2,Rock3,Rock4,Rock5,Rock6,Rock7,>, Actions = North,East,South,West,CheckRock1,CheckRock2,CheckRock3,CheckRock4,CheckRock5,CheckRock6,CheckRock7,Sample,
+FactoredPOMDP:learnReward:Done learning reward for action North vertexes 1, memory:  total 732 free 303 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action East vertexes 1, memory:  total 732 free 303 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action South vertexes 1, memory:  total 732 free 303 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action West vertexes 1, memory:  total 732 free 303 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock1 vertexes 1, memory:  total 732 free 303 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock2 vertexes 1, memory:  total 732 free 303 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock3 vertexes 1, memory:  total 732 free 303 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock4 vertexes 1, memory:  total 732 free 303 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock5 vertexes 1, memory:  total 732 free 303 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock6 vertexes 1, memory:  total 732 free 303 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock7 vertexes 1, memory:  total 732 free 303 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action Sample vertexes 35, memory:  total 732 free 299 max 1037
+FactoredPOMDP:learnRewards: done learning rewards, memory:  total 732 free 299 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a North, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 299 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a East, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 299 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a South, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 299 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a West, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 299 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock1, relevant vertex 174, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 299 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock2, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 299 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock3, relevant vertex 134, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 299 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock4, relevant vertex 148, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 294 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock5, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 294 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock6, relevant vertex 138, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 294 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock7, relevant vertex 178, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 294 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a Sample, relevant vertex 163, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 277 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning all partial action diagrams, memory:  total 732 free 503 max 1037
+FactoredPOMDP:initADDs:Finished intializing. Time - 1.579491808
+MDPVI:ComputeV:Starting to compute value function, memory:  total 732 free 486 max 1037
+MDPVI:ComputeV:Start iteration 0, memory:  total 732 free 486 max 1037
+MDPVF:computeValueFunction:After 0 iterations, delta = 38.72564489364624 min 1 = 0.0 max 7807 = 47.9569206237793, memory:  total 732 free 403 max 1037
+MDPVI:ComputeV:Start iteration 1, memory:  total 732 free 403 max 1037
+MDPVF:computeValueFunction:After 1 iterations, delta = 19.408425159454346 min 1 = 0.0 max 7807 = 47.9569206237793, memory:  total 732 free 319 max 1037
+MDPVI:ComputeV:Start iteration 2, memory:  total 732 free 319 max 1037
+MDPVF:computeValueFunction:After 2 iterations, delta = 9.850748233795166 min 1 = 0.0 max 8063 = 56.957794189453125, memory:  total 732 free 440 max 1037
+MDPVI:ComputeV:Start iteration 3, memory:  total 732 free 440 max 1037
+MDPVF:computeValueFunction:After 3 iterations, delta = 9.80149432182312 min 1 = 0.0 max 7935 = 57.00302505493164, memory:  total 732 free 356 max 1037
+MDPVI:ComputeV:Start iteration 4, memory:  total 732 free 356 max 1037
+MDPVF:computeValueFunction:After 4 iterations, delta = 9.752487125396728 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 473 max 1037
+MDPVI:ComputeV:Start iteration 5, memory:  total 732 free 473 max 1037
+MDPVF:computeValueFunction:After 5 iterations, delta = 9.703724746704102 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 393 max 1037
+MDPVI:ComputeV:Start iteration 6, memory:  total 732 free 393 max 1037
+MDPVF:computeValueFunction:After 6 iterations, delta = 9.655206236839295 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 308 max 1037
+MDPVI:ComputeV:Start iteration 7, memory:  total 732 free 308 max 1037
+MDPVF:computeValueFunction:After 7 iterations, delta = 9.606930646896362 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 427 max 1037
+MDPVI:ComputeV:Start iteration 8, memory:  total 732 free 427 max 1037
+MDPVF:computeValueFunction:After 8 iterations, delta = 9.558896079063416 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 346 max 1037
+MDPVI:ComputeV:Start iteration 9, memory:  total 732 free 346 max 1037
+MDPVF:computeValueFunction:After 9 iterations, delta = 9.51110158443451 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 465 max 1037
+MDPVI:ComputeV:Start iteration 10, memory:  total 732 free 465 max 1037
+MDPVF:computeValueFunction:After 10 iterations, delta = 9.4635462141037 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 380 max 1037
+MDPVI:ComputeV:Start iteration 11, memory:  total 732 free 380 max 1037
+MDPVF:computeValueFunction:After 11 iterations, delta = 9.416228070259095 min 1 = 0.0 max 8191 = 65.86956024169922, memory:  total 732 free 498 max 1037
+MDPVI:ComputeV:Start iteration 12, memory:  total 732 free 498 max 1037
+MDPVF:computeValueFunction:After 12 iterations, delta = 9.369147152900696 min 1 = 0.0 max 8180 = 65.88619232177734, memory:  total 732 free 418 max 1037
+MDPVI:ComputeV:Start iteration 13, memory:  total 732 free 418 max 1037
+MDPVF:computeValueFunction:After 13 iterations, delta = 9.322301564216614 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 334 max 1037
+MDPVI:ComputeV:Start iteration 14, memory:  total 732 free 334 max 1037
+MDPVF:computeValueFunction:After 14 iterations, delta = 9.137252941131592 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 452 max 1037
+MDPVI:ComputeV:Start iteration 15, memory:  total 732 free 452 max 1037
+MDPVF:computeValueFunction:After 15 iterations, delta = 1.1971645164489715 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 367 max 1037
+MDPVI:ComputeV:Start iteration 16, memory:  total 732 free 367 max 1037
+MDPVF:computeValueFunction:After 16 iterations, delta = 0.7257091903686543 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 490 max 1037
+MDPVI:ComputeV:Start iteration 17, memory:  total 732 free 490 max 1037
+MDPVF:computeValueFunction:After 17 iterations, delta = 0.6267243194580061 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 405 max 1037
+MDPVI:ComputeV:Start iteration 18, memory:  total 732 free 405 max 1037
+MDPVF:computeValueFunction:After 18 iterations, delta = 0.005140113830563564 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 321 max 1037
+MDPVI:ComputeV:Start iteration 19, memory:  total 732 free 321 max 1037
+MDPVF:computeValueFunction:After 19 iterations, delta = 3.7384033220178026E-6 min 1 = 0.0 max 8132 = 66.05844116210938, memory:  total 732 free 439 max 1037
+MDPVF:VI:MDP value iteration done - iterations 0 delta 3.7384033220178026E-6, memory:  total 732 free 439 max 1037
+FSVI:initHeurisitc:Initialization time was 3882
+FSVI:VI:Starting FSVI target ADR = -0.001
+FSVI:VI:FSVI: Iteration 0 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 12 V(b0) 0.0 CPU time 0 CPU total 0 #backups 13 |BS| 2 memory:  total 732 free 410 max 1037
+FSVI:VI:FSVI: Iteration 1 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 20 V(b0) 0.0 CPU time 0 CPU total 0 #backups 34 |BS| 2 memory:  total 732 free 363 max 1037
+FSVI:VI:FSVI: Iteration 2 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 26 V(b0) 0.0 CPU time 0 CPU total 0 #backups 61 |BS| 2 memory:  total 732 free 498 max 1037
+FSVI:VI:FSVI: Iteration 3 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 19 V(b0) 0.0 CPU time 0 CPU total 0 #backups 81 |BS| 2 memory:  total 732 free 452 max 1037
+FSVI:VI:FSVI: Iteration 4 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 22 V(b0) 0.0 CPU time 0 CPU total 0 #backups 104 |BS| 2 memory:  total 732 free 397 max 1037
+FSVI:VI:FSVI: Iteration 5 |Vn| = 27 time 0 V changes 27 max delta 17.868 depth 26 V(b0) 8.83 CPU time 0 CPU total 1 #backups 131 |BS| 2 memory:  total 732 free 497 max 1037
+FSVI:VI:FSVI: Iteration 6 |Vn| = 42 time 0 V changes 42 max delta 11.13 depth 14 V(b0) 10.97 CPU time 0 CPU total 1 #backups 146 |BS| 2 memory:  total 732 free 391 max 1037
+FSVI:VI:FSVI: Iteration 7 |Vn| = 54 time 0 V changes 54 max delta 8.018 depth 12 V(b0) 14.24 CPU time 0 CPU total 2 #backups 159 |BS| 2 memory:  total 732 free 332 max 1037
+FSVI:VI:FSVI: Iteration 8 |Vn| = 77 time 1 V changes 77 max delta 6.019 depth 27 V(b0) 14.42 CPU time 1 CPU total 3 #backups 187 |BS| 2 memory:  total 732 free 484 max 1037
+FSVI:VI:FSVI: Iteration 9 |Vn| = 110 time 8 V changes 110 max delta 14.251 depth 34 V(b0) 19.77 CPU time 8 CPU total 12 #backups 222 |BS| 2 memory:  total 732 free 334 max 1037
+FSVI:VI:FSVI: Iteration 10 |Vn| = 131 time 4 V changes 131 max delta 7.762 depth 29 V(b0) 19.77 CPU time 4 CPU total 17 #backups 252 |BS| 2 memory:  total 732 free 274 max 1037
+FSVI:VI:FSVI: Iteration 11 |Vn| = 144 time 1 V changes 144 max delta 8.989 depth 17 V(b0) 19.77 CPU time 1 CPU total 18 #backups 270 |BS| 2 memory:  total 732 free 303 max 1037
+FSVI:VI:FSVI: Iteration 12 |Vn| = 154 time 2 V changes 154 max delta 7.774 depth 19 V(b0) 19.77 CPU time 2 CPU total 21 #backups 290 |BS| 2 memory:  total 732 free 305 max 1037
+FSVI:VI:FSVI: Iteration 13 |Vn| = 167 time 3 V changes 167 max delta 10.219 depth 18 V(b0) 19.77 CPU time 3 CPU total 24 #backups 309 |BS| 2 memory:  total 732 free 410 max 1037
+FSVI:VI:FSVI: Iteration 14 |Vn| = 184 time 9 V changes 184 max delta 5.37 depth 26 V(b0) 19.96 CPU time 9 CPU total 34 #backups 336 |BS| 2 memory:  total 732 free 322 max 1037
+FSVI:VI:FSVI: Iteration 15 |Vn| = 201 time 10 V changes 201 max delta 6.491 depth 23 V(b0) 20.3 CPU time 10 CPU total 44 #backups 360 |BS| 2 memory:  total 732 free 261 max 1037
+FSVI:VI:FSVI: Iteration 16 |Vn| = 219 time 11 V changes 219 max delta 9.417 depth 29 V(b0) 20.3 CPU time 11 CPU total 55 #backups 390 |BS| 2 memory:  total 732 free 272 max 1037
+FSVI:VI:FSVI: Iteration 17 |Vn| = 240 time 17 V changes 240 max delta 6.678 depth 23 V(b0) 20.46 CPU time 17 CPU total 73 #backups 414 |BS| 2 memory:  total 732 free 195 max 1037
+FSVI:VI:FSVI: Iteration 18 |Vn| = 255 time 7 V changes 255 max delta 10.933 depth 20 V(b0) 20.46 CPU time 7 CPU total 81 #backups 435 |BS| 2 memory:  total 732 free 195 max 1037
+FSVI:VI:FSVI: Iteration 19 |Vn| = 261 time 4 V changes 261 max delta 1.852 depth 14 V(b0) 20.46 CPU time 4 CPU total 85 #backups 450 |BS| 2 memory:  total 732 free 253 max 1037
+FSVI:VI:Finished FSVI - time : 85 |V| = 261 backups = 450 GComputations = 187656 Dot products = 946099
+RestrictedPOMDP:<init>:Started initializing restricted POMDPs, Variables = <X0,X1,X2,Y0,Y1,Y2,Rock0,Rock1,Rock2,Rock3,Rock4,Rock5,Rock7,>, Actions = North,East,South,West,CheckRock0,CheckRock1,CheckRock2,CheckRock3,CheckRock4,CheckRock5,CheckRock7,Sample,
+FactoredPOMDP:learnReward:Done learning reward for action North vertexes 1, memory:  total 732 free 204 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action East vertexes 1, memory:  total 732 free 204 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action South vertexes 1, memory:  total 732 free 204 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action West vertexes 1, memory:  total 732 free 204 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock0 vertexes 1, memory:  total 732 free 204 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock1 vertexes 1, memory:  total 732 free 204 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock2 vertexes 1, memory:  total 732 free 204 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock3 vertexes 1, memory:  total 732 free 204 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock4 vertexes 1, memory:  total 732 free 204 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock5 vertexes 1, memory:  total 732 free 204 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock7 vertexes 1, memory:  total 732 free 204 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action Sample vertexes 32, memory:  total 732 free 200 max 1037
+FactoredPOMDP:learnRewards: done learning rewards, memory:  total 732 free 200 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a North, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 200 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a East, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 200 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a South, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 200 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a West, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 200 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock0, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 200 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock1, relevant vertex 174, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 200 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock2, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 195 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock3, relevant vertex 134, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 195 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock4, relevant vertex 148, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 195 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock5, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 195 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock7, relevant vertex 178, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 195 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a Sample, relevant vertex 157, irelevant vertex 1, prob sum = 0.0, memory:  total 732 free 174 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning all partial action diagrams, memory:  total 884 free 513 max 1037
+FactoredPOMDP:initADDs:Finished intializing. Time - 1.89456236
+MDPVI:ComputeV:Starting to compute value function, memory:  total 884 free 498 max 1037
+MDPVI:ComputeV:Start iteration 0, memory:  total 884 free 498 max 1037
+MDPVF:computeValueFunction:After 0 iterations, delta = 38.72879146575928 min 1 = 0.0 max 7423 = 48.1507568359375, memory:  total 884 free 412 max 1037
+MDPVI:ComputeV:Start iteration 1, memory:  total 884 free 412 max 1037
+MDPVF:computeValueFunction:After 1 iterations, delta = 19.417409172058107 min 1 = 0.0 max 6015 = 48.1507568359375, memory:  total 884 free 332 max 1037
+MDPVI:ComputeV:Start iteration 2, memory:  total 884 free 332 max 1037
+MDPVF:computeValueFunction:After 2 iterations, delta = 19.31259623527527 min 1 = 0.0 max 7679 = 57.19686508178711, memory:  total 884 free 493 max 1037
+MDPVI:ComputeV:Start iteration 3, memory:  total 884 free 493 max 1037
+MDPVF:computeValueFunction:After 3 iterations, delta = 19.216032562255858 min 1 = 0.0 max 7679 = 57.19686508178711, memory:  total 884 free 407 max 1037
+MDPVI:ComputeV:Start iteration 4, memory:  total 884 free 407 max 1037
+MDPVF:computeValueFunction:After 4 iterations, delta = 19.1199515914917 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 326 max 1037
+MDPVI:ComputeV:Start iteration 5, memory:  total 884 free 326 max 1037
+MDPVF:computeValueFunction:After 5 iterations, delta = 19.02435143470764 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 487 max 1037
+MDPVI:ComputeV:Start iteration 6, memory:  total 884 free 487 max 1037
+MDPVF:computeValueFunction:After 6 iterations, delta = 18.929229249954222 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 401 max 1037
+MDPVI:ComputeV:Start iteration 7, memory:  total 884 free 401 max 1037
+MDPVF:computeValueFunction:After 7 iterations, delta = 18.74041139602661 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 319 max 1037
+MDPVI:ComputeV:Start iteration 8, memory:  total 884 free 319 max 1037
+MDPVF:computeValueFunction:After 8 iterations, delta = 18.64670753479004 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 482 max 1037
+MDPVI:ComputeV:Start iteration 9, memory:  total 884 free 482 max 1037
+MDPVF:computeValueFunction:After 9 iterations, delta = 18.55347379684448 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 396 max 1037
+MDPVI:ComputeV:Start iteration 10, memory:  total 884 free 396 max 1037
+MDPVF:computeValueFunction:After 10 iterations, delta = 18.368405532836917 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 314 max 1037
+MDPVI:ComputeV:Start iteration 11, memory:  total 884 free 314 max 1037
+MDPVF:computeValueFunction:After 11 iterations, delta = 18.27656471252441 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 477 max 1037
+MDPVI:ComputeV:Start iteration 12, memory:  total 884 free 477 max 1037
+MDPVF:computeValueFunction:After 12 iterations, delta = 9.369147152900696 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 391 max 1037
+MDPVI:ComputeV:Start iteration 13, memory:  total 884 free 391 max 1037
+MDPVF:computeValueFunction:After 13 iterations, delta = 9.322301564216614 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 309 max 1037
+MDPVI:ComputeV:Start iteration 14, memory:  total 884 free 309 max 1037
+MDPVF:computeValueFunction:After 14 iterations, delta = 9.137252941131592 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 472 max 1037
+MDPVI:ComputeV:Start iteration 15, memory:  total 884 free 472 max 1037
+MDPVF:computeValueFunction:After 15 iterations, delta = 0.6462926673889129 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 385 max 1037
+MDPVI:ComputeV:Start iteration 16, memory:  total 884 free 385 max 1037
+MDPVF:computeValueFunction:After 16 iterations, delta = 0.62987524032593 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 304 max 1037
+MDPVI:ComputeV:Start iteration 17, memory:  total 884 free 304 max 1037
+MDPVF:computeValueFunction:After 17 iterations, delta = 0.6267243194580061 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 462 max 1037
+MDPVI:ComputeV:Start iteration 18, memory:  total 884 free 462 max 1037
+MDPVF:computeValueFunction:After 18 iterations, delta = 3.7002563431087765E-6 min 1 = 0.0 max 8191 = 66.06339263916016, memory:  total 884 free 380 max 1037
+MDPVF:VI:MDP value iteration done - iterations 0 delta 3.7002563431087765E-6, memory:  total 884 free 380 max 1037
+FSVI:initHeurisitc:Initialization time was 3695
+FSVI:VI:Starting FSVI target ADR = -0.001
+FSVI:VI:FSVI: Iteration 0 |Vn| = 1 time 0 V changes 1 max delta 0.0 depth 25 V(b0) 0.0 CPU time 0 CPU total 0 #backups 26 |BS| 2 memory:  total 884 free 319 max 1037
+FSVI:VI:FSVI: Iteration 1 |Vn| = 19 time 0 V changes 19 max delta 9.338 depth 20 V(b0) 8.37 CPU time 0 CPU total 0 #backups 47 |BS| 2 memory:  total 884 free 487 max 1037
+FSVI:VI:FSVI: Iteration 2 |Vn| = 29 time 0 V changes 29 max delta 7.324 depth 16 V(b0) 9.02 CPU time 0 CPU total 0 #backups 64 |BS| 2 memory:  total 884 free 426 max 1037
+FSVI:VI:FSVI: Iteration 3 |Vn| = 53 time 0 V changes 53 max delta 9.517 depth 23 V(b0) 9.38 CPU time 0 CPU total 1 #backups 88 |BS| 2 memory:  total 884 free 283 max 1037
+FSVI:VI:FSVI: Iteration 4 |Vn| = 79 time 1 V changes 79 max delta 9.517 depth 31 V(b0) 9.38 CPU time 1 CPU total 2 #backups 120 |BS| 2 memory:  total 884 free 304 max 1037
+FSVI:VI:FSVI: Iteration 5 |Vn| = 90 time 1 V changes 90 max delta 0.224 depth 23 V(b0) 9.45 CPU time 1 CPU total 4 #backups 144 |BS| 2 memory:  total 884 free 377 max 1037
+FSVI:VI:FSVI: Iteration 6 |Vn| = 108 time 1 V changes 108 max delta 8.242 depth 21 V(b0) 13.32 CPU time 1 CPU total 5 #backups 166 |BS| 2 memory:  total 884 free 431 max 1037
+FSVI:VI:FSVI: Iteration 7 |Vn| = 123 time 1 V changes 123 max delta 4.717 depth 16 V(b0) 13.82 CPU time 1 CPU total 6 #backups 183 |BS| 2 memory:  total 884 free 493 max 1037
+FSVI:VI:FSVI: Iteration 8 |Vn| = 143 time 1 V changes 143 max delta 10.177 depth 28 V(b0) 13.82 CPU time 1 CPU total 8 #backups 212 |BS| 2 memory:  total 884 free 264 max 1037
+FSVI:VI:FSVI: Iteration 9 |Vn| = 158 time 2 V changes 158 max delta 9.536 depth 22 V(b0) 18.42 CPU time 2 CPU total 10 #backups 235 |BS| 2 memory:  total 884 free 271 max 1037
+FSVI:VI:FSVI: Iteration 10 |Vn| = 183 time 5 V changes 183 max delta 18.803 depth 26 V(b0) 18.42 CPU time 5 CPU total 16 #backups 262 |BS| 2 memory:  total 884 free 436 max 1037
+FSVI:VI:FSVI: Iteration 11 |Vn| = 198 time 5 V changes 198 max delta 6.037 depth 15 V(b0) 22.33 CPU time 5 CPU total 21 #backups 278 |BS| 2 memory:  total 884 free 462 max 1037
+FSVI:VI:FSVI: Iteration 12 |Vn| = 209 time 4 V changes 209 max delta 5.564 depth 16 V(b0) 22.33 CPU time 4 CPU total 26 #backups 295 |BS| 2 memory:  total 884 free 281 max 1037
+FSVI:VI:FSVI: Iteration 13 |Vn| = 226 time 7 V changes 226 max delta 5.908 depth 20 V(b0) 22.33 CPU time 7 CPU total 34 #backups 316 |BS| 2 memory:  total 884 free 348 max 1037
+FSVI:VI:FSVI: Iteration 14 |Vn| = 236 time 2 V changes 236 max delta 8.125 depth 13 V(b0) 22.33 CPU time 2 CPU total 37 #backups 330 |BS| 2 memory:  total 884 free 308 max 1037
+FSVI:VI:FSVI: Iteration 15 |Vn| = 266 time 13 V changes 266 max delta 4.916 depth 33 V(b0) 23.41 CPU time 13 CPU total 51 #backups 364 |BS| 2 memory:  total 884 free 196 max 1037
+FSVI:VI:FSVI: Iteration 16 |Vn| = 284 time 11 V changes 284 max delta 4.359 depth 18 V(b0) 23.84 CPU time 11 CPU total 62 #backups 383 |BS| 2 memory:  total 884 free 374 max 1037
+FSVI:VI:FSVI: Iteration 17 |Vn| = 310 time 14 V changes 310 max delta 4.143 depth 27 V(b0) 23.88 CPU time 14 CPU total 77 #backups 411 |BS| 2 memory:  total 884 free 242 max 1037
+FSVI:VI:FSVI: Iteration 18 |Vn| = 337 time 16 V changes 337 max delta 1.702 depth 27 V(b0) 23.89 CPU time 16 CPU total 94 #backups 439 |BS| 2 memory:  total 884 free 229 max 1037
+FSVI:VI:FSVI: Iteration 19 |Vn| = 349 time 12 V changes 349 max delta 3.563 depth 20 V(b0) 23.89 CPU time 12 CPU total 106 #backups 460 |BS| 2 memory:  total 884 free 124 max 1037
+FSVI:VI:Finished FSVI - time : 106 |V| = 349 backups = 460 GComputations = 188377 Dot products = 1435556
+RestrictedPOMDP:<init>:Started initializing restricted POMDPs, Variables = <X0,X1,X2,Y0,Y1,Y2,Rock0,Rock1,Rock2,Rock3,Rock4,Rock5,Rock6,>, Actions = North,East,South,West,CheckRock0,CheckRock1,CheckRock2,CheckRock3,CheckRock4,CheckRock5,CheckRock6,Sample,
+FactoredPOMDP:learnReward:Done learning reward for action North vertexes 1, memory:  total 884 free 252 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action East vertexes 1, memory:  total 884 free 252 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action South vertexes 1, memory:  total 884 free 252 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action West vertexes 1, memory:  total 884 free 252 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock0 vertexes 1, memory:  total 884 free 252 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock1 vertexes 1, memory:  total 884 free 252 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock2 vertexes 1, memory:  total 884 free 252 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock3 vertexes 1, memory:  total 884 free 252 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock4 vertexes 1, memory:  total 884 free 252 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock5 vertexes 1, memory:  total 884 free 252 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock6 vertexes 1, memory:  total 884 free 252 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action Sample vertexes 32, memory:  total 884 free 247 max 1037
+FactoredPOMDP:learnRewards: done learning rewards, memory:  total 884 free 247 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a North, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 247 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a East, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 247 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a South, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 247 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a West, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 247 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock0, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 247 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock1, relevant vertex 174, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 241 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock2, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 241 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock3, relevant vertex 134, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 241 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock4, relevant vertex 148, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 241 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock5, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 241 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock6, relevant vertex 138, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 241 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a Sample, relevant vertex 157, irelevant vertex 1, prob sum = 0.0, memory:  total 884 free 221 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning all partial action diagrams, memory:  total 1037 free 564 max 1037
+FactoredPOMDP:initADDs:Finished intializing. Time - 2.261543055
+MDPVI:ComputeV:Starting to compute value function, memory:  total 1037 free 546 max 1037
+MDPVI:ComputeV:Start iteration 0, memory:  total 1037 free 546 max 1037
+MDPVF:computeValueFunction:After 0 iterations, delta = 48.28935667037964 min 1 = 0.0 max 7413 = 48.53201675415039, memory:  total 1037 free 469 max 1037
+MDPVI:ComputeV:Start iteration 1, memory:  total 1037 free 469 max 1037
+MDPVF:computeValueFunction:After 1 iterations, delta = 19.50595561027527 min 1 = 0.0 max 7413 = 48.53201675415039, memory:  total 1037 free 385 max 1037
+MDPVI:ComputeV:Start iteration 2, memory:  total 1037 free 385 max 1037
+MDPVF:computeValueFunction:After 2 iterations, delta = 19.408426246643067 min 1 = 0.0 max 7925 = 57.66926574707031, memory:  total 1037 free 301 max 1037
+MDPVI:ComputeV:Start iteration 3, memory:  total 1037 free 301 max 1037
+MDPVF:computeValueFunction:After 3 iterations, delta = 19.311384325027465 min 1 = 0.0 max 7669 = 57.715179443359375, memory:  total 1037 free 505 max 1037
+MDPVI:ComputeV:Start iteration 4, memory:  total 1037 free 505 max 1037
+MDPVF:computeValueFunction:After 4 iterations, delta = 19.214827003479005 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 421 max 1037
+MDPVI:ComputeV:Start iteration 5, memory:  total 1037 free 421 max 1037
+MDPVF:computeValueFunction:After 5 iterations, delta = 19.118752393722534 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 337 max 1037
+MDPVI:ComputeV:Start iteration 6, memory:  total 1037 free 337 max 1037
+MDPVF:computeValueFunction:After 6 iterations, delta = 19.023157653808592 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 540 max 1037
+MDPVI:ComputeV:Start iteration 7, memory:  total 1037 free 540 max 1037
+MDPVF:computeValueFunction:After 7 iterations, delta = 18.833400382995606 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 457 max 1037
+MDPVI:ComputeV:Start iteration 8, memory:  total 1037 free 457 max 1037
+MDPVF:computeValueFunction:After 8 iterations, delta = 18.64670753479004 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 373 max 1037
+MDPVI:ComputeV:Start iteration 9, memory:  total 1037 free 373 max 1037
+MDPVF:computeValueFunction:After 9 iterations, delta = 18.55347379684448 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 289 max 1037
+MDPVI:ComputeV:Start iteration 10, memory:  total 1037 free 289 max 1037
+MDPVF:computeValueFunction:After 10 iterations, delta = 18.459549846649168 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 493 max 1037
+MDPVI:ComputeV:Start iteration 11, memory:  total 1037 free 493 max 1037
+MDPVF:computeValueFunction:After 11 iterations, delta = 18.367253551483152 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 409 max 1037
+MDPVI:ComputeV:Start iteration 12, memory:  total 1037 free 409 max 1037
+MDPVF:computeValueFunction:After 12 iterations, delta = 0.6542891883850075 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 325 max 1037
+MDPVI:ComputeV:Start iteration 13, memory:  total 1037 free 325 max 1037
+MDPVF:computeValueFunction:After 13 iterations, delta = 0.3664727783203148 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 528 max 1037
+MDPVI:ComputeV:Start iteration 14, memory:  total 1037 free 528 max 1037
+MDPVF:computeValueFunction:After 14 iterations, delta = 0.2748398780822754 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 445 max 1037
+MDPVI:ComputeV:Start iteration 15, memory:  total 1037 free 445 max 1037
+MDPVF:computeValueFunction:After 15 iterations, delta = 3.7384033220178026E-6 min 1 = 0.0 max 8181 = 66.71605682373047, memory:  total 1037 free 361 max 1037
+MDPVF:VI:MDP value iteration done - iterations 0 delta 3.7384033220178026E-6, memory:  total 1037 free 361 max 1037
+FSVI:initHeurisitc:Initialization time was 3121
+FSVI:VI:Starting FSVI target ADR = -0.001
+FSVI:VI:FSVI: Iteration 0 |Vn| = 7 time 0 V changes 7 max delta 10.0 depth 21 V(b0) 4.88 CPU time 0 CPU total 0 #backups 22 |BS| 2 memory:  total 1037 free 301 max 1037
+FSVI:VI:FSVI: Iteration 1 |Vn| = 27 time 0 V changes 27 max delta 8.541 depth 22 V(b0) 8.37 CPU time 0 CPU total 0 #backups 45 |BS| 2 memory:  total 1037 free 516 max 1037
+FSVI:VI:FSVI: Iteration 2 |Vn| = 45 time 0 V changes 45 max delta 9.106 depth 20 V(b0) 9.04 CPU time 0 CPU total 0 #backups 66 |BS| 2 memory:  total 1037 free 420 max 1037
+FSVI:VI:FSVI: Iteration 3 |Vn| = 53 time 0 V changes 53 max delta 8.577 depth 14 V(b0) 9.04 CPU time 0 CPU total 1 #backups 81 |BS| 2 memory:  total 1037 free 355 max 1037
+FSVI:VI:FSVI: Iteration 4 |Vn| = 73 time 1 V changes 73 max delta 14.522 depth 22 V(b0) 12.18 CPU time 1 CPU total 2 #backups 104 |BS| 2 memory:  total 1037 free 489 max 1037
+FSVI:VI:FSVI: Iteration 5 |Vn| = 91 time 0 V changes 91 max delta 12.768 depth 19 V(b0) 12.82 CPU time 0 CPU total 3 #backups 124 |BS| 2 memory:  total 1037 free 346 max 1037
+FSVI:VI:FSVI: Iteration 6 |Vn| = 108 time 1 V changes 108 max delta 13.031 depth 16 V(b0) 12.97 CPU time 1 CPU total 4 #backups 141 |BS| 2 memory:  total 1037 free 471 max 1037
+FSVI:VI:FSVI: Iteration 7 |Vn| = 129 time 2 V changes 129 max delta 2.372 depth 23 V(b0) 13.42 CPU time 2 CPU total 6 #backups 165 |BS| 2 memory:  total 1037 free 486 max 1037
+FSVI:VI:FSVI: Iteration 8 |Vn| = 141 time 2 V changes 141 max delta 17.056 depth 24 V(b0) 19.4 CPU time 2 CPU total 8 #backups 190 |BS| 2 memory:  total 1037 free 522 max 1037
+FSVI:VI:FSVI: Iteration 9 |Vn| = 161 time 2 V changes 161 max delta 8.1 depth 21 V(b0) 21.7 CPU time 2 CPU total 11 #backups 212 |BS| 2 memory:  total 1037 free 517 max 1037
+FSVI:VI:FSVI: Iteration 10 |Vn| = 166 time 0 V changes 166 max delta 9.442 depth 8 V(b0) 21.7 CPU time 0 CPU total 12 #backups 221 |BS| 2 memory:  total 1037 free 427 max 1037
+FSVI:VI:FSVI: Iteration 11 |Vn| = 185 time 3 V changes 185 max delta 8.104 depth 24 V(b0) 21.7 CPU time 3 CPU total 16 #backups 246 |BS| 2 memory:  total 1037 free 304 max 1037
+FSVI:VI:FSVI: Iteration 12 |Vn| = 195 time 2 V changes 195 max delta 0.25 depth 11 V(b0) 21.7 CPU time 2 CPU total 18 #backups 258 |BS| 2 memory:  total 1037 free 310 max 1037
+FSVI:VI:FSVI: Iteration 13 |Vn| = 211 time 4 V changes 211 max delta 16.841 depth 21 V(b0) 21.7 CPU time 4 CPU total 23 #backups 280 |BS| 2 memory:  total 1037 free 436 max 1037
+FSVI:VI:FSVI: Iteration 14 |Vn| = 215 time 3 V changes 215 max delta 3.891 depth 21 V(b0) 21.7 CPU time 3 CPU total 27 #backups 302 |BS| 2 memory:  total 1037 free 375 max 1037
+FSVI:VI:FSVI: Iteration 15 |Vn| = 231 time 3 V changes 231 max delta 6.021 depth 18 V(b0) 21.94 CPU time 3 CPU total 31 #backups 321 |BS| 2 memory:  total 1037 free 295 max 1037
+FSVI:VI:FSVI: Iteration 16 |Vn| = 245 time 6 V changes 245 max delta 6.387 depth 21 V(b0) 21.94 CPU time 6 CPU total 37 #backups 343 |BS| 2 memory:  total 1037 free 313 max 1037
+FSVI:VI:FSVI: Iteration 17 |Vn| = 270 time 8 V changes 270 max delta 14.481 depth 30 V(b0) 22.54 CPU time 8 CPU total 45 #backups 374 |BS| 2 memory:  total 1037 free 445 max 1037
+FSVI:VI:FSVI: Iteration 18 |Vn| = 290 time 11 V changes 290 max delta 4.764 depth 22 V(b0) 22.54 CPU time 11 CPU total 57 #backups 397 |BS| 2 memory:  total 1037 free 420 max 1037
+FSVI:VI:FSVI: Iteration 19 |Vn| = 309 time 11 V changes 309 max delta 9.084 depth 19 V(b0) 24.96 CPU time 11 CPU total 69 #backups 417 |BS| 2 memory:  total 1037 free 419 max 1037
+FSVI:VI:Finished FSVI - time : 69 |V| = 309 backups = 417 GComputations = 189026 Dot products = 1211614
+RestrictedPOMDP:<init>:Started initializing restricted POMDPs, Variables = <X0,X1,X2,Y0,Y1,Y2,Rock0,Rock1,Rock3,Rock4,Rock5,Rock6,Rock7,>, Actions = North,East,South,West,CheckRock0,CheckRock1,CheckRock3,CheckRock4,CheckRock5,CheckRock6,CheckRock7,Sample,
+FactoredPOMDP:learnReward:Done learning reward for action North vertexes 1, memory:  total 1037 free 344 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action East vertexes 1, memory:  total 1037 free 344 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action South vertexes 1, memory:  total 1037 free 344 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action West vertexes 1, memory:  total 1037 free 344 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock0 vertexes 1, memory:  total 1037 free 344 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock1 vertexes 1, memory:  total 1037 free 344 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock3 vertexes 1, memory:  total 1037 free 344 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock4 vertexes 1, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock5 vertexes 1, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock6 vertexes 1, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action CheckRock7 vertexes 1, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:learnReward:Done learning reward for action Sample vertexes 35, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:learnRewards: done learning rewards, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a North, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a East, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a South, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a West, relevant vertex 18, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock0, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock1, relevant vertex 174, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 338 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock3, relevant vertex 134, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 332 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock4, relevant vertex 148, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 332 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock5, relevant vertex 150, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 332 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock6, relevant vertex 138, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 332 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a CheckRock7, relevant vertex 178, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 332 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning partial for a Sample, relevant vertex 163, irelevant vertex 1, prob sum = 0.0, memory:  total 1037 free 314 max 1037
+FactoredPOMDP:createPartialActionDiagrams: done learning all partial action diagrams, memory:  total 1037 free 541 max 1037
+FactoredPOMDP:initADDs:Finished intializing. Time - 2.119968494
+MDPVI:ComputeV:Starting to compute value function, memory:  total 1037 free 523 max 1037
+MDPVI:ComputeV:Start iteration 0, memory:  total 1037 free 523 max 1037
+MDPVF:computeValueFunction:After 0 iterations, delta = 48.28935667037964 min 1 = 0.0 max 7935 = 57.568634033203125, memory:  total 1037 free 445 max 1037
+MDPVI:ComputeV:Start iteration 1, memory:  total 1037 free 445 max 1037
+MDPVF:computeValueFunction:After 1 iterations, delta = 19.50595561027527 min 1 = 0.0 max 7935 = 57.568634033203125, memory:  total 1037 free 361 max 1037
+MDPVI:ComputeV:Start iteration 2, memory:  total 1037 free 361 max 1037
+MDPVF:computeValueFunction:After 2 iterations, delta = 19.408426246643067 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 278 max 1037
+MDPVI:ComputeV:Start iteration 3, memory:  total 1037 free 278 max 1037
+MDPVF:computeValueFunction:After 3 iterations, delta = 19.311384325027465 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 481 max 1037
+MDPVI:ComputeV:Start iteration 4, memory:  total 1037 free 481 max 1037
+MDPVF:computeValueFunction:After 4 iterations, delta = 19.214827003479005 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 397 max 1037
+MDPVI:ComputeV:Start iteration 5, memory:  total 1037 free 397 max 1037
+MDPVF:computeValueFunction:After 5 iterations, delta = 19.118752393722534 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 314 max 1037
+MDPVI:ComputeV:Start iteration 6, memory:  total 1037 free 314 max 1037
+MDPVF:computeValueFunction:After 6 iterations, delta = 19.023157653808592 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 517 max 1037
+MDPVI:ComputeV:Start iteration 7, memory:  total 1037 free 517 max 1037
+MDPVF:computeValueFunction:After 7 iterations, delta = 9.606930646896362 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 433 max 1037
+MDPVI:ComputeV:Start iteration 8, memory:  total 1037 free 433 max 1037
+MDPVF:computeValueFunction:After 8 iterations, delta = 9.558896079063416 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 349 max 1037
+MDPVI:ComputeV:Start iteration 9, memory:  total 1037 free 349 max 1037
+MDPVF:computeValueFunction:After 9 iterations, delta = 9.51110158443451 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 266 max 1037
+MDPVI:ComputeV:Start iteration 10, memory:  total 1037 free 266 max 1037
+MDPVF:computeValueFunction:After 10 iterations, delta = 9.4635462141037 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 469 max 1037
+MDPVI:ComputeV:Start iteration 11, memory:  total 1037 free 469 max 1037
+MDPVF:computeValueFunction:After 11 iterations, delta = 9.416228070259095 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 385 max 1037
+MDPVI:ComputeV:Start iteration 12, memory:  total 1037 free 385 max 1037
+MDPVF:computeValueFunction:After 12 iterations, delta = 9.369147152900696 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 302 max 1037
+MDPVI:ComputeV:Start iteration 13, memory:  total 1037 free 302 max 1037
+MDPVF:computeValueFunction:After 13 iterations, delta = 9.322301564216614 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 505 max 1037
+MDPVI:ComputeV:Start iteration 14, memory:  total 1037 free 505 max 1037
+MDPVF:computeValueFunction:After 14 iterations, delta = 9.137250261306761 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 421 max 1037
+MDPVI:ComputeV:Start iteration 15, memory:  total 1037 free 421 max 1037
+MDPVF:computeValueFunction:After 15 iterations, delta = 1.1971645164489715 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 337 max 1037
+MDPVI:ComputeV:Start iteration 16, memory:  total 1037 free 337 max 1037
+MDPVF:computeValueFunction:After 16 iterations, delta = 0.44787504196167305 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 541 max 1037
+MDPVI:ComputeV:Start iteration 17, memory:  total 1037 free 541 max 1037
+MDPVF:computeValueFunction:After 17 iterations, delta = 0.1791884994506816 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 463 max 1037
+MDPVI:ComputeV:Start iteration 18, memory:  total 1037 free 463 max 1037
+MDPVF:computeValueFunction:After 18 iterations, delta = 3.814697265625E-6 min 1 = 0.0 max 8191 = 66.52450561523438, memory:  total 1037 free 379 max 1037
+MDPVF:VI:MDP value iteration done - iterations 0 delta 3.814697265625E-6, memory:  total 1037 free 379 max 1037
+FSVI:initHeurisitc:Initialization time was 3721
+FSVI:VI:Starting FSVI target ADR = -0.001
+FSVI:VI:FSVI: Iteration 0 |Vn| = 14 time 0 V changes 14 max delta 9.335 depth 16 V(b0) 7.24 CPU time 0 CPU total 0 #backups 17 |BS| 2 memory:  total 1037 free 326 max 1037
+FSVI:VI:FSVI: Iteration 1 |Vn| = 33 time 0 V changes 33 max delta 9.077 depth 22 V(b0) 8.94 CPU time 0 CPU total 0 #backups 40 |BS| 2 memory:  total 1037 free 533 max 1037
+FSVI:VI:FSVI: Iteration 2 |Vn| = 49 time 0 V changes 49 max delta 9.379 depth 16 V(b0) 9.24 CPU time 0 CPU total 1 #backups 57 |BS| 2 memory:  total 1037 free 426 max 1037
+FSVI:VI:FSVI: Iteration 3 |Vn| = 64 time 0 V changes 64 max delta 9.084 depth 14 V(b0) 9.38 CPU time 0 CPU total 1 #backups 72 |BS| 2 memory:  total 1037 free 312 max 1037
+FSVI:VI:FSVI: Iteration 4 |Vn| = 82 time 0 V changes 82 max delta 9.423 depth 20 V(b0) 9.38 CPU time 0 CPU total 2 #backups 93 |BS| 2 memory:  total 1037 free 450 max 1037
+FSVI:VI:FSVI: Iteration 5 |Vn| = 95 time 1 V changes 95 max delta 8.398 depth 22 V(b0) 9.38 CPU time 1 CPU total 4 #backups 116 |BS| 2 memory:  total 1037 free 265 max 1037
+FSVI:VI:FSVI: Iteration 6 |Vn| = 123 time 2 V changes 123 max delta 17.161 depth 31 V(b0) 12.62 CPU time 2 CPU total 6 #backups 148 |BS| 2 memory:  total 1037 free 261 max 1037
+FSVI:VI:FSVI: Iteration 7 |Vn| = 131 time 0 V changes 131 max delta 5.101 depth 10 V(b0) 12.62 CPU time 0 CPU total 7 #backups 159 |BS| 2 memory:  total 1037 free 424 max 1037
+FSVI:VI:FSVI: Iteration 8 |Vn| = 147 time 1 V changes 147 max delta 4.192 depth 19 V(b0) 12.92 CPU time 1 CPU total 9 #backups 179 |BS| 2 memory:  total 1037 free 497 max 1037
+FSVI:VI:FSVI: Iteration 9 |Vn| = 157 time 1 V changes 157 max delta 13.319 depth 16 V(b0) 12.92 CPU time 1 CPU total 10 #backups 196 |BS| 2 memory:  total 1037 free 353 max 1037
+FSVI:VI:FSVI: Iteration 10 |Vn| = 177 time 1 V changes 177 max delta 4.847 depth 20 V(b0) 12.97 CPU time 1 CPU total 12 #backups 217 |BS| 2 memory:  total 1037 free 410 max 1037
+FSVI:VI:FSVI: Iteration 11 |Vn| = 203 time 3 V changes 203 max delta 13.75 depth 26 V(b0) 16.99 CPU time 3 CPU total 15 #backups 244 |BS| 2 memory:  total 1037 free 322 max 1037
+FSVI:VI:FSVI: Iteration 12 |Vn| = 222 time 2 V changes 222 max delta 10.545 depth 23 V(b0) 16.99 CPU time 2 CPU total 18 #backups 268 |BS| 2 memory:  total 1037 free 287 max 1037
+FSVI:VI:FSVI: Iteration 13 |Vn| = 241 time 5 V changes 241 max delta 11.23 depth 22 V(b0) 19.19 CPU time 5 CPU total 24 #backups 291 |BS| 2 memory:  total 1037 free 312 max 1037
+FSVI:VI:FSVI: Iteration 14 |Vn| = 254 time 2 V changes 254 max delta 5.397 depth 13 V(b0) 19.19 CPU time 2 CPU total 26 #backups 305 |BS| 2 memory:  total 1037 free 325 max 1037
+FSVI:VI:FSVI: Iteration 15 |Vn| = 275 time 7 V changes 275 max delta 2.649 depth 22 V(b0) 20.49 CPU time 7 CPU total 34 #backups 328 |BS| 2 memory:  total 1037 free 206 max 1037
+FSVI:VI:FSVI: Iteration 16 |Vn| = 285 time 4 V changes 285 max delta 2.467 depth 13 V(b0) 20.66 CPU time 4 CPU total 39 #backups 342 |BS| 2 memory:  total 1037 free 355 max 1037
+FSVI:VI:FSVI: Iteration 17 |Vn| = 302 time 7 V changes 302 max delta 8.608 depth 25 V(b0) 20.66 CPU time 7 CPU total 46 #backups 368 |BS| 2 memory:  total 1037 free 272 max 1037
+FSVI:VI:FSVI: Iteration 18 |Vn| = 326 time 9 V changes 326 max delta 12.386 depth 25 V(b0) 21.0 CPU time 9 CPU total 55 #backups 394 |BS| 2 memory:  total 1037 free 362 max 1037
+FSVI:VI:FSVI: Iteration 19 |Vn| = 358 time 18 V changes 358 max delta 13.794 depth 33 V(b0) 25.02 CPU time 18 CPU total 74 #backups 428 |BS| 2 memory:  total 1037 free 207 max 1037
+FSVI:VI:Finished FSVI - time : 74 |V| = 358 backups = 428 GComputations = 189757 Dot products = 1465905

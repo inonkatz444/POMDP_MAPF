@@ -1,0 +1,3 @@
+CreateBeliefSpaces:createRandomSpace:The maximal ADR observed over 1000 points is 413.2040438935731
+POMDP:computeAverageDiscountedReward:After 500 tests. ADR -45083.441, stdev 36550.99058 SE 3269.21998 time 0
+POMDPSolver:main:ADR = -45083.44059715185

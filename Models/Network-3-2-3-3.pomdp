@@ -1,0 +1,1120 @@
+# pentesting POMDP
+# machines: 3
+#
+
+discount: 0.95
+values: reward
+
+states:
+
+terminal
+host3-linux-http_server__host2-windows-windows_7__host1-windows-php__
+host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__
+host3-linux-http_server__host2-windows-windows_7__host1-controlled__
+host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__
+host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__
+host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__
+host3-linux-http_server__host2-controlled__host1-windows-php__
+host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__
+host3-linux-http_server__host2-controlled__host1-controlled__
+host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__
+host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__
+host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__
+host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__
+host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__
+host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__
+host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__
+host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__
+host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__
+host3-controlled__host2-windows-windows_7__host1-windows-php__
+host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__
+host3-controlled__host2-windows-windows_7__host1-controlled__
+host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__
+host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__
+host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__
+host3-controlled__host2-controlled__host1-windows-php__
+host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__
+host3-controlled__host2-controlled__host1-controlled__
+
+actions:
+
+Terminate
+PingOS-host1-windows
+PingOS-host1-linux
+PingSW-host1-php
+Exploit-host1-cve-2009-4143
+Exploit-host1-cve-2015-1635
+Exploit-host1-cve-2003-0789
+PingOS-host2-windows
+PingOS-host2-linux
+PingSW-host2-windows_7
+Exploit-host2-cve-2009-4143
+Exploit-host2-cve-2015-1635
+Exploit-host2-cve-2003-0789
+PingOS-host3-linux
+PingOS-host3-windows
+PingSW-host3-http_server
+Exploit-host3-cve-2009-4143
+Exploit-host3-cve-2015-1635
+Exploit-host3-cve-2003-0789
+
+observations:
+
+yes
+no
+
+start: 0.0 2.47088248025354E-05 0.000823627493417845 0 0.000823627493417845 0.0274542497805948 0 0 0 0 0.000823627493417845 0.0274542497805948 0 0.0274542497805948 0.91514165935316 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+# State Transitions
+# ACTION : START-STATE : END-STATE  PROBABILITY
+
+T: Terminate : * : terminal  1.0
+T: PingOS-host1-windows : * : *   0.0
+T: PingOS-host1-windows : terminal : terminal   1.0
+T : PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host1-windows : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T : PingOS-host1-windows : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-windows : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T : PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T : PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T : PingOS-host1-windows : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host1-windows : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-windows : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host1-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host1-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host1-windows : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T : PingOS-host1-windows : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-windows : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: PingOS-host1-linux : * : *   0.0
+T: PingOS-host1-linux : terminal : terminal   1.0
+T : PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host1-linux : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T : PingOS-host1-linux : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-linux : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T : PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T : PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T : PingOS-host1-linux : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host1-linux : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-linux : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host1-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host1-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host1-linux : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T : PingOS-host1-linux : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host1-linux : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: PingSW-host1-php : * : *   0
+T: PingSW-host1-php : terminal : terminal   1
+T : PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T : PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T : PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingSW-host1-php : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T : PingSW-host1-php : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host1-php : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T : PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T : PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T : PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T : PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T : PingSW-host1-php : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T : PingSW-host1-php : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host1-php : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T : PingSW-host1-php : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingSW-host1-php : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host1-php : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingSW-host1-php : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T : PingSW-host1-php : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host1-php : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : * : *  0.0
+T: Exploit-host1-cve-2009-4143 : terminal : terminal  1.0
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T: Exploit-host1-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2009-4143 : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2015-1635 : * : *  0.0
+T: Exploit-host1-cve-2015-1635 : terminal : terminal  1.0
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T: Exploit-host1-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2015-1635 : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2003-0789 : * : *  0.0
+T: Exploit-host1-cve-2003-0789 : terminal : terminal  1.0
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host1-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T: Exploit-host1-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host1-cve-2003-0789 : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: PingOS-host2-windows : * : *   0.0
+T: PingOS-host2-windows : terminal : terminal   1.0
+T : PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host2-windows : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T : PingOS-host2-windows : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-windows : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T : PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T : PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T : PingOS-host2-windows : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host2-windows : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-windows : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host2-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host2-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host2-windows : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T : PingOS-host2-windows : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-windows : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: PingOS-host2-linux : * : *   0.0
+T: PingOS-host2-linux : terminal : terminal   1.0
+T : PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host2-linux : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T : PingOS-host2-linux : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-linux : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T : PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T : PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T : PingOS-host2-linux : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host2-linux : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-linux : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host2-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host2-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host2-linux : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T : PingOS-host2-linux : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host2-linux : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: PingSW-host2-windows_7 : * : *   0
+T: PingSW-host2-windows_7 : terminal : terminal   1
+T : PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T : PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T : PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T : PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingSW-host2-windows_7 : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T : PingSW-host2-windows_7 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host2-windows_7 : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2009-4143 : * : *  0.0
+T: Exploit-host2-cve-2009-4143 : terminal : terminal  1.0
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host2-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T: Exploit-host2-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2009-4143 : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2015-1635 : * : *  0.0
+T: Exploit-host2-cve-2015-1635 : terminal : terminal  1.0
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T: Exploit-host2-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2015-1635 : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2003-0789 : * : *  0.0
+T: Exploit-host2-cve-2003-0789 : terminal : terminal  1.0
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host2-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T: Exploit-host2-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host2-cve-2003-0789 : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: PingOS-host3-linux : * : *   0.0
+T: PingOS-host3-linux : terminal : terminal   1.0
+T : PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host3-linux : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T : PingOS-host3-linux : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-linux : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T : PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T : PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T : PingOS-host3-linux : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host3-linux : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-linux : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host3-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host3-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host3-linux : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T : PingOS-host3-linux : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-linux : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: PingOS-host3-windows : * : *   0.0
+T: PingOS-host3-windows : terminal : terminal   1.0
+T : PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host3-windows : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T : PingOS-host3-windows : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-windows : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T : PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T : PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T : PingOS-host3-windows : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T : PingOS-host3-windows : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-windows : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T : PingOS-host3-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingOS-host3-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingOS-host3-windows : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T : PingOS-host3-windows : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingOS-host3-windows : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: PingSW-host3-http_server : * : *   0
+T: PingSW-host3-http_server : terminal : terminal   1
+T : PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T : PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T : PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingSW-host3-http_server : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T : PingSW-host3-http_server : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host3-http_server : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T : PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T : PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T : PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T : PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T : PingSW-host3-http_server : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T : PingSW-host3-http_server : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host3-http_server : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T : PingSW-host3-http_server : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T : PingSW-host3-http_server : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host3-http_server : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T : PingSW-host3-http_server : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T : PingSW-host3-http_server : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T : PingSW-host3-http_server : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host3-cve-2009-4143 : * : *  0.0
+T: Exploit-host3-cve-2009-4143 : terminal : terminal  1.0
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host3-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T: Exploit-host3-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2009-4143 : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host3-cve-2015-1635 : * : *  0.0
+T: Exploit-host3-cve-2015-1635 : terminal : terminal  1.0
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__   1
+T: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host3-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T: Exploit-host3-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2015-1635 : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host3-cve-2003-0789 : * : *  0.0
+T: Exploit-host3-cve-2003-0789 : terminal : terminal  1.0
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php__ : host3-linux-http_server__host2-controlled__host1-windows-php__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-controlled__ : host3-linux-http_server__host2-controlled__host1-controlled__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+T: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : host3-controlled__host2-windows-windows_7__host1-windows-php__   1
+T: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-controlled__ : host3-controlled__host2-windows-windows_7__host1-controlled__   1
+T: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__   1
+T: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__   1
+T: Exploit-host3-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php__ : host3-controlled__host2-controlled__host1-windows-php__   1
+T: Exploit-host3-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__   1
+T: Exploit-host3-cve-2003-0789 : host3-controlled__host2-controlled__host1-controlled__ : host3-controlled__host2-controlled__host1-controlled__   1
+
+
+# Observation Probabilities
+# ACTION : STATE : OBSERVATION  PROBABILITY
+
+O: Terminate : * : no  1.0
+O: * : terminal : no  1.0
+O: PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host1-windows : host3-linux-http_server__host2-controlled__host1-windows-php__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host1-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host1-windows : host3-controlled__host2-windows-windows_7__host1-windows-php__ : yes   1
+O: PingOS-host1-windows : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host1-windows : host3-controlled__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host1-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : yes   1
+O: PingOS-host1-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host1-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host1-windows : host3-controlled__host2-controlled__host1-windows-php__ : yes   1
+O: PingOS-host1-windows : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host1-windows : host3-controlled__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host1-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host1-linux : host3-controlled__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host1-linux : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host1-linux : host3-controlled__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host1-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host1-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host1-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host1-linux : host3-controlled__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host1-linux : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host1-linux : host3-controlled__host2-controlled__host1-controlled__ : no   1
+O: PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingSW-host1-php : host3-linux-http_server__host2-controlled__host1-windows-php__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server__host2-controlled__host1-controlled__ : no   1
+O: PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host1-php : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : no   1
+O: PingSW-host1-php : host3-controlled__host2-windows-windows_7__host1-windows-php__ : yes   1
+O: PingSW-host1-php : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host1-php : host3-controlled__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingSW-host1-php : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : yes   1
+O: PingSW-host1-php : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host1-php : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingSW-host1-php : host3-controlled__host2-controlled__host1-windows-php__ : yes   1
+O: PingSW-host1-php : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host1-php : host3-controlled__host2-controlled__host1-controlled__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2009-4143 : host3-controlled__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2015-1635 : host3-controlled__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host1-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host1-cve-2003-0789 : host3-controlled__host2-controlled__host1-controlled__ : yes   1
+O: PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : yes   1
+O: PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: PingOS-host2-windows : host3-linux-http_server__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : yes   1
+O: PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host2-windows : host3-controlled__host2-windows-windows_7__host1-windows-php__ : yes   1
+O: PingOS-host2-windows : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host2-windows : host3-controlled__host2-windows-windows_7__host1-controlled__ : yes   1
+O: PingOS-host2-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : yes   1
+O: PingOS-host2-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host2-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: PingOS-host2-windows : host3-controlled__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host2-windows : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-windows : host3-controlled__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host2-linux : host3-controlled__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host2-linux : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-linux : host3-controlled__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host2-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host2-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host2-linux : host3-controlled__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host2-linux : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host2-linux : host3-controlled__host2-controlled__host1-controlled__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : yes   1
+O: PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: PingSW-host2-windows_7 : host3-linux-http_server__host2-controlled__host1-windows-php__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server__host2-controlled__host1-controlled__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : yes   1
+O: PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host2-windows_7 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : no   1
+O: PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : yes   1
+O: PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7__host1-controlled__ : yes   1
+O: PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : yes   1
+O: PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host2-windows_7 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: PingSW-host2-windows_7 : host3-controlled__host2-controlled__host1-windows-php__ : no   1
+O: PingSW-host2-windows_7 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host2-windows_7 : host3-controlled__host2-controlled__host1-controlled__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host2-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host2-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host2-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host2-cve-2009-4143 : host3-controlled__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host2-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host2-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host2-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host2-cve-2015-1635 : host3-controlled__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host2-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host2-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host2-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host2-cve-2003-0789 : host3-controlled__host2-controlled__host1-controlled__ : yes   1
+O: PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server__host2-controlled__host1-windows-php__ : yes   1
+O: PingOS-host3-linux : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host3-linux : host3-linux-http_server__host2-controlled__host1-controlled__ : yes   1
+O: PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : yes   1
+O: PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingOS-host3-linux : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : yes   1
+O: PingOS-host3-linux : host3-controlled__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host3-linux : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-linux : host3-controlled__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host3-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host3-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-linux : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host3-linux : host3-controlled__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host3-linux : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-linux : host3-controlled__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-windows : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : no   1
+O: PingOS-host3-windows : host3-controlled__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingOS-host3-windows : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-windows : host3-controlled__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingOS-host3-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingOS-host3-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-windows : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingOS-host3-windows : host3-controlled__host2-controlled__host1-windows-php__ : no   1
+O: PingOS-host3-windows : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingOS-host3-windows : host3-controlled__host2-controlled__host1-controlled__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server__host2-controlled__host1-windows-php__ : yes   1
+O: PingSW-host3-http_server : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host3-http_server : host3-linux-http_server__host2-controlled__host1-controlled__ : yes   1
+O: PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : yes   1
+O: PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: PingSW-host3-http_server : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : yes   1
+O: PingSW-host3-http_server : host3-controlled__host2-windows-windows_7__host1-windows-php__ : no   1
+O: PingSW-host3-http_server : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host3-http_server : host3-controlled__host2-windows-windows_7__host1-controlled__ : no   1
+O: PingSW-host3-http_server : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: PingSW-host3-http_server : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host3-http_server : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: PingSW-host3-http_server : host3-controlled__host2-controlled__host1-windows-php__ : no   1
+O: PingSW-host3-http_server : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: PingSW-host3-http_server : host3-controlled__host2-controlled__host1-controlled__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server__host2-controlled__host1-controlled__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : no   1
+O: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : yes   1
+O: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : yes   1
+O: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host3-cve-2009-4143 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host3-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host3-cve-2009-4143 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host3-cve-2009-4143 : host3-controlled__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server__host2-controlled__host1-controlled__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : no   1
+O: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : yes   1
+O: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : yes   1
+O: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host3-cve-2015-1635 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host3-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host3-cve-2015-1635 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host3-cve-2015-1635 : host3-controlled__host2-controlled__host1-controlled__ : yes   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server__host2-controlled__host1-controlled__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7__host1-controlled__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-windows-php-cve-2009-4143__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-linux-http_server-cve-2003-0789__host2-controlled__host1-controlled__ : no   1
+O: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php__ : yes   1
+O: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7__host1-controlled__ : yes   1
+O: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : yes   1
+O: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host3-cve-2003-0789 : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : yes   1
+O: Exploit-host3-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php__ : yes   1
+O: Exploit-host3-cve-2003-0789 : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : yes   1
+O: Exploit-host3-cve-2003-0789 : host3-controlled__host2-controlled__host1-controlled__ : yes   1
+
+
+# Rewards
+# ACTION : START-STATE : END-STATE : OBSERVATION  REWARD
+
+R: * : terminal : *  : *  0.0
+R: Terminate : * : * : *  0.0
+R: Terminate : host3-controlled__host2-windows-windows_7__host1-windows-php__ : * : *  1000.0
+R: Terminate : host3-controlled__host2-windows-windows_7__host1-windows-php-cve-2009-4143__ : * : *  1000.0
+R: Terminate : host3-controlled__host2-windows-windows_7__host1-controlled__ : * : *  1000.0
+R: Terminate : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php__ : * : *  1000.0
+R: Terminate : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-windows-php-cve-2009-4143__ : * : *  1000.0
+R: Terminate : host3-controlled__host2-windows-windows_7-cve-2015-1635__host1-controlled__ : * : *  1000.0
+R: Terminate : host3-controlled__host2-controlled__host1-windows-php__ : * : *  1000.0
+R: Terminate : host3-controlled__host2-controlled__host1-windows-php-cve-2009-4143__ : * : *  1000.0
+R: Terminate : host3-controlled__host2-controlled__host1-controlled__ : * : *  1000.0
+R: PingOS-host1-windows : * : *  : * -0.1
+R: PingOS-host1-linux : * : *  : * -0.1
+R: PingSW-host1-php : * : *  : * -0.5
+R: Exploit-host1-cve-2009-4143 : * : * : * -1
+R: Exploit-host1-cve-2015-1635 : * : * : * -1
+R: Exploit-host1-cve-2003-0789 : * : * : * -1
+R: PingOS-host2-windows : * : *  : * -0.1
+R: PingOS-host2-linux : * : *  : * -0.1
+R: PingSW-host2-windows_7 : * : *  : * -0.5
+R: Exploit-host2-cve-2009-4143 : * : * : * -1
+R: Exploit-host2-cve-2015-1635 : * : * : * -1
+R: Exploit-host2-cve-2003-0789 : * : * : * -1
+R: PingOS-host3-linux : * : *  : * -0.1
+R: PingOS-host3-windows : * : *  : * -0.1
+R: PingSW-host3-http_server : * : *  : * -0.5
+R: Exploit-host3-cve-2009-4143 : * : * : * -1
+R: Exploit-host3-cve-2015-1635 : * : * : * -1
+R: Exploit-host3-cve-2003-0789 : * : * : * -1
