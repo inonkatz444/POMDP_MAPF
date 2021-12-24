@@ -30,7 +30,7 @@ public class GridAgent {
         return bs.nextBeliefState(action, observation);
     }
 
-    public PolicyStrategy solve(String methodName, double dTargetADR) {
+    public PolicyStrategy solve(String methodName, double dTargetADR, int cMaxIterations) {
         if( methodName.equals( "QMDP" ) ){
             MDPValueFunction vfQMDP = grid.getMDPValueFunction();
             vfQMDP.persistQValues( true );
@@ -42,7 +42,6 @@ public class GridAgent {
         }
 
         ValueIteration viAlgorithm = AlgorithmsFactory.getAlgorithm( methodName, grid );
-        int cMaxIterations = 50;
         try{
             assert viAlgorithm != null;
             viAlgorithm.valueIteration( cMaxIterations, ExecutionProperties.getEpsilon(), dTargetADR );

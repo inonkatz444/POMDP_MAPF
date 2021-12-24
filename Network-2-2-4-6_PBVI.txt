@@ -1,2 +1,0 @@
-POMDP:computeAverageDiscountedReward:After 500 tests. ADR -45482.921, stdev 36420.07461 SE 3257.5105 time 0
-POMDPSolver:main:ADR = -45482.92130775128

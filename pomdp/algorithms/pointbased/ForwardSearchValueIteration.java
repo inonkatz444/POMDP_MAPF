@@ -265,8 +265,8 @@ public class ForwardSearchValueIteration extends ValueIteration {
 		        
 		        sMsg = "FSVI: Iteration " + iIteration + 
 						" |Vn| = " + m_vValueFunction.size() +
-						" simulated ADR " + round( ((Number) pComputedADRs.first()).doubleValue(), 3 ) +
-						" filtered ADR " + round( ((Number) pComputedADRs.second()).doubleValue(), 3 ) +
+//						" simulated ADR " + round( ((Number) pComputedADRs.first()).doubleValue(), 3 ) +
+//						" filtered ADR " + round( ((Number) pComputedADRs.second()).doubleValue(), 3 ) +
 						" max delta " + round( dMaxDelta, 3 ) +
 						" depth " + m_iDepth +
 						" V(b0) " + round( m_vValueFunction.valueAt( m_pPOMDP.getBeliefStateFactory().getInitialBeliefState() ), 2 ) +

@@ -4,6 +4,7 @@ import pomdp.environments.Grid;
 import pomdp.utilities.ExecutionProperties;
 import pomdp.utilities.InvalidModelFileFormatException;
 import pomdp.utilities.JProf;
+import pomdp.utilities.Logger;
 
 import java.io.IOException;
 
@@ -14,6 +15,13 @@ public class Env {
         String sModelName = "test_grid";
         String sMethodName = "FSVI";
 
+        try{
+            Logger.getInstance().setOutputStream( sModelName + "_" + sMethodName + ".txt" );
+        }
+        catch( Exception e ){
+            System.err.println( e );
+        }
+
         GridAgent agent = new GridAgent();
         try {
             agent.load(ExecutionProperties.getPath() + sModelName + ".POMDP");
@@ -21,6 +29,6 @@ public class Env {
             e.printStackTrace();
         }
 
-        agent.solve(sMethodName, 100.0);
+        agent.solve(sMethodName, 100.0, 1000);
     }
 }

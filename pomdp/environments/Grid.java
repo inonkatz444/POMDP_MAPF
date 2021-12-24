@@ -82,6 +82,18 @@ public class Grid extends POMDP {
         int num_of_observations = m_fObservation.countNonZeroEntries(iAction, iState);
         if (num_of_observations == 0) {     // The observations for the state is yet to be initialized
             initObservation(iState);
+            double dSumO = 0.0;
+            Iterator<Map.Entry<Integer,Double>> itNonZero = null;
+            Map.Entry<Integer,Double> e = null;
+            itNonZero = this.getNonZeroObservations( iAction, iState );
+            while( itNonZero.hasNext() ){
+                e = itNonZero.next();
+                double o = e.getKey();
+                double dO = e.getValue();
+                dSumO += dO;
+            }
+            if( Math.abs( dSumO - 1.0 ) > 0.0001 )
+                System.out.println( "sum O( " + iAction + ", " + iState + ", * ) = " + dSumO );
         }
         return super.O(iAction, iState, iObservation);
     }
@@ -90,17 +102,30 @@ public class Grid extends POMDP {
         int numOfValidObservations = 0;
         if (i-r >= 0 && grid[i-r][j] != -1)
             numOfValidObservations++;
-        if (i+r < rows && grid[i+r][j] != -1)
+        if (i-r >= 0 && j-r >= 0 && grid[i-r][j-r] != -1)
             numOfValidObservations++;
         if (j-r >= 0 && grid[i][j-r] != -1)
             numOfValidObservations++;
+        if (i+r < rows && j-r >= 0 && grid[i+r][j-r] != -1)
+            numOfValidObservations++;
+        if (i+r < rows && grid[i+r][j] != -1)
+            numOfValidObservations++;
+        if (i+r < rows && j+r < cols && grid[i+r][j+r] != -1)
+            numOfValidObservations++;
         if (j+r < cols && grid[i][j+r] != -1)
+            numOfValidObservations++;
+        if (i-r >= 0 && j+r < cols && grid[i-r][j+r] != -1)
             numOfValidObservations++;
 
         return numOfValidObservations;
     }
 
     public void initObservation(int iState) {
+        if (isTerminalState(iState)) {
+            System.out.println("TERMINAL: " + iState);
+            setObservation(-1, iState, iState, 1);
+            return;
+        }
         Pair<Integer, Integer> pos = this.stateToLocation.get(iState);
         float radius = o_radius;
 
@@ -125,7 +150,7 @@ public class Grid extends POMDP {
                     sum += pow;
                 else {
                     int numOfValidObservations = getNumValidObservations(r, i, j);
-                    sum += numOfValidObservations * pow;     // the sensor can be wrong only to 4 sides (not "squared 8")
+                    sum += numOfValidObservations * pow;     // the sensor can be wrong only to square 8
                 }
                 observations_d[r] = pow;
             }
@@ -141,14 +166,26 @@ public class Grid extends POMDP {
                 if (i-r >= 0 && grid[i-r][j] != -1) {
                     setObservation(iAction, grid[i][j], grid[i-r][j], o);
                 }
-                if (i+r < rows && grid[i+r][j] != -1) {
-                    setObservation(iAction, grid[i][j], grid[i+r][j], o);
+                if (i-r >= 0 && j-r >= 0 && grid[i-r][j-r] != -1) {
+                    setObservation(iAction, grid[i][j], grid[i-r][j-r], o);
                 }
                 if (j-r >= 0 && grid[i][j-r] != -1) {
                     setObservation(iAction, grid[i][j], grid[i][j-r], o);
                 }
+                if (j-r >= 0 && i+r < rows && grid[i+r][j-r] != -1) {
+                    setObservation(iAction, grid[i][j], grid[i+r][j-r], o);
+                }
+                if (i+r < rows && grid[i+r][j] != -1) {
+                    setObservation(iAction, grid[i][j], grid[i+r][j], o);
+                }
+                if (i+r < rows && j+r < cols && grid[i+r][j+r] != -1) {
+                    setObservation(iAction, grid[i][j], grid[i+r][j+r], o);
+                }
                 if (j+r < cols && grid[i][j+r] != -1) {
                     setObservation(iAction, grid[i][j], grid[i][j+r], o);
+                }
+                if (j+r < cols && i-r >= 0 && grid[i-r][j+r] != -1) {
+                    setObservation(iAction, grid[i][j], grid[i-r][j+r], o);
                 }
             }
         }

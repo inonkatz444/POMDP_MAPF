@@ -494,11 +494,11 @@ public class POMDP implements Serializable{
 			lEndCPU = JProf.getCurrentThreadCpuTimeSafe();
 			cCurrentMilliseconds = ( iEndTime - iStartTime ) / 1000;
 			lTotalCPU = ( lEndCPU - lStartCPU ) / 1000000000;
-			dADR = dSumDiscountedRewards / cTests;
+			dADR = dSumDiscountedRewards / iTest;
 			dStdev = Math.sqrt( ( dSumSquares - ( iTest + 1 ) * dADR * dADR ) / cTests );
 			dStandardError = 2.0 * dStdev / Math.sqrt( cTests );
 			System.out.println();
-			Logger.getInstance().log( "POMDP", 0, "computeAverageDiscountedReward", "After " + cTests + " tests. ADR " + round( dADR, 3 ) +
+			Logger.getInstance().log( "POMDP", 0, "computeAverageDiscountedReward", "After " + iTest + " tests. ADR " + round( dADR, 3 ) +
 					", stdev " + round( dStdev, 5 ) + " SE " + round( dStandardError, 5 ) + " time " + lTotalCPU );
 		}
 
@@ -515,7 +515,7 @@ public class POMDP implements Serializable{
 		
 		getBeliefStateFactory().cacheBeliefStates( bCacheBeliefStates );
 		
-		return dSumDiscountedRewards / cTests;
+		return dSumDiscountedRewards / iTest;
 	}
 	
 	public double computeAverageDiscountedRewardParticleFiltering( int cTests, int cMaxStepsToGoal, PolicyStrategy policy, boolean bOutputMessages, boolean bUseMultiThread ){
@@ -1236,7 +1236,7 @@ public class POMDP implements Serializable{
 		
 		System.out.println();
 
-		
+
 		return dDiscountedReward;// + m_dMinReward * ( 1 / ( 1 - dDiscountFactor ) );
 	}
 

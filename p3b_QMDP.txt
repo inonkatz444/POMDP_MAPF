@@ -1,7 +1,0 @@
-MDPVF:VI:Started loading QMDP value function, memory:  total 257 free 252 max 3790
-MDPVF:makeVectors:Started creating Q function vectors, memory:  total 257 free 252 max 3790
-MDPVF:makeVectors:Done creating for action 0, memory:  total 257 free 252 max 3790
-MDPVF:makeVectors:Done creating for action 1, memory:  total 257 free 252 max 3790
-MDPVF:VI:QMDP value function loaded successfully, memory:  total 257 free 252 max 3790
-POMDP:computeAverageDiscountedReward:After 1000 tests. ADR 0.345, stdev 1.31064 SE 0.08289 time 122
-POMDPSolver:main:ADR = 0.3451416325836465

@@ -8,7 +8,7 @@
 #
 #   ######
 #   #   +#
-#   # # -#
+#   # #  #
 #   #    #
 #   ######
 #
@@ -25,6 +25,11 @@
 # 4     5  6
 # 7  8  9  10
 #
+########  TODO: Try bigger benchmarks. ##########
+########  TODO: Try different positive reward (eg. 1000) #########
+########  TODO: Create problems that emphesizes the importance of beacons and check it ############
+ 
+#
 # I removed the absorbing state
 #
 # The actions, NSEW, have the expected result 80% of the time, and
@@ -32,7 +37,7 @@
 # probability for each direction.  Movement into a wall returns the agent
 # to its original state.
 #
-# good = +1 reward, bad = -1 penalty, 
+# good = +1 reward
 #
 # actions must be n, s, e, w
 
@@ -55,6 +60,8 @@ beacons:
 
 start:
 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.5 0.0 0.5 0.0
+
+E: 3
 
 T: n
 0.9 0.1 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
@@ -108,16 +115,16 @@ T: w
 0.0 0.0 0.0 0.0 0.0 0.1 0.0 0.0 0.8 0.1 0.0
 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.0 0.0 0.8 0.1
 
-R: * : 0 : * : * -0.04
-R: * : 1 : * : * -0.04
-R: * : 2 : * : * -0.04
-R: * : 3 : * : * 1.0
-R: * : 4 : * : * -0.04
-R: * : 5 : * : * -0.04
-R: * : 6 : * : * -1.0
-R: * : 7 : * : * -0.04
-R: * : 8 : * : * -0.04
-R: * : 9 : * : * -0.04
-R: * : 10 : * : * -0.04
+R: * : * : 0 : * -0.04
+R: * : * : 1 : * -0.04
+R: * : * : 2 : * -0.04
+R: * : * : 3 : * 1.0
+R: * : * : 4 : * -0.04
+R: * : * : 5 : * -0.04
+R: * : * : 6 : * -0.04
+R: * : * : 7 : * -0.04
+R: * : * : 8 : * -0.04
+R: * : * : 9 : * -0.04
+R: * : * : 10 : * -0.04
 
 

@@ -140,20 +140,20 @@ public class GridLoader{
             System.out.println( "Grid model missing rows and/or cols entries");
         }
 
-        for( iAction = 0 ; iAction < cActions ; iAction++ ){
-            for( iEndState = 0 ; iEndState < cStates ; iEndState++ ){
-                dSumO = 0.0;
-                itNonZero = m_pPOMDP.getNonZeroObservations( iAction, iEndState );
-                while( itNonZero.hasNext() ){
-                    e = itNonZero.next();
-                    iObservation = e.getKey();
-                    dO = e.getValue();
-                    dSumO += dO;
-                }
-                if( Math.abs( dSumO - 1.0 ) > 0.0001 )
-                    System.out.println( "sum O( " + iAction + ", " + iEndState + ", * ) = " + dSumO );
-            }
-        }
+//        for( iAction = 0 ; iAction < cActions ; iAction++ ){
+//            for( iEndState = 0 ; iEndState < cStates ; iEndState++ ){
+//                dSumO = 0.0;
+//                itNonZero = m_pPOMDP.getNonZeroObservations( iAction, iEndState );
+//                while( itNonZero.hasNext() ){
+//                    e = itNonZero.next();
+//                    iObservation = e.getKey();
+//                    dO = e.getValue();
+//                    dSumO += dO;
+//                }
+//                if( Math.abs( dSumO - 1.0 ) > 0.0001 )
+//                    System.out.println( "sum O( " + iAction + ", " + iEndState + ", * ) = " + dSumO );
+//            }
+//        }
     }
 
     /**

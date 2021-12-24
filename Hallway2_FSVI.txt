@@ -1,5 +1,0 @@
-MDPVF:VI:Started loading QMDP value function, memory:  total 5 free 3 max 66
-MDPVF:load:Done loading best actions, |S| = 92, vertex count = 88, memory:  total 5 free 3 max 66
-MDPVF:VI:QMDP value function loaded successfully, memory:  total 5 free 3 max 66
-FSVI:initHeurisitc:Initialization time was 32
-FSVI:VI:Starting Value Iteration target ADR = 100.0
