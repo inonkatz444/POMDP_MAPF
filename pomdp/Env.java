@@ -12,7 +12,9 @@ public class Env {
 
     public static void main(String[] args) {
         JProf.getCurrentThreadCpuTimeSafe();
-        String sModelName = "test_grid";
+//        String sModelName = "straight_line_side_beacon_15x23";
+        String sModelName = "straight_line_side_beacon_9x15";
+//        String sModelName = "test_grid";
         String sMethodName = "FSVI";
 
         try{
@@ -29,6 +31,6 @@ public class Env {
             e.printStackTrace();
         }
 
-        agent.solve(sMethodName, 100.0, 1000);
+        agent.solve(sMethodName, 100.0, 200);
     }
 }

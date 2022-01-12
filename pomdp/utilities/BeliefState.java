@@ -211,7 +211,6 @@ public abstract class BeliefState extends PriorityQueueElement implements Serial
 			Pair pEntry = (Pair)m_amSuccessors[iAction].get( iKey );
 			if( pEntry == null ){
 				bsNext = getBeliefStateFactory().nextBeliefState( this, iAction, iObservation );
-				// TODO: Figure out how to involve beacons
 				if( ( bsNext != null ) && ( getBeliefStateFactory().isCachingBeliefStates() ) )
 					addSuccessor( iAction, iObservation, bsNext );
 			}

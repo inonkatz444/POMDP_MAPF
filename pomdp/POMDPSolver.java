@@ -61,7 +61,7 @@ public class POMDPSolver {
 		
 		String sPath = ExecutionProperties.getPath();
 		//String sModelName = "Network-3-2-4-6";
-		String sModelName = "4x3.95";
+		String sModelName = "RockSample_5_7";
 		String sMethodName = "FSVI";
 						
 		if( args.length > 0 )
@@ -92,7 +92,7 @@ public class POMDPSolver {
 		}
 		
 		ValueIteration viAlgorithm = AlgorithmsFactory.getAlgorithm( sMethodName, pomdp );
-		int cMaxIterations = 50;
+		int cMaxIterations = 500;
 		try{					
 			viAlgorithm.valueIteration( cMaxIterations, ExecutionProperties.getEpsilon(), dTargetADR );
 			double dDiscountedReward = pomdp.computeAverageDiscountedReward( 500, 150, viAlgorithm );

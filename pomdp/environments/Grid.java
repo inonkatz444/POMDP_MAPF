@@ -3,10 +3,7 @@ package pomdp.environments;
 import pomdp.utilities.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Grid extends POMDP {
     private int rows;
@@ -16,6 +13,8 @@ public class Grid extends POMDP {
     private int[][] grid;                                   // mapping between place in grid to state
     private List<Beacon> beacons;
     private float o_radius;                                 // base reception radius (beacons will make it smaller)
+    private final Random oGenerator;
+    private List<Float> sigmaPerState;
 
     // 0 < BASE < 1, determines the observation probabilities
     // BASE -> 1: very accurate sensors (high probability of the actual state)
@@ -28,6 +27,8 @@ public class Grid extends POMDP {
         stateToLocation = new ArrayList<>();
         beacons = new ArrayList<>();
         BASE = 0.2;
+        oGenerator = new Random();
+        sigmaPerState = new ArrayList<>();
     }
 
     public void printGrid() {
@@ -69,33 +70,95 @@ public class Grid extends POMDP {
 
     @Override
     public int observe(int iAction, int iState) {
-        int num_of_observations = m_fObservation.countNonZeroEntries(iAction, iState);
-        if (num_of_observations == 0) {     // The observations for the state is yet to be initialized
-            initObservation(iState);
+//        int num_of_observations = m_fObservation.countNonZeroEntries(iAction, iState);
+//        if (num_of_observations == 0) {     // The observations for the state is yet to be initialized
+//            initObservation(iState);
+//        }
+//
+//        return super.observe(iAction, iState);
+
+
+        Pair<Integer, Integer> statePos = stateToLocation.get(iState);
+        int i = statePos.first(), j = statePos.second();
+        float currSigma = this.sigmaPerState.get(iState);
+        int dist;
+        if (currSigma == -1) {
+            currSigma = o_radius;
+            for (Beacon b : beacons) {
+                dist = b.distTo(i, j);
+                if (dist < b.getRange()) {
+                    currSigma = (currSigma / b.getRange()) * dist;
+                }
+            }
+            this.sigmaPerState.set(iState, currSigma);
         }
 
-        return super.observe(iAction, iState);
+
+        while(true) {
+            int delta_i = (int)Math.round(oGenerator.nextGaussian()*Math.sqrt(currSigma));
+            int delta_j = (int)Math.round(oGenerator.nextGaussian()*Math.sqrt(currSigma));
+
+            if (i+delta_i >= 0 && i+delta_i < rows && j+delta_j >= 0 && j+delta_j < cols && grid[i+delta_i][j+delta_j] != -1) {
+                return grid[i+delta_i][j+delta_j];
+            }
+        }
+
+    }
+
+    private double calculateND(double x, double stateSigma) {
+        return (1/Math.sqrt(2*Math.PI*stateSigma)) * Math.exp(-(x*x)/(2*stateSigma));
     }
 
     @Override
     public double O(int iAction, int iState, int iObservation) {
-        int num_of_observations = m_fObservation.countNonZeroEntries(iAction, iState);
-        if (num_of_observations == 0) {     // The observations for the state is yet to be initialized
-            initObservation(iState);
-            double dSumO = 0.0;
-            Iterator<Map.Entry<Integer,Double>> itNonZero = null;
-            Map.Entry<Integer,Double> e = null;
-            itNonZero = this.getNonZeroObservations( iAction, iState );
-            while( itNonZero.hasNext() ){
-                e = itNonZero.next();
-                double o = e.getKey();
-                double dO = e.getValue();
-                dSumO += dO;
+//        int num_of_observations = m_fObservation.countNonZeroEntries(iAction, iState);
+//        if (num_of_observations == 0) {     // The observations for the state is yet to be initialized
+//            initObservation(iState);
+//            double dSumO = 0.0;
+//            Iterator<Map.Entry<Integer,Double>> itNonZero = null;
+//            Map.Entry<Integer,Double> e = null;
+//            itNonZero = this.getNonZeroObservations( iAction, iState );
+//            while( itNonZero.hasNext() ){
+//                e = itNonZero.next();
+//                double o = e.getKey();
+//                double dO = e.getValue();
+//                dSumO += dO;
+//            }
+//            if( Math.abs( dSumO - 1.0 ) > 0.0001 )
+//                System.out.println( "sum O( " + iAction + ", " + iState + ", * ) = " + dSumO );
+//        }
+//        return super.O(iAction, iState, iObservation);
+//        System.out.println("Calculate obs prob");
+
+
+        Pair<Integer, Integer> statePos, obsPos;
+        statePos = stateToLocation.get(iState);
+        obsPos = stateToLocation.get(iObservation);
+
+        float currSigma = this.sigmaPerState.get(iState);
+        int dist;
+        if (currSigma == -1) {
+            currSigma = o_radius;
+            for (Beacon b : beacons) {
+                dist = b.distTo(statePos.first(), statePos.second());
+                if (dist < b.getRange()) {
+                    currSigma = (currSigma / b.getRange()) * dist;
+                }
             }
-            if( Math.abs( dSumO - 1.0 ) > 0.0001 )
-                System.out.println( "sum O( " + iAction + ", " + iState + ", * ) = " + dSumO );
+            this.sigmaPerState.set(iState, currSigma);
         }
-        return super.O(iAction, iState, iObservation);
+
+        if (currSigma == 0) {
+            if (iObservation == iState)
+                return 1;
+            else
+                return 0;
+        }
+        double p_i = calculateND(obsPos.first() - statePos.first(), Math.sqrt(currSigma));
+        double p_j = calculateND(obsPos.second() - statePos.second(), Math.sqrt(currSigma));
+//        System.out.println("p_i = " + p_i);
+//        System.out.println("p_j = " + p_j);
+        return p_i * p_j;
     }
 
     private int getNumValidObservations(int r, int i, int j) {
@@ -122,7 +185,6 @@ public class Grid extends POMDP {
 
     public void initObservation(int iState) {
         if (isTerminalState(iState)) {
-            System.out.println("TERMINAL: " + iState);
             setObservation(-1, iState, iState, 1);
             return;
         }
@@ -210,6 +272,10 @@ public class Grid extends POMDP {
         }
         if (stateToLocation.size() != this.m_cStates) {
             throw new InvalidModelFileFormatException("Grid data does not match state number");
+        }
+
+        for (int i = 0; i < this.m_cStates; i++) {
+            sigmaPerState.add(-1.0f);
         }
 
         System.out.println("Grid Load Complete!");
