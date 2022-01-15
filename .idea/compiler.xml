@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="POMDPSolver" options="--add-exports java.desktop/com.sun.swing.internal.plaf.basic.resources=ALL-UNNAMED --add-exports java.base/sun.reflect.generics.reflectiveObjects=ALL-UNNAMED --add-exports java.desktop/sun.awt.geom=ALL-UNNAMED --add-exports java.xml/com.sun.org.apache.bcel.internal.generic=ALL-UNNAMED" />
+    </option>
+  </component>
+</project>

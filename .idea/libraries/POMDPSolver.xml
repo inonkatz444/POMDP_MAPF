@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="POMDPSolver">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Top3b.zip!/" />
+      <root url="jar://$PROJECT_DIR$/pomdp.26.7.2011.zip!/" />
+      <root url="jar://$PROJECT_DIR$/POMDPSolver.bigbertha.zip!/" />
+      <root url="jar://$PROJECT_DIR$/pomdp.27.12.2012.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

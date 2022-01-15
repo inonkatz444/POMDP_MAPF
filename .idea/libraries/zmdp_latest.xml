@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="zmdp-latest">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Models/zmdp-latest.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
