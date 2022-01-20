@@ -31,7 +31,6 @@
 #
 #
 ########  TODO: Create a "short hallway with side walls" problem - to see the importance of beacons ########
-########  TODO: Email the ise-help to connect to the 117 computer ########
 ########  TODO: Create problems that emphesizes the importance of beacons and *check it* ########
 ########  TODO: Change the POMDP algorothm so it cannot choose actions that may lead to forbidden states from any of the states with non-zero belief ########
 ########  TODO: check out works that the reward was defined over the belief states (instead of the states) (not very good works) ########

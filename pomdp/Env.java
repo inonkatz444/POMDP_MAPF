@@ -13,7 +13,8 @@ public class Env {
     public static void main(String[] args) {
         JProf.getCurrentThreadCpuTimeSafe();
 //        String sModelName = "straight_line_side_beacon_15x23";
-        String sModelName = "straight_line_side_beacon_9x15";
+//        String sModelName = "straight_line_side_beacon_9x15";
+        String sModelName = "short_hallway_side_beacon";
 //        String sModelName = "test_grid";
         String sMethodName = "FSVI";
 
