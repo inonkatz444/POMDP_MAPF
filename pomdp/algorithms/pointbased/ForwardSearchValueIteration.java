@@ -51,6 +51,8 @@ public class ForwardSearchValueIteration extends ValueIteration {
 	private static boolean g_bCountUselessBackups = false;
 	private HeuristicType m_htType;
 	public static HeuristicType DEFAULT_HEURISTIC = HeuristicType.MDP;
+	protected double maxEpsilon;
+	protected double initEpsilon;
 	
 	public enum HeuristicType{
 		MDP, ObservationAwareMDP, DeterministicTransitionsPOMDP, DeterministicObservationsPOMDP, DeterministicPOMDP, LimitedBeliefMDP, HeuristicPolicy
@@ -97,6 +99,8 @@ public class ForwardSearchValueIteration extends ValueIteration {
 	private void initHeuristic(){
 		long lBefore = JProf.getCurrentThreadCpuTimeSafe(), lAfter = 0;
 		if( m_htType == HeuristicType.MDP ){
+			maxEpsilon = 0.8;
+			initEpsilon = 0.2;
 			m_vfMDP = m_pPOMDP.getMDPValueFunction();
 			m_vfMDP.valueIteration( 1000, ExecutionProperties.getEpsilon() );
 		}
@@ -385,7 +389,10 @@ public class ForwardSearchValueIteration extends ValueIteration {
 			if( iMDPAction == iPOMDPAction )
 				iMDPAction = m_rndGenerator.nextInt( m_cActions );
 			*/
+			// TODO: Change the POMDP algorothm so it cannot choose actions that may lead to forbidden states from
+			//  any of the states with non-zero belief
 			iNextState = selectNextState( iState, iHeuristicAction );
+			System.out.println("action: " + m_pPOMDP.getActionName(iHeuristicAction) + ", next state: " + iNextState);
 			iObservation = getObservation( iState, iHeuristicAction, iNextState );
 			bsNext = bsCurrent.nextBeliefState( iHeuristicAction, iObservation );
 			
@@ -524,11 +531,10 @@ public class ForwardSearchValueIteration extends ValueIteration {
 		return m_pPOMDP.getBeliefStateFactory().getDeterministicBeliefState( iState );
 	}
 	private int getAction( int iState, BeliefState bs, int iDepth ){
-		double dExloprationFactor = 0.9;
-		if( iDepth > 100 )
-			dExloprationFactor = 0.9;
+		double dExplorationFactor = initEpsilon * Math.pow((maxEpsilon/initEpsilon), iDepth/100.0);
+//		double dExplorationFactor = initEpsilon + (maxEpsilon-initEpsilon)*(iDepth/100.0);
 		if( m_htType == HeuristicType.MDP ){
-			if( m_rndGenerator.nextDouble() < dExloprationFactor )
+			if( m_rndGenerator.nextDouble() < dExplorationFactor )
 				return m_vfMDP.getAction( iState );
 			return m_rndGenerator.nextInt( m_cActions );
 		}

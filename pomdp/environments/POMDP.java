@@ -113,7 +113,7 @@ public class POMDP implements Serializable{
 		m_sName = "";
 		m_rtReward = RewardType.StateAction;
 		m_bCountStatistics = true;
-		m_bGBasedBackup = false;//tau based doesn't work right now - need to fix a bug there
+		m_bGBasedBackup = true;//tau based doesn't work right now - need to fix a bug there
 		
 		if( ExecutionProperties.useMultiThread() || ExecutionProperties.useHighLevelMultiThread() ){
 			ThreadPool.createInstance( this );
