@@ -1210,6 +1210,7 @@ public class POMDP implements Serializable{
 			if( dCurrentReward != 0 )
 				cRewards++;
 
+
 			bDone = endADR( iNextState, dCurrentReward );
 			if( bDone )
 				dDiscountFactor = 0.0;

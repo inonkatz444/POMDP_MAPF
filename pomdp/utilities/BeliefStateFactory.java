@@ -46,7 +46,7 @@ public class BeliefStateFactory{
 	protected BeliefState[] m_abDeterministic;
 	protected RandomGenerator m_rndGenerator = new RandomGenerator( "BeleifStateFactory" );
 	
-	protected boolean m_bCacheDeterministicBeliefStates = false;
+	protected boolean m_bCacheDeterministicBeliefStates = true;
 	
 	public int m_cTimeInTau;
 	public long m_cBeliefStateSize;

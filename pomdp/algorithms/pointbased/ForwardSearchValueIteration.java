@@ -392,7 +392,6 @@ public class ForwardSearchValueIteration extends ValueIteration {
 			// TODO: Change the POMDP algorothm so it cannot choose actions that may lead to forbidden states from
 			//  any of the states with non-zero belief
 			iNextState = selectNextState( iState, iHeuristicAction );
-			System.out.println("action: " + m_pPOMDP.getActionName(iHeuristicAction) + ", next state: " + iNextState);
 			iObservation = getObservation( iState, iHeuristicAction, iNextState );
 			bsNext = bsCurrent.nextBeliefState( iHeuristicAction, iObservation );
 			

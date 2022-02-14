@@ -126,6 +126,8 @@ public class Grid extends POMDP {
         }
         double p_i = calculateND(obsPos.first() - statePos.first(), currSigma);
         double p_j = calculateND(obsPos.second() - statePos.second(), currSigma);
+        if (p_i * p_j < 0.001)
+            return 0;
         return p_i * p_j;
     }
 

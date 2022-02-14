@@ -52,7 +52,7 @@ values: reward
 states: 135
 actions: n s e w 
 observations: 135
-radius: 7
+radius: 4
 
 
 # syntax: row col : range

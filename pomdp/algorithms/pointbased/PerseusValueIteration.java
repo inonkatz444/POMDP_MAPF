@@ -31,12 +31,12 @@ public class PerseusValueIteration extends ValueIteration{
 	public void valueIteration( int cMaxSteps, double dEpsilon, double dTargetValue ){
 		int iIteration = 0;
 		boolean bDone = false;
-		Pair pComputedADRs = new Pair();
+		Pair<Double, Double> pComputedADRs = new Pair<>();
 		double dMaxDelta = 0.0;
 		long lStartTime = System.currentTimeMillis(), lCurrentTime = 0;
 		long lCPUTimeBefore = 0, lCPUTimeAfter = 0, lCPUTimeTotal = 0;
 		Runtime rtRuntime = Runtime.getRuntime();
-		Vector<BeliefState> vBeliefPoints = CreateBeliefSpaces.createRandomSpace( m_pPOMDP, m_rndGenerator.nextInt( 10000 ), 1000 );
+		Vector<BeliefState> vBeliefPoints = CreateBeliefSpaces.createRandomSpace( m_pPOMDP, m_rndGenerator.nextInt( 10000 ), 10000 );
 		
 		long cDotProducts = AlphaVector.dotProductCount(), cVnChanges = 0, cStepsWithoutChanges = 0;
 		m_cElapsedExecutionTime = 0;
@@ -68,8 +68,8 @@ public class PerseusValueIteration extends ValueIteration{
 				rtRuntime.gc();
 				System.out.println( "Iteration " + iIteration + 
 						" |Vn| = " + m_vValueFunction.size() +
-						" simulated ADR " + round( ((Number) pComputedADRs.first()).doubleValue(), 3 ) +
-						" filtered ADR " + round( ((Number) pComputedADRs.second()).doubleValue(), 3 ) +
+//						" simulated ADR " + round( pComputedADRs.first(), 3 ) +
+//						" filtered ADR " + round(pComputedADRs.second(), 3 ) +
 						" time " + 	( lCurrentTime - lStartTime ) / 1000 +
 						" CPU time " + ( lCPUTimeAfter - lCPUTimeBefore ) / 1000000000 +
 						" CPU total " + lCPUTimeTotal  / 1000000000 +
