@@ -1,5 +1,7 @@
 package pomdp;
 
+import pomdp.algorithms.AlgorithmsFactory;
+import pomdp.algorithms.ValueIteration;
 import pomdp.environments.Grid;
 import pomdp.utilities.ExecutionProperties;
 import pomdp.utilities.InvalidModelFileFormatException;
@@ -32,6 +34,43 @@ public class Env {
             e.printStackTrace();
         }
 
-        agent.solve(sMethodName, 100.0, 25);
+//        agent.solve(sMethodName, 100.0, 30);
+
+        double averageADR = 0.0;
+        Grid grid = new Grid();
+        try {
+            grid.load(ExecutionProperties.getPath() + sModelName + ".POMDP");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InvalidModelFileFormatException e) {
+            e.printStackTrace();
+        }
+        ValueIteration viAlgorithm;
+        try{
+            for (int i = 0; i < 10; i++) {
+                viAlgorithm = AlgorithmsFactory.getAlgorithm( sMethodName, grid );
+                assert viAlgorithm != null;
+                viAlgorithm.valueIteration( 30, ExecutionProperties.getEpsilon(), 100.0 );
+                double dDiscountedReward = grid.computeAverageDiscountedReward( 500, 150, viAlgorithm );
+                Logger.getInstance().log( "POMDPSolver", 0, "main", "ADR = " + dDiscountedReward );
+                averageADR += dDiscountedReward;
+            }
+            averageADR /= 10;
+            System.out.println("Average ADR: " + averageADR);
+        }
+
+        catch( Exception e ){
+            System.out.println( e );
+            e.printStackTrace();
+        }
+        catch( Error err ){
+            Runtime rtRuntime = Runtime.getRuntime();
+            System.out.println( "POMDPSolver: " + err +
+                    " allocated " + ( rtRuntime.totalMemory() - rtRuntime.freeMemory() ) / 1000000 +
+                    " free " + rtRuntime.freeMemory() / 1000000 +
+                    " max " + rtRuntime.maxMemory() / 1000000 );
+            System.out.print( "Stack trace: " );
+            err.printStackTrace();
+        }
     }
 }

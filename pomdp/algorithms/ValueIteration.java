@@ -1128,6 +1128,7 @@ public abstract class ValueIteration extends PolicyStrategy{
 		double dSimulatedADR = 0.0;
 		boolean bConverged = false;
 		boolean bIndependentBeliefState = false;
+
 	/*
 		ValueFunctionEvaluation pe = new ValueFunctionEvaluation( m_pPOMDP, m_vValueFunction, MDPValueFunction.getInstance() );
 		pe.evaluate();

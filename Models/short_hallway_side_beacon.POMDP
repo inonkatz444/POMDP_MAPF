@@ -24,7 +24,7 @@
 # The + indicates a reward of 1.0, the - a penalty of -1.0.
 # Rewards and penalties are associated with states, not actions.
 # The default reward/penalty is -0.04.
-#
+# Perseus iterations: 12, agent radius = 7, beacon radius = 2, ADR = 5
 #
 #
 ########  TODO: Create a "short hallway with side walls" problem - to see the importance of beacons ########

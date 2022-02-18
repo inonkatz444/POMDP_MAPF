@@ -25,12 +25,17 @@ public class CreateBeliefSpaces {
 		Vector<BeliefState> vPoints = new Vector<BeliefState>();
 		pomdp.initRandomGenerator( iSeed * 11113 );
 		double dMaxADR = 0.0;
-		while( vPoints.size() < cBeliefPoints ){
-			double dADR = pomdp.computeDiscountedReward( cBeliefPoints - vPoints.size(), pvRandom, vPoints, true, null );
-			if( dADR > dMaxADR )
-				dMaxADR = dADR;
-			cTrials++;				
-		}
+		do {
+			dMaxADR = 0.0;
+			cTrials = 0;
+			vPoints.clear();
+			while( vPoints.size() < cBeliefPoints ){
+				double dADR = pomdp.computeDiscountedReward( cBeliefPoints - vPoints.size(), pvRandom, vPoints, true, null );
+				if( dADR > dMaxADR )
+					dMaxADR = dADR;
+				cTrials++;
+			}
+		} while (dMaxADR == 0);
 		Logger.getInstance().log( "CreateBeliefSpaces", 0, "createRandomSpace", "The maximal ADR observed over " + cBeliefPoints + " points is " + dMaxADR );
 		return vPoints;
 	}

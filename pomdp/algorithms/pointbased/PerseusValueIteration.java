@@ -36,7 +36,7 @@ public class PerseusValueIteration extends ValueIteration{
 		long lStartTime = System.currentTimeMillis(), lCurrentTime = 0;
 		long lCPUTimeBefore = 0, lCPUTimeAfter = 0, lCPUTimeTotal = 0;
 		Runtime rtRuntime = Runtime.getRuntime();
-		Vector<BeliefState> vBeliefPoints = CreateBeliefSpaces.createRandomSpace( m_pPOMDP, m_rndGenerator.nextInt( 10000 ), 10000 );
+		Vector<BeliefState> vBeliefPoints = CreateBeliefSpaces.createRandomSpace( m_pPOMDP, m_rndGenerator.nextInt( 10000 ), 1000 );
 		
 		long cDotProducts = AlphaVector.dotProductCount(), cVnChanges = 0, cStepsWithoutChanges = 0;
 		m_cElapsedExecutionTime = 0;
@@ -59,12 +59,11 @@ public class PerseusValueIteration extends ValueIteration{
 			m_cCPUExecutionTime += ( lCPUTimeAfter - lCPUTimeBefore ) / 1000000;
 			lCPUTimeTotal += lCPUTimeAfter - lCPUTimeBefore;
 
-			if( ( cVnChanges < m_vValueFunction.getChangesCount() ) && ( ( lCPUTimeTotal  / 1000000000 ) >= 10000 ) &&
+			if( ( cVnChanges < m_vValueFunction.getChangesCount() ) &&
 					( m_vValueFunction.size() > 5 ) ){
 				cStepsWithoutChanges = 0;
 				if( !bDone )
 					bDone = checkADRConvergence( m_pPOMDP, dTargetValue, pComputedADRs );
-			
 				rtRuntime.gc();
 				System.out.println( "Iteration " + iIteration + 
 						" |Vn| = " + m_vValueFunction.size() +
