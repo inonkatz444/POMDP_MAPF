@@ -199,7 +199,7 @@ public class DeterministicPOMDP extends POMDPAdapter {
 	}
 	
 	public static void main( String[] args ) throws Exception{
-		RandomGenerator rnd = new RandomGenerator( "DeterministicPOMDP", 0 );
+		RandomGenerator rnd = RandomGenerator.getInstance();
 		POMDP pomdp = new POMDP();
 		pomdp.load( "Models/Hallway.pomdp" );
 		DeterministicPOMDP dp = new DeterministicPOMDP( pomdp, true, true );

@@ -90,7 +90,7 @@ public abstract class ValueIteration extends PolicyStrategy{
 		
 		m_bTerminate = false;
 		
-		m_rndGenerator = new RandomGenerator( "ValueIteration" );
+		m_rndGenerator = RandomGenerator.getInstance();
 		
 		m_vValueFunction = new LinearValueFunctionApproximation( m_dEpsilon, true );
 		m_vfMDP = pomdp.getMDPValueFunction();

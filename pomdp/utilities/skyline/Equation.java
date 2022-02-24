@@ -20,7 +20,7 @@ public class Equation {
 	private static double NOISE = 0.0000;
 	public static int m_cEquations = 0;
 	
-	private static RandomGenerator m_rndGenerator = new RandomGenerator( "Equation", 0 );
+	private static RandomGenerator m_rndGenerator = RandomGenerator.getInstance();
 	
 	//Notation - 
 	//x_0 is the value of the vector at the current point.

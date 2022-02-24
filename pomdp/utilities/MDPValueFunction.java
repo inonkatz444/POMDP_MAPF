@@ -82,7 +82,7 @@ public class MDPValueFunction extends PolicyStrategy {
 		//m_aPQStates = null;
 		//m_pqStates = null;
 		//m_vPredStates = null;
-		m_rndGenerator = new RandomGenerator( "MDPVI", 0 );
+		m_rndGenerator = RandomGenerator.getInstance();
 	}
 	
 	protected double computeStateActionValue( int iState, int iAction ){

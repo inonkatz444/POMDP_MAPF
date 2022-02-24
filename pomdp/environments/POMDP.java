@@ -109,7 +109,7 @@ public class POMDP implements Serializable{
 		m_vObservationStates = new Vector<Integer>();
 		m_adMinActionRewards = null;
 		m_iRandomSeed = 0;
-		m_rndGenerator = new RandomGenerator( "POMDP" );
+		m_rndGenerator = RandomGenerator.getInstance();
 		m_sName = "";
 		m_rtReward = RewardType.StateAction;
 		m_bCountStatistics = true;
@@ -601,7 +601,7 @@ public class POMDP implements Serializable{
 		
 		boolean bCacheBeliefStates = getBeliefStateFactory().cacheBeliefStates( false );
 		
-		m_rndGenerator = new RandomGenerator( "test", 0 );
+		m_rndGenerator = RandomGenerator.getInstance();
 		
 		for( iTest = 0 ; ( iTest < cTests ) && ( dStandardError > 0.01 * dADR  )  ; iTest++ ){
 			dDiscountedReward = computeDiscountedRewardParticleFilteringImportanceSampling( cMaxStepsToGoal, policy, cParticles );

@@ -53,7 +53,7 @@ public class LinearValueFunctionApproximation implements Serializable{
 		m_dMaxValue = 0.0;
 		m_bEvaluatingPolicy = false;
 		m_bPruned = false;
-		m_rndGenerator = new RandomGenerator( "LinearValueFunctionApproximation" );
+		m_rndGenerator = RandomGenerator.getInstance();
 	}
 
 	public LinearValueFunctionApproximation(){

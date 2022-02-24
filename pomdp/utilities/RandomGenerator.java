@@ -50,16 +50,24 @@ public class RandomGenerator  implements Serializable{
 	*/
 	private Random m_rndGenerator;
 	private String m_sName;
+	private static RandomGenerator instance;
 	
-	public RandomGenerator( String sName ){
+	private RandomGenerator( String sName ){
 		//this( sName, System.currentTimeMillis() );
 		this( sName, System.nanoTime() );
 	}
 	
-	public RandomGenerator( String sName, long iSeed ){
+	private RandomGenerator( String sName, long iSeed ){
 		m_rndGenerator = new Random( iSeed );
 		m_sName = sName;
 		System.out.println( "Initializing generator " + m_sName + " with random seed " + iSeed );
+	}
+
+	public static RandomGenerator getInstance() {
+		if (instance == null) {
+			instance = new RandomGenerator("Generator", 42);
+		}
+		return instance;
 	}
 		
 	public void init( long iSeed, boolean bNotify ){

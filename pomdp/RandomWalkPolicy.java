@@ -18,7 +18,7 @@ public class RandomWalkPolicy extends PolicyStrategy {
 	
 	public RandomWalkPolicy( int cActions ){
 		m_cActions = cActions;
-		m_rndGenerator = new RandomGenerator( "RandomWalk" );
+		m_rndGenerator = RandomGenerator.getInstance();
 	}
 	 
 	/* (non-Javadoc)

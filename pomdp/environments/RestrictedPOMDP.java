@@ -868,7 +868,7 @@ public class RestrictedPOMDP extends FactoredPOMDP {
 		long lTimeBefore = 0, cTotalTime = 0;
 		policy.setValueFunction( vValueFunction );
 		int iRock = 0, iOtherRock = 0;
-		RandomGenerator rnd = new RandomGenerator( "RestrictedPOMDP" );
+		RandomGenerator rnd = RandomGenerator.getInstance();
 		MDPValueFunction.PERSIST_FUNCTION = false;
 
 		for( iRock = 0 ; iRock < cRocks ; iRock++ ){
@@ -993,7 +993,7 @@ public class RestrictedPOMDP extends FactoredPOMDP {
 		long lTimeBefore = System.currentTimeMillis();
 		policy.setValueFunction( vValueFunction );
 		int iPackage = 0, iActiveTruck = 0, iOtherPackage = 0;
-		RandomGenerator rnd = new RandomGenerator( "RestrictedPOMDP" );
+		RandomGenerator rnd = RandomGenerator.getInstance();
 		MDPValueFunction.PERSIST_FUNCTION = false;
 		
 		
@@ -1099,7 +1099,7 @@ public class RestrictedPOMDP extends FactoredPOMDP {
 		long lTimeBefore = System.currentTimeMillis();
 		policy.setValueFunction( vValueFunction );
 		int iPackage = 0, iActiveTruck = 0, iOtherPackage = 0;
-		RandomGenerator rnd = new RandomGenerator( "RestrictedPOMDP" );
+		RandomGenerator rnd = RandomGenerator.getInstance();
 		MDPValueFunction.PERSIST_FUNCTION = false;
 		
 		//for( iActiveTruck = 0 ; iActiveTruck < cTrucks ; iActiveTruck++ ){

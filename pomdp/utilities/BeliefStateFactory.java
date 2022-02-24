@@ -44,7 +44,7 @@ public class BeliefStateFactory{
 	protected static boolean m_bCountBeliefUpdates;
 	protected BeliefState m_bsUniformState;
 	protected BeliefState[] m_abDeterministic;
-	protected RandomGenerator m_rndGenerator = new RandomGenerator( "BeleifStateFactory" );
+	protected RandomGenerator m_rndGenerator = RandomGenerator.getInstance();
 	
 	protected boolean m_bCacheDeterministicBeliefStates = true;
 	
