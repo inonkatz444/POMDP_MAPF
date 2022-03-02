@@ -24,7 +24,7 @@ public class Pair<K,V> implements Map.Entry<K,V>, Serializable{
 		return m_second;
 	}
 	public String toString(){
-		return "<" + m_first + ", " + m_second + ">";
+		return "(" + m_first + ", " + m_second + ")";
 	}
 
 	public K getKey() {

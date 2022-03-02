@@ -16,13 +16,10 @@ package pomdp.environments;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.AbstractCollection;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.SortedSet;
-import java.util.StringTokenizer;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Vector;
@@ -32,11 +29,9 @@ import pomdp.utilities.AlphaVector;
 import pomdp.utilities.BeliefState;
 import pomdp.utilities.BeliefStateComparator;
 import pomdp.utilities.BeliefStateFactory;
-import pomdp.utilities.EndOfFileException;
 import pomdp.utilities.ExecutionProperties;
 import pomdp.utilities.InvalidModelFileFormatException;
 import pomdp.utilities.JProf;
-import pomdp.utilities.LineReader;
 import pomdp.utilities.Logger;
 import pomdp.utilities.MDPValueFunction;
 import pomdp.utilities.POMDPLoader;
@@ -49,7 +44,6 @@ import pomdp.utilities.concurrent.ThreadPool;
 import pomdp.utilities.datastructures.Function;
 import pomdp.utilities.datastructures.MapFunction;
 import pomdp.utilities.datastructures.TabularFunction;
-import pomdp.utilities.factored.LogisticsBeliefStateFactory;
 import pomdp.valuefunction.LinearValueFunctionApproximation;
 
 public class POMDP implements Serializable{
@@ -808,11 +802,11 @@ public class POMDP implements Serializable{
 	}
 
 	protected double computeDiscountedReward( int cMaxStepsToGoal, PolicyStrategy policy, int[] aiActionCount ){
-		return computeDiscountedReward( cMaxStepsToGoal, policy, null, false, aiActionCount );
+		return computeDiscountedReward( cMaxStepsToGoal, policy, null, false, aiActionCount, null );
 	}
 	
 	protected double computeDiscountedReward( int cMaxStepsToGoal, PolicyStrategy policy, Vector<BeliefState> vObservedBeliefPoints, int[] aiActionCount ){
-		return computeDiscountedReward( cMaxStepsToGoal, policy, vObservedBeliefPoints, false, aiActionCount );
+		return computeDiscountedReward( cMaxStepsToGoal, policy, vObservedBeliefPoints, false, aiActionCount, null );
 	}
 	
 	/**
@@ -827,11 +821,11 @@ public class POMDP implements Serializable{
 	
 	private int m_cSteps = 0;
 	//private int x = 0;
-	public double computeDiscountedReward( int cMaxStepsToGoal, PolicyStrategy policy, Vector<BeliefState> vObservedBeliefPoints, boolean bExplore, int[] aiActionCount ){
+	public double computeDiscountedReward( int cMaxStepsToGoal, PolicyStrategy policy, Vector<BeliefState> vObservedBeliefPoints, boolean bExplore, int[] aiActionCount, Map<Integer, Boolean> toReachStates ){
 		//if( x++ % 2 == 0 )
 			//return computeDiscountedRewardI( cMaxStepsToGoal, policy, vObservedBeliefPoints, bExplore, aiActionCount );
 		//else
-			return computeDiscountedRewardII( cMaxStepsToGoal, policy, vObservedBeliefPoints, bExplore, aiActionCount );
+			return computeDiscountedRewardII( cMaxStepsToGoal, policy, vObservedBeliefPoints, bExplore, aiActionCount, toReachStates );
 	}
 	
 	public double computeDiscountedRewardWithParticleFiltering( int cMaxStepsToGoal, PolicyStrategy policy, int cMaxBeliefs ){
@@ -1129,11 +1123,16 @@ public class POMDP implements Serializable{
 	}
 	
 	BeliefStateFactory bsf = null;
+
+	public String parseState(int iState) {
+		return "" + iState;
+	}
 	
-	public double computeDiscountedRewardII( int cMaxStepsToGoal, PolicyStrategy policy, Vector<BeliefState> vObservedBeliefPoints, boolean bExplore, int[] aiActionCount ){
+	public double computeDiscountedRewardII(int cMaxStepsToGoal, PolicyStrategy policy, Vector<BeliefState> vObservedBeliefPoints, boolean bExplore, int[] aiActionCount, Map<Integer, Boolean> toReachStates){
 		double dDiscountedReward = 0.0, dCurrentReward = 0.0, dDiscountFactor = 1.0;
 		int iStep = 0, iAction = 0, iObservation = 0;
 		int iState = chooseStartState(), iNextState = 0;
+		System.out.print(parseState(iState) + ", ");
 		BeliefState bsCurrentBelief = getBeliefStateFactory().getInitialBeliefState(), bsNext = null;
 		
 		/*
@@ -1185,7 +1184,7 @@ public class POMDP implements Serializable{
 			if( iAction == -1 )
 				return Double.NEGATIVE_INFINITY;
 			
-			System.out.print(getActionName(iAction) + ",");
+			System.out.print(getActionName(iAction) + "->");
 			
 			if( aiActionCount != null )
 				aiActionCount[iAction]++;
@@ -1197,6 +1196,8 @@ public class POMDP implements Serializable{
 			
 			iNextState = execute( iAction, iState );
 			iObservation = observe( iAction, iNextState );
+
+			System.out.print(parseState(iNextState) + ", ");
 			
 			if( m_rtReward == RewardType.StateAction )
 				dCurrentReward = R( iState, iAction ); //R(s,a)
@@ -1210,6 +1211,9 @@ public class POMDP implements Serializable{
 			if( dCurrentReward != 0 )
 				cRewards++;
 
+			if (toReachStates != null && toReachStates.containsKey(iNextState)) {
+				toReachStates.replace(iNextState, true);
+			}
 
 			bDone = endADR( iNextState, dCurrentReward );
 			if( bDone )

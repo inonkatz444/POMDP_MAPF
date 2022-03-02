@@ -13,7 +13,7 @@
 #   #         +         #
 #   #                   #
 #   #                   #
-#   # 2 ###### ######   #
+#   # 4 ###### ######   #
 #   #        # #        #
 #   #                   #
 #   #                   #
@@ -24,7 +24,6 @@
 # The + indicates a reward of 1.0, the - a penalty of -1.0.
 # Rewards and penalties are associated with states, not actions.
 # The default reward/penalty is -0.04.
-# Perseus iterations: 12, agent radius = 7, beacon radius = 2, ADR = 5
 #
 #
 ########  TODO: Create a "short hallway with side walls" problem - to see the importance of beacons ########
@@ -52,11 +51,9 @@ values: reward
 states: 157
 actions: n s e w 
 observations: 157
-radius: 7
+radius: 3
 
 holes:
-2 8
-2 10
 3 3
 3 4
 3 5
@@ -69,10 +66,12 @@ holes:
 3 13
 3 14
 3 15
+4 8
+4 10
 
 # syntax: row col : range
 beacons:
-3 1 : 2
+3 1 : 4
 
 start:
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0

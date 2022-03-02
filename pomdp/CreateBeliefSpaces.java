@@ -1,7 +1,9 @@
 package pomdp;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -25,17 +27,28 @@ public class CreateBeliefSpaces {
 		Vector<BeliefState> vPoints = new Vector<BeliefState>();
 		pomdp.initRandomGenerator( iSeed * 11113 );
 		double dMaxADR = 0.0;
+		Map<Integer, Boolean> toReachStates = new HashMap<>();
+//		Map<Integer, Boolean> toReachStates = null;
 		do {
+			System.out.println("NEW WALK");
 			dMaxADR = 0.0;
 			cTrials = 0;
 			vPoints.clear();
+			pomdp.getBeliefStateFactory().clear();
+			toReachStates.put(9, false);
+			toReachStates.put(57, false);
+			toReachStates.put(58, false);
+			toReachStates.put(59, false);
+			toReachStates.put(61, false);
+			toReachStates.put(62, false);
+			toReachStates.put(63, false);
 			while( vPoints.size() < cBeliefPoints ){
-				double dADR = pomdp.computeDiscountedReward( cBeliefPoints - vPoints.size(), pvRandom, vPoints, true, null );
+				double dADR = pomdp.computeDiscountedReward( cBeliefPoints - vPoints.size(), pvRandom, vPoints, true, null, toReachStates);
 				if( dADR > dMaxADR )
 					dMaxADR = dADR;
 				cTrials++;
 			}
-		} while (dMaxADR == 0);
+		} while (dMaxADR == 0 || (toReachStates != null && toReachStates.containsValue(false)));
 		Logger.getInstance().log( "CreateBeliefSpaces", 0, "createRandomSpace", "The maximal ADR observed over " + cBeliefPoints + " points is " + dMaxADR );
 		return vPoints;
 	}
@@ -230,7 +243,7 @@ public class CreateBeliefSpaces {
 				while( pomdp.getBeliefStateFactory().getBeliefStateCount() < cBeliefPoints ){
 					//pomdp.simulate( cBeliefPoints, 4, -1 );
 					if( bRandom ){
-						dDiscountedReward = pomdp.computeDiscountedReward( cBeliefPoints - pomdp.getBeliefStateFactory().getBeliefStateCount(), pvRandom, null, true, aiActionCount );
+						dDiscountedReward = pomdp.computeDiscountedReward( cBeliefPoints - pomdp.getBeliefStateFactory().getBeliefStateCount(), pvRandom, null, true, aiActionCount, null );
 					}
 					else{
 						dDiscountedReward = pomdp.computeMDPDiscountedReward( 500, pvQMDP, true, null );

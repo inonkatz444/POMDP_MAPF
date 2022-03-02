@@ -22,6 +22,7 @@ public class Grid extends POMDP {
         stateToLocation = new ArrayList<>();
         beacons = new ArrayList<>();
         oGenerator = new Random();
+        oGenerator.setSeed(42);
         sigmaPerState = new HashMap<>();
     }
 
@@ -36,6 +37,14 @@ public class Grid extends POMDP {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public String parseState(int iState) {
+        String state = stateToLocation.get(iState).toString();
+        if (isTerminalState(iState)) {
+            state += "*";
+        }
+        return state;
     }
 
     public void setRadius(float radius) {
@@ -75,7 +84,7 @@ public class Grid extends POMDP {
             for (Beacon b : beacons) {
                 dist = b.distTo(i, j);
                 if (dist < b.getRange()) {
-                    currSigma = (currSigma / b.getRange()) * dist;
+                    currSigma = currSigma * ((dist * dist * 1.0f)/(b.getRange() * b.getRange()));
                 }
             }
             this.sigmaPerState.put(iState, currSigma);
@@ -112,7 +121,7 @@ public class Grid extends POMDP {
             for (Beacon b : beacons) {
                 dist = b.distTo(statePos.first(), statePos.second());
                 if (dist < b.getRange()) {
-                    currSigma = (currSigma / b.getRange()) * dist;
+                    currSigma = currSigma * ((dist * dist * 1.0f)/(b.getRange() * b.getRange()));
                 }
             }
             this.sigmaPerState.put(iState, currSigma);

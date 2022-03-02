@@ -1,21 +1,13 @@
 package pomdp.environments;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.TreeMap;
-import java.util.Vector;
+import java.util.*;
 import java.util.Map.Entry;
 
 import pomdp.algorithms.AlphaVectorsPolicy;
 import pomdp.algorithms.PolicyStrategy;
 import pomdp.algorithms.pointbased.ForwardSearchValueIteration;
 import pomdp.algorithms.pointbased.HeuristicSearchValueIteration;
-import pomdp.algorithms.pointbased.PerseusValueIteration;
-import pomdp.algorithms.pointbased.StateBasedValueIteration;
-import pomdp.environments.FactoredPOMDP.BeliefType;
 import pomdp.utilities.AlphaVector;
 import pomdp.utilities.BeliefState;
 import pomdp.utilities.Logger;
@@ -682,8 +674,8 @@ public class RestrictedPOMDP extends FactoredPOMDP {
 	}
 
 	
-	public double computeDiscountedReward( int cMaxStepsToGoal, PolicyStrategy policy, Vector<BeliefState> vObservedBeliefPoints, boolean bExplore, int[] aiActionCount ){
-		return computeDiscountedRewardII( cMaxStepsToGoal, policy, vObservedBeliefPoints, bExplore, aiActionCount );
+	public double computeDiscountedReward( int cMaxStepsToGoal, PolicyStrategy policy, Vector<BeliefState> vObservedBeliefPoints, boolean bExplore, int[] aiActionCount, Map<Integer, Boolean> toReachStates){
+		return computeDiscountedRewardII( cMaxStepsToGoal, policy, vObservedBeliefPoints, bExplore, aiActionCount, toReachStates);
 	}
 	
 	public void translateVectorsToReal( LinearValueFunctionApproximation vRestrictedValueFunction, LinearValueFunctionApproximation vRealValueFunction, boolean bCombine ) {

@@ -1,27 +1,18 @@
 package pomdp.environments;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.Vector;
 import java.util.Map.Entry;
 
 import pomdp.algorithms.PolicyStrategy;
 import pomdp.algorithms.pointbased.ForwardSearchValueIteration;
-import pomdp.algorithms.pointbased.HeuristicSearchValueIteration;
-import pomdp.environments.POMDP.IntegerCollection;
-import pomdp.environments.POMDP.RewardType;
 import pomdp.utilities.AlphaVector;
 import pomdp.utilities.BeliefState;
-import pomdp.utilities.BeliefStateFactory;
-import pomdp.utilities.InvalidModelFileFormatException;
 import pomdp.utilities.LineReader;
-import pomdp.utilities.MDPValueFunction;
 import pomdp.utilities.WordCompleteBeliefStateFactory;
 import pomdp.utilities.WordCompleteHeuristicPolicy;
 
@@ -356,7 +347,7 @@ public class WordComplete extends POMDP {
 	private int m_iStartState = 0;
 	private double m_dSteps = 0;
 	
-	public double computeDiscountedRewardII( int cMaxStepsToGoal, PolicyStrategy policy, Vector<BeliefState> vObservedBeliefPoints, boolean bExplore, int[] aiActionCount ){
+	public double computeDiscountedRewardII(int cMaxStepsToGoal, PolicyStrategy policy, Vector<BeliefState> vObservedBeliefPoints, boolean bExplore, int[] aiActionCount, Map<Integer, Boolean> toReachStates){
 		double dDiscountedReward = 0.0, dCurrentReward = 0.0, dDiscountFactor = 1.0;
 		int iStep = 0, iAction = 0, iObservation = 0;
 		int iState = makeState( m_iStartState, 0 ), iNextState = 0;

@@ -34,6 +34,6 @@ public class Env {
             e.printStackTrace();
         }
 
-        agent.solve(sMethodName, 100.0, 25);
+        agent.solve(sMethodName, 100.0, 20);
     }
 }
