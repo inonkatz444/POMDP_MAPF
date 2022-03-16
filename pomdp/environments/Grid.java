@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.util.*;
 
 public class Grid extends POMDP {
-    private int rows;
-    private int cols;
-    private List<Pair<Integer, Integer>> holes;
-    private List<Pair<Integer, Integer>> stateToLocation;   // mapping between state to place in grid
-    private int[][] grid;                                   // mapping between place in grid to state
-    private List<Beacon> beacons;
+    protected int rows;
+    protected int cols;
+    protected List<Pair<Integer, Integer>> holes;
+    protected List<Pair<Integer, Integer>> stateToLocation;   // mapping between state to place in grid
+    protected int[][] grid;                                   // mapping between place in grid to state
+    protected List<Beacon> beacons;
     private float o_radius;                                 // base reception radius (beacons will make it smaller)
     private final Random oGenerator;
     private Map<Integer, Float> sigmaPerState;
@@ -24,6 +24,10 @@ public class Grid extends POMDP {
         oGenerator = new Random();
         oGenerator.setSeed(42);
         sigmaPerState = new HashMap<>();
+    }
+
+    public List<Beacon> getBeacons() {
+        return beacons;
     }
 
     public void printGrid() {

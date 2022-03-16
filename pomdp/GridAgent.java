@@ -3,6 +3,7 @@ package pomdp;
 import pomdp.algorithms.AlgorithmsFactory;
 import pomdp.algorithms.PolicyStrategy;
 import pomdp.algorithms.ValueIteration;
+import pomdp.environments.BeaconDistanceGrid;
 import pomdp.environments.Grid;
 import pomdp.utilities.*;
 
@@ -12,8 +13,13 @@ public class GridAgent {
     private final Grid grid;
     private PolicyStrategy policy;
 
-    public GridAgent() {
-        grid = new Grid();
+    public GridAgent(String sModelName) {
+        if (sModelName.equals("two_paths_one_beacon")) {
+            grid = new BeaconDistanceGrid();
+        }
+        else {
+            grid = new Grid();
+        }
     }
 
     public void load(String fileName) throws InvalidModelFileFormatException, IOException {

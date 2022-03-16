@@ -1,18 +1,17 @@
 package pomdp.utilities;
 
+import pomdp.environments.BeaconDistanceGrid;
 import pomdp.environments.Grid;
 import pomdp.environments.POMDP;
 
 import java.io.IOException;
 import java.util.*;
 
-public class GridLoader{
-    protected Grid m_pPOMDP;
-    private List<Pair<Integer, Integer>> holes;
+public class BeaconDistanceGridLoader{
+    protected BeaconDistanceGrid m_pPOMDP;
 
-    public GridLoader(Grid pomdp) {
+    public BeaconDistanceGridLoader(BeaconDistanceGrid pomdp) {
         m_pPOMDP = pomdp;
-        holes = new ArrayList<>();
     }
 
     public void load( String sFileName ) throws IOException, InvalidModelFileFormatException{
@@ -253,6 +252,7 @@ public class GridLoader{
         String sLine = "";
         StringTokenizer stLine;
         int beacon_row, beacon_col, beacon_range;
+        int max_range = 0;
         sLine = lrInput.readLine();
         while (!sLine.equals( "" )) {
             stLine = new StringTokenizer( sLine );
@@ -261,8 +261,13 @@ public class GridLoader{
             stLine.nextToken();     // :
             beacon_range = Integer.parseInt(stLine.nextToken());
             m_pPOMDP.addBeacon(beacon_row, beacon_col, beacon_range);
+            max_range = Math.max(max_range, beacon_range);
             sLine = lrInput.readLine();
         }
+
+        m_pPOMDP.setObservationCount(max_range + 2);    // +1 for zero dist, +1 for inf dist
+        m_pPOMDP.initDynamicsFunctions();
+        m_pPOMDP.setMaxDist(max_range);
     }
 
     /**
@@ -545,7 +550,7 @@ public class GridLoader{
         int cVars = 0, idx = 0, rows = 0, cols = 0;
         StringTokenizer stLine;
 
-        while( cVars < 8 ){
+        while( cVars < 6 ){
             sLine = "";
             while( sLine.equals( "" ) ){
                 sLine = lrInput.readLine();
@@ -646,49 +651,9 @@ public class GridLoader{
 
                     cVars++;
                 }
-                else if( sType.equals( "observations:" ) ){
-                    if(stLine.hasMoreElements()){
-
-                        sValue = stLine.nextToken();
-
-                        try{
-                            m_pPOMDP.setObservationCount( Integer.parseInt( sValue ) );
-                        }
-                        catch( NumberFormatException e ){
-                            idx = 0;
-                            m_pPOMDP.addObservation( sValue );
-                            idx++;
-                            while( stLine.hasMoreTokens() ){
-                                sValue = stLine.nextToken();
-                                m_pPOMDP.addObservation( sValue );
-                                idx++;
-                            }
-                        }
-                    }
-                    else{//assume that observation list is until next empty line
-                        String sObLine = "";
-                        while(sObLine.length() == 0){
-                            sObLine = lrInput.readLine().trim();
-                        }
-                        while(sObLine.length() > 0 && !lrInput.endOfFile()){
-                            m_pPOMDP.addObservation(sObLine);
-                            sObLine = lrInput.readLine().trim();
-                        }
-
-                    }
-                    System.out.print( "|O| = " + m_pPOMDP.getObservationCount() );
-
-                    cVars++;
-                }
-
-                else if (sType.equals( "radius:" )) {
-                    m_pPOMDP.setRadius(Float.parseFloat(stLine.nextToken()));
-                    cVars++;
-                }
 
             }
         }
         System.out.println();
-        m_pPOMDP.initDynamicsFunctions();
     }
 }
