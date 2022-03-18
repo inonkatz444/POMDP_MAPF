@@ -252,7 +252,7 @@ public class BeaconDistanceGridLoader{
         String sLine = "";
         StringTokenizer stLine;
         int beacon_row, beacon_col, beacon_range;
-        int max_range = 0;
+        int max_range = 0, num_beacons = 0;
         sLine = lrInput.readLine();
         while (!sLine.equals( "" )) {
             stLine = new StringTokenizer( sLine );
@@ -262,10 +262,11 @@ public class BeaconDistanceGridLoader{
             beacon_range = Integer.parseInt(stLine.nextToken());
             m_pPOMDP.addBeacon(beacon_row, beacon_col, beacon_range);
             max_range = Math.max(max_range, beacon_range);
+            num_beacons++;
             sLine = lrInput.readLine();
         }
 
-        m_pPOMDP.setObservationCount(max_range + 2);    // +1 for zero dist, +1 for inf dist
+        m_pPOMDP.setObservationCount((int)Math.pow(max_range + 2, num_beacons));    // +1 for zero dist, +1 for inf dist
         m_pPOMDP.initDynamicsFunctions();
         m_pPOMDP.setMaxDist(max_range);
     }

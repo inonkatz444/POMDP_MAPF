@@ -3,15 +3,19 @@ package pomdp.environments;
 import pomdp.utilities.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class BeaconDistanceGrid extends Grid{
 
     protected RandomGenerator noiseGenerator;
     protected int maxNoise;
     protected int maxDist;
-    private int INF;
+    protected int INF;
+    protected int entry_options;
 
     public BeaconDistanceGrid() {
         super();
@@ -22,55 +26,58 @@ public class BeaconDistanceGrid extends Grid{
     public void setMaxDist(int maxDist) {
         this.maxDist = maxDist;
         INF = maxDist + 1;
+        entry_options = maxDist + 2;
     }
 
     @Override
     public int observe(int iAction, int iState) {
-        int dist = rows + cols;
-        int dist_from_b = 0;
         Pair<Integer, Integer> iLoc = stateToLocation.get(iState);
-        for (Beacon b : this.beacons){
-            dist_from_b = b.distTo(iLoc.first(), iLoc.second());
-            if (dist_from_b <= b.getRange()) {
-                dist = Math.min(dist, dist_from_b);
-            }
+        List<Integer> dists = beacons.stream().map(b -> {
+          int dist = b.distTo(iLoc.first(), iLoc.second());
+          return dist > b.getRange() ? INF : Math.max(dist - noiseGenerator.nextInt(maxNoise+1), 0);
+        }).toList();
+//        System.out.println("observed dists: " + dists);
+        int iObservation = 0, power = 1;
+        for (int dist : dists) {
+            iObservation += dist * power;
+            power *= entry_options;
         }
-
-        if (dist > maxDist)
-            return INF;
-        dist = (dist - noiseGenerator.nextInt(maxNoise));
-        dist = Math.max(dist, 0);
-        return dist;
+//        System.out.println("observe iObservation: " + iObservation);
+//        System.out.println();
+        return iObservation;
     }
 
     @Override
     public double O(int iAction, int iState, int iObservation) {
-        int dist = rows + cols;
-        int dist_from_b = 0;
         Pair<Integer, Integer> iLoc = stateToLocation.get(iState);
-        for (Beacon b : this.beacons){
-            dist_from_b = b.distTo(iLoc.first(), iLoc.second());
-            if (dist_from_b <= b.getRange()) {
-                dist = Math.min(dist, dist_from_b);
+//        System.out.println("O iObservation: " + iObservation);
+
+        double prob = 1.0;
+        int observed_dist, actual_dist;
+        for (Beacon b : beacons) {
+            observed_dist = iObservation % entry_options;
+            iObservation /= entry_options;
+            actual_dist = b.distTo(iLoc.first(), iLoc.second());
+
+//            System.out.println("O observed_dists: " + observed_dists);
+//            System.out.println("O Actual dists: " + actual_dists);
+//            System.out.println();
+
+            if (observed_dist == INF) {
+                prob *= actual_dist > b.getRange() ? 1.0 : 0.0;
+            }
+            else if (actual_dist > b.getRange() || actual_dist - observed_dist > maxNoise || actual_dist - observed_dist < 0) {
+                prob = 0;
+            }
+            else if (observed_dist != 0) {
+                prob *= 1.0 / (maxNoise + 1);
+            }
+            else {
+                prob *= (maxNoise + 1.0 - actual_dist) / (maxNoise + 1.0);
             }
         }
 
-        if (iObservation == INF) {
-            if (dist >= maxDist + 1 + maxNoise)
-                return 1;
-            for (int i = maxNoise - 1; i >= 0; i--) {
-                if (dist == maxDist + 1 + i)
-                    return (i+1.0)/(maxNoise+1.0);
-            }
-        }
-
-        Map<Integer, Double> probMap = new HashMap<>();
-        for (int i = maxNoise; i >= 0; i--) {
-            probMap.put(Math.max(dist - i, 0), probMap.getOrDefault(Math.max(dist - i, 0), 0.0) + 1.0/(maxNoise+1));
-        }
-
-        return probMap.getOrDefault(iObservation, 0.0);
-
+        return prob;
     }
 
     @Override
