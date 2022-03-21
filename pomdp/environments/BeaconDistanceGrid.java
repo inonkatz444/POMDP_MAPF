@@ -3,11 +3,7 @@ package pomdp.environments;
 import pomdp.utilities.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class BeaconDistanceGrid extends Grid{
 
@@ -17,8 +13,8 @@ public class BeaconDistanceGrid extends Grid{
     protected int INF;
     protected int entry_options;
 
-    public BeaconDistanceGrid() {
-        super();
+    public BeaconDistanceGrid(boolean multiAgent) {
+        super(multiAgent);
         noiseGenerator = RandomGenerator.getInstance();
         maxNoise = 3;
     }
@@ -83,10 +79,17 @@ public class BeaconDistanceGrid extends Grid{
     @Override
     public void load( String sFileName ) throws IOException, InvalidModelFileFormatException {
         m_sName = sFileName.substring( sFileName.lastIndexOf( "/" ) + 1, sFileName.lastIndexOf( "." ) );
-        BeaconDistanceGridLoader p = new BeaconDistanceGridLoader( this );
-        p.load( sFileName );
-        if( m_rtReward == RewardType.StateActionState )
-            initStoredRewards();
+        if (multiAgent) {
+            MultiAgentBeaconDistanceGridLoader p = new MultiAgentBeaconDistanceGridLoader(this);
+            p.load( sFileName );
+        }
+        else {
+            BeaconDistanceGridLoader p = new BeaconDistanceGridLoader( this );
+            p.load( sFileName );
+
+            if( m_rtReward == RewardType.StateActionState )
+                initStoredRewards();
+        }
 
         m_vfMDP = new MDPValueFunction( this, 0.0 );
         initBeliefStateFactory();

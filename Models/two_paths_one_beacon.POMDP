@@ -31,10 +31,11 @@
 #
 # The actions, NSEW, have the expected result 80% of the time, and
 # transition in a direction perpendicular to the intended on with a 10%
-# probability for each direction.  Movement into a wall returns the agent
+# probability for each direction. Movement into a wall returns the agent
 # to its original state.
 #
-########  TODO: Create more beacons		Change the observation model to vector of beacon distances ########
+########  TODO: Delete the start distribution, terminal states and rewards from the file, and inject it per agent  ########
+########  TODO: Create a file to describe each agent's data in his POMDP  ########
 #
 # actions must be n, s, e, w
 
@@ -44,9 +45,6 @@ discount: 0.99
 values: reward
 states: 126
 actions: n s e w 
-observations: 12
-
-radius: 5
 
 holes:
 2 0

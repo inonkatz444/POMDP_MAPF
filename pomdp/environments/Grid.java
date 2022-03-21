@@ -15,8 +15,9 @@ public class Grid extends POMDP {
     private float o_radius;                                 // base reception radius (beacons will make it smaller)
     private final Random oGenerator;
     private Map<Integer, Float> sigmaPerState;
+    protected boolean multiAgent;
 
-    public Grid() {
+    public Grid(boolean multiAgent) {
         super();
         holes = new ArrayList<>();
         stateToLocation = new ArrayList<>();
@@ -24,10 +25,15 @@ public class Grid extends POMDP {
         oGenerator = new Random();
         oGenerator.setSeed(42);
         sigmaPerState = new HashMap<>();
+        this.multiAgent = multiAgent;
     }
 
     public List<Beacon> getBeacons() {
         return beacons;
+    }
+
+    public Pair<Integer, Integer> stateToLocation(int iState) {
+        return stateToLocation.get(iState);
     }
 
     public void printGrid() {
@@ -44,7 +50,7 @@ public class Grid extends POMDP {
     }
 
     public String parseState(int iState) {
-        String state = stateToLocation.get(iState).toString();
+        String state = stateToLocation(iState).toString();
         if (isTerminalState(iState)) {
             state += "*";
         }
@@ -53,10 +59,6 @@ public class Grid extends POMDP {
 
     public void setRadius(float radius) {
         this.o_radius = radius;
-    }
-
-    public List<Pair<Integer, Integer>> getStateToLocation() {
-        return this.stateToLocation;
     }
 
     public void setRows(int rows) {
@@ -79,7 +81,7 @@ public class Grid extends POMDP {
     public int observe(int iAction, int iState) {
 
 
-        Pair<Integer, Integer> statePos = stateToLocation.get(iState);
+        Pair<Integer, Integer> statePos = stateToLocation(iState);
         int i = statePos.first(), j = statePos.second();
         float currSigma = this.sigmaPerState.get(iState);
         int dist;
@@ -115,8 +117,8 @@ public class Grid extends POMDP {
 
 
         Pair<Integer, Integer> statePos, obsPos;
-        statePos = stateToLocation.get(iState);
-        obsPos = stateToLocation.get(iObservation);
+        statePos = stateToLocation(iState);
+        obsPos = stateToLocation(iObservation);
 
         float currSigma = this.sigmaPerState.get(iState);
         int dist;
@@ -171,15 +173,26 @@ public class Grid extends POMDP {
     }
 
     @Override
-    public void load( String sFileName ) throws IOException, InvalidModelFileFormatException{
+    public void load( String sFileName) throws IOException, InvalidModelFileFormatException{
         m_sName = sFileName.substring( sFileName.lastIndexOf( "/" ) + 1, sFileName.lastIndexOf( "." ) );
-        GridLoader p = new GridLoader( this );
-        p.load( sFileName );
-        if( m_rtReward == RewardType.StateActionState )
-            initStoredRewards();
+        if (multiAgent) {
+            MultiAgentGridLoader p = new MultiAgentGridLoader(this);
+            p.load( sFileName );
+        }
+        else {
+            GridLoader p = new GridLoader( this );
+            p.load( sFileName );
+
+            if( m_rtReward == RewardType.StateActionState )
+                initStoredRewards();
+        }
 
         m_vfMDP = new MDPValueFunction( this, 0.0 );
         initBeliefStateFactory();
         System.out.println();
+    }
+
+    public List<Pair<Integer, Integer>> getStateToLocation() {
+        return stateToLocation;
     }
 }

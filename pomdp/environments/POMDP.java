@@ -148,7 +148,7 @@ public class POMDP implements Serializable{
 		return m_bGBasedBackup;
 	}
 	
-	protected void initStoredRewards(){
+	public void initStoredRewards(){
 		m_adStoredRewards = new double[m_cStates][m_cActions];
 		int iState = 0, iAction = 0;
 		for( iState = 0 ; iState < m_cStates ; iState++ ){
@@ -1228,7 +1228,7 @@ public class POMDP implements Serializable{
 				cSameStates = 0;
 			else
 				cSameStates++;
-			if( bsNext == null || ( bsNext.valueAt( iNextState ) == 0 ) || ( cSameStates > 10 ) ){
+			if ( bsNext == null || ( bsNext.valueAt( iNextState ) == 0 ) || ( cSameStates > 10 ) ){
 				bDone = true;
 			}
 

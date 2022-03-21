@@ -7,11 +7,9 @@ import java.util.Vector;
 import java.util.Map.Entry;
 
 import pomdp.algorithms.PolicyStrategy;
-import pomdp.environments.POMDP.RewardType;
 import pomdp.utilities.AlphaVector;
 import pomdp.utilities.BeliefState;
 import pomdp.utilities.InvalidModelFileFormatException;
-import pomdp.utilities.LimitedBeliefStateFactory;
 import pomdp.utilities.MDPValueFunction;
 
 public class POMDPAdapter extends POMDP {
@@ -35,7 +33,7 @@ public class POMDPAdapter extends POMDP {
 		return m_pPOMDP.useClassicBackup();
 	}
 	
-	protected void initStoredRewards(){
+	public void initStoredRewards(){
 		m_pPOMDP.initStoredRewards();
 	}
 	
