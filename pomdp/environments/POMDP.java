@@ -15,14 +15,7 @@ package pomdp.environments;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.Vector;
+import java.util.*;
 import java.util.Map.Entry;
 import pomdp.algorithms.PolicyStrategy;
 import pomdp.utilities.AlphaVector;
@@ -80,6 +73,7 @@ public class POMDP implements Serializable{
 	protected BeliefStateFactory m_bsFactory;
 	protected MDPValueFunction m_vfMDP;
 	protected double m_dMinReward;
+	protected Map<Integer, Boolean> forbiddenStates;
 	
 	public enum RewardType{
 		StateActionState, StateAction, State;
@@ -117,6 +111,7 @@ public class POMDP implements Serializable{
 		m_bsFactory = null;
 		m_vfMDP = null;
 		m_dMinReward = 0.0;//Double.POSITIVE_INFINITY;
+		forbiddenStates = new HashMap<>();
 	}
 
 	// TODO: Create a deep copy constructor (instead of parsing the same file)
@@ -142,6 +137,10 @@ public class POMDP implements Serializable{
 			m_vfMDP = new MDPValueFunction( this, 0.0 );
 		}
 		return m_vfMDP;
+	}
+
+	public void setForbiddenStates(Map<Integer, Boolean> forbiddenStates) {
+		this.forbiddenStates = forbiddenStates;
 	}
 	
 	public boolean useClassicBackup(){
@@ -1127,6 +1126,11 @@ public class POMDP implements Serializable{
 	public String parseState(int iState) {
 		return "" + iState;
 	}
+
+	public int getRandomAction(BeliefState bsCurrent) {
+		List<Integer> iActions = getRelevantActions(bsCurrent);
+		return iActions.get(m_rndGenerator.nextInt(iActions.size()));
+	}
 	
 	public double computeDiscountedRewardII(int cMaxStepsToGoal, PolicyStrategy policy, Vector<BeliefState> vObservedBeliefPoints, boolean bExplore, int[] aiActionCount, Map<Integer, Boolean> toReachStates){
 		double dDiscountedReward = 0.0, dCurrentReward = 0.0, dDiscountFactor = 1.0;
@@ -1134,6 +1138,12 @@ public class POMDP implements Serializable{
 		int iState = chooseStartState(), iNextState = 0;
 		System.out.print(parseState(iState) + ", ");
 		BeliefState bsCurrentBelief = getBeliefStateFactory().getInitialBeliefState(), bsNext = null;
+
+		if (toReachStates != null) {
+			for (int iForbiddenState : forbiddenStates.keySet()) {
+				toReachStates.put(iForbiddenState, true);
+			}
+		}
 		
 		/*
 		BeliefStateFactory bsf = new ModifiedRockSampleBeliefStateFactory( (ModifiedRockSample)((RestrictedPOMDP)this).m_pFullPOMDP );
@@ -1161,7 +1171,7 @@ public class POMDP implements Serializable{
 				if( dRand > 0.1 )
 					iAction = policy.getAction( bsCurrentBelief );
 				else
-					iAction = m_rndGenerator.nextInt( m_cActions );
+					iAction = getRandomAction(bsCurrentBelief);
 			}
 			else{
 				iAction = policy.getAction( bsCurrentBelief );
@@ -1184,21 +1194,37 @@ public class POMDP implements Serializable{
 			if( iAction == -1 )
 				return Double.NEGATIVE_INFINITY;
 			
+			iNextState = execute( iAction, iState );
+			iObservation = observe( iAction, iNextState );
+
+//			// TODO: what to do if iAction leads to forbidden state?
+//
+//			while (forbiddenStates.getOrDefault(iNextState, false)) {
+//				if (toReachStates != null && toReachStates.containsKey(iNextState)) {
+//					toReachStates.replace(iNextState, true);
+//				}
+//				iAction = m_rndGenerator.nextInt( m_cActions );
+//				iNextState = execute( iAction, iState );
+//				iObservation = observe( iAction, iNextState );
+//			}
+
 			System.out.print(getActionName(iAction) + "->");
-			
+
 			if( aiActionCount != null )
 				aiActionCount[iAction]++;
-			
+
 			if( vObservedBeliefPoints != null ){
 				bsCurrentBelief.setFactoryPersistence( true );
 				vObservedBeliefPoints.add( bsCurrentBelief );
 			}
-			
-			iNextState = execute( iAction, iState );
-			iObservation = observe( iAction, iNextState );
 
+			if (toReachStates != null && toReachStates.containsKey(iNextState)) {
+				toReachStates.replace(iNextState, true);
+			}
+
+//			System.out.print(parseState(iNextState) + " " + Arrays.toString(getDists(iObservation)) + ", ");
 			System.out.print(parseState(iNextState) + ", ");
-			
+
 			if( m_rtReward == RewardType.StateAction )
 				dCurrentReward = R( iState, iAction ); //R(s,a)
 			else if( m_rtReward == RewardType.StateActionState )
@@ -1210,10 +1236,6 @@ public class POMDP implements Serializable{
 			
 			if( dCurrentReward != 0 )
 				cRewards++;
-
-			if (toReachStates != null && toReachStates.containsKey(iNextState)) {
-				toReachStates.replace(iNextState, true);
-			}
 
 			bDone = endADR( iNextState, dCurrentReward );
 			if( bDone )
@@ -1244,6 +1266,19 @@ public class POMDP implements Serializable{
 
 		return dDiscountedReward;// + m_dMinReward * ( 1 / ( 1 - dDiscountFactor ) );
 	}
+
+//	// TODO: delete this after testing
+//	private int[] getDists(int iObservation) {
+//		int[] dists = new int[3];
+//		int dist = 0;
+//		for (int i = 0; i < 3; i++) {
+//			dist = iObservation % 6;
+//			dists[i] = dist;
+//			iObservation /= 6;
+//		}
+//
+//		return dists;
+//	}
 
 	public double[] computeDiscountedRewardWithImportanceSampling( int cMaxStepsToGoal, PolicyStrategy policy ){
 		double dDiscountedReward = 0.0, dCurrentReward = 0.0, dDiscountFactor = 1.0;
@@ -2038,8 +2073,34 @@ public class POMDP implements Serializable{
 		return dR;
 	}
 
-	public Collection<Integer> getRelevantActions( BeliefState bs ) {
-		return new IntegerCollection( 0, getActionCount() );
+	public Map<Integer, Boolean> getForbiddenStates() {
+		return forbiddenStates;
+	}
+
+	public List<Integer> getRelevantActions( BeliefState bs ) {
+		List<Integer> iActions = new ArrayList<>();
+		Map.Entry<Integer,Double> e;
+		int iState;
+		boolean isForbidden;
+		for (int iAction = 0; iAction < m_cActions; iAction++) {
+			isForbidden = false;
+			Iterator<Map.Entry<Integer,Double>> iStatesd = bs.getNonZeroEntries().iterator();
+			while (iStatesd.hasNext() && !isForbidden){
+				iState = iStatesd.next().getKey();
+				Iterator<Map.Entry<Integer,Double>> transIt = getNonZeroTransitions(iState, iAction);
+				while (transIt.hasNext() && !isForbidden) {
+					e = transIt.next();
+					if (forbiddenStates.getOrDefault(e.getKey(), false)) {
+						isForbidden = true;
+					}
+				}
+			}
+			if (!isForbidden) {
+				iActions.add(iAction);
+			}
+		}
+		// TODO: Ask about 0 relevant actions situation
+		return iActions;
 	}
 
 	public void addTerminalState( int iTerminalState ) {

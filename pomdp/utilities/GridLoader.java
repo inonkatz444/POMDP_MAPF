@@ -9,6 +9,7 @@ import java.util.*;
 public class GridLoader{
     protected Grid m_pPOMDP;
     private List<Pair<Integer, Integer>> holes;
+    protected static int beaconID = 0;
 
     public GridLoader(Grid pomdp) {
         m_pPOMDP = pomdp;
@@ -260,7 +261,7 @@ public class GridLoader{
             beacon_col = Integer.parseInt(stLine.nextToken());
             stLine.nextToken();     // :
             beacon_range = Integer.parseInt(stLine.nextToken());
-            m_pPOMDP.addBeacon(beacon_row, beacon_col, beacon_range);
+            m_pPOMDP.addBeacon(beaconID++, beacon_row, beacon_col, beacon_range);
             sLine = lrInput.readLine();
         }
     }

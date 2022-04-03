@@ -44,7 +44,7 @@ public abstract class BeliefState extends PriorityQueueElement implements Serial
 	protected Map m_mProbCurrentGivenPred;
 	private Vector m_vNeighbors;
 	protected Map<Integer,Pair<BeliefState, Double>>[] m_amSuccessors;
-	private Vector<BeliefState> m_vAllSuccessors;
+	protected Vector<BeliefState> m_vAllSuccessors;
 	private SortedSet[] m_sSortedSuccessors;
 	private int m_cVisits;
 	protected int m_cActions;

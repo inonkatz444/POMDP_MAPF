@@ -17,13 +17,12 @@ import pomdp.utilities.BeliefStateFactory;
 import pomdp.utilities.ExecutionProperties;
 import pomdp.utilities.Logger;
 import pomdp.utilities.MDPValueFunction;
-import pomdp.utilities.RandomGenerator;
 
 public class CreateBeliefSpaces {
 	
-	public static Vector<BeliefState> createRandomSpace( POMDP pomdp, int iSeed, int cBeliefPoints ){
+	public static Vector<BeliefState> createRandomSpace(POMDP pomdp, int iSeed, int cBeliefPoints){
 		int cTrials = 0;
-		PolicyStrategy pvRandom = new RandomWalkPolicy( pomdp.getActionCount() );
+		PolicyStrategy pvRandom = new RandomWalkPolicy( pomdp );
 		Vector<BeliefState> vPoints = new Vector<BeliefState>();
 		pomdp.initRandomGenerator( iSeed * 11113 );
 		double dMaxADR = 0.0;
@@ -35,10 +34,10 @@ public class CreateBeliefSpaces {
 			cTrials = 0;
 			vPoints.clear();
 			pomdp.getBeliefStateFactory().clear();
-			toReachStates.put(34, false);
-			toReachStates.put(35, false);
-			toReachStates.put(65, false);
-			toReachStates.put(70, false);
+			toReachStates.put(51, false);
+			toReachStates.put(52, false);
+			toReachStates.put(82, false);
+			toReachStates.put(87, false);
 			while( vPoints.size() < cBeliefPoints ){
 				double dADR = pomdp.computeDiscountedReward( cBeliefPoints - vPoints.size(), pvRandom, vPoints, true, null, toReachStates);
 				if( dADR > dMaxADR )
@@ -153,7 +152,7 @@ public class CreateBeliefSpaces {
 		int cTrials = 0;
 		int cReportPoints = 1000;
 		Runtime rtRuntime = Runtime.getRuntime();
-		PolicyStrategy pvRandom = new RandomWalkPolicy( pomdp.getActionCount() );
+		PolicyStrategy pvRandom = new RandomWalkPolicy( pomdp );
 		MDPValueFunction pvQMDP = pomdp.getMDPValueFunction();
 		int[] aiActionCount = new int[pomdp.getActionCount()];
 		/*
@@ -215,7 +214,7 @@ public class CreateBeliefSpaces {
 		int cTrials = 0;
 		int cReportPoints = 1000;
 		Runtime rtRuntime = Runtime.getRuntime();
-		PolicyStrategy pvRandom = new RandomWalkPolicy( pomdp.getActionCount() );
+		PolicyStrategy pvRandom = new RandomWalkPolicy( pomdp );
 		MDPValueFunction pvQMDP = pomdp.getMDPValueFunction();
 		int[] aiActionCount = new int[pomdp.getActionCount()];
 		int cBeliefPoints = iInitialSize;

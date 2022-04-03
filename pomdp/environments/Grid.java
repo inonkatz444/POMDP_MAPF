@@ -17,6 +17,8 @@ public class Grid extends POMDP {
     private Map<Integer, Float> sigmaPerState;
     protected boolean multiAgent;
 
+    protected final int HOLE = -1;
+
     public Grid(boolean multiAgent) {
         super();
         holes = new ArrayList<>();
@@ -39,7 +41,7 @@ public class Grid extends POMDP {
     public void printGrid() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                if (grid[i][j] == -1)
+                if (grid[i][j] == HOLE)
                     System.out.print("   ");
                 else
                     System.out.print(grid[i][j] + " ");
@@ -61,8 +63,16 @@ public class Grid extends POMDP {
         this.o_radius = radius;
     }
 
+    public int getRows() {
+        return rows;
+    }
+
     public void setRows(int rows) {
         this.rows = rows;
+    }
+
+    public int getCols() {
+        return cols;
     }
 
     public void setCols(int cols) {
@@ -73,8 +83,8 @@ public class Grid extends POMDP {
         holes.add(new Pair<>(hole_row, hole_col));
     }
 
-    public void addBeacon(int beacon_row, int beacon_col, int range) {
-        beacons.add(new Beacon(beacon_row, beacon_col, range));
+    public void addBeacon(int id, int beacon_row, int beacon_col, int range) {
+        beacons.add(new Beacon(id, beacon_row, beacon_col, range));
     }
 
     @Override
@@ -101,7 +111,7 @@ public class Grid extends POMDP {
             int delta_i = (int)Math.round(oGenerator.nextGaussian()*Math.sqrt(currSigma));
             int delta_j = (int)Math.round(oGenerator.nextGaussian()*Math.sqrt(currSigma));
 
-            if (i+delta_i >= 0 && i+delta_i < rows && j+delta_j >= 0 && j+delta_j < cols && grid[i+delta_i][j+delta_j] != -1) {
+            if (validLocation(i+delta_i, j+delta_j)) {
                 return grid[i+delta_i][j+delta_j];
             }
         }
@@ -157,7 +167,7 @@ public class Grid extends POMDP {
                     grid[i][j] = istate++;
                 }
                 else {
-                    grid[i][j] = -1;
+                    grid[i][j] = HOLE;
                 }
             }
         }
@@ -169,7 +179,17 @@ public class Grid extends POMDP {
             sigmaPerState.put(i, -1.0f);
         }
 
+        System.out.println("beacons: " + Arrays.toString(beacons.toArray()));
+
         System.out.println("Grid Load Complete!");
+    }
+
+    public boolean validLocation(int first, int second) {
+        return first >= 0 && first < rows && second >= 0 && second < cols && grid[first][second] != HOLE;
+    }
+
+    public int locationToState(int first, int second) {
+        return validLocation(first, second) ? grid[first][second] : -1;
     }
 
     @Override

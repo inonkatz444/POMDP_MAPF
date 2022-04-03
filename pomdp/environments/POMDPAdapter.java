@@ -3,6 +3,7 @@ package pomdp.environments;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 import java.util.Map.Entry;
 
@@ -243,7 +244,7 @@ public class POMDPAdapter extends POMDP {
 		return m_pPOMDP.R( bsCurrent, iAction, bsNext );
 	}
 
-	public Collection<Integer> getRelevantActions( BeliefState bs ) {
+	public List<Integer> getRelevantActions(BeliefState bs ) {
 		return m_pPOMDP.getRelevantActions( bs );
 	}
 

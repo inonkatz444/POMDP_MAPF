@@ -3,7 +3,7 @@ package pomdp.environments;
 import pomdp.utilities.*;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 public class BeaconDistanceGrid extends Grid{
 
@@ -25,6 +25,14 @@ public class BeaconDistanceGrid extends Grid{
         entry_options = maxDist + 2;
     }
 
+    public int getINF() {
+        return INF;
+    }
+
+    public int getMaxNoise() {
+        return maxNoise;
+    }
+
     @Override
     public int observe(int iAction, int iState) {
         Pair<Integer, Integer> iLoc = stateToLocation.get(iState);
@@ -33,14 +41,28 @@ public class BeaconDistanceGrid extends Grid{
           return dist > b.getRange() ? INF : Math.max(dist - noiseGenerator.nextInt(maxNoise+1), 0);
         }).toList();
 //        System.out.println("observed dists: " + dists);
+        return distsToObs(dists);
+    }
+
+    public int distsToObs(List<Integer> dists) {
         int iObservation = 0, power = 1;
         for (int dist : dists) {
             iObservation += dist * power;
             power *= entry_options;
         }
-//        System.out.println("observe iObservation: " + iObservation);
-//        System.out.println();
+        //        System.out.println("observe iObservation: " + iObservation);
+        //        System.out.println();
         return iObservation;
+    }
+
+    public List<Integer> obsToDists(int iObservation) {
+        List<Integer> dists = new ArrayList<>();
+        for (Beacon b : beacons) {
+            dists.add(iObservation % entry_options);
+            iObservation /= entry_options;
+        }
+
+        return dists;
     }
 
     @Override
@@ -64,6 +86,7 @@ public class BeaconDistanceGrid extends Grid{
             }
             else if (actual_dist > b.getRange() || actual_dist - observed_dist > maxNoise || actual_dist - observed_dist < 0) {
                 prob = 0;
+                return prob;
             }
             else if (observed_dist != 0) {
                 prob *= 1.0 / (maxNoise + 1);

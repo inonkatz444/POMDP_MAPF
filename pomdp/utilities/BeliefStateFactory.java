@@ -738,7 +738,7 @@ public class BeliefStateFactory{
 		if( !m_bCacheBelifStates )
 			id = -1;
 		
-		BeliefState bs = new TabularBeliefState( m_pPOMDP.getStateCount(), m_pPOMDP.getActionCount(), 
+		BeliefState bs = new TabularGridBeliefState( m_pPOMDP.getStateCount(), m_pPOMDP.getActionCount(),
 				m_pPOMDP.getObservationCount(), id, 
 				m_bSparseBeliefStates, m_bCacheBelifStates, this );
 		

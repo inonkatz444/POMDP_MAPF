@@ -7,7 +7,6 @@ import java.util.Vector;
 import pomdp.CreateBeliefSpaces;
 import pomdp.environments.POMDP;
 import pomdp.utilities.BeliefState;
-import pomdp.utilities.BeliefStateFactory;
 
 public class FixedSetGrid extends VariableResolutionGrid{
 	protected Vector m_vBeliefPoints;

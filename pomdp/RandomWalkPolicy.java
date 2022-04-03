@@ -1,9 +1,12 @@
 package pomdp;
 
 import pomdp.algorithms.PolicyStrategy;
+import pomdp.environments.POMDP;
 import pomdp.utilities.BeliefState;
 import pomdp.utilities.RandomGenerator;
 import pomdp.valuefunction.LinearValueFunctionApproximation;
+
+import java.util.List;
 
 /**
  * @author shanigu
@@ -13,11 +16,11 @@ import pomdp.valuefunction.LinearValueFunctionApproximation;
  */
 
 public class RandomWalkPolicy extends PolicyStrategy {
-	private int m_cActions;
+	private POMDP pomdp;
 	protected RandomGenerator m_rndGenerator;
 	
-	public RandomWalkPolicy( int cActions ){
-		m_cActions = cActions;
+	public RandomWalkPolicy( POMDP pomdp ){
+		this.pomdp = pomdp;
 		m_rndGenerator = RandomGenerator.getInstance();
 	}
 	 
@@ -25,7 +28,8 @@ public class RandomWalkPolicy extends PolicyStrategy {
 	 * @see PolicyStrategy#getAction(BeliefState)
 	 */
 	public int getAction( BeliefState bsCurrent ){
-		return m_rndGenerator.nextInt( m_cActions );
+		List<Integer> iActions = pomdp.getRelevantActions(bsCurrent);
+		return iActions.get(m_rndGenerator.nextInt(iActions.size()));
 	}
 
 	public double getValue(BeliefState bsCurrent) {

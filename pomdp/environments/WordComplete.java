@@ -1,11 +1,7 @@
 package pomdp.environments;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.Vector;
+import java.util.*;
 import java.util.Map.Entry;
 
 import pomdp.algorithms.PolicyStrategy;
@@ -392,7 +388,7 @@ public class WordComplete extends POMDP {
 		return dDiscountedReward;
 	}
 	
-	public Collection<Integer> getRelevantActions( BeliefState bs ) {
+	public List<Integer> getRelevantActions(BeliefState bs ) {
 		Iterator<Entry<Integer, Double>> itNonZero = bs.getNonZeroEntries().iterator();
 		Entry<Integer, Double> e = null;
 		int iState = 0, iStateInfo = 0, iItem = 0;

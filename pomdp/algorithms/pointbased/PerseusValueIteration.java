@@ -1,6 +1,8 @@
 package pomdp.algorithms.pointbased;
 
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import pomdp.CreateBeliefSpaces;
@@ -22,7 +24,7 @@ public class PerseusValueIteration extends ValueIteration{
 	protected Vector<BeliefState> m_vBeliefPoints;
 
 	
-	public PerseusValueIteration( POMDP pomdp ){
+	public PerseusValueIteration( POMDP pomdp){
 		super( pomdp );
 		m_vIterationBeliefPoints = null;
 		m_vBeliefPoints = null;

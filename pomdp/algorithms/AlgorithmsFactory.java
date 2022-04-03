@@ -16,8 +16,11 @@ import pomdp.algorithms.pointbased.PrioritizedValueIteration;
 import pomdp.environments.POMDP;
 import pomdp.utilities.MDPValueFunction;
 
+import java.util.List;
+import java.util.Map;
+
 public class AlgorithmsFactory {
-	public static ValueIteration getAlgorithm( String sName, POMDP pomdp ){
+	public static ValueIteration getAlgorithm(String sName, POMDP pomdp){
 		if( sName.equals( "FSVI" ) )
 			return new ForwardSearchValueIteration( pomdp );
 		if( sName.equals( "PBVI" ) )
