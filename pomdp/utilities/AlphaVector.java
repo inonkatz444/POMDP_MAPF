@@ -392,7 +392,7 @@ public abstract class AlphaVector implements Serializable{
 	 * Computes the a new alpha vector by the G(a,o) operation of the point-based backup (following the Perseus convention).
 	 * g(s) = \sum_s' O(a,s',o) tr( s,a,s') \alpha(s')
 	 * Caching results to avoid recomputation. Caching may cause memory problems in larger POMDPs. 
-	 * @param n - a valid action index.
+	 * @param iAction - a valid action index.
 	 * @param iObservation - a valid observation index.
 	 */
 	public AlphaVector G( int iAction, int iObservation ){

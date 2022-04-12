@@ -64,7 +64,7 @@ public class BeliefStateFactory{
 	private void init(){
 		m_hmCachedBeliefStates = new TreeMap<BeliefState,BeliefState>(  getBeliefStateComparator( m_dEpsilon )  );
 		m_cBeliefPoints = 0;
-		m_bCacheBelifStates = true;
+		m_bCacheBelifStates = false;
 		BeliefState.g_cBeliefStateUpdates = 0;
 		m_bsInitialState = null;
 		m_bCountBeliefUpdates = true;
@@ -138,15 +138,15 @@ public class BeliefStateFactory{
 		//for( iStartState = 0 ; iStartState < m_cStates ; iStartState++ ){
 		while( itNonZeroBeliefs.hasNext() ){
 			eBelief = itNonZeroBeliefs.next();
-			iStartState = ((Integer)eBelief.getKey()).intValue();
-			dBelief = ((Double)eBelief.getValue()).doubleValue();		
+			iStartState = (Integer) eBelief.getKey();
+			dBelief = (Double) eBelief.getValue();
 			//dBelief = bs.valueAt( iStartState );
 			dSum = 0.0;			
 			itNonZeroTransitions = m_pPOMDP.getNonZeroTransitions( iStartState, iAction );
 			while( itNonZeroTransitions.hasNext() ){
 				eTransition = itNonZeroTransitions.next();
-				iEndState = ((Integer)eTransition.getKey()).intValue();
-				dTr = ((Double)eTransition.getValue()).doubleValue();
+				iEndState = (Integer) eTransition.getKey();
+				dTr = (Double) eTransition.getValue();
 				dO = m_pPOMDP.O( iAction, iEndState, iObservation );
 				dSum += dO * dTr;
 			}			

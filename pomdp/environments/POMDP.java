@@ -2073,33 +2073,32 @@ public class POMDP implements Serializable{
 		return dR;
 	}
 
-	public Map<Integer, Boolean> getForbiddenStates() {
-		return forbiddenStates;
+	public boolean isForbidden(int iState) {
+		return forbiddenStates.getOrDefault(iState, false);
 	}
 
 	public List<Integer> getRelevantActions( BeliefState bs ) {
 		List<Integer> iActions = new ArrayList<>();
 		Map.Entry<Integer,Double> e;
 		int iState;
-		boolean isForbidden;
+		boolean bIsForbidden;
 		for (int iAction = 0; iAction < m_cActions; iAction++) {
-			isForbidden = false;
 			Iterator<Map.Entry<Integer,Double>> iStatesd = bs.getNonZeroEntries().iterator();
-			while (iStatesd.hasNext() && !isForbidden){
+			bIsForbidden = false;
+			while (iStatesd.hasNext() && !bIsForbidden){
 				iState = iStatesd.next().getKey();
 				Iterator<Map.Entry<Integer,Double>> transIt = getNonZeroTransitions(iState, iAction);
-				while (transIt.hasNext() && !isForbidden) {
+				while (transIt.hasNext() && !bIsForbidden) {
 					e = transIt.next();
-					if (forbiddenStates.getOrDefault(e.getKey(), false)) {
-						isForbidden = true;
+					if (isForbidden(e.getKey())) {
+						bIsForbidden = true;
 					}
 				}
 			}
-			if (!isForbidden) {
+			if (!bIsForbidden) {
 				iActions.add(iAction);
 			}
 		}
-		// TODO: Ask about 0 relevant actions situation
 		return iActions;
 	}
 

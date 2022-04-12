@@ -34,10 +34,14 @@ public class CreateBeliefSpaces {
 			cTrials = 0;
 			vPoints.clear();
 			pomdp.getBeliefStateFactory().clear();
-			toReachStates.put(51, false);
-			toReachStates.put(52, false);
-			toReachStates.put(82, false);
-			toReachStates.put(87, false);
+			if (!(pomdp.isForbidden(56) || pomdp.isForbidden(69))) {
+				toReachStates.put(51, false);
+				toReachStates.put(82, false);
+			}
+			if (!(pomdp.isForbidden(61) || pomdp.isForbidden(74))) {
+				toReachStates.put(52, false);
+				toReachStates.put(87, false);
+			}
 			while( vPoints.size() < cBeliefPoints ){
 				double dADR = pomdp.computeDiscountedReward( cBeliefPoints - vPoints.size(), pvRandom, vPoints, true, null, toReachStates);
 				if( dADR > dMaxADR )

@@ -35,7 +35,7 @@ public class BeaconDistanceGrid extends Grid{
 
     @Override
     public int observe(int iAction, int iState) {
-        Pair<Integer, Integer> iLoc = stateToLocation.get(iState);
+        Point iLoc = stateToLocation.get(iState);
         List<Integer> dists = beacons.stream().map(b -> {
           int dist = b.distTo(iLoc.first(), iLoc.second());
           return dist > b.getRange() ? INF : Math.max(dist - noiseGenerator.nextInt(maxNoise+1), 0);
@@ -67,7 +67,7 @@ public class BeaconDistanceGrid extends Grid{
 
     @Override
     public double O(int iAction, int iState, int iObservation) {
-        Pair<Integer, Integer> iLoc = stateToLocation.get(iState);
+        Point iLoc = stateToLocation.get(iState);
 //        System.out.println("O iObservation: " + iObservation);
 
         double prob = 1.0;

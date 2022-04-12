@@ -198,6 +198,12 @@ public class PerseusValueIteration extends ValueIteration{
 			bsCurrent = chooseNext();
 			cChecked++;
 			if( bsCurrent != null ){
+				for (Map.Entry<Integer, Double> integerDoubleEntry : bsCurrent.getNonZeroEntries()) {
+					int iState = integerDoubleEntry.getKey();
+					if (m_pPOMDP.isForbidden(iState)) {
+						System.out.println("State " + m_pPOMDP.parseState(iState) + " is forbidden!!!");
+					}
+				}
 				dValue = bsCurrent.getComputedValue();
 				iStart = System.currentTimeMillis();
 				avNext = backup( bsCurrent );

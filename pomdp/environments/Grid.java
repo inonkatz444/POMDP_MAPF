@@ -8,8 +8,8 @@ import java.util.*;
 public class Grid extends POMDP {
     protected int rows;
     protected int cols;
-    protected List<Pair<Integer, Integer>> holes;
-    protected List<Pair<Integer, Integer>> stateToLocation;   // mapping between state to place in grid
+    protected List<Point> holes;
+    protected List<Point> stateToLocation;   // mapping between state to place in grid
     protected int[][] grid;                                   // mapping between place in grid to state
     protected List<Beacon> beacons;
     private float o_radius;                                 // base reception radius (beacons will make it smaller)
@@ -34,7 +34,7 @@ public class Grid extends POMDP {
         return beacons;
     }
 
-    public Pair<Integer, Integer> stateToLocation(int iState) {
+    public Point stateToLocation(int iState) {
         return stateToLocation.get(iState);
     }
 
@@ -80,7 +80,7 @@ public class Grid extends POMDP {
     }
 
     public void addHole(int hole_row, int hole_col) {
-        holes.add(new Pair<>(hole_row, hole_col));
+        holes.add(new Point(hole_row, hole_col));
     }
 
     public void addBeacon(int id, int beacon_row, int beacon_col, int range) {
@@ -89,9 +89,7 @@ public class Grid extends POMDP {
 
     @Override
     public int observe(int iAction, int iState) {
-
-
-        Pair<Integer, Integer> statePos = stateToLocation(iState);
+        Point statePos = stateToLocation(iState);
         int i = statePos.first(), j = statePos.second();
         float currSigma = this.sigmaPerState.get(iState);
         int dist;
@@ -126,7 +124,7 @@ public class Grid extends POMDP {
     public double O(int iAction, int iState, int iObservation) {
 
 
-        Pair<Integer, Integer> statePos, obsPos;
+        Point statePos, obsPos;
         statePos = stateToLocation(iState);
         obsPos = stateToLocation(iObservation);
 
@@ -157,11 +155,11 @@ public class Grid extends POMDP {
     public void initGrid() throws InvalidModelFileFormatException {
 
         grid = new int[rows][cols];
-        Pair<Integer, Integer> loc;
+        Point loc;
         int istate = 0;
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.cols; j++) {
-                loc = new Pair<>(i, j);
+                loc = new Point(i, j);
                 if (!holes.contains(loc)) {
                     stateToLocation.add(loc);
                     grid[i][j] = istate++;
@@ -212,7 +210,7 @@ public class Grid extends POMDP {
         System.out.println();
     }
 
-    public List<Pair<Integer, Integer>> getStateToLocation() {
+    public List<Point> getStateToLocation() {
         return stateToLocation;
     }
 }

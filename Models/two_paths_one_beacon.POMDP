@@ -35,10 +35,11 @@
 # probability for each direction. Movement into a wall returns the agent
 # to its original state.
 #
-########  TODO: Add another agent	check for proximity by belief distance		if the proximity is below k, check k-steps ahead for collision probability  ########
 ########  TODO: Create a file to describe each agent's data in his POMDP  ########
-########  TODO: Add for each belief the minimal distance between each beacon and every possible state  ########
-#
+########  TODO: Change the observation noise distribution
+########  TODO: Expand the actions according to the agent's policy
+########  TODO: Create a "room problem" and an "open world with obstacles" problem.
+########  TODO: Change the observation generation in the belief expansion
 ########  TODO: Suggestion: forbid states in CBS manner - n branches where only one agent is not forbidden  ########
 #
 # actions must be n, s, e, w

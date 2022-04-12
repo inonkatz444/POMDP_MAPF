@@ -20,6 +20,7 @@ public class TabularGridBeliefState extends TabularBeliefState{
 
     public void getMinMaxDistToBeacons() {
         minDistToBeacons.clear();
+        maxDistToBeacons.clear();
         BeaconDistanceGrid grid = (BeaconDistanceGrid) m_bsFactory.getPOMDP();
         int minDist, maxDist;
         for (Beacon b : grid.getBeacons()) {
@@ -45,15 +46,24 @@ public class TabularGridBeliefState extends TabularBeliefState{
 
         m_vAllSuccessors = new Vector();
         for( iObservation = 0 ; iObservation < m_cObservations ; iObservation++ ){
-            if (isNonZero(iObservation)) {
-                for( int iAction : m_bsFactory.getPOMDP().getRelevantActions(this)){
-                    dProb = probabilityOGivenA( iAction, iObservation );
-                    if( dProb > 0 ){
-                        bsSuccessor = nextBeliefState( iAction, iObservation );
-                        addSuccessor( iAction, iObservation, bsSuccessor );
-                        if( !m_vAllSuccessors.contains( bsSuccessor ) )
-                            m_vAllSuccessors.add( bsSuccessor );
-                    }
+//            if (isNonZero(iObservation)) {
+//                for( int iAction : m_bsFactory.getPOMDP().getRelevantActions(this)){
+//                    dProb = probabilityOGivenA( iAction, iObservation );
+//                    if( dProb > 0 ){
+//                        bsSuccessor = nextBeliefState( iAction, iObservation );
+//                        addSuccessor( iAction, iObservation, bsSuccessor );
+//                        if( !m_vAllSuccessors.contains( bsSuccessor ) )
+//                            m_vAllSuccessors.add( bsSuccessor );
+//                    }
+//                }
+//            }
+            for( int iAction : m_bsFactory.getPOMDP().getRelevantActions(this)){
+                dProb = probabilityOGivenA( iAction, iObservation );
+                if( dProb > 0 ){
+                    bsSuccessor = nextBeliefState( iAction, iObservation );
+                    addSuccessor( iAction, iObservation, bsSuccessor );
+                    if( !m_vAllSuccessors.contains( bsSuccessor ) )
+                        m_vAllSuccessors.add( bsSuccessor );
                 }
             }
         }
