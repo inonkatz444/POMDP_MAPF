@@ -74,7 +74,9 @@ public class POMDP implements Serializable{
 	protected MDPValueFunction m_vfMDP;
 	protected double m_dMinReward;
 	protected Map<Integer, Boolean> forbiddenStates;
-	
+	protected Map<Character, Integer> startStates;
+	protected Map<Character, Integer> endStates;
+
 	public enum RewardType{
 		StateActionState, StateAction, State;
 	}
@@ -112,9 +114,9 @@ public class POMDP implements Serializable{
 		m_vfMDP = null;
 		m_dMinReward = 0.0;//Double.POSITIVE_INFINITY;
 		forbiddenStates = new HashMap<>();
+		startStates = new HashMap<>();
+		endStates = new HashMap<>();
 	}
-
-	// TODO: Create a deep copy constructor (instead of parsing the same file)
 	
 	public void load( String sFileName ) throws IOException, InvalidModelFileFormatException{
 		m_sName = sFileName.substring( sFileName.lastIndexOf( "/" ) + 1, sFileName.lastIndexOf( "." ) );
@@ -141,6 +143,22 @@ public class POMDP implements Serializable{
 
 	public void setForbiddenStates(Map<Integer, Boolean> forbiddenStates) {
 		this.forbiddenStates = forbiddenStates;
+	}
+
+	public void addStartState(char id, int startState) {
+		startStates.put(id, startState);
+	}
+
+	public int getStartState(char agentID) {
+		return startStates.get(agentID);
+	}
+
+	public void addEndState(char id, int endState) {
+		endStates.put(id, endState);
+	}
+
+	public int getEndState(char agentID) {
+		return endStates.get(agentID);
 	}
 	
 	public boolean useClassicBackup(){
@@ -1222,8 +1240,12 @@ public class POMDP implements Serializable{
 				toReachStates.replace(iNextState, true);
 			}
 
-//			System.out.print(parseState(iNextState) + " " + Arrays.toString(getDists(iObservation)) + ", ");
-			System.out.print(parseState(iNextState) + ", ");
+//			System.out.print(parseState(iNextState) + " " + Arrays.toString(getDists(iObservation)));
+			System.out.print(parseState(iNextState));
+			if (isForbidden(iNextState)) {
+				System.out.print(" FORBIDDEN! ");
+			}
+			System.out.print(", ");
 
 			if( m_rtReward == RewardType.StateAction )
 				dCurrentReward = R( iState, iAction ); //R(s,a)
@@ -2077,25 +2099,25 @@ public class POMDP implements Serializable{
 		return forbiddenStates.getOrDefault(iState, false);
 	}
 
-	public List<Integer> getRelevantActions( BeliefState bs ) {
-		List<Integer> iActions = new ArrayList<>();
-		Map.Entry<Integer,Double> e;
-		int iState;
-		boolean bIsForbidden;
-		for (int iAction = 0; iAction < m_cActions; iAction++) {
-			Iterator<Map.Entry<Integer,Double>> iStatesd = bs.getNonZeroEntries().iterator();
-			bIsForbidden = false;
-			while (iStatesd.hasNext() && !bIsForbidden){
-				iState = iStatesd.next().getKey();
-				Iterator<Map.Entry<Integer,Double>> transIt = getNonZeroTransitions(iState, iAction);
-				while (transIt.hasNext() && !bIsForbidden) {
-					e = transIt.next();
-					if (isForbidden(e.getKey())) {
-						bIsForbidden = true;
-					}
+	public boolean isForbiddenAction(BeliefState bs, int iAction) {
+		int iStartState, iEndState;
+		for (Map.Entry<Integer,Double> eBelief : bs.getNonZeroEntries()) {
+			iStartState = eBelief.getKey();
+			Iterator<Map.Entry<Integer,Double>> transIt = getNonZeroTransitions(iStartState, iAction);
+			while (transIt.hasNext()) {
+				iEndState = transIt.next().getKey();
+				if (isForbidden(iEndState)) {
+					return true;
 				}
 			}
-			if (!bIsForbidden) {
+		}
+		return false;
+	}
+
+	public List<Integer> getRelevantActions( BeliefState bs ) {
+		List<Integer> iActions = new ArrayList<>();
+		for (int iAction = 0; iAction < m_cActions; iAction++) {
+			if (!isForbiddenAction(bs, iAction)) {
 				iActions.add(iAction);
 			}
 		}

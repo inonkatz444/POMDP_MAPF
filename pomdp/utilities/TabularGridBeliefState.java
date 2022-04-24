@@ -37,38 +37,38 @@ public class TabularGridBeliefState extends TabularBeliefState{
         }
     }
 
-    @Override
-    public Vector<BeliefState> computeSuccessors() {
-        int iObservation = 0;
-        BeliefState bsSuccessor = null;
-        double dProb = 0.0;
-        getMinMaxDistToBeacons();
-
-        m_vAllSuccessors = new Vector();
-        for( iObservation = 0 ; iObservation < m_cObservations ; iObservation++ ){
-//            if (isNonZero(iObservation)) {
-//                for( int iAction : m_bsFactory.getPOMDP().getRelevantActions(this)){
-//                    dProb = probabilityOGivenA( iAction, iObservation );
-//                    if( dProb > 0 ){
-//                        bsSuccessor = nextBeliefState( iAction, iObservation );
-//                        addSuccessor( iAction, iObservation, bsSuccessor );
-//                        if( !m_vAllSuccessors.contains( bsSuccessor ) )
-//                            m_vAllSuccessors.add( bsSuccessor );
-//                    }
+//    @Override
+//    public Vector<BeliefState> computeSuccessors() {
+//        int iObservation = 0;
+//        BeliefState bsSuccessor = null;
+//        double dProb = 0.0;
+//        getMinMaxDistToBeacons();
+//
+//        m_vAllSuccessors = new Vector();
+//        for( iObservation = 0 ; iObservation < m_cObservations ; iObservation++ ){
+////            if (isNonZero(iObservation)) {
+////                for( int iAction : m_bsFactory.getPOMDP().getRelevantActions(this)){
+////                    dProb = probabilityOGivenA( iAction, iObservation );
+////                    if( dProb > 0 ){
+////                        bsSuccessor = nextBeliefState( iAction, iObservation );
+////                        addSuccessor( iAction, iObservation, bsSuccessor );
+////                        if( !m_vAllSuccessors.contains( bsSuccessor ) )
+////                            m_vAllSuccessors.add( bsSuccessor );
+////                    }
+////                }
+////            }
+//            for( int iAction : m_bsFactory.getPOMDP().getRelevantActions(this)){
+//                dProb = probabilityOGivenA( iAction, iObservation );
+//                if( dProb > 0 ){
+//                    bsSuccessor = nextBeliefState( iAction, iObservation );
+//                    addSuccessor( iAction, iObservation, bsSuccessor );
+//                    if( !m_vAllSuccessors.contains( bsSuccessor ) )
+//                        m_vAllSuccessors.add( bsSuccessor );
 //                }
 //            }
-            for( int iAction : m_bsFactory.getPOMDP().getRelevantActions(this)){
-                dProb = probabilityOGivenA( iAction, iObservation );
-                if( dProb > 0 ){
-                    bsSuccessor = nextBeliefState( iAction, iObservation );
-                    addSuccessor( iAction, iObservation, bsSuccessor );
-                    if( !m_vAllSuccessors.contains( bsSuccessor ) )
-                        m_vAllSuccessors.add( bsSuccessor );
-                }
-            }
-        }
-        return m_vAllSuccessors;
-    }
+//        }
+//        return m_vAllSuccessors;
+//    }
 
     private boolean isNonZero(int iObservation) {
         BeaconDistanceGrid grid = (BeaconDistanceGrid) m_bsFactory.getPOMDP();

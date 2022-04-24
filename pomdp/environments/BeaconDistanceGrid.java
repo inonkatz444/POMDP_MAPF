@@ -37,10 +37,25 @@ public class BeaconDistanceGrid extends Grid{
     public int observe(int iAction, int iState) {
         Point iLoc = stateToLocation.get(iState);
         List<Integer> dists = beacons.stream().map(b -> {
+            // Formula: 2^d / (2^(range+2) - 1)
           int dist = b.distTo(iLoc.first(), iLoc.second());
-          return dist > b.getRange() ? INF : Math.max(dist - noiseGenerator.nextInt(maxNoise+1), 0);
+          if (dist > b.getRange())
+              return INF;
+          int obsDist = dist;
+          double dProb = noiseGenerator.nextDouble();
+          double normalizer = (1 << (dist+1)) - 1.0;
+            dProb -= ((1 << (obsDist)) / normalizer);
+          while (dProb > 0) {
+              obsDist--;
+              dProb -= ((1 << (obsDist)) / normalizer);
+          }
+          if (obsDist < 0) {
+              throw new RuntimeException("ObsDist is " + obsDist);
+          }
+          return obsDist;
         }).toList();
 //        System.out.println("observed dists: " + dists);
+//        System.out.println();
         return distsToObs(dists);
     }
 
@@ -77,22 +92,21 @@ public class BeaconDistanceGrid extends Grid{
             iObservation /= entry_options;
             actual_dist = b.distTo(iLoc.first(), iLoc.second());
 
-//            System.out.println("O observed_dists: " + observed_dists);
-//            System.out.println("O Actual dists: " + actual_dists);
+//            System.out.println("beacon's range: " + b.getRange());
+//            System.out.println("O observed_dist: " + observed_dist);
+//            System.out.println("O Actual dist: " + actual_dist);
 //            System.out.println();
 
             if (observed_dist == INF) {
                 prob *= actual_dist > b.getRange() ? 1.0 : 0.0;
             }
-            else if (actual_dist > b.getRange() || actual_dist - observed_dist > maxNoise || actual_dist - observed_dist < 0) {
+            else if (actual_dist > b.getRange() || actual_dist - observed_dist < 0) {
                 prob = 0;
                 return prob;
             }
-            else if (observed_dist != 0) {
-                prob *= 1.0 / (maxNoise + 1);
-            }
             else {
-                prob *= (maxNoise + 1.0 - actual_dist) / (maxNoise + 1.0);
+                // Formula: 2^d / (2^(range+2) - 1)
+                prob *= (((1 << observed_dist)) * 1.0) / ((1 << (actual_dist+1)) - 1);
             }
         }
 
@@ -100,7 +114,7 @@ public class BeaconDistanceGrid extends Grid{
     }
 
     @Override
-    public void load( String sFileName ) throws IOException, InvalidModelFileFormatException {
+    public void load(String sFileName) throws IOException, InvalidModelFileFormatException {
         m_sName = sFileName.substring( sFileName.lastIndexOf( "/" ) + 1, sFileName.lastIndexOf( "." ) );
         if (multiAgent) {
             MultiAgentBeaconDistanceGridLoader p = new MultiAgentBeaconDistanceGridLoader(this);

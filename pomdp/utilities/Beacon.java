@@ -1,18 +1,31 @@
 package pomdp.utilities;
 
+import java.util.Objects;
+
 public class Beacon {
-    private Pair<Integer, Integer> loc;
+    private Point loc;
     private int range;
     private int ID;
+    private static int beaconID = 0;
 
-    public Beacon(int id, int row, int col, int range) {
-        this.loc = new Pair<>(row, col);
+    public Beacon(int row, int col, int range) {
+        this.loc = new Point(row, col);
         this.range = range;
-        this.ID = id;
+        this.ID = beaconID++;
+    }
+
+    public Beacon(Point loc, int range) {
+        this.loc = loc;
+        this.range = range;
+        this.ID = beaconID++;
     }
 
     public int getRange() {
         return range;
+    }
+
+    public Point getLoc() {
+        return loc;
     }
 
     public int distTo(int state_row, int state_col) {
@@ -21,6 +34,19 @@ public class Beacon {
 
     public int distTo(Pair<Integer, Integer> loc) {
         return distTo(loc.first(), loc.second());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Beacon beacon = (Beacon) o;
+        return loc.equals(beacon.loc);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(loc);
     }
 
     @Override

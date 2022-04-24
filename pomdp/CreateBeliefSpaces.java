@@ -26,21 +26,29 @@ public class CreateBeliefSpaces {
 		Vector<BeliefState> vPoints = new Vector<BeliefState>();
 		pomdp.initRandomGenerator( iSeed * 11113 );
 		double dMaxADR = 0.0;
-		Map<Integer, Boolean> toReachStates = new HashMap<>();
-//		Map<Integer, Boolean> toReachStates = null;
+//		Map<Integer, Boolean> toReachStates = new HashMap<>();
+		Map<Integer, Boolean> toReachStates = null;
 		do {
 			System.out.println("NEW WALK");
 			dMaxADR = 0.0;
 			cTrials = 0;
 			vPoints.clear();
 			pomdp.getBeliefStateFactory().clear();
-			if (!(pomdp.isForbidden(56) || pomdp.isForbidden(69))) {
-				toReachStates.put(51, false);
-				toReachStates.put(82, false);
-			}
-			if (!(pomdp.isForbidden(61) || pomdp.isForbidden(74))) {
-				toReachStates.put(52, false);
-				toReachStates.put(87, false);
+			switch (pomdp.getName()) {
+				case "two_paths_one_beacon":
+					if (!(pomdp.isForbidden(38) || pomdp.isForbidden(56) || pomdp.isForbidden(69) || pomdp.isForbidden(96))) {
+						toReachStates.put(51, false);
+						toReachStates.put(82, false);
+					}
+					if (!(pomdp.isForbidden(45) || pomdp.isForbidden(61) || pomdp.isForbidden(74) || pomdp.isForbidden(103))) {
+						toReachStates.put(52, false);
+						toReachStates.put(87, false);
+					}
+					break;
+				case "room":
+					break;
+				case default:
+					break;
 			}
 			while( vPoints.size() < cBeliefPoints ){
 				double dADR = pomdp.computeDiscountedReward( cBeliefPoints - vPoints.size(), pvRandom, vPoints, true, null, toReachStates);

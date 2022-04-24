@@ -1,5 +1,5 @@
 ######################################################################
-# FILENAME: short_hallway_side_beacon
+# FILENAME: two_paths_one_beacon
 
 # The purpose is to create a benchmark to see if adding a beacon can help an agent to change it's policy.
 #
@@ -35,10 +35,6 @@
 # probability for each direction. Movement into a wall returns the agent
 # to its original state.
 #
-########  TODO: Create a file to describe each agent's data in his POMDP  ########
-########  TODO: Change the observation noise distribution
-########  TODO: Expand the actions according to the agent's policy
-########  TODO: Create a "room problem" and an "open world with obstacles" problem.
 ########  TODO: Change the observation generation in the belief expansion
 ########  TODO: Suggestion: forbid states in CBS manner - n branches where only one agent is not forbidden  ########
 #
@@ -50,9 +46,14 @@ discount: 0.99
 values: reward
 states: 143
 actions: n s e w noop 
-observations: 12
 
-radius: 5
+start_states:
+a 134
+b 25
+
+end_states:
+a 25
+b 134
 
 holes:
 3 0

@@ -16,8 +16,9 @@ public class Grid extends POMDP {
     private final Random oGenerator;
     private Map<Integer, Float> sigmaPerState;
     protected boolean multiAgent;
+    protected String name;
 
-    protected final int HOLE = -1;
+    public final int HOLE = -1;
 
     public Grid(boolean multiAgent) {
         super();
@@ -36,19 +37,6 @@ public class Grid extends POMDP {
 
     public Point stateToLocation(int iState) {
         return stateToLocation.get(iState);
-    }
-
-    public void printGrid() {
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (grid[i][j] == HOLE)
-                    System.out.print("   ");
-                else
-                    System.out.print(grid[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 
     public String parseState(int iState) {
@@ -83,8 +71,8 @@ public class Grid extends POMDP {
         holes.add(new Point(hole_row, hole_col));
     }
 
-    public void addBeacon(int id, int beacon_row, int beacon_col, int range) {
-        beacons.add(new Beacon(id, beacon_row, beacon_col, range));
+    public void addBeacon(int beacon_row, int beacon_col, int range) {
+        beacons.add(new Beacon(beacon_row, beacon_col, range));
     }
 
     @Override
@@ -170,7 +158,7 @@ public class Grid extends POMDP {
             }
         }
         if (stateToLocation.size() != this.m_cStates) {
-            throw new InvalidModelFileFormatException("Grid data does not match state number");
+            throw new InvalidModelFileFormatException("Grid data does not match state number: " + stateToLocation.size() + " vs " + this.m_cStates);
         }
 
         for (int i = 0; i < this.m_cStates; i++) {
@@ -187,7 +175,7 @@ public class Grid extends POMDP {
     }
 
     public int locationToState(int first, int second) {
-        return validLocation(first, second) ? grid[first][second] : -1;
+        return validLocation(first, second) ? grid[first][second] : HOLE;
     }
 
     @Override

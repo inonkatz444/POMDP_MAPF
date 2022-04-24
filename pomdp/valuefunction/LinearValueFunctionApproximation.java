@@ -49,7 +49,7 @@ public class LinearValueFunctionApproximation implements Serializable{
 		m_vAlphaVectors = new LinkedList<AlphaVector>();
 		m_cValueFunctionChanges = 0;
 		m_dEpsilon = dEpsilon;
-		m_bCacheValues = true;
+		m_bCacheValues = false;
 		m_dMaxValue = 0.0;
 		m_bEvaluatingPolicy = false;
 		m_bPruned = false;
@@ -97,7 +97,7 @@ public class LinearValueFunctionApproximation implements Serializable{
 		int iBeliefStateLastCheckTime = bs.getMaxAlphaTime();
 		int iCurrentTime = m_cValueFunctionChanges;
 		
-		if( !m_vAlphaVectors.contains( avMaxAlpha ) ){
+		if( !m_vAlphaVectors.contains( avMaxAlpha ) || bs.getBeliefStateFactory().getPOMDP().isForbiddenAction(bs, avMaxAlpha.getAction()) ){
 			avMaxAlpha = null;
 			dMaxValue = Double.NEGATIVE_INFINITY;
 			iBeliefStateLastCheckTime = -1;
@@ -129,7 +129,7 @@ public class LinearValueFunctionApproximation implements Serializable{
 		boolean bDone = false;
 		while( itBackward.hasNext() && !bDone ){
 			AlphaVector avCurrent = itBackward.next();
-			if( avCurrent != null ){
+			if( avCurrent != null && (!bs.getBeliefStateFactory().getPOMDP().isForbiddenAction(bs, avCurrent.getAction()))){
 				iInsertionTime = avCurrent.getInsertionTime();
 				if( m_bCacheValues && ( iBeliefStateLastCheckTime >= iInsertionTime ) )
 					bDone = true;
