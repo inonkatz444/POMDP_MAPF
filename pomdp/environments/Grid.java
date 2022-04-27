@@ -104,6 +104,23 @@ public class Grid extends POMDP {
 
     }
 
+    public int distance(int state1, int state2) {
+        Point loc1 = stateToLocation(state1);
+        Point loc2 = stateToLocation(state2);
+        return loc1.distance(loc2);
+    }
+
+    public int distance(BeliefState bs, int state) {
+        Iterator<Map.Entry<Integer,Double>> thisStateid = bs.getNonZeroEntries().iterator();
+        int min_distance = rows + cols;
+
+        while (thisStateid.hasNext()) {
+            min_distance = Math.min(min_distance, distance(thisStateid.next().getKey(), state));
+        }
+
+        return min_distance;
+    }
+
     private double calculateND(double x, double stateSigma) {
         return (1/Math.sqrt(2*Math.PI*stateSigma)) * Math.exp(-(x*x)/(2*stateSigma));
     }

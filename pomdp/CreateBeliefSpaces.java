@@ -25,9 +25,11 @@ public class CreateBeliefSpaces {
 		PolicyStrategy pvRandom = new RandomWalkPolicy( pomdp );
 		Vector<BeliefState> vPoints = new Vector<BeliefState>();
 		pomdp.initRandomGenerator( iSeed * 11113 );
-		double dMaxADR = 0.0;
-//		Map<Integer, Boolean> toReachStates = new HashMap<>();
 		Map<Integer, Boolean> toReachStates = null;
+		double dMaxADR = 0.0;
+		int maxAttempts = 1000;
+		int attempt = 0;
+
 		do {
 			System.out.println("NEW WALK");
 			dMaxADR = 0.0;
@@ -36,6 +38,7 @@ public class CreateBeliefSpaces {
 			pomdp.getBeliefStateFactory().clear();
 			switch (pomdp.getName()) {
 				case "two_paths_one_beacon":
+					toReachStates = new HashMap<>();
 					if (!(pomdp.isForbidden(38) || pomdp.isForbidden(56) || pomdp.isForbidden(69) || pomdp.isForbidden(96))) {
 						toReachStates.put(51, false);
 						toReachStates.put(82, false);
@@ -46,6 +49,7 @@ public class CreateBeliefSpaces {
 					}
 					break;
 				case "room":
+					toReachStates = null;
 					break;
 				case default:
 					break;
@@ -56,7 +60,14 @@ public class CreateBeliefSpaces {
 					dMaxADR = dADR;
 				cTrials++;
 			}
-		} while (dMaxADR == 0 || (toReachStates != null && toReachStates.containsValue(false)));
+			attempt++;
+		} while ((dMaxADR == 0 || (toReachStates != null && toReachStates.containsValue(false))) && attempt < maxAttempts);
+		if (attempt == maxAttempts) {
+			return null;
+		}
+		else {
+			System.out.println("Took " + attempt + " attempts.");
+		}
 		Logger.getInstance().log( "CreateBeliefSpaces", 0, "createRandomSpace", "The maximal ADR observed over " + cBeliefPoints + " points is " + dMaxADR );
 		return vPoints;
 	}

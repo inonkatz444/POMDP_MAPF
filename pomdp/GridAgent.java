@@ -209,6 +209,10 @@ public class GridAgent {
         return grid;
     }
 
+    public boolean hasConverged() {
+        return policy.hasConverged();
+    }
+
     public boolean isClose(GridAgent other) {
         BeliefState otherBelief = other.getCurrentBelief();
         Point thisLoc, otherLoc;
@@ -217,7 +221,7 @@ public class GridAgent {
             thisLoc = grid.stateToLocation(doubleEntry.getKey());
             for (Map.Entry<Integer, Double> integerDoubleEntry : otherBelief.getNonZeroEntries()) {
                 otherLoc = other.getGrid().stateToLocation(integerDoubleEntry.getKey());
-                if (thisLoc.distance(otherLoc) <= distanceThreshold + 1 && !other.isDone()) {
+                if (thisLoc.distance(otherLoc) < 2 * distanceThreshold && !other.isDone()) {
                     return true;
                 }
             }
@@ -289,17 +293,12 @@ public class GridAgent {
         }
     }
 
+    public int distanceTo(int state) {
+        return grid.distance(currentBelief, state);
+    }
+
     public int distanceToGoal() {
-        Iterator<Map.Entry<Integer,Double>> thisStateid = currentBelief.getNonZeroEntries().iterator();
-        int min_distance = grid.getRows() + grid.getCols();
-        Point thisLoc, goalLoc = grid.stateToLocation(END_STATE);
-
-        while (thisStateid.hasNext()) {
-            thisLoc = grid.stateToLocation(thisStateid.next().getKey());
-            min_distance = Math.min(min_distance, thisLoc.distance(goalLoc));
-        }
-
-        return min_distance;
+        return distanceTo(END_STATE);
     }
 
     public List<Integer> getForbiddenStates() {

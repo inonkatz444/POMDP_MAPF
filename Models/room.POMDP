@@ -34,7 +34,6 @@
 # probability for each direction. Movement into a wall returns the agent
 # to its original state.
 #
-########  TODO: Create an "open world with obstacles" problem.
 ########  TODO: Create joint problem
 ########  TODO: Change the observation generation in the belief expansion
 ########  TODO: Suggestion: forbid states in CBS manner - n branches where only one agent is not forbidden  ########

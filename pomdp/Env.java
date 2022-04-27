@@ -22,7 +22,10 @@ public class Env {
             for (GridAgent agent : agents) {
                 if (agent.needsRetrain()) {
                     agent.initRun(sModelName);
-                    agent.solve(sMethodName, 100.0, 25, maxSteps);
+                    agent.solve(sMethodName, 100.0, 18, maxSteps);
+                    if (!agent.hasConverged()) {
+                        System.out.println("DEBUG: agent " + agent.getID() + " timed out!");
+                    }
                 }
             }
             for (GridAgent agent : agents) {
@@ -67,19 +70,19 @@ public class Env {
 
     private static boolean checkCollision(GridAgent agent1, GridAgent agent2) {
         boolean isCollided = false;
-        GridAgent forbiddenAgent;
+        GridAgent nonDominant;
         Set<Integer> agent1States = agent1.getPossibleStates();
         System.out.println("Agent " + agent1.getID() + " possible states: " + agent1States.stream().map(state -> agent1.getGrid().parseState(state)).toList().toString());
         Set<Integer> agent2States = agent2.getPossibleStates();
         System.out.println("Agent " + agent2.getID() + " possible states: " + agent2States.stream().map(state -> agent2.getGrid().parseState(state)).toList().toString());
         agent1States.retainAll(agent2States);
         if (agent1States.size() > 0) {
-            forbiddenAgent = agent1.distanceToGoal() < agent2.distanceToGoal() ? agent1 : agent2;
+            nonDominant = agent1.distanceToGoal() < agent2.distanceToGoal() ? agent2 : agent1;
             for (int interState : agent1States) {
-                if (!forbiddenAgent.isForbidden(interState)) {
+                if (!nonDominant.isForbidden(interState)) {
                     isCollided = true;
-                    forbiddenAgent.retrain();
-                    forbiddenAgent.addForbiddenState(interState);
+                    nonDominant.retrain();
+                    nonDominant.addForbiddenState(interState);
                     System.out.println("Agent " + agent1.getID() + " and agent " + agent2.getID() + " may collide in " + agent1.getGrid().parseState(interState));
                 }
             }
@@ -92,9 +95,9 @@ public class Env {
 //        String sModelName = "straight_line_side_beacon_15x23";
 //        String sModelName = "straight_line_side_beacon_9x15";
 //        String sModelName = "short_hallway_side_beacon";
-//        String sModelName = "two_paths_one_beacon";
-        String sModelName = "room";
-//        String sModelName = "open_world_7_7_20";
+        String sModelName = "two_paths_one_beacon";
+//        String sModelName = "room";
+//        String sModelName = "open_world_10_15_10";
 //        String sModelName = "test_grid";
         String sMethodName = "Perseus";
         int distanceThreshold = 3;
