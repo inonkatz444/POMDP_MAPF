@@ -14,11 +14,13 @@ package pomdp.algorithms;
  */
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 import java.util.Map.Entry;
 
 import pomdp.environments.FactoredPOMDP;
+import pomdp.environments.JointBeaconDistanceGrid;
 import pomdp.environments.POMDP;
 import pomdp.environments.FactoredPOMDP.BeliefType;
 import pomdp.utilities.AlphaVector;

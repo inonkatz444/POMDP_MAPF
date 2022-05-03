@@ -15,12 +15,12 @@ public class Grid extends POMDP {
     private float o_radius;                                 // base reception radius (beacons will make it smaller)
     private final Random oGenerator;
     private Map<Integer, Float> sigmaPerState;
-    protected boolean multiAgent;
+    protected int numOfAgents;
     protected String name;
 
     public final int HOLE = -1;
 
-    public Grid(boolean multiAgent) {
+    public Grid(int numOfAgents) {
         super();
         holes = new ArrayList<>();
         stateToLocation = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Grid extends POMDP {
         oGenerator = new Random();
         oGenerator.setSeed(42);
         sigmaPerState = new HashMap<>();
-        this.multiAgent = multiAgent;
+        this.numOfAgents = numOfAgents;
     }
 
     public List<Beacon> getBeacons() {
@@ -198,7 +198,7 @@ public class Grid extends POMDP {
     @Override
     public void load( String sFileName) throws IOException, InvalidModelFileFormatException{
         m_sName = sFileName.substring( sFileName.lastIndexOf( "/" ) + 1, sFileName.lastIndexOf( "." ) );
-        if (multiAgent) {
+        if (numOfAgents > 1) {
             MultiAgentGridLoader p = new MultiAgentGridLoader(this);
             p.load( sFileName );
         }
@@ -218,4 +218,9 @@ public class Grid extends POMDP {
     public List<Point> getStateToLocation() {
         return stateToLocation;
     }
+
+    public int getNumOfAgents() {
+        return numOfAgents;
+    }
+
 }

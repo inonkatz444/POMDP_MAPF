@@ -8,4 +8,9 @@ public class Point extends Pair<Integer, Integer>{
     public int distance(Point other) {
         return Math.abs(this.m_first - other.m_first) + Math.abs(this.m_second - other.m_second);
     }
+
+    @Override
+    public String toString() {
+        return "<" + m_first + ", " + m_second + ">";
+    }
 }

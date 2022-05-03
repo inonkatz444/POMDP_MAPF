@@ -55,7 +55,7 @@ public class POMDP implements Serializable{
 	protected int m_cObservations;
 	protected double m_dGamma; //discount factor
 	protected static String g_sNewline = System.getProperty( "line.separator" ); 
-	protected static int g_sMaxTabularSize = 250;
+	protected static int g_sMaxTabularSize = 650;
 	protected boolean m_bExploration;
 	protected Vector<Integer> m_vTerminalStates;
 	protected Vector<Integer> m_vObservationStates;
@@ -151,6 +151,14 @@ public class POMDP implements Serializable{
 
 	public int getStartState(char agentID) {
 		return startStates.get(agentID);
+	}
+
+	public List<Integer> getAllStartStates() {
+		return startStates.values().stream().toList();
+	}
+
+	public List<Integer> getAllEndStates() {
+		return endStates.values().stream().toList();
 	}
 
 	public void addEndState(char id, int endState) {
@@ -306,7 +314,7 @@ public class POMDP implements Serializable{
 	public String getStateName( int iState ){
 		if( m_vStateNames != null )
 			return (String) m_vStateNames.elementAt( iState );
-		return iState + "";
+		return parseState(iState);
 	}
 	
 	public int getStateIndex( String sState ){
@@ -1211,6 +1219,10 @@ public class POMDP implements Serializable{
 			
 			if( iAction == -1 )
 				return Double.NEGATIVE_INFINITY;
+
+			if (iState == 592) {
+				System.out.println(getActionName(iAction));
+			}
 			
 			iNextState = execute( iAction, iState );
 			iObservation = observe( iAction, iNextState );
@@ -2155,7 +2167,7 @@ public class POMDP implements Serializable{
 
 	public void setReward( int iStartState, int iAction, int iEndState, double dValue ) {
 		m_fReward.setValue( iStartState, iAction, iEndState, dValue );
-		
+
 	}
 
 	public void setMinimalReward(int iAction, double dValue) {

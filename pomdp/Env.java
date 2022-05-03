@@ -92,38 +92,46 @@ public class Env {
 
     public static void main(String[] args) {
         JProf.getCurrentThreadCpuTimeSafe();
-//        String sModelName = "straight_line_side_beacon_15x23";
-//        String sModelName = "straight_line_side_beacon_9x15";
-//        String sModelName = "short_hallway_side_beacon";
-        String sModelName = "two_paths_one_beacon";
-//        String sModelName = "room";
-//        String sModelName = "open_world_10_15_10";
-//        String sModelName = "test_grid";
+////        String sModelName = "straight_line_side_beacon_15x23";
+////        String sModelName = "straight_line_side_beacon_9x15";
+////        String sModelName = "short_hallway_side_beacon";
+//        String sModelName = "two_paths_one_beacon";
+////        String sModelName = "room";
+////        String sModelName = "open_world_10_15_10";
+////        String sModelName = "test_grid";
+//        String sMethodName = "Perseus";
+//        int distanceThreshold = 3;
+//        int num_of_agents = 2;
+//
+//        try{
+//            Logger.getInstance().setOutputStream( sModelName + "_" + sMethodName + ".txt" );
+//        }
+//        catch( Exception e ){
+//            System.err.println( e );
+//        }
+//
+//        List<GridAgent> agents = new ArrayList<>();
+//
+//        for (int i = 0; i < num_of_agents; i++) {
+//            GridAgent agent = new GridAgent(distanceThreshold);
+//            agents.add(agent);
+//        }
+//
+//        boolean succeeded = runAll(agents, sMethodName, sModelName, 2, 150);
+//
+//        if (succeeded) {
+//            System.out.println("Solution found!");
+//        }
+//        else {
+//            System.out.println("Solution was not found...");
+//        }
+
+        GridJointAgent a = new GridJointAgent();
+//        String sModelName = "open_world_5_5_0";
+//        String sModelName = "dummy_world";
+        String sModelName = "joint_test";
         String sMethodName = "Perseus";
-        int distanceThreshold = 3;
-        int num_of_agents = 2;
-
-        try{
-            Logger.getInstance().setOutputStream( sModelName + "_" + sMethodName + ".txt" );
-        }
-        catch( Exception e ){
-            System.err.println( e );
-        }
-
-        List<GridAgent> agents = new ArrayList<>();
-
-        for (int i = 0; i < num_of_agents; i++) {
-            GridAgent agent = new GridAgent(distanceThreshold);
-            agents.add(agent);
-        }
-
-        boolean succeeded = runAll(agents, sMethodName, sModelName,2, 150);
-
-        if (succeeded) {
-            System.out.println("Solution found!");
-        }
-        else {
-            System.out.println("Solution was not found...");
-        }
+        a.initRun(sModelName);
+        a.solve(sMethodName, 100, 20, 150);
     }
 }

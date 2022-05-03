@@ -65,8 +65,8 @@ def generate_env(rows: int, columns: int, num_of_holes: int) -> str:
         grid[agent1_end] = "A"
         grid[agent2_start] = "b"
         grid[agent2_end] = "B"
+        beacon_range = ((rows+columns) / 2) // 2
         if grid[beacon_pos] == " ":
-            beacon_range = ((rows+columns) / 2) // 2
             grid[beacon_pos] = str(beacon_range)
         grid = grid.reshape((rows, columns))
         print(grid)

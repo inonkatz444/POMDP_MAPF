@@ -13,8 +13,8 @@ public class BeaconDistanceGrid extends Grid{
     protected int INF;
     protected int entry_options;
 
-    public BeaconDistanceGrid(boolean multiAgent) {
-        super(multiAgent);
+    public BeaconDistanceGrid(int numOfAgents) {
+        super(numOfAgents);
         noiseGenerator = RandomGenerator.getInstance();
         maxNoise = 3;
     }
@@ -116,7 +116,7 @@ public class BeaconDistanceGrid extends Grid{
     @Override
     public void load(String sFileName) throws IOException, InvalidModelFileFormatException {
         m_sName = sFileName.substring( sFileName.lastIndexOf( "/" ) + 1, sFileName.lastIndexOf( "." ) );
-        if (multiAgent) {
+        if (numOfAgents > 1) {
             MultiAgentBeaconDistanceGridLoader p = new MultiAgentBeaconDistanceGridLoader(this);
             p.load( sFileName );
         }

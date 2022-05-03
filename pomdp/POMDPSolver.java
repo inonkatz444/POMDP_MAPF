@@ -40,7 +40,7 @@ public class POMDPSolver {
 				pomdp = new Logistics( cCities, cTrucks, cPackages, BeliefType.Flat );
 			}
 			else if( sModelName.equals( "test_grid")){
-				pomdp = new Grid(false);
+				pomdp = new Grid(1);
 				pomdp.load(ExecutionProperties.getPath() + sModelName + ".POMDP");
 			}
 			else{

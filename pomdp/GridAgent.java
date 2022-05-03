@@ -24,9 +24,6 @@ public class GridAgent {
     private int START_STATE, END_STATE;
     private boolean retrain, isExpandedBeliefsRelevant;
 
-    private BeliefState[] stepBeliefs;
-    private int[] stepStates;
-
     private final double SUCCESS_REWARD = 10.0;
     private final double INTER_REWARD = -0.04;
 
@@ -273,7 +270,7 @@ public class GridAgent {
             assert viAlgorithm != null;
             viAlgorithm.valueIteration( cMaxIterations, ExecutionProperties.getEpsilon(), dTargetADR );
             double dDiscountedReward = grid.computeAverageDiscountedReward( 200, maxSteps, viAlgorithm, true , ExecutionProperties.useHighLevelMultiThread() || ExecutionProperties.useMultiThread() );
-            Logger.getInstance().log( "POMDPSolver", 0, "main", "ADR = " + dDiscountedReward );
+            Logger.getInstance().log( "GridAgent", 0, "main", "ADR = " + dDiscountedReward );
             this.policy = viAlgorithm;
             retrain = false;
         }
@@ -284,7 +281,7 @@ public class GridAgent {
         }
         catch( Error err ){
             Runtime rtRuntime = Runtime.getRuntime();
-            System.out.println( "POMDPSolver: " + err +
+            System.out.println( "GridAgent: " + err +
                     " allocated " + ( rtRuntime.totalMemory() - rtRuntime.freeMemory() ) / 1000000 +
                     " free " + rtRuntime.freeMemory() / 1000000 +
                     " max " + rtRuntime.maxMemory() / 1000000 );
@@ -371,7 +368,7 @@ public class GridAgent {
     }
 
     public void initRun(String sModelName) {
-        grid = new BeaconDistanceGrid(true);
+        grid = new BeaconDistanceGrid(2);
         try {
             load(ExecutionProperties.getPath() + sModelName + ".POMDP");
             if (currentBelief == null) {
