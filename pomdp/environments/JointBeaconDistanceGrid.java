@@ -158,7 +158,7 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         StringBuilder output = new StringBuilder("(");
         List<Integer> decodedObservation = decodeObservation(iObservation);
         for (int i = 0; i < numOfAgents; i++) {
-            output.append(obsToDists(decodedObservation.get(i)).toString()).append(", ");
+            output.append(super.parseObservation(decodedObservation.get(i))).append(", ");
         }
         if (output.length() > 2) {
             output.delete(output.length()-2, output.length()).append(")");

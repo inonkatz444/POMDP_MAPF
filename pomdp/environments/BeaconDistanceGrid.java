@@ -37,19 +37,19 @@ public class BeaconDistanceGrid extends Grid{
     public int observe(int iAction, int iState) {
         Point iLoc = stateToLocation.get(iState);
         List<Integer> dists = beacons.stream().map(b -> {
-            // Formula: 2^d / (2^(range+2) - 1)
+            // Formula: 2^o / (2^(range+2) - 2^d)
           int dist = b.distTo(iLoc.first(), iLoc.second());
           if (dist > b.getRange())
               return INF;
           int obsDist = dist;
           double dProb = noiseGenerator.nextDouble();
-          double normalizer = (1 << (dist+1)) - 1.0;
-            dProb -= ((1 << (obsDist)) / normalizer);
+          double normalizer = (1 << (b.getRange()+1)) - (1 << dist);
+            dProb -= ((1 << (-obsDist+dist+b.getRange())) / normalizer);
           while (dProb > 0) {
-              obsDist--;
-              dProb -= ((1 << (obsDist)) / normalizer);
+              obsDist++;
+              dProb -= ((1 << (-obsDist+dist+b.getRange())) / normalizer);
           }
-          if (obsDist < 0) {
+          if (obsDist > b.getRange()) {
               throw new RuntimeException("ObsDist is " + obsDist);
           }
           return obsDist;
@@ -100,16 +100,19 @@ public class BeaconDistanceGrid extends Grid{
             if (observed_dist == INF) {
                 prob *= actual_dist > b.getRange() ? 1.0 : 0.0;
             }
-            else if (actual_dist > b.getRange() || actual_dist - observed_dist < 0) {
+            else if (actual_dist > b.getRange() || observed_dist - actual_dist < 0 || observed_dist > b.getRange()) {
                 prob = 0;
                 return prob;
             }
             else {
-                // Formula: 2^d / (2^(range+2) - 1)
-                prob *= (((1 << observed_dist)) * 1.0) / ((1 << (actual_dist+1)) - 1);
+                // Formula: 2^o / (2^(range+2) - 2^d)
+                prob *= (((1 << (-observed_dist+actual_dist+b.getRange()))) * 1.0) / ((1 << (b.getRange()+1)) - (1 << actual_dist));
             }
         }
 
+        if (prob < 0) {
+            throw new RuntimeException("prob is " + prob);
+        }
         return prob;
     }
 
@@ -131,5 +134,9 @@ public class BeaconDistanceGrid extends Grid{
         m_vfMDP = new MDPValueFunction( this, 0.0 );
         initBeliefStateFactory();
         System.out.println();
+    }
+
+    public String parseObservation(int iObservation) {
+        return obsToDists(iObservation).toString();
     }
 }
