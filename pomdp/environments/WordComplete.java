@@ -26,7 +26,7 @@ public class WordComplete extends POMDP {
 		m_vItems = new Vector<String>();
 		m_vPopularity = new Vector<Double>();
 	}
-	public void load( String sFileName ) throws IOException{
+	public void load(String sFileName, char id) throws IOException{
 		LineReader lrInput = new LineReader( sFileName );
 		String sLine = "";
 		String sItemName = "";
@@ -532,7 +532,7 @@ public class WordComplete extends POMDP {
 	public static void main( String[] args ){
 		WordComplete wc = new WordComplete();
 		try {
-			wc.load( "D:/NetFlix/RatingsCount.txt" );
+			wc.load( "D:/NetFlix/RatingsCount.txt", 'a');
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

@@ -63,7 +63,7 @@ public abstract class AlphaVector implements Serializable{
 	protected static long s_cCurrentTimeInDotProduct = 0;
 	protected static long TIME_INTERVAL = 100;
 	
-	protected static boolean s_bAllowCaching = true;
+	protected static boolean s_bAllowCaching = false;
 	private static boolean s_bCountDotProduct = ExecutionProperties.getReportOperationTime();
 
 	private boolean m_bDominated;

@@ -4,21 +4,16 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.Vector;
 import java.util.Map.Entry;
 
 import pomdp.algorithms.PolicyStrategy;
 import pomdp.algorithms.pointbased.HeuristicSearchValueIteration;
-import pomdp.algorithms.pointbased.PrioritizedValueIteration;
 import pomdp.utilities.AlphaVector;
-import pomdp.utilities.BeliefState;
 import pomdp.utilities.BeliefStateFactory;
-import pomdp.utilities.ExecutionProperties;
 import pomdp.utilities.Logger;
 import pomdp.utilities.MDPValueFunction;
 import pomdp.utilities.RandomGenerator;
 import pomdp.utilities.TabularAlphaVector;
-import pomdp.utilities.factored.FactoredBeliefStateFactory;
 
 public class DeterministicPOMDP extends POMDPAdapter {
 	private static final long serialVersionUID = 8406127746313003632L;
@@ -201,7 +196,7 @@ public class DeterministicPOMDP extends POMDPAdapter {
 	public static void main( String[] args ) throws Exception{
 		RandomGenerator rnd = RandomGenerator.getInstance();
 		POMDP pomdp = new POMDP();
-		pomdp.load( "Models/Hallway.pomdp" );
+		pomdp.load( "Models/Hallway.pomdp", 'a');
 		DeterministicPOMDP dp = new DeterministicPOMDP( pomdp, true, true );
 		BeliefStateFactory bsf = pomdp.getBeliefStateFactory();
 		//PrioritizedValueIteration pvi = new PrioritizedValueIteration( dp );

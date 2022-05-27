@@ -41,11 +41,11 @@ public class POMDPSolver {
 			}
 			else if( sModelName.equals( "test_grid")){
 				pomdp = new Grid(1);
-				pomdp.load(ExecutionProperties.getPath() + sModelName + ".POMDP");
+				pomdp.load(ExecutionProperties.getPath() + sModelName + ".POMDP", 'a');
 			}
 			else{
 				pomdp = new POMDP();
-				pomdp.load( ExecutionProperties.getPath() + sModelName + ".POMDP" );
+				pomdp.load( ExecutionProperties.getPath() + sModelName + ".POMDP", 'a');
 			}
 		}
 		catch( Exception e ){

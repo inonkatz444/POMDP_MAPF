@@ -49,7 +49,7 @@ public class MDPValueFunction extends PolicyStrategy {
 	
 	private boolean m_bFullQFunction = true;
 	
-	public static boolean PERSIST_FUNCTION = true;
+	public static boolean PERSIST_FUNCTION = false;
 	
 	/*
 	public static MDPValueFunction getInstance(){
@@ -110,9 +110,15 @@ public class MDPValueFunction extends PolicyStrategy {
 	}
 	
 	protected double updateState( int iStartState ){
+//		if (m_pPOMDP.isTerminalState(iStartState)) {
+//			return getValue(iStartState);
+//		}
 		int iAction = 0, iMaxAction = -1;
 		double dMaxQValue = 0.0, dQValue = 0.0, dDelta = 0.0;
-		
+
+		if (iStartState == 134) {
+			System.out.println();
+		}
 		dMaxQValue = Double.NEGATIVE_INFINITY;
 		for( iAction = 0 ; iAction < m_cActions ; iAction++ ){
 			dQValue = computeStateActionValue( iStartState, iAction );
@@ -460,7 +466,8 @@ public class MDPValueFunction extends PolicyStrategy {
 					}
 				}
 			}
-			System.out.println( "s = " + getStateName( j ) + ", a = " + iMaxAction + ", s' = " + iMax + ", V(s)=" + dMax );
+//			System.out.println( "s = " + getStateName( j ) + ", a = " + m_pPOMDP.getActionName(iMaxAction) + ", s' = " + (dMax != -10000 ? getStateName( iMax ) : -1) + ", V(s)=" + dMax );
+			System.out.println( "s = " + getStateName( j ) + ", a = " + m_pPOMDP.getActionName(iMaxAction) + ", s' = " + (dMax != -10000 ? getStateName( iMax ) : -1) + ", V(s)=" + getValue(j) );
 		}
 
 		
@@ -522,7 +529,7 @@ public class MDPValueFunction extends PolicyStrategy {
 					System.out.println( "Unable to save QMDP value function: " + e );
 				}
 			}
-			m_bLoaded = true;
+//			m_bLoaded = true;
 		}		
 	}
 		

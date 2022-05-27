@@ -22,8 +22,8 @@ public class POMDPAdapter extends POMDP {
 		m_pPOMDP = pomdp;		
 	}
 	
-	public void load( String sFileName ) throws IOException, InvalidModelFileFormatException{
-		m_pPOMDP.load( sFileName );
+	public void load(String sFileName, char id) throws IOException, InvalidModelFileFormatException{
+		m_pPOMDP.load( sFileName, 'a');
 	}
 	
 	public MDPValueFunction getMDPValueFunction(){

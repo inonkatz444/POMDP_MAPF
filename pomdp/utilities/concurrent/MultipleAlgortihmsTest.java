@@ -1,11 +1,8 @@
 package pomdp.utilities.concurrent;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-import pomdp.CreateBeliefSpaces;
 import pomdp.algorithms.ValueIteration;
 import pomdp.algorithms.pointbased.ForwardSearchValueIteration;
 import pomdp.algorithms.pointbased.HeuristicSearchValueIteration;
@@ -13,7 +10,6 @@ import pomdp.algorithms.pointbased.PerseusValueIteration;
 import pomdp.algorithms.pointbased.PointBasedValueIteration;
 import pomdp.algorithms.pointbased.PrioritizedValueIteration;
 import pomdp.environments.POMDP;
-import pomdp.utilities.BeliefState;
 import pomdp.utilities.ExecutionProperties;
 import pomdp.valuefunction.LinearValueFunctionApproximation;
 
@@ -32,7 +28,7 @@ public class MultipleAlgortihmsTest {
 	public static void runMultipleAlgorithms( String sModelName, String sPath, String sMethods ){
 		try{
 			POMDP pomdp = new POMDP();
-			pomdp.load( sPath + sModelName + ".POMDP" );
+			pomdp.load( sPath + sModelName + ".POMDP", 'a');
 			ThreadPool.createInstance( pomdp );
 			//MDPValueFunction.persistQValues( true );
 			int cThreads = 1, iThread = 0;

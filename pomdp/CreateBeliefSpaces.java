@@ -361,7 +361,7 @@ public class CreateBeliefSpaces {
 			}
 			else{
 				pomdp = new POMDP();
-				pomdp.load( sPath + "/Models/" + sModelName + ".POMDP" );
+				pomdp.load( sPath + "/Models/" + sModelName + ".POMDP", 'a');
 			}
 			//createRandomSpaces( pomdp, sPath, 5, cBeliefPoints );
 			//createOutlyingSpace( pomdp, sPath, sModelName, 1000 );

@@ -1,6 +1,8 @@
 package pomdp.environments;
 
+import pomdp.GridAgent;
 import pomdp.utilities.*;
+import pomdp.utilities.datastructures.CartesianIterator;
 
 import java.util.*;
 
@@ -8,15 +10,22 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     protected int numOfSingleStates;
     protected int numOfSingleActions;
     protected int numOfSingleObservations;
-    protected List<Character> listPosToAgentID;
+    public int SINGLE_DONE;
+    public Map<Character, Integer> endStates;
+    private List<GridAgent> agents;
 
-    public JointBeaconDistanceGrid(int numOfAgents) {
-        super(numOfAgents);
-        listPosToAgentID = new ArrayList<>();
+    public JointBeaconDistanceGrid(List<GridAgent> agents) {
+        super(agents.size());
+        endStates = new HashMap<>();
+        this.agents = agents;
     }
 
-    public void setAgentListPos(char id) {
-        listPosToAgentID.add(id);
+    public void addEndState(char id, int endState) {
+        endStates.put(id, endState);
+    }
+
+    public int getEndState(char id) {
+        return endStates.get(id);
     }
 
     @Override
@@ -25,10 +34,15 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         List<Integer> actionValues = decodeAction(iAction);
         List<Integer> observationValues = new ArrayList<>();
         for (int i = 0; i < numOfAgents; i++) {
-            observationValues.add(super.observe(actionValues.get(i), stateValues.get(i)));
+            if (stateValues.get(i) == SINGLE_DONE) {
+                observationValues.add(0);
+            }
+            else {
+                observationValues.add(super.observe(actionValues.get(i), stateValues.get(i)));
+            }
         }
         int encodedObservation = encodeObservations(observationValues);
-        System.out.print(parseObservation(encodedObservation) + " ");
+//        System.out.print(parseObservation(encodedObservation) + " ");
         return encodedObservation;
     }
 
@@ -39,33 +53,181 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         List<Integer> observationValues = decodeObservation(iObservation);
         double prob = 1;
         for (int i = 0; i < numOfAgents; i++) {
-            prob *= super.O(actionValues.get(i), stateValues.get(i), observationValues.get(i));
+            if (stateValues.get(i) != SINGLE_DONE) {
+                prob *= super.O(actionValues.get(i), stateValues.get(i), observationValues.get(i));
+            }
         }
         return prob;
     }
 
     @Override
     public String parseState(int iState) {
+        if (iState == DONE) {
+            return "DONE";
+        }
         List<Integer> stateValues = decodeState(iState);
         StringBuilder sState = new StringBuilder("(");
-        boolean isFinal = true;
         for (int i = 0; i < numOfAgents; i++) {
-            sState.append(super.parseState(stateValues.get(i))).append(", ");
-            if (stateValues.get(i) != getEndState(listPosToAgentID.get(i))) {
-                isFinal = false;
+            if (stateValues.get(i) == SINGLE_DONE) {
+                sState.append("DONE");
             }
+            else {
+                sState.append(stateToLocation(stateValues.get(i)).add(origin).toString());
+            }
+            sState.append(", ");
         }
         sState.delete(sState.length()-2, sState.length());
         sState.append(")");
-        if (isFinal) {
+        if (isTerminalState(iState)) {
             sState.append("*");
         }
         return sState.toString();
     }
 
     @Override
-    public void initGrid() throws InvalidModelFileFormatException {
+    public double tr(int iState1, int iAction, int iState2) {
+        if (isForbidden(iState2)) {
+            return 0;
+        }
 
+        if (iState2 == DONE) {
+            if (endStates.containsValue(iState1) || iState1 == DONE) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+        if (iState1 == DONE) {
+            return 0;
+        }
+
+        if (endStates.containsValue(iState1)) {
+            return 0;
+        }
+
+        List<Integer> startStates = decodeState(iState1);
+        List<Integer> actions = decodeAction(iAction);
+        List<Integer> endStates = decodeState(iState2);
+
+        double prob = 1;
+        for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
+            if (isInBorder(startStates.get(iAgent))) {
+                prob *= endStates.get(iAgent) == SINGLE_DONE ? 1.0 : 0.0;
+            }
+            else {
+                prob *= agents.get(iAgent).getGrid().tr(fromJointGrid(startStates.get(iAgent), this), actions.get(iAgent), fromJointGrid(endStates.get(iAgent), this));
+            }
+        }
+
+        return prob;
+    }
+
+    @Override
+    public Iterator<Map.Entry<Integer, Double>> getNonZeroTransitions(int iStartState, int iAction) {
+        Grid bigGrid;
+        int bigGridState;
+        List<Integer> startStates = decodeState(iStartState);
+        List<Integer> actions = decodeAction(iAction);
+        List<Iterable<Map.Entry<Integer, Double>>> res = new ArrayList<>();
+
+        int numOfTerminalAgents = 0;
+        for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
+            if (startStates.get(iAgent) == SINGLE_DONE) {
+                numOfTerminalAgents++;
+            }
+        }
+        if (iStartState == DONE || numOfTerminalAgents >= numOfAgents - 1) {
+            List<Map.Entry<Integer, Double>> entries = new ArrayList<>();
+            entries.add(new Pair<>(DONE, 1.0));
+            return entries.iterator();
+        }
+
+        for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
+            bigGrid = agents.get(iAgent).getGrid();
+            bigGridState = bigGrid.fromJointGrid(startStates.get(iAgent), this);
+            List<Map.Entry<Integer, Double>> elements = new ArrayList<>();
+            if (startStates.get(iAgent) == SINGLE_DONE || isInBorder(startStates.get(iAgent))) {
+                elements.add(new Pair<>(SINGLE_DONE, 1.0));
+                res.add(elements);
+                continue;
+            }
+            Iterator<Map.Entry<Integer, Double>> it = bigGrid.getNonZeroTransitions(bigGridState, actions.get(iAgent));
+            while (it.hasNext()) {
+                Map.Entry<Integer, Double> e = it.next();
+                int endState = e.getKey();
+                elements.add(new Pair<>(bigGrid.toJointGrid(endState, this), e.getValue()));
+            }
+            int numOfSINGLE_DONE = 0;
+            for (Map.Entry<Integer, Double> element : elements) {
+                if (element.getKey() == SINGLE_DONE) {
+                    numOfSINGLE_DONE++;
+                }
+            }
+            if (numOfSINGLE_DONE >= 2) {
+                double doneProb = 0;
+                List<Map.Entry<Integer, Double>> newElements = new ArrayList<>();
+                for (Map.Entry<Integer, Double> element : elements){
+                    if (element.getKey() != SINGLE_DONE) {
+                        newElements.add(element);
+                    }
+                    else {
+                        doneProb += element.getValue();
+                    }
+                }
+                newElements.add(new Pair<>(SINGLE_DONE, doneProb));
+                res.add(newElements);
+            }
+            else {
+                res.add(elements);
+            }
+        }
+
+        return new CartesianIterator(res, numOfSingleStates);
+    }
+
+    @Override
+    public double R(int iStartState) {
+        List<Integer> iStateValues = decodeState(iStartState);
+        double reward = 0;
+        int bigGridState;
+        for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
+            if (iStateValues.get(iAgent) != SINGLE_DONE) {
+                bigGridState = agents.get(iAgent).getGrid().fromJointGrid(iStateValues.get(iAgent), this);
+                if (isInBorder(iStateValues.get(iAgent))) {
+                    reward += agents.get(iAgent).getMDPValueFunction().getValue(bigGridState);
+                }
+                else {
+                    reward += agents.get(iAgent).getGrid().R(bigGridState);
+                }
+            }
+        }
+        return reward;
+    }
+
+    @Override
+    public double R(int iStartState, int iAction) {
+        return R(iStartState);
+    }
+
+    @Override
+    public double R(int iStartState, int iAction, int iEndState) {
+        return R(iStartState);
+    }
+
+    @Override
+    public boolean isInBorder(int iStateValue) {
+        if (iStateValue == SINGLE_DONE) {
+            return false;
+        }
+
+        Point loc = stateToLocation(iStateValue).add(origin);
+        return loc.first().equals(origin.first()) || loc.second().equals(origin.second()) || loc.first() == origin.first() + rows-1 || loc.second() == origin.second() + cols-1;
+    }
+
+    @Override
+    public void initGrid() throws InvalidModelFileFormatException {
+        DONE = getStateCount() - 1;
         grid = new int[rows][cols];
         Point loc;
         int istate = 0;
@@ -81,8 +243,8 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
                 }
             }
         }
-        if (stateToLocation.size() != numOfSingleStates) {
-            throw new InvalidModelFileFormatException("Grid data does not match state number: " + stateToLocation.size() + " vs " + this.m_cStates);
+        if (stateToLocation.size() + 1 != numOfSingleStates) {
+            throw new RuntimeException("Grid data does not match state number: " + stateToLocation.size() + " vs " + numOfSingleStates);
         }
 
         System.out.println("beacons: " + Arrays.toString(beacons.toArray()));
@@ -96,22 +258,54 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     }
 
     public boolean isCollisionState(int state) {
+        if (state == DONE) {
+            return false;
+        }
+
         List<Integer> stateValues = decodeState(state);
+        while (stateValues.remove((Object)SINGLE_DONE));
         return (long) stateValues.size() != stateValues.stream().distinct().count();
+    }
+
+    // relative position
+    @Override
+    public Point stateToLocation(int iState) {
+        return super.stateToLocation(iState);
+    }
+
+    @Override
+    public int locationToState(Point loc) {
+        loc = loc.subtract(origin);
+        if (loc.first() < 0 || loc.second() < 0 || loc.first() >= rows || loc.second() >= cols) {
+            return SINGLE_DONE;
+        }
+        return super.locationToState(loc);
     }
 
     public void setNumOfSingleStates(int numOfSingleStates) {
         this.numOfSingleStates = numOfSingleStates;
+        SINGLE_DONE = numOfSingleStates - 1;
+    }
+
+    public int getNumOfSingleStates() {
+        return numOfSingleStates;
     }
 
     public void setNumOfSingleActions(int numOfSingleActions) {
         this.numOfSingleActions = numOfSingleActions;
     }
 
+    public int getNumOfSingleActions() {
+        return numOfSingleActions;
+    }
+
     public void setNumOfSingleObservations(int numOfSingleObservations) {
         this.numOfSingleObservations = numOfSingleObservations;
     }
 
+    public int getNumOfSingleObservations() {
+        return numOfSingleObservations;
+    }
 
     private List<Integer> decode(int encoded, int numOfSingle) {
         List<Integer> decoded = new ArrayList<>();

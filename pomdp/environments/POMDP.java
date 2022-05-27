@@ -18,20 +18,7 @@ import java.io.Serializable;
 import java.util.*;
 import java.util.Map.Entry;
 import pomdp.algorithms.PolicyStrategy;
-import pomdp.utilities.AlphaVector;
-import pomdp.utilities.BeliefState;
-import pomdp.utilities.BeliefStateComparator;
-import pomdp.utilities.BeliefStateFactory;
-import pomdp.utilities.ExecutionProperties;
-import pomdp.utilities.InvalidModelFileFormatException;
-import pomdp.utilities.JProf;
-import pomdp.utilities.Logger;
-import pomdp.utilities.MDPValueFunction;
-import pomdp.utilities.POMDPLoader;
-import pomdp.utilities.Pair;
-import pomdp.utilities.RandomGenerator;
-import pomdp.utilities.SparseTabularFunction;
-import pomdp.utilities.TabularAlphaVector;
+import pomdp.utilities.*;
 import pomdp.utilities.concurrent.ComputeDiscountedReward;
 import pomdp.utilities.concurrent.ThreadPool;
 import pomdp.utilities.datastructures.Function;
@@ -75,7 +62,8 @@ public class POMDP implements Serializable{
 	protected double m_dMinReward;
 	protected Map<Integer, Boolean> forbiddenStates;
 	protected Map<Character, Integer> startStates;
-	protected Map<Character, Integer> endStates;
+	protected int endState;
+	protected int NOOP;
 
 	public enum RewardType{
 		StateActionState, StateAction, State;
@@ -115,10 +103,9 @@ public class POMDP implements Serializable{
 		m_dMinReward = 0.0;//Double.POSITIVE_INFINITY;
 		forbiddenStates = new HashMap<>();
 		startStates = new HashMap<>();
-		endStates = new HashMap<>();
 	}
 	
-	public void load( String sFileName ) throws IOException, InvalidModelFileFormatException{
+	public void load( String sFileName, char id ) throws IOException, InvalidModelFileFormatException{
 		m_sName = sFileName.substring( sFileName.lastIndexOf( "/" ) + 1, sFileName.lastIndexOf( "." ) );
 		POMDPLoader p = new POMDPLoader( this );
 		p.load( sFileName );
@@ -157,18 +144,14 @@ public class POMDP implements Serializable{
 		return startStates.values().stream().toList();
 	}
 
-	public List<Integer> getAllEndStates() {
-		return endStates.values().stream().toList();
+	public void setEndState(int endState) {
+		this.endState = endState;
 	}
 
-	public void addEndState(char id, int endState) {
-		endStates.put(id, endState);
+	public int getEndState() {
+		return endState;
 	}
 
-	public int getEndState(char agentID) {
-		return endStates.get(agentID);
-	}
-	
 	public boolean useClassicBackup(){
 		return m_bGBasedBackup;
 	}
@@ -376,8 +359,14 @@ public class POMDP implements Serializable{
 
 	public void setActionCount( int cActions ){
 		m_cActions = cActions;
+		NOOP = cActions - 1;
 	}
-	public void addAction( String sAction ){
+
+	public int getNOOP() {
+		return NOOP;
+	}
+
+	public void addAction(String sAction ){
 		if( m_mActionIndexes == null ){
 			m_mActionIndexes = new TreeMap<String, Integer>();
 			m_vActionNames = new Vector<String>();
@@ -1212,17 +1201,15 @@ public class POMDP implements Serializable{
 				}
 				*/
 				//iAction = policy.getAction( bsCurrentBelief );
-				if( iAction == -1 )
+				if( iAction == -1 ) {
+					iAction = policy.getAction(bsCurrentBelief);
 					throw new Error( "Could not find optimal action for bs " + bsCurrentBelief );
+				}
 					
 			}
 			
 			if( iAction == -1 )
 				return Double.NEGATIVE_INFINITY;
-
-			if (iState == 592) {
-				System.out.println(getActionName(iAction));
-			}
 			
 			iNextState = execute( iAction, iState );
 			iObservation = observe( iAction, iNextState );
@@ -1300,19 +1287,6 @@ public class POMDP implements Serializable{
 
 		return dDiscountedReward;// + m_dMinReward * ( 1 / ( 1 - dDiscountFactor ) );
 	}
-
-//	// TODO: delete this after testing
-//	private int[] getDists(int iObservation) {
-//		int[] dists = new int[3];
-//		int dist = 0;
-//		for (int i = 0; i < 3; i++) {
-//			dist = iObservation % 6;
-//			dists[i] = dist;
-//			iObservation /= 6;
-//		}
-//
-//		return dists;
-//	}
 
 	public double[] computeDiscountedRewardWithImportanceSampling( int cMaxStepsToGoal, PolicyStrategy policy ){
 		double dDiscountedReward = 0.0, dCurrentReward = 0.0, dDiscountFactor = 1.0;
@@ -1938,7 +1912,9 @@ public class POMDP implements Serializable{
 	}
 
 	public AlphaVector newAlphaVector() {
-		return new TabularAlphaVector( null, 0, this );
+//		return new TabularAlphaVector( null, 0, this );
+		return new SparseAlphaVector(
+				null, 0, this );
 	}
 	public boolean isValid( int iState ){
 		return true;
@@ -1992,7 +1968,11 @@ public class POMDP implements Serializable{
 	public String getName(){
 		return m_sName;
 	}
-	
+
+	public void setName(String name) {
+		this.m_sName = name;
+	}
+
 	/**
 	 * Computes the immediate reward for a belief state over all actions
 	 * @param bs
@@ -2200,10 +2180,11 @@ public class POMDP implements Serializable{
 		aDims[0] = m_cStates;
 		aDims[1] = m_cActions;
 		aDims[2] = m_cStates;
-		if( m_cStates > g_sMaxTabularSize )
-			m_fReward = new MapFunction( aDims );
-		else
-			m_fReward = new SparseTabularFunction( aDims );
+//		if( m_cStates > g_sMaxTabularSize )
+//			m_fReward = new MapFunction( aDims );
+//		else
+//			m_fReward = new SparseTabularFunction( aDims );
+		m_fReward = new MapFunction( aDims );
 		
 		m_adMinActionRewards = new double[m_cActions];
 		for( int idx = 0 ; idx < m_cActions ; idx++ ){

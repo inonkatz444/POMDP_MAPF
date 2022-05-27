@@ -16,7 +16,7 @@ public class MultiAgentBeaconDistanceGridLoader {
         m_pPOMDP = pomdp;
     }
 
-    public void load( String sFileName ) throws IOException, InvalidModelFileFormatException{
+    public void load( String sFileName, char id ) throws IOException, InvalidModelFileFormatException{
         System.out.println( "Started loading model " + sFileName );
         LineReader lrInput = new LineReader( sFileName );
         String sLine = "";
@@ -43,10 +43,6 @@ public class MultiAgentBeaconDistanceGridLoader {
                     if( stLine.hasMoreTokens() ){
                         sType = stLine.nextToken();
                         switch (sType) {
-                            case "T:":
-                                sValue = stLine.nextToken();
-                                readTransition(lrInput, sValue, stLine);
-                                break;
                             case "O:":
                                 sValue = stLine.nextToken();
                                 readObservation(lrInput, sValue, stLine);
@@ -58,7 +54,7 @@ public class MultiAgentBeaconDistanceGridLoader {
                                 readStartStates(lrInput);
                                 break;
                             case "end_states:":
-                                readEndStates(lrInput);
+                                readEndStates(lrInput, id);
                                 break;
                             case "beacons:":
                                 readBeacons(lrInput);
@@ -169,7 +165,7 @@ public class MultiAgentBeaconDistanceGridLoader {
         }
     }
 
-    private void readEndStates(LineReader lrInput) throws IOException {
+    private void readEndStates(LineReader lrInput, char agentID) throws IOException {
         String sLine = "";
         StringTokenizer stLine;
         char id;
@@ -179,7 +175,9 @@ public class MultiAgentBeaconDistanceGridLoader {
             stLine = new StringTokenizer( sLine );
             id = stLine.nextToken().charAt(0);
             endState = Integer.parseInt(stLine.nextToken());
-            m_pPOMDP.addEndState(id, endState);
+            if (id == agentID) {
+                m_pPOMDP.setEndState(endState);
+            }
             sLine = lrInput.readLine();
         }
     }
@@ -460,7 +458,7 @@ public class MultiAgentBeaconDistanceGridLoader {
                         sValue = stLine.nextToken();
 
                         try{
-                            m_pPOMDP.setStateCount( Integer.parseInt( sValue ) );
+                            m_pPOMDP.setStateCount( Integer.parseInt( sValue ) + 1); // +1 for DONE
                         }
                         catch( NumberFormatException e ){
                             idx = 0;

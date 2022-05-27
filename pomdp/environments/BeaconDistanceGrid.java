@@ -8,7 +8,6 @@ import java.util.*;
 public class BeaconDistanceGrid extends Grid{
 
     protected RandomGenerator noiseGenerator;
-    protected int maxNoise;
     protected int maxDist;
     protected int INF;
     protected int entry_options;
@@ -16,7 +15,6 @@ public class BeaconDistanceGrid extends Grid{
     public BeaconDistanceGrid(int numOfAgents) {
         super(numOfAgents);
         noiseGenerator = RandomGenerator.getInstance();
-        maxNoise = 3;
     }
 
     public void setMaxDist(int maxDist) {
@@ -25,16 +23,19 @@ public class BeaconDistanceGrid extends Grid{
         entry_options = maxDist + 2;
     }
 
+    public int getMaxDist() {
+        return this.maxDist;
+    }
+
     public int getINF() {
         return INF;
     }
 
-    public int getMaxNoise() {
-        return maxNoise;
-    }
-
     @Override
     public int observe(int iAction, int iState) {
+        if (iState == DONE) {
+            return 0;
+        }
         Point iLoc = stateToLocation.get(iState);
         List<Integer> dists = beacons.stream().map(b -> {
             // Formula: 2^o / (2^(range+2) - 2^d)
@@ -82,7 +83,10 @@ public class BeaconDistanceGrid extends Grid{
 
     @Override
     public double O(int iAction, int iState, int iObservation) {
-        Point iLoc = stateToLocation.get(iState);
+        if (iState == DONE) {
+            return 0;
+        }
+        Point iLoc = stateToLocation(iState);
 //        System.out.println("O iObservation: " + iObservation);
 
         double prob = 1.0;
@@ -117,11 +121,11 @@ public class BeaconDistanceGrid extends Grid{
     }
 
     @Override
-    public void load(String sFileName) throws IOException, InvalidModelFileFormatException {
+    public void load(String sFileName, char id) throws IOException, InvalidModelFileFormatException {
         m_sName = sFileName.substring( sFileName.lastIndexOf( "/" ) + 1, sFileName.lastIndexOf( "." ) );
         if (numOfAgents > 1) {
             MultiAgentBeaconDistanceGridLoader p = new MultiAgentBeaconDistanceGridLoader(this);
-            p.load( sFileName );
+            p.load( sFileName, id );
         }
         else {
             BeaconDistanceGridLoader p = new BeaconDistanceGridLoader( this );

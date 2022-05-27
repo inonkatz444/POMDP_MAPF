@@ -117,7 +117,6 @@ public class JointGridLoader {
             id = stLine.nextToken().charAt(0);
             startState = Integer.parseInt(stLine.nextToken());
             m_pPOMDP.addStartState(id, startState);
-            m_pPOMDP.setAgentListPos(id);
             num_of_agents++;
             sLine = lrInput.readLine();
         }

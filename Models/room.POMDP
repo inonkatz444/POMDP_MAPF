@@ -94,7 +94,7 @@ holes:
 
 # syntax: row col : range
 beacons:
-2 9 : 5
+1 9 : 5
 
 T: n   : 0          : 1        0.1
 T: n   : 0          : 0        0.9

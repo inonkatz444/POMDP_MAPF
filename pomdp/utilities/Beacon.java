@@ -28,6 +28,10 @@ public class Beacon {
         return loc;
     }
 
+    public Beacon relativeTo(Point anchor) {
+        return new Beacon(loc.relativeTo(anchor), range);
+    }
+
     public int distTo(int state_row, int state_col) {
         return Math.abs(this.loc.first() - state_row) + Math.abs(this.loc.second() - state_col);
     }

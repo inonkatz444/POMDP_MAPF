@@ -2,7 +2,6 @@ package pomdp.environments;
 
 import pomdp.algorithms.pointbased.HeuristicSearchValueIteration;
 import pomdp.utilities.LimitedBeliefStateFactory;
-import pomdp.utilities.MDPValueFunction;
 
 public class LimitedPOMDP extends POMDPAdapter {
 
@@ -28,7 +27,7 @@ public class LimitedPOMDP extends POMDPAdapter {
 	public static void main( String[] args ) throws Exception{
 		POMDP pomdp = new POMDP();
 		LimitedPOMDP lp = new LimitedPOMDP( pomdp );
-		pomdp.load( "Models/Hallway.pomdp" );
+		pomdp.load( "Models/Hallway.pomdp", 'a');
 		HeuristicSearchValueIteration hsvi = new HeuristicSearchValueIteration( lp );
 		hsvi.valueIteration( 100 );
 	}

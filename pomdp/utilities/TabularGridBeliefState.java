@@ -70,22 +70,22 @@ public class TabularGridBeliefState extends TabularBeliefState{
 //        return m_vAllSuccessors;
 //    }
 
-    private boolean isNonZero(int iObservation) {
-        BeaconDistanceGrid grid = (BeaconDistanceGrid) m_bsFactory.getPOMDP();
-        final int INF = grid.getINF();
-        List<Integer> obsDists = grid.obsToDists(iObservation);
-        int minDist, maxDist, obsDist;
-        for (int iBeacon = 0; iBeacon < gridBeacons.size(); iBeacon++) {
-            minDist = minDistToBeacons.get(iBeacon);
-            maxDist = maxDistToBeacons.get(iBeacon);
-            obsDist = obsDists.get(iBeacon);
-            if (minDist == INF && obsDist < INF)
-                return false;
-            if ((minDist - obsDist > grid.getMaxNoise()) || obsDist > maxDist)
-                return false;
-        }
-        return true;
-    }
+//    private boolean isNonZero(int iObservation) {
+//        BeaconDistanceGrid grid = (BeaconDistanceGrid) m_bsFactory.getPOMDP();
+//        final int INF = grid.getINF();
+//        List<Integer> obsDists = grid.obsToDists(iObservation);
+//        int minDist, maxDist, obsDist;
+//        for (int iBeacon = 0; iBeacon < gridBeacons.size(); iBeacon++) {
+//            minDist = minDistToBeacons.get(iBeacon);
+//            maxDist = maxDistToBeacons.get(iBeacon);
+//            obsDist = obsDists.get(iBeacon);
+//            if (minDist == INF && obsDist < INF)
+//                return false;
+//            if ((minDist - obsDist > grid.getMaxNoise()) || obsDist > maxDist)
+//                return false;
+//        }
+//        return true;
+//    }
 
     public String toString( double dMin ){
         String sVector = "bs" + m_iID + "[", sValue = "";

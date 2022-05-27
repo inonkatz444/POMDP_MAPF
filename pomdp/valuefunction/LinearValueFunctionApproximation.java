@@ -161,7 +161,7 @@ public class LinearValueFunctionApproximation implements Serializable{
 	public int getBestAction( BeliefState bs ){
 		AlphaVector avMaxAlpha = getMaxAlpha( bs );
 		if( avMaxAlpha == null )
-			return -1;
+			return bs.getBeliefStateFactory().getPOMDP().getNOOP();
 		return avMaxAlpha.getAction();
 	}
 

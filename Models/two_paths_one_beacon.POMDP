@@ -10,10 +10,10 @@
 #   +: Positive, -: Negative, <num>: Beacon with influence range of num, @: start position
 #
 #   ###################
-#   #        3        #
+#   #                 #
 #   #        +        #
 #   #                 #
-#   #####4###### ######
+#   #####3###### ######
 #   #   # #    # #    #
 #   #   # #    # #    #
 #   #   #3#    # #    #
@@ -86,8 +86,7 @@ holes:
 
 # syntax: row col : range
 beacons:
-0 8 : 3
-3 4 : 4
+3 4 : 3
 6 4 : 3
 
 start:
