@@ -187,32 +187,43 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     }
 
     @Override
-    public double R(int iStartState) {
-        List<Integer> iStateValues = decodeState(iStartState);
-        double reward = 0;
-        int bigGridState;
-        for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-            if (iStateValues.get(iAgent) != SINGLE_DONE) {
-                bigGridState = agents.get(iAgent).getGrid().fromJointGrid(iStateValues.get(iAgent), this);
-                if (isInBorder(iStateValues.get(iAgent))) {
-                    reward += agents.get(iAgent).getMDPValueFunction().getValue(bigGridState);
-                }
-                else {
-                    reward += agents.get(iAgent).getGrid().R(bigGridState);
-                }
-            }
-        }
-        return reward;
-    }
-
-    @Override
     public double R(int iStartState, int iAction) {
-        return R(iStartState);
+        double dReward = m_adStoredRewards[iStartState][iAction];
+        if( dReward == MIN_INF ) {
+            double dSumRewards = 0;
+            for (Iterator<Map.Entry<Integer, Double>> it = getNonZeroTransitions(iStartState, iAction); it.hasNext(); ) {
+                Map.Entry<Integer, Double> e = it.next();
+                dSumRewards += R(iStartState, iAction, e.getKey()) * e.getValue();
+            }
+            m_adStoredRewards[iStartState][iAction] = dSumRewards;
+            dReward = dSumRewards;
+        }
+        return dReward;
     }
 
     @Override
     public double R(int iStartState, int iAction, int iEndState) {
-        return R(iStartState);
+        if (isTerminalState(iStartState)) {
+            return 0;
+        }
+
+        List<Integer> iStartStateValues = decodeState(iStartState);
+        List<Integer> iActionValues = decodeAction(iAction);
+        List<Integer> iEndStateValues = decodeState(iEndState);
+
+        double reward = 0;
+        for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
+            if (!(iEndStateValues.get(iAgent) == SINGLE_DONE || iStartStateValues.get(iAgent) == SINGLE_DONE || isInBorder(iStartStateValues.get(iAgent)))) {
+                if (isInBorder(iEndStateValues.get(iAgent))) {
+                    reward += agents.get(iAgent).getMDPValueFunction().getValue(agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this));
+                }
+                else {
+                    reward += agents.get(iAgent).getGrid().R(iStartStateValues.get(iAgent), iActionValues.get(iAgent), iEndStateValues.get(iAgent));
+                }
+            }
+        }
+
+        return reward;
     }
 
     @Override

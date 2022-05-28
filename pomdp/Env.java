@@ -15,7 +15,7 @@ public class Env {
 
     private static boolean runMiniGrids(List<GridAgent> agents, String sMethodName, String sModelName, int maxSteps) {
         int iStep, n = agents.size();
-        List<GridAgent> potentialCollision = null;
+        PotentialCollisionData potentialCollision = null;
         boolean collisionDetected;
         for (GridAgent agent : agents) {
             agent.initRun(sModelName);
@@ -63,7 +63,7 @@ public class Env {
     public static boolean runForbidden(List<GridAgent> agents, String sMethodName, String sModelName, int maxHighLevelIterations, int maxSteps) {
         int iStep, n = agents.size();
         boolean collisionDetected = true;
-        List<GridAgent> mightCollide;
+        PotentialCollisionData mightCollide;
 
         for (int iIteration = 1; (iIteration <= maxHighLevelIterations) && collisionDetected; iIteration++) {
             System.out.println("High Level Iteration: " + iIteration);
@@ -88,8 +88,8 @@ public class Env {
                         mightCollide = mightCollidingAgents(i, agents);
                         collisionDetected = !mightCollide.isEmpty();
                         if (collisionDetected) {
-                            Set<Integer> collisionStates = getCollisionStates(mightCollide.get(0), mightCollide.get(1));
-                            GridAgent nonDominant = mightCollide.get(0).distanceToGoal() < mightCollide.get(1).distanceToGoal() ? mightCollide.get(1) : mightCollide.get(0);
+                            Set<Integer> collisionStates = getCollisionStates(mightCollide.getAgents().get(0), mightCollide.getAgents().get(1));
+                            GridAgent nonDominant = mightCollide.getAgents().get(0).distanceToGoal() < mightCollide.getAgents().get(1).distanceToGoal() ? mightCollide.getAgents().get(1) : mightCollide.getAgents().get(0);
                             for (int interState : collisionStates) {
                                 if (!nonDominant.isForbidden(interState)) {
                                     nonDominant.retrain();
@@ -108,8 +108,8 @@ public class Env {
         return !collisionDetected && AllDone(agents);
     }
 
-    private static List<GridAgent> mightCollidingAgents(int iAgent, List<GridAgent> agents) {
-        List<GridAgent> potentialCollision = new ArrayList<>();
+    private static PotentialCollisionData mightCollidingAgents(int iAgent, List<GridAgent> agents) {
+        PotentialCollisionData potentialCollision = new PotentialCollisionData();
         GridAgent agent = agents.get(iAgent);
         for (int iOtherAgent = 0; iOtherAgent < agents.size(); iOtherAgent++) {
             if (iOtherAgent != iAgent) {
@@ -123,8 +123,9 @@ public class Env {
                         for (int collisionState : collisionStates) {
                             System.out.println("Agent " + agent.getID() + " and agent " + otherAgent.getID() + " may collide in " + agent.getGrid().parseState(collisionState));
                         }
-                        potentialCollision.add(agent);
-                        potentialCollision.add(otherAgent);
+                        potentialCollision.addAgent(agent);
+                        potentialCollision.addAgent(otherAgent);
+                        potentialCollision.addCollisionStates(collisionStates);
                         break;
                     }
                 }

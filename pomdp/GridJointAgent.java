@@ -90,16 +90,16 @@ public class GridJointAgent {
 //        Runtime.getRuntime().gc();
 //    }
 
-    public void initRun(List<GridAgent> agents) {
+    public void initRun(PotentialCollisionData data) {
+        this.agents = data.getAgents();
         singleGrids = agents.stream().map(GridAgent::getGrid).toList();
         BeaconDistanceGrid singleGrid = singleGrids.get(0);
-        this.agents = agents;
         isDone = new boolean[agents.size()];
         int rows, cols;
-        Function singleTransitions;
+//        Function singleTransitions;
         grid = new JointBeaconDistanceGrid(agents);
         numOfAgents = agents.size();
-        Point[] boundaries = singleGrid.getBoundaryPoints(agents.stream().map(GridAgent::getCurrentBelief).toList());
+        Point[] boundaries = singleGrid.getBoundaryPoints(agents.stream().map(GridAgent::getCurrentBelief).toList(), data.getCollisionStates());
         rows = boundaries[1].first() - boundaries[0].first() + 1;
         cols = boundaries[1].second() - boundaries[0].second() + 1;
         grid.setRows(rows);
@@ -118,7 +118,7 @@ public class GridJointAgent {
         grid.setHoles(remainHoles);
 
         grid.setNumOfSingleStates(rows*cols - remainHoles.size() + 1);  // +1 for DONE
-        grid.setStateCount( (int)Math.pow(grid.getNumOfSingleStates(), grid.getNumOfAgents()) + 1); // +1 for DONE
+        grid.setStateCount( (int)Math.pow(grid.getNumOfSingleStates(), grid.getNumOfAgents()));
         System.out.print( "|S| = " + grid.getStateCount() );
 
         setActions();
@@ -137,8 +137,11 @@ public class GridJointAgent {
             e.printStackTrace();
         }
 
-        int[] transitionDims = {grid.getNumOfSingleStates(), grid.getNumOfSingleActions(), grid.getNumOfSingleStates()};
-        singleTransitions = new SparseTabularFunction( transitionDims );
+        grid.setRewardType( POMDP.RewardType.StateActionState );
+        grid.initStoredRewards();
+
+//        int[] transitionDims = {grid.getNumOfSingleStates(), grid.getNumOfSingleActions(), grid.getNumOfSingleStates()};
+//        singleTransitions = new SparseTabularFunction( transitionDims );
 //        Map.Entry<Integer, Double> eTrans;
 //        int iEndState;
 //        double dTrans;
@@ -191,7 +194,7 @@ public class GridJointAgent {
             isDone[i] = false;
         }
 
-        createTransitionsAndRewards(singleTransitions);
+        setStartStateProb();
 
         System.out.println(grid.getName());
         System.out.println("Created grid with " + rows + " rows and " + cols + " columns");
@@ -224,7 +227,7 @@ public class GridJointAgent {
             encodedState = grid.encodeStates(stateValues);
             numOfTerminalAgents = 0;
             for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-                if (stateValues.get(iAgent) == grid.SINGLE_DONE) {
+                if (stateValues.get(iAgent) == grid.SINGLE_DONE || grid.isInBorder(stateValues.get(iAgent))) {
                     numOfTerminalAgents++;
                 }
             }
@@ -246,6 +249,8 @@ public class GridJointAgent {
             }
         }
 
+        END_STATES.forEach(s -> grid.addTerminalState(s));
+
         return END_STATES;
     }
 
@@ -265,7 +270,7 @@ public class GridJointAgent {
             newBSValues.add(newBS);
         }
 
-        double[] jointProbs = new double[(int)Math.pow(grid.getNumOfSingleStates(), numOfAgents) + 1];
+        double[] jointProbs = new double[(int)Math.pow(grid.getNumOfSingleStates(), numOfAgents)];
 
         int maxStateValue = numOfSingleStates()-1;
         List<Integer> stateValues = new ArrayList<>();
@@ -466,7 +471,7 @@ public class GridJointAgent {
         return grid.getNumOfSingleActions();
     }
 
-    private void createTransitionsAndRewards(Function singleTransitions) {
+    private void setStartStateProb() {
         double prob;
         double reward;
 
@@ -482,9 +487,6 @@ public class GridJointAgent {
         boolean stateDone = false;
         boolean stateChange;
         int stateR;
-
-        grid.setRewardType( POMDP.RewardType.State );
-        grid.addTerminalState(grid.DONE);
 
         int maxActionValue = numOfSingleActions()-1;
         List<Integer> actionValues = new ArrayList<>();

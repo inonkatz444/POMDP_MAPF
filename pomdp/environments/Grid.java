@@ -556,11 +556,20 @@ public class Grid extends POMDP {
     }
 
     // return: [upperLeft, lowerRight]
-    public Point[] getBoundaryPoints(List<BeliefState> beliefs) {
+    public Point[] getBoundaryPoints(List<BeliefState> beliefs, Set<Integer> collisionStates) {
         int left = cols-1, up = rows-1, right = 0, down = 0;
         for (BeliefState belief : beliefs) {
             for (Map.Entry<Integer, Double> stateD : belief.getNonZeroEntries()) {
                 Point p = stateToLocation(stateD.getKey());
+
+                up = Math.min(up, p.first());
+                down = Math.max(down, p.first());
+                left = Math.min(left, p.second());
+                right = Math.max(right, p.second());
+            }
+
+            for (Integer collisionState : collisionStates) {
+                Point p = stateToLocation(collisionState);
 
                 up = Math.min(up, p.first());
                 down = Math.max(down, p.first());

@@ -2184,7 +2184,7 @@ public class POMDP implements Serializable{
 //			m_fReward = new MapFunction( aDims );
 //		else
 //			m_fReward = new SparseTabularFunction( aDims );
-		m_fReward = new MapFunction( aDims );
+		m_fReward = new SparseTabularFunction( aDims );
 		
 		m_adMinActionRewards = new double[m_cActions];
 		for( int idx = 0 ; idx < m_cActions ; idx++ ){
