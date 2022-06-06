@@ -28,18 +28,17 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         return endStates.get(id);
     }
 
+    public List<GridAgent> getAgents() {
+        return agents;
+    }
+
     @Override
     public int observe(int iAction, int iState) {
         List<Integer> stateValues = decodeState(iState);
         List<Integer> actionValues = decodeAction(iAction);
         List<Integer> observationValues = new ArrayList<>();
         for (int i = 0; i < numOfAgents; i++) {
-            if (stateValues.get(i) == SINGLE_DONE) {
-                observationValues.add(0);
-            }
-            else {
-                observationValues.add(super.observe(actionValues.get(i), stateValues.get(i)));
-            }
+            observationValues.add(agents.get(i).getGrid().observe(actionValues.get(i), agents.get(i).getGrid().fromJointGrid(stateValues.get(i), this)));
         }
         int encodedObservation = encodeObservations(observationValues);
 //        System.out.print(parseObservation(encodedObservation) + " ");
@@ -53,18 +52,13 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         List<Integer> observationValues = decodeObservation(iObservation);
         double prob = 1;
         for (int i = 0; i < numOfAgents; i++) {
-            if (stateValues.get(i) != SINGLE_DONE) {
-                prob *= super.O(actionValues.get(i), stateValues.get(i), observationValues.get(i));
-            }
+            prob *= agents.get(i).getGrid().O(actionValues.get(i), agents.get(i).getGrid().fromJointGrid(stateValues.get(i), this), observationValues.get(i));
         }
         return prob;
     }
 
     @Override
     public String parseState(int iState) {
-        if (iState == DONE) {
-            return "DONE";
-        }
         List<Integer> stateValues = decodeState(iState);
         StringBuilder sState = new StringBuilder("(");
         for (int i = 0; i < numOfAgents; i++) {
@@ -90,20 +84,8 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
             return 0;
         }
 
-        if (iState2 == DONE) {
-            if (endStates.containsValue(iState1) || iState1 == DONE) {
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        }
-        if (iState1 == DONE) {
-            return 0;
-        }
-
         if (endStates.containsValue(iState1)) {
-            return 0;
+            return endStates.containsValue(iState2) ? 1 : 0;
         }
 
         List<Integer> startStates = decodeState(iState1);
@@ -112,11 +94,14 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
 
         double prob = 1;
         for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-            if (isInBorder(startStates.get(iAgent))) {
+            if (startStates.get(iAgent) == SINGLE_DONE) {
                 prob *= endStates.get(iAgent) == SINGLE_DONE ? 1.0 : 0.0;
             }
+            else if (!agents.get(iAgent).canDone(this) && isInBorder(startStates.get(iAgent))) {
+                prob *= Objects.equals(startStates.get(iAgent), endStates.get(iAgent)) ? 1.0 : 0.0;
+            }
             else {
-                prob *= agents.get(iAgent).getGrid().tr(fromJointGrid(startStates.get(iAgent), this), actions.get(iAgent), fromJointGrid(endStates.get(iAgent), this));
+                prob *= agents.get(iAgent).getGrid().tr(agents.get(iAgent).getGrid().fromJointGrid(startStates.get(iAgent), this), actions.get(iAgent), agents.get(iAgent).getGrid().fromJointGrid(endStates.get(iAgent), this));
             }
         }
 
@@ -131,32 +116,28 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         List<Integer> actions = decodeAction(iAction);
         List<Iterable<Map.Entry<Integer, Double>>> res = new ArrayList<>();
 
-        int numOfTerminalAgents = 0;
-        for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-            if (startStates.get(iAgent) == SINGLE_DONE) {
-                numOfTerminalAgents++;
-            }
-        }
-        if (iStartState == DONE || numOfTerminalAgents >= numOfAgents - 1) {
-            List<Map.Entry<Integer, Double>> entries = new ArrayList<>();
-            entries.add(new Pair<>(DONE, 1.0));
-            return entries.iterator();
-        }
-
         for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
             bigGrid = agents.get(iAgent).getGrid();
             bigGridState = bigGrid.fromJointGrid(startStates.get(iAgent), this);
             List<Map.Entry<Integer, Double>> elements = new ArrayList<>();
-            if (startStates.get(iAgent) == SINGLE_DONE || isInBorder(startStates.get(iAgent))) {
-                elements.add(new Pair<>(SINGLE_DONE, 1.0));
-                res.add(elements);
-                continue;
-            }
+//            if (startStates.get(iAgent) == SINGLE_DONE) {
+//                elements.add(new Pair<>(SINGLE_DONE, 1.0));
+//                res.add(elements);
+//                continue;
+//            }
             Iterator<Map.Entry<Integer, Double>> it = bigGrid.getNonZeroTransitions(bigGridState, actions.get(iAgent));
             while (it.hasNext()) {
                 Map.Entry<Integer, Double> e = it.next();
                 int endState = e.getKey();
-                elements.add(new Pair<>(bigGrid.toJointGrid(endState, this), e.getValue()));
+                if (endState == bigGrid.DONE) {
+                    elements.add(new Pair<>(SINGLE_DONE, 1.0));
+                }
+                else if (isInBorder(startStates.get(iAgent)) && !bigGrid.stateToLocation(endState).inBound(this)) {
+                    elements.add(new Pair<>(startStates.get(iAgent), e.getValue()));
+                }
+                else {
+                    elements.add(new Pair<>(bigGrid.toJointGrid(endState, this), e.getValue()));
+                }
             }
             int numOfSINGLE_DONE = 0;
             for (Map.Entry<Integer, Double> element : elements) {
@@ -203,9 +184,6 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
 
     @Override
     public double R(int iStartState, int iAction, int iEndState) {
-        if (isTerminalState(iStartState)) {
-            return 0;
-        }
 
         List<Integer> iStartStateValues = decodeState(iStartState);
         List<Integer> iActionValues = decodeAction(iAction);
@@ -213,12 +191,12 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
 
         double reward = 0;
         for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-            if (!(iEndStateValues.get(iAgent) == SINGLE_DONE || iStartStateValues.get(iAgent) == SINGLE_DONE || isInBorder(iStartStateValues.get(iAgent)))) {
-                if (isInBorder(iEndStateValues.get(iAgent))) {
+            if (iEndStateValues.get(iAgent) != SINGLE_DONE) {
+                if ((!agents.get(iAgent).canDone(this) && isInBorder(iEndStateValues.get(iAgent))) || agents.get(iAgent).getEndState() == agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this)) {
                     reward += agents.get(iAgent).getMDPValueFunction().getValue(agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this));
                 }
                 else {
-                    reward += agents.get(iAgent).getGrid().R(iStartStateValues.get(iAgent), iActionValues.get(iAgent), iEndStateValues.get(iAgent));
+                    reward += agents.get(iAgent).getGrid().R(agents.get(iAgent).getGrid().fromJointGrid(iStartStateValues.get(iAgent), this), iActionValues.get(iAgent), agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this));
                 }
             }
         }
@@ -229,7 +207,7 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     @Override
     public boolean isInBorder(int iStateValue) {
         if (iStateValue == SINGLE_DONE) {
-            return false;
+            return true;
         }
 
         Point loc = stateToLocation(iStateValue).add(origin);
@@ -238,7 +216,6 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
 
     @Override
     public void initGrid() throws InvalidModelFileFormatException {
-        DONE = getStateCount() - 1;
         grid = new int[rows][cols];
         Point loc;
         int istate = 0;
@@ -255,7 +232,7 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
             }
         }
         if (stateToLocation.size() + 1 != numOfSingleStates) {
-            throw new RuntimeException("Grid data does not match state number: " + stateToLocation.size() + " vs " + numOfSingleStates);
+            throw new RuntimeException("Grid data does not match state number: " + stateToLocation.size() + 1 + " vs " + numOfSingleStates);
         }
 
         System.out.println("beacons: " + Arrays.toString(beacons.toArray()));
@@ -269,10 +246,6 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     }
 
     public boolean isCollisionState(int state) {
-        if (state == DONE) {
-            return false;
-        }
-
         List<Integer> stateValues = decodeState(state);
         while (stateValues.remove((Object)SINGLE_DONE));
         return (long) stateValues.size() != stateValues.stream().distinct().count();

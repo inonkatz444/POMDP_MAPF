@@ -4,6 +4,7 @@ import pomdp.algorithms.AlgorithmsFactory;
 import pomdp.algorithms.PolicyStrategy;
 import pomdp.algorithms.ValueIteration;
 import pomdp.environments.BeaconDistanceGrid;
+import pomdp.environments.JointBeaconDistanceGrid;
 import pomdp.environments.POMDP;
 import pomdp.utilities.*;
 
@@ -234,7 +235,7 @@ public class GridAgent {
 
         done = done || (bsNext == null || ( bsNext.valueAt( currentNextState ) == 0 || ( cSameStates > 10 ) ));
 
-        System.out.println("Agent " + id + ": " + grid.getActionName(iAction) + " -> " + grid.parseState(currentNextState));
+        System.out.println("Agent " + id + ": " + grid.getActionName(iAction) + " -> " + grid.parseState(currentNextState) + " " + grid.parseObservation(currentObservation));
 
         currentState = currentNextState;
         currentBelief.release();
@@ -243,6 +244,15 @@ public class GridAgent {
         irrelevantExpandedBeliefs();
 
         return done;
+    }
+
+    public boolean canDone(JointBeaconDistanceGrid jointGrid) {
+        for (int iState = 0; iState < jointGrid.getNumOfSingleStates(); iState++) {
+            if (getEndState() == grid.fromJointGrid(iState, jointGrid)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public BeaconDistanceGrid getGrid() {
@@ -356,6 +366,10 @@ public class GridAgent {
             if(isForbidden) forbidden.add(s);
         });
         return forbidden;
+    }
+
+    public int getCurrentState() {
+        return currentState;
     }
 
     public void printGrid() {

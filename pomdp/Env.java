@@ -19,7 +19,7 @@ public class Env {
         boolean collisionDetected;
         for (GridAgent agent : agents) {
             agent.initRun(sModelName);
-            agent.solve(sMethodName, 100.0, 17, maxSteps);
+            agent.solve(sMethodName, 100.0, 20, maxSteps);
             if (!agent.hasConverged()) {
                 System.out.println("DEBUG: agent " + agent.getID() + " timed out!");
             }
@@ -44,7 +44,7 @@ public class Env {
             if (collisionDetected) {
                 GridJointAgent jointAgent = new GridJointAgent();
                 jointAgent.initRun(potentialCollision);
-                jointAgent.solve(sMethodName, 100.0, 17, maxSteps);
+                jointAgent.solve(sMethodName, 100.0, 50, maxSteps);
                 boolean jointDone = false;
                 while (iStep < maxSteps && !jointDone) {
                     jointDone = jointAgent.step();

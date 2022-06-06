@@ -34,7 +34,7 @@ public class BeaconDistanceGrid extends Grid{
     @Override
     public int observe(int iAction, int iState) {
         if (iState == DONE) {
-            return 0;
+            return getObservationCount()-1;
         }
         Point iLoc = stateToLocation.get(iState);
         List<Integer> dists = beacons.stream().map(b -> {
@@ -84,6 +84,9 @@ public class BeaconDistanceGrid extends Grid{
     @Override
     public double O(int iAction, int iState, int iObservation) {
         if (iState == DONE) {
+            return iObservation == getObservationCount()-1 ? 1.0 : 0.0;
+        }
+        if (iObservation == getObservationCount()-1) {
             return 0;
         }
         Point iLoc = stateToLocation(iState);
@@ -141,6 +144,6 @@ public class BeaconDistanceGrid extends Grid{
     }
 
     public String parseObservation(int iObservation) {
-        return obsToDists(iObservation).toString();
+        return iObservation == getObservationCount()-1 ? "DONE_OBS" : obsToDists(iObservation).toString();
     }
 }

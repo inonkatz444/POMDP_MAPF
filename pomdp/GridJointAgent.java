@@ -125,7 +125,7 @@ public class GridJointAgent {
 
         grid.setBeacons(singleGrid.getBeacons());
 
-        int numOfSingleObservations = (int)Math.pow(singleGrid.getMaxDist() + 2, singleGrid.getBeacons().size());    // +1 for zero dist, +1 for inf dist
+        int numOfSingleObservations = agents.get(0).getGrid().getObservationCount();
         grid.setNumOfSingleObservations(numOfSingleObservations);
         grid.setObservationCount((int)Math.pow(numOfSingleObservations, numOfAgents));
         grid.initDynamicsFunctions();
@@ -203,10 +203,12 @@ public class GridJointAgent {
     private List<Integer> calculateIntermediateEndStates() {
         int maxStateValue = numOfSingleStates()-1;
         List<Integer> stateValues = new ArrayList<>();
+        boolean[] canDone = new boolean[numOfAgents];
         int numOfTerminalAgents;
 
         for (int i = 0; i < numOfAgents; i++) {
             stateValues.add(0);
+            canDone[i] = agents.get(i).canDone(grid);
         }
 
         int stateChecksum;
@@ -227,7 +229,10 @@ public class GridJointAgent {
             encodedState = grid.encodeStates(stateValues);
             numOfTerminalAgents = 0;
             for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-                if (stateValues.get(iAgent) == grid.SINGLE_DONE || grid.isInBorder(stateValues.get(iAgent))) {
+                if (stateValues.get(iAgent) == grid.SINGLE_DONE) {
+                    numOfTerminalAgents++;
+                }
+                else if (!canDone[iAgent] && grid.isInBorder(stateValues.get(iAgent)) && agents.get(iAgent).getGrid().tr(stateValues.get(iAgent), -1, agents.get(iAgent).getGrid().DONE) == 0) {
                     numOfTerminalAgents++;
                 }
             }
@@ -423,46 +428,6 @@ public class GridJointAgent {
         return done;
     }
 
-    private void verifyTransitions() {
-        int iStartState = 0, iAction = 0, iEndState = 0, iObservation = 0;
-        Iterator<Map.Entry<Integer,Double>> itNonZero = null;
-        Map.Entry<Integer,Double> e = null;
-        double dTr = 0.0, dSumTr = 0.0, dO = 0.0, dSumO = 0.0, dPr = 0.0, dSumPr = 0.0;
-        boolean bFixed = false;
-        int cStates = numOfSingleStates();
-        int cActions = numOfSingleActions();
-
-        bFixed = false;
-        for( iStartState = 0 ; iStartState < cStates ; iStartState++ ){
-            for( iAction = 0 ; iAction < cActions ; iAction++ ){
-                dSumTr = 0.0;
-                itNonZero = grid.getNonZeroTransitions( iStartState, iAction );
-                while( itNonZero.hasNext() ){
-                    e = itNonZero.next();
-                    iEndState = e.getKey();
-                    dTr = e.getValue();
-                    dSumTr += dTr;
-                }
-
-                if( dSumTr == 0.0 ){
-                    grid.setTransition( iStartState, iAction, iStartState, 1.0 );
-                    dSumTr = 1.0;
-                    bFixed = true;
-                }
-
-                if( Math.abs( dSumTr - 1.0 ) > 0.0001 )
-                    System.out.println( "sum tr( " + grid.getStateName( iStartState ) + ", " + iAction + ", * ) = " + dSumTr );
-            }
-        }
-        if( bFixed ){
-            System.out.println( "Model file corrupted - needed to fix some transition values" );
-        }
-
-        if (grid.getStateToLocation() == null) {
-            System.out.println( "Grid model missing rows and/or cols entries");
-        }
-    }
-
     public int numOfSingleStates() {
         return grid.getNumOfSingleStates();
     }
@@ -472,177 +437,11 @@ public class GridJointAgent {
     }
 
     private void setStartStateProb() {
-        double prob;
-        double reward;
 
-        int maxStateValue = numOfSingleStates()-1;
-        List<Integer> stateValues = new ArrayList<>();
-
-        for (int i = 0; i < numOfAgents; i++) {
-            stateValues.add(0);
+        for (int iState = 0; iState < grid.getStateCount(); iState++) {
+            grid.setStartStateProb(iState, currentJointBelief.valueAt(iState));
         }
 
-        int stateChecksum;
-        int encodedState;
-        boolean stateDone = false;
-        boolean stateChange;
-        int stateR;
-
-        int maxActionValue = numOfSingleActions()-1;
-        List<Integer> actionValues = new ArrayList<>();
-
-        for (int i = 0; i < numOfAgents; i++) {
-            actionValues.add(0);
-        }
-
-        int actionChecksum;
-        int encodedAction;
-        boolean actionDone = false;
-        boolean actionChange;
-        int actionR;
-
-
-        List<Integer> nextStateValues = new ArrayList<>();
-
-        for (int i = 0; i < numOfAgents; i++) {
-            nextStateValues.add(0);
-        }
-
-        int nextStateChecksum;
-        int encodedNextState;
-        boolean nextStateDone = false;
-        boolean nextStateChange;
-        int nextStateR;
-
-        while (!stateDone) {
-            stateChecksum = 0;
-            for (int i = 0; i < numOfAgents; i++) {
-                stateChecksum += stateValues.get(i);
-            }
-            if (stateChecksum == numOfAgents*(maxStateValue)){
-                stateDone = true;
-            }
-
-            encodedState = grid.encodeStates(stateValues);
-
-            // init start state prob:
-            grid.setStartStateProb(encodedState, currentJointBelief.valueAt(encodedState));
-//
-//            reward = 0;
-//            for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-//                if (stateValues.get(iAgent) != grid.SINGLE_DONE) {
-//                    if (grid.isInBorder(stateValues.get(iAgent))) {
-//                        reward += agents.get(iAgent).getMDPValueFunction().getValue(toBigGrid(stateValues.get(iAgent)));
-//                    }
-//                    else {
-//                        reward += INTER_REWARD;
-//                    }
-//                }
-//            }
-//            grid.setReward(encodedState, reward);
-//
-//            actionDone = false;
-//
-//            while (!actionDone) {
-//                actionChecksum = 0;
-//                for (int i = 0; i < numOfAgents; i++) {
-//                    actionChecksum += actionValues.get(i);
-//                }
-//                if (actionChecksum == numOfAgents*(maxActionValue)){
-//                    actionDone = true;
-//                }
-//
-//                encodedAction = grid.encodeActions(actionValues);
-//
-//                nextStateDone = false;
-//
-//                while (!nextStateDone) {
-//                    nextStateChecksum = 0;
-//                    for (int i = 0; i < numOfAgents; i++) {
-//                        nextStateChecksum += nextStateValues.get(i);
-//                    }
-//                    if (nextStateChecksum == numOfAgents*(maxStateValue)){
-//                        nextStateDone = true;
-//                    }
-//
-//                    encodedNextState = grid.encodeStates(nextStateValues);
-//
-//                    // Insert here
-//                    if (END_STATES.contains(encodedState)) {
-//                        grid.setTransition(encodedState, encodedAction, encodedNextState, 0.0);
-//                        grid.setTransition(encodedState, encodedAction, grid.DONE, 1.0);
-//                    }
-//                    else {
-//                        prob = 1.0;
-//                        for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-//                            prob *= singleTransitions.valueAt(stateValues.get(iAgent), actionValues.get(iAgent), nextStateValues.get(iAgent));
-//                        }
-//                        if (prob > 0) {
-//                            grid.setTransition(encodedState, encodedAction, encodedNextState, prob);
-//                        }
-//                    }
-//
-//                    nextStateChange = true;
-//                    nextStateR = 0;
-//                    while (nextStateChange && nextStateR < numOfAgents) {
-//                        nextStateValues.set(nextStateR, nextStateValues.get(nextStateR)+1);
-//                        if (nextStateValues.get(nextStateR) > maxStateValue) {
-//                            nextStateValues.set(nextStateR, 0);
-//                        }
-//                        else {
-//                            nextStateChange = false;
-//                        }
-//                        nextStateR++;
-//                    }
-//                }
-//
-//                actionChange = true;
-//                actionR = 0;
-//                while (actionChange && actionR < numOfAgents) {
-//                    actionValues.set(actionR, actionValues.get(actionR)+1);
-//                    if (actionValues.get(actionR) > maxActionValue) {
-//                        actionValues.set(actionR, 0);
-//                    }
-//                    else {
-//                        actionChange = false;
-//                    }
-//                    actionR++;
-//                }
-//            }
-
-            stateChange = true;
-            stateR = 0;
-            while (stateChange && stateR < numOfAgents) {
-                stateValues.set(stateR, stateValues.get(stateR)+1);
-                if (stateValues.get(stateR) > maxStateValue) {
-                    stateValues.set(stateR, 0);
-                }
-                else {
-                    stateChange = false;
-                }
-                stateR++;
-            }
-        }
-
-        for (int iAction = 0; iAction < grid.getActionCount(); iAction++) {
-            grid.setTransition(grid.DONE, iAction, grid.DONE, 1.0);
-        }
-        grid.setReward(grid.DONE, 0);
-
-        currentState = chooseStartState();
-    }
-
-    public int chooseStartState() {
-        double dProb = grid.getRandomGenerator().nextDouble();
-        int iState = 0;
-        Map.Entry<Integer, Double> e;
-        Iterator<Map.Entry<Integer, Double>> beliefStateIterator = currentJointBelief.getNonZeroEntries().iterator();
-        while (dProb > 0) {
-            e = beliefStateIterator.next();
-            iState = e.getKey();
-            dProb -= e.getValue();
-        }
-
-        return iState;
+        currentState = grid.encodeStates(agents.stream().map(a -> toSmallGrid(a.getCurrentState())).toList());
     }
 }

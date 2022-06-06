@@ -216,7 +216,7 @@ public class MultiAgentBeaconDistanceGridLoader {
             sLine = lrInput.readLine();
         }
 
-        m_pPOMDP.setObservationCount((int)Math.pow(max_range + 2, num_beacons));    // +1 for zero dist, +1 for inf dist
+        m_pPOMDP.setObservationCount((int)Math.pow(max_range + 2, num_beacons) + 1);    // +1 for zero dist, +1 for inf dist, +1 for DONE obs
         m_pPOMDP.initDynamicsFunctions();
         m_pPOMDP.setMaxDist(max_range);
     }

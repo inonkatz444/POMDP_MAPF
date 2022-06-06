@@ -2,6 +2,8 @@ package pomdp.utilities;
 
 import pomdp.GridAgent;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -10,7 +12,8 @@ public class PotentialCollisionData {
     Set<Integer> collisionStates;
 
     public PotentialCollisionData() {
-
+        agents = new ArrayList<>();
+        collisionStates = new HashSet<>();
     }
 
     public void addAgent(GridAgent a) {

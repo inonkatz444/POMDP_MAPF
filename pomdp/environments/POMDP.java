@@ -1214,17 +1214,6 @@ public class POMDP implements Serializable{
 			iNextState = execute( iAction, iState );
 			iObservation = observe( iAction, iNextState );
 
-//			// TODO: what to do if iAction leads to forbidden state?
-//
-//			while (forbiddenStates.getOrDefault(iNextState, false)) {
-//				if (toReachStates != null && toReachStates.containsKey(iNextState)) {
-//					toReachStates.replace(iNextState, true);
-//				}
-//				iAction = m_rndGenerator.nextInt( m_cActions );
-//				iNextState = execute( iAction, iState );
-//				iObservation = observe( iAction, iNextState );
-//			}
-
 			System.out.print(getActionName(iAction) + "->");
 
 			if( aiActionCount != null )
@@ -1239,11 +1228,26 @@ public class POMDP implements Serializable{
 				toReachStates.replace(iNextState, true);
 			}
 
+//			if (this instanceof JointBeaconDistanceGrid) {
+//				int numOfDoneAgents = 0;
+//				JointBeaconDistanceGrid jointGrid = ((JointBeaconDistanceGrid)this);
+//				List<Integer> iNextStateValues = jointGrid.decodeState(iNextState);
+//				for (int i = 0; i < jointGrid.getNumOfAgents(); i++) {
+//					if (!jointGrid.getAgents().get(i).getGrid().stateToLocation(jointGrid.getAgents().get(i).getGrid().getEndState()).inBound(jointGrid) || jointGrid.getAgents().get(i).getGrid().getEndState() == jointGrid.getAgents().get(i).getGrid().fromJointGrid(iNextStateValues.get(i), jointGrid)) {
+//						numOfDoneAgents++;
+//					}
+//				}
+//				if (toReachStates != null && numOfDoneAgents >= jointGrid.getNumOfAgents() - 1) {
+//					toReachStates.replace(-1, true);
+//				}
+//			}
+
 //			System.out.print(parseState(iNextState) + " " + Arrays.toString(getDists(iObservation)));
 			System.out.print(parseState(iNextState));
 			if (isForbidden(iNextState)) {
 				System.out.print(" FORBIDDEN! ");
 			}
+			System.out.print(" " + ((BeaconDistanceGrid)this).parseObservation(iObservation));
 			System.out.print(", ");
 
 			if( m_rtReward == RewardType.StateAction )

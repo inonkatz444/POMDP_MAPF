@@ -38,7 +38,7 @@ public class PerseusValueIteration extends ValueIteration{
 		long lStartTime = System.currentTimeMillis(), lCurrentTime = 0;
 		long lCPUTimeBefore = 0, lCPUTimeAfter = 0, lCPUTimeTotal = 0;
 		Runtime rtRuntime = Runtime.getRuntime();
-		Vector<BeliefState> vBeliefPoints = CreateBeliefSpaces.createRandomSpace( m_pPOMDP, m_rndGenerator.nextInt( 10000 ), 1000 );
+		Vector<BeliefState> vBeliefPoints = CreateBeliefSpaces.createRandomSpace( m_pPOMDP, m_rndGenerator.nextInt( 10000 ), 2000 );
 
 		if (vBeliefPoints == null) {
 			System.out.println("Couldn't find the required random belief points, exiting...");
