@@ -25,9 +25,6 @@ public class GridAgent {
     private int START_STATE, END_STATE;
     private boolean retrain, isExpandedBeliefsRelevant;
 
-    private final double SUCCESS_REWARD = 10.0;
-    private final double INTER_REWARD = -0.04;
-
     public GridAgent(int distanceThreshold) {
         forbiddenStates = new HashMap<>();
         this.distanceThreshold = distanceThreshold;
@@ -40,6 +37,10 @@ public class GridAgent {
 
     public char getID() {
         return id;
+    }
+
+    public int getDistanceThreshold() {
+        return distanceThreshold;
     }
 
     public String getStartStateString() {
@@ -106,13 +107,13 @@ public class GridAgent {
         return unfolded;
     }
 
-    public void expandBeliefs() {
+    public void expandBeliefs(int steps) {
         if (!isExpandedBeliefRelevant()) {
             expandedBeliefs.clear();
             Set<BeliefState> beliefs = new HashSet<>();
             Queue<BeliefState> temp = new ArrayDeque<>();
             beliefs.add(currentBelief);
-            for (int iExpandStep = 1; iExpandStep <= distanceThreshold; iExpandStep++) {
+            for (int iExpandStep = 1; iExpandStep <= steps; iExpandStep++) {
                 temp.addAll(beliefs);
                 beliefs.clear();
                 while (!temp.isEmpty()) {

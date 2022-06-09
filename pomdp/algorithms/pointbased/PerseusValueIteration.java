@@ -66,8 +66,7 @@ public class PerseusValueIteration extends ValueIteration{
 			m_cCPUExecutionTime += ( lCPUTimeAfter - lCPUTimeBefore ) / 1000000;
 			lCPUTimeTotal += lCPUTimeAfter - lCPUTimeBefore;
 
-			if( ( cVnChanges < m_vValueFunction.getChangesCount() ) &&
-					( m_vValueFunction.size() > 5 ) ){
+			if( ( cVnChanges < m_vValueFunction.getChangesCount() )){
 				cStepsWithoutChanges = 0;
 				if( !bDone )
 					bDone = checkADRConvergence( m_pPOMDP, dTargetValue, pComputedADRs );

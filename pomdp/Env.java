@@ -44,7 +44,7 @@ public class Env {
             if (collisionDetected) {
                 GridJointAgent jointAgent = new GridJointAgent();
                 jointAgent.initRun(potentialCollision);
-                jointAgent.solve(sMethodName, 100.0, 50, maxSteps);
+                jointAgent.solve(sMethodName, 100.0, 150, maxSteps);
                 boolean jointDone = false;
                 while (iStep < maxSteps && !jointDone) {
                     jointDone = jointAgent.step();
@@ -116,8 +116,8 @@ public class Env {
                 GridAgent otherAgent = agents.get(iOtherAgent);
                 if (agent.isClose(otherAgent)) {
                     System.out.println("Agent " + agent.getID() + " and agent " + otherAgent.getID() + " are close!");
-                    agent.expandBeliefs();
-                    otherAgent.expandBeliefs();
+                    agent.expandBeliefs(agent.getDistanceThreshold());
+                    otherAgent.expandBeliefs(otherAgent.getDistanceThreshold());
                     Set<Integer> collisionStates = getCollisionStates(agent, otherAgent);
                     if (collisionStates.size() > 0) {
                         for (int collisionState : collisionStates) {
@@ -167,10 +167,10 @@ public class Env {
 //        String sModelName = "straight_line_side_beacon_15x23";
 //        String sModelName = "straight_line_side_beacon_9x15";
 //        String sModelName = "short_hallway_side_beacon";
-//        String sModelName = "two_paths_one_beacon";
+        String sModelName = "two_paths_one_beacon";
 //        String sModelName = "room";
 //        String sModelName = "open_world_9_9_5";
-        String sModelName = "open_world_5_5_0";
+//        String sModelName = "open_world_5_5_0";
 //        String sModelName = "test_grid";
         String sMethodName = "Perseus";
         int distanceThreshold = 2;

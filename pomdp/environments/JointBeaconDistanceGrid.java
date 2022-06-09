@@ -190,9 +190,21 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         List<Integer> iEndStateValues = decodeState(iEndState);
 
         double reward = 0;
+        int numberOfTerminal = 0;
         for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
             if (iEndStateValues.get(iAgent) != SINGLE_DONE) {
                 if ((!agents.get(iAgent).canDone(this) && isInBorder(iEndStateValues.get(iAgent))) || agents.get(iAgent).getEndState() == agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this)) {
+                    numberOfTerminal++;
+                }
+            }
+            else {
+                numberOfTerminal++;
+            }
+        }
+
+        for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
+            if (iEndStateValues.get(iAgent) != SINGLE_DONE) {
+                if (numberOfTerminal >= numOfAgents - 1) {
                     reward += agents.get(iAgent).getMDPValueFunction().getValue(agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this));
                 }
                 else {

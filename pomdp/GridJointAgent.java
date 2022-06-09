@@ -27,7 +27,6 @@ public class GridJointAgent {
 
     private final int NUM_OF_ACTIONS = 5;
     private final double DISCOUNT_FACTOR = 0.99;
-    private final double INTER_REWARD = -0.04;
     private final Map<Integer, String> idxToSSingleAction = new HashMap<>();
 
     public GridJointAgent() {
