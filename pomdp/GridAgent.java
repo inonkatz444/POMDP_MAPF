@@ -408,7 +408,7 @@ public class GridAgent {
                 }
                 else {
                     for (Beacon b : grid.getBeacons()){
-                        if (b.getLoc().equals(new Point(i, j))) {
+                        if (b.getLoc().equals(Point.getPoint(i, j))) {
                             System.out.print(b.getRange());
                             clear = false;
                             break;
@@ -438,6 +438,7 @@ public class GridAgent {
         grid = new BeaconDistanceGrid(2);
         try {
             load(ExecutionProperties.getPath() + sModelName + ".POMDP");
+            grid.setOrigin(Point.getPoint(0, 0));
             if (currentBelief == null) {
                 currentState = START_STATE;
                 double[] newBelief = new double[grid.getStateCount()];

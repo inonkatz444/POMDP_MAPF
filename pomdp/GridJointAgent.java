@@ -135,6 +135,7 @@ public class GridJointAgent {
         } catch (InvalidModelFileFormatException e) {
             e.printStackTrace();
         }
+        grid.initCaching();
 
         grid.setRewardType( POMDP.RewardType.StateActionState );
         grid.initStoredRewards();

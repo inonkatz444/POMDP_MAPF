@@ -3,8 +3,16 @@ package pomdp.utilities;
 import pomdp.environments.Grid;
 
 public class Point extends Pair<Integer, Integer>{
+    public static Point[][] points;
     public Point(int first, int second) {
         super(first, second);
+    }
+
+    public static Point getPoint(int row, int col) {
+        if (points[row][col] == null) {
+            points[row][col] = new Point(row, col);
+        }
+        return points[row][col];
     }
 
     public int distance(Point other) {
@@ -12,11 +20,11 @@ public class Point extends Pair<Integer, Integer>{
     }
 
     public Point add(Point other) {
-        return new Point(m_first + other.first(), m_second + other.second());
+        return Point.getPoint(m_first + other.first(), m_second + other.second());
     }
 
     public Point subtract(Point other) {
-        return new Point(m_first - other.first(), m_second - other.second());
+        return Point.getPoint(m_first - other.first(), m_second - other.second());
     }
 
     public Point relativeTo(Point anchor) {

@@ -13,11 +13,20 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     public int SINGLE_DONE;
     public Map<Character, Integer> endStates;
     private List<GridAgent> agents;
+    private List<Integer>[] jointStateToState;
+    private List<Integer>[] jointActionToAction;
+    private List<Integer>[] jointObservationToObservation;
 
     public JointBeaconDistanceGrid(List<GridAgent> agents) {
         super(agents.size());
         endStates = new HashMap<>();
         this.agents = agents;
+    }
+
+    public void initCaching() {
+        jointStateToState = new List[m_cStates];
+        jointActionToAction = new List[m_cActions];
+        jointObservationToObservation = new List[m_cObservations];
     }
 
     public void addEndState(char id, int endState) {
@@ -233,7 +242,7 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         int istate = 0;
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.cols; j++) {
-                loc = new Point(i, j);
+                loc = Point.getPoint(i, j);
                 if (!holes.contains(loc)) {
                     stateToLocation.add(loc);
                     grid[i][j] = istate++;
@@ -313,15 +322,24 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     }
 
     public List<Integer> decodeState(int state) {
-        return decode(state, numOfSingleStates);
+        if (jointStateToState[state] == null) {
+            jointStateToState[state] = decode(state, numOfSingleStates);
+        }
+        return jointStateToState[state];
     }
 
     public List<Integer> decodeAction(int action) {
-        return decode(action, numOfSingleActions);
+        if (jointActionToAction[action] == null) {
+            jointActionToAction[action] = decode(action, numOfSingleActions);
+        }
+        return jointActionToAction[action];
     }
 
     public List<Integer> decodeObservation(int observation) {
-        return decode(observation, numOfSingleObservations);
+        if (jointObservationToObservation[observation] == null) {
+            jointObservationToObservation[observation] = decode(observation, numOfSingleObservations);
+        }
+        return jointObservationToObservation[observation];
     }
 
     private int encode(List<Integer> decoded, int numOfSingle) {

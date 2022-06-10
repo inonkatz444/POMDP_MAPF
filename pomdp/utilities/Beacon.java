@@ -9,7 +9,7 @@ public class Beacon {
     private static int beaconID = 0;
 
     public Beacon(int row, int col, int range) {
-        this.loc = new Point(row, col);
+        this.loc = Point.getPoint(row, col);
         this.range = range;
         this.ID = beaconID++;
     }

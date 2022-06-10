@@ -523,6 +523,9 @@ public class MultiAgentBeaconDistanceGridLoader {
 
             }
         }
+        if (Point.points == null) {
+            Point.points = new Point[m_pPOMDP.getRows()][m_pPOMDP.getCols()];
+        }
         System.out.println();
     }
 

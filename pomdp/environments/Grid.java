@@ -32,7 +32,6 @@ public class Grid extends POMDP {
         oGenerator.setSeed(42);
         sigmaPerState = new HashMap<>();
         this.numOfAgents = numOfAgents;
-        origin = new Point(0, 0);
     }
 
     public void setOrigin(Point origin) {
@@ -87,7 +86,7 @@ public class Grid extends POMDP {
     }
 
     public void addHole(int hole_row, int hole_col) {
-        holes.add(new Point(hole_row, hole_col));
+        holes.add(Point.getPoint(hole_row, hole_col));
     }
 
     public void setHoles(List<Point> holes) {
@@ -233,7 +232,7 @@ public class Grid extends POMDP {
         int istate = 0;
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.cols; j++) {
-                loc = new Point(i, j);
+                loc = Point.getPoint(i, j);
                 if (!holes.contains(loc)) {
                     stateToLocation.add(loc);
                     grid[i][j] = istate++;
@@ -259,16 +258,16 @@ public class Grid extends POMDP {
     public List<Integer> getNeighbors(int state) {
         List<Integer> neighbors = new ArrayList<>();
         Point loc = stateToLocation(state);
-        if (validLocation(new Point(loc.first()-1, loc.second()))) {
+        if (validLocation(Point.getPoint(loc.first()-1, loc.second()))) {
             neighbors.add(locationToState(loc.first()-1, loc.second()));
         }
-        if (validLocation(new Point(loc.first()+1, loc.second()))) {
+        if (validLocation(Point.getPoint(loc.first()+1, loc.second()))) {
             neighbors.add(locationToState(loc.first()+1, loc.second()));
         }
-        if (validLocation(new Point(loc.first(), loc.second()-1))) {
+        if (validLocation(Point.getPoint(loc.first(), loc.second()-1))) {
             neighbors.add(locationToState(loc.first(), loc.second()-1));
         }
-        if (validLocation(new Point(loc.first(), loc.second()+1))) {
+        if (validLocation(Point.getPoint(loc.first(), loc.second()+1))) {
             neighbors.add(locationToState(loc.first(), loc.second()+1));
         }
 
@@ -579,8 +578,8 @@ public class Grid extends POMDP {
         }
 
         return new Point[]{
-                new Point(Math.max(up-1, 0), Math.max(left-1, 0)),
-                new Point(Math.min(down+1, rows-1), Math.min(right+1, cols-1))
+                Point.getPoint(Math.max(up-1, 0), Math.max(left-1, 0)),
+                Point.getPoint(Math.min(down+1, rows-1), Math.min(right+1, cols-1))
         };
     }
 
