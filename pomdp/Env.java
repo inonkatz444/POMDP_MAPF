@@ -19,7 +19,7 @@ public class Env {
         boolean collisionDetected;
         for (GridAgent agent : agents) {
             agent.initRun(sModelName);
-            agent.solve(sMethodName, 100.0, 20, maxSteps);
+            agent.solve(sMethodName, 100.0, 10, maxSteps);
             if (!agent.hasConverged()) {
                 System.out.println("DEBUG: agent " + agent.getID() + " timed out!");
             }
@@ -44,7 +44,7 @@ public class Env {
             if (collisionDetected) {
                 GridJointAgent jointAgent = new GridJointAgent();
                 jointAgent.initRun(potentialCollision);
-                jointAgent.solve(sMethodName, 100.0, 150, maxSteps);
+                jointAgent.solve(sMethodName, 100.0, 200, maxSteps);
                 boolean jointDone = false;
                 while (iStep < maxSteps && !jointDone) {
                     jointDone = jointAgent.step();
@@ -60,53 +60,53 @@ public class Env {
         return AllDone(agents);
     }
 
-    public static boolean runForbidden(List<GridAgent> agents, String sMethodName, String sModelName, int maxHighLevelIterations, int maxSteps) {
-        int iStep, n = agents.size();
-        boolean collisionDetected = true;
-        PotentialCollisionData mightCollide;
-
-        for (int iIteration = 1; (iIteration <= maxHighLevelIterations) && collisionDetected; iIteration++) {
-            System.out.println("High Level Iteration: " + iIteration);
-            collisionDetected = false;
-            for (GridAgent agent : agents) {
-                if (agent.needsRetrain()) {
-                    agent.initRun(sModelName);
-                    agent.solve(sMethodName, 100.0, 17, maxSteps);
-                    if (!agent.hasConverged()) {
-                        System.out.println("DEBUG: agent " + agent.getID() + " timed out!");
-                    }
-                }
-            }
-            for (GridAgent agent : agents) {
-                System.out.println("Agent " + agent.getID() + " forbidden states: " + agent.getForbiddenStates().stream().map(s -> agents.get(0).getGrid().parseState(s)).toList().toString());
-            }
-            agents.forEach(agent -> System.out.println("Agent " + agent.getID() + " starts at " + agent.getStartStateString()));
-            for (iStep = 0; (iStep < maxSteps) && !collisionDetected && !AllDone(agents); iStep++) {
-                for (int i = 0; i < n; i++) {
-                    GridAgent agent = agents.get(i);
-                    if (!agent.isDone()) {
-                        mightCollide = mightCollidingAgents(i, agents);
-                        collisionDetected = !mightCollide.isEmpty();
-                        if (collisionDetected) {
-                            Set<Integer> collisionStates = getCollisionStates(mightCollide.getAgents().get(0), mightCollide.getAgents().get(1));
-                            GridAgent nonDominant = mightCollide.getAgents().get(0).distanceToGoal() < mightCollide.getAgents().get(1).distanceToGoal() ? mightCollide.getAgents().get(1) : mightCollide.getAgents().get(0);
-                            for (int interState : collisionStates) {
-                                if (!nonDominant.isForbidden(interState)) {
-                                    nonDominant.retrain();
-                                    nonDominant.addForbiddenState(interState);
-                                }
-                            }
-                            break;
-                        }
-                        agent.step();
-                    }
-                }
-                System.out.println();
-            }
-        }
-
-        return !collisionDetected && AllDone(agents);
-    }
+//    public static boolean runForbidden(List<GridAgent> agents, String sMethodName, String sModelName, int maxHighLevelIterations, int maxSteps) {
+//        int iStep, n = agents.size();
+//        boolean collisionDetected = true;
+//        PotentialCollisionData mightCollide;
+//
+//        for (int iIteration = 1; (iIteration <= maxHighLevelIterations) && collisionDetected; iIteration++) {
+//            System.out.println("High Level Iteration: " + iIteration);
+//            collisionDetected = false;
+//            for (GridAgent agent : agents) {
+//                if (agent.needsRetrain()) {
+//                    agent.initRun(sModelName);
+//                    agent.solve(sMethodName, 100.0, 17, maxSteps);
+//                    if (!agent.hasConverged()) {
+//                        System.out.println("DEBUG: agent " + agent.getID() + " timed out!");
+//                    }
+//                }
+//            }
+//            for (GridAgent agent : agents) {
+//                System.out.println("Agent " + agent.getID() + " forbidden states: " + agent.getForbiddenStates().stream().map(s -> agents.get(0).getGrid().parseState(s)).toList().toString());
+//            }
+//            agents.forEach(agent -> System.out.println("Agent " + agent.getID() + " starts at " + agent.getStartStateString()));
+//            for (iStep = 0; (iStep < maxSteps) && !collisionDetected && !AllDone(agents); iStep++) {
+//                for (int i = 0; i < n; i++) {
+//                    GridAgent agent = agents.get(i);
+//                    if (!agent.isDone()) {
+//                        mightCollide = mightCollidingAgents(i, agents);
+//                        collisionDetected = !mightCollide.isEmpty();
+//                        if (collisionDetected) {
+//                            Set<Integer> collisionStates = getCollisionStates(mightCollide.getAgents().get(0), mightCollide.getAgents().get(1));
+//                            GridAgent nonDominant = mightCollide.getAgents().get(0).distanceToGoal() < mightCollide.getAgents().get(1).distanceToGoal() ? mightCollide.getAgents().get(1) : mightCollide.getAgents().get(0);
+//                            for (int interState : collisionStates) {
+//                                if (!nonDominant.isForbidden(interState)) {
+//                                    nonDominant.retrain();
+//                                    nonDominant.addForbiddenState(interState);
+//                                }
+//                            }
+//                            break;
+//                        }
+//                        agent.step();
+//                    }
+//                }
+//                System.out.println();
+//            }
+//        }
+//
+//        return !collisionDetected && AllDone(agents);
+//    }
 
     private static PotentialCollisionData mightCollidingAgents(int iAgent, List<GridAgent> agents) {
         PotentialCollisionData potentialCollision = new PotentialCollisionData();
@@ -121,8 +121,11 @@ public class Env {
                     Set<Integer> collisionStates = getCollisionStates(agent, otherAgent);
                     if (collisionStates.size() > 0) {
                         for (int collisionState : collisionStates) {
-                            System.out.println("Agent " + agent.getID() + " and agent " + otherAgent.getID() + " may collide in " + agent.getGrid().parseState(collisionState));
+                            if (collisionState != agent.getGrid().DONE) {
+                                System.out.println("Agent " + agent.getID() + " and agent " + otherAgent.getID() + " may collide in " + agent.getGrid().parseState(collisionState));
+                            }
                         }
+                        collisionStates.remove((Object)agent.getGrid().DONE);
                         potentialCollision.addAgent(agent);
                         potentialCollision.addAgent(otherAgent);
                         potentialCollision.addCollisionStates(collisionStates);
@@ -167,10 +170,10 @@ public class Env {
 //        String sModelName = "straight_line_side_beacon_15x23";
 //        String sModelName = "straight_line_side_beacon_9x15";
 //        String sModelName = "short_hallway_side_beacon";
-        String sModelName = "two_paths_one_beacon";
+//        String sModelName = "two_paths_one_beacon";
 //        String sModelName = "room";
 //        String sModelName = "open_world_9_9_5";
-//        String sModelName = "open_world_5_5_0";
+        String sModelName = "open_world_5_7_0";
 //        String sModelName = "test_grid";
         String sMethodName = "Perseus";
         int distanceThreshold = 2;

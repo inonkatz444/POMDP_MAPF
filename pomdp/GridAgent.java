@@ -242,6 +242,10 @@ public class GridAgent {
         currentBelief.release();
         currentBelief = bsNext;
 
+        if (!done) {
+            System.out.println("Agent " + id + " current belief: " + currentBelief.toString());
+        }
+
         irrelevantExpandedBeliefs();
 
         return done;

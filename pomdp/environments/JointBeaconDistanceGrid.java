@@ -268,8 +268,14 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
 
     public boolean isCollisionState(int state) {
         List<Integer> stateValues = decodeState(state);
-        while (stateValues.remove((Object)SINGLE_DONE));
-        return (long) stateValues.size() != stateValues.stream().distinct().count();
+        for (int i = 0; i < numOfAgents; i++) {
+            for (int j = i+1; j < numOfAgents; j++) {
+                if (stateValues.get(i).equals(stateValues.get(j)) && stateValues.get(i) != SINGLE_DONE) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     // relative position
