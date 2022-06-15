@@ -44,7 +44,7 @@ public class Env {
             if (collisionDetected) {
                 GridJointAgent jointAgent = new GridJointAgent();
                 jointAgent.initRun(potentialCollision);
-                jointAgent.solve(sMethodName, 100.0, 200, maxSteps);
+                jointAgent.solve(sMethodName, 100.0, 15, maxSteps);
                 boolean jointDone = false;
                 while (iStep < maxSteps && !jointDone) {
                     jointDone = jointAgent.step();
@@ -176,7 +176,7 @@ public class Env {
         String sModelName = "open_world_5_7_0";
 //        String sModelName = "test_grid";
         String sMethodName = "Perseus";
-        int distanceThreshold = 2;
+        int distanceThreshold = 1;
         int num_of_agents = 2;
 
         try{

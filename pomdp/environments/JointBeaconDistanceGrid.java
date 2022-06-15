@@ -13,6 +13,7 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     public int SINGLE_DONE;
     public Map<Character, Integer> endStates;
     private List<GridAgent> agents;
+
     private List<Integer>[] jointStateToState;
     private List<Integer>[] jointActionToAction;
     private List<Integer>[] jointObservationToObservation;
@@ -128,52 +129,57 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
             bigGrid = agents.get(iAgent).getGrid();
             bigGridState = bigGrid.fromJointGrid(startStates.get(iAgent), this);
-            List<Map.Entry<Integer, Double>> elements = new ArrayList<>();
 //            if (startStates.get(iAgent) == SINGLE_DONE) {
 //                elements.add(new Pair<>(SINGLE_DONE, 1.0));
 //                res.add(elements);
 //                continue;
 //            }
-            Iterator<Map.Entry<Integer, Double>> it = bigGrid.getNonZeroTransitions(bigGridState, actions.get(iAgent));
-            while (it.hasNext()) {
-                Map.Entry<Integer, Double> e = it.next();
-                int endState = e.getKey();
-                if (endState == bigGrid.DONE) {
-                    elements.add(new Pair<>(SINGLE_DONE, 1.0));
-                }
-                else if (isInBorder(startStates.get(iAgent)) && !bigGrid.stateToLocation(endState).inBound(this)) {
-                    elements.add(new Pair<>(startStates.get(iAgent), e.getValue()));
-                }
-                else {
-                    elements.add(new Pair<>(bigGrid.toJointGrid(endState, this), e.getValue()));
-                }
-            }
-            int numOfSINGLE_DONE = 0;
-            for (Map.Entry<Integer, Double> element : elements) {
-                if (element.getKey() == SINGLE_DONE) {
-                    numOfSINGLE_DONE++;
-                }
-            }
-            if (numOfSINGLE_DONE >= 2) {
-                double doneProb = 0;
-                List<Map.Entry<Integer, Double>> newElements = new ArrayList<>();
-                for (Map.Entry<Integer, Double> element : elements){
-                    if (element.getKey() != SINGLE_DONE) {
-                        newElements.add(element);
-                    }
-                    else {
-                        doneProb += element.getValue();
-                    }
-                }
-                newElements.add(new Pair<>(SINGLE_DONE, doneProb));
-                res.add(newElements);
-            }
-            else {
-                res.add(elements);
-            }
+            res.add(getBigGridTransitions(bigGrid, bigGridState, actions.get(iAgent), startStates.get(iAgent)));
         }
 
         return new CartesianIterator(res, numOfSingleStates);
+    }
+
+    private Iterable<Map.Entry<Integer, Double>> getBigGridTransitions(Grid bigGrid, int bigGridState, int action, int startState) {
+        List<Map.Entry<Integer, Double>> elements = new ArrayList<>();
+        Iterator<Map.Entry<Integer, Double>> it = bigGrid.getNonZeroTransitions(bigGridState, action);
+        while (it.hasNext()) {
+            Map.Entry<Integer, Double> e = it.next();
+            int endState = e.getKey();
+            if (endState == bigGrid.DONE) {
+                // cache data pairs
+                elements.add(new Pair<>(SINGLE_DONE, 1.0));
+            }
+            else if (isInBorder(startState) && !bigGrid.stateToLocation(endState).inBound(this)) {
+                elements.add(new Pair<>(startState, e.getValue()));
+            }
+            else {
+                elements.add(new Pair<>(bigGrid.toJointGrid(endState, this), e.getValue()));
+            }
+        }
+        int numOfSINGLE_DONE = 0;
+        for (Map.Entry<Integer, Double> element : elements) {
+            if (element.getKey() == SINGLE_DONE) {
+                numOfSINGLE_DONE++;
+            }
+        }
+        if (numOfSINGLE_DONE >= 2) {
+            double doneProb = 0;
+            List<Map.Entry<Integer, Double>> newElements = new ArrayList<>();
+            for (Map.Entry<Integer, Double> element : elements){
+                if (element.getKey() != SINGLE_DONE) {
+                    newElements.add(element);
+                }
+                else {
+                    doneProb += element.getValue();
+                }
+            }
+            newElements.add(new Pair<>(SINGLE_DONE, doneProb));
+            return newElements;
+        }
+        else {
+            return elements;
+        }
     }
 
     @Override
@@ -194,6 +200,10 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     @Override
     public double R(int iStartState, int iAction, int iEndState) {
 
+        if (isTerminalState(iEndState)) {
+            return 0;
+        }
+
         List<Integer> iStartStateValues = decodeState(iStartState);
         List<Integer> iActionValues = decodeAction(iAction);
         List<Integer> iEndStateValues = decodeState(iEndState);
@@ -205,9 +215,6 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
                 if ((!agents.get(iAgent).canDone(this) && isInBorder(iEndStateValues.get(iAgent))) || agents.get(iAgent).getEndState() == agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this)) {
                     numberOfTerminal++;
                 }
-            }
-            else {
-                numberOfTerminal++;
             }
         }
 

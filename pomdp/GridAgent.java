@@ -252,7 +252,7 @@ public class GridAgent {
     }
 
     public boolean canDone(JointBeaconDistanceGrid jointGrid) {
-        for (int iState = 0; iState < jointGrid.getNumOfSingleStates(); iState++) {
+        for (int iState = 0; iState < jointGrid.getNumOfSingleStates() - 1; iState++) {
             if (getEndState() == grid.fromJointGrid(iState, jointGrid)) {
                 return true;
             }

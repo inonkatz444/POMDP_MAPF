@@ -56,6 +56,7 @@ public abstract class AlphaVector implements Serializable{
 	protected static long s_cCurrentDotProducts = 0;
 	protected static long s_cApproximateDotProduct = 0;
 	protected static long s_cAlphaVectors = 0;
+	protected static long s_cDestroyedVectors = 0;
 	
 	protected static long s_cTotalTimeInG = 0;
 	protected static long s_cCurrentTimeInG = 0;
@@ -97,6 +98,11 @@ public abstract class AlphaVector implements Serializable{
 		m_dAvgValue = 0.0;
 		m_aiSumIds = new long[2];
 		setSumIds( -1, -1 );
+	}
+
+	@Override
+	protected void finalize() {
+		s_cDestroyedVectors++;
 	}
 	
 	/**

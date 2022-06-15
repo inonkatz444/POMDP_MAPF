@@ -4,9 +4,7 @@ TODO: Add a nice description
 
 TODO List:
 TODO: apply mini joint problem on possibly-collided agents
-	TODO: Make sure that the random walk finds a "DONE state" if it has one (and won't stuck if there isn't)
-		TODO: if a "DONE state" is available for an agent, this is it's only terminal state in joint agent
-	TODO: give
+	TOOD: Change the observation model to ping beacons
 TODO: check if the agents can collide in <= k steps (instead of k steps)
 TODO: Run the forbidden states algorithm
 
