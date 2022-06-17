@@ -25,16 +25,9 @@ public class GridJointAgent {
     private List<BeaconDistanceGrid> singleGrids;
     private boolean[] isDone;
 
-    private final int NUM_OF_ACTIONS = 5;
     private final double DISCOUNT_FACTOR = 0.99;
-    private final Map<Integer, String> idxToSSingleAction = new HashMap<>();
 
     public GridJointAgent() {
-        idxToSSingleAction.put(0, "n");
-        idxToSSingleAction.put(1, "s");
-        idxToSSingleAction.put(2, "e");
-        idxToSSingleAction.put(3, "w");
-        idxToSSingleAction.put(4, "noop");
         END_STATES = new ArrayList<>();
     }
 
@@ -103,7 +96,7 @@ public class GridJointAgent {
         cols = boundaries[1].second() - boundaries[0].second() + 1;
         grid.setRows(rows);
         grid.setCols(cols);
-        grid.setNumOfSingleActions(NUM_OF_ACTIONS);
+        grid.setNumOfSingleActions(agents.get(0).getGrid().getActionCount());
         grid.setDiscountFactor(DISCOUNT_FACTOR);
         grid.setOrigin(boundaries[0]);
         grid.setName(singleGrid.getName() + "_" + grid.getOrigin());
@@ -365,7 +358,7 @@ public class GridJointAgent {
             // add actions here
             sAction = new StringBuilder("(");
             for (int i = 0; i < numOfAgents; i++) {
-                sAction.append(idxToSSingleAction.get(actionValues.get(i))).append(", ");
+                sAction.append(agents.get(i).getGrid().getActionName(actionValues.get(i))).append(", ");
             }
             sAction.delete(sAction.length()-2, sAction.length());
             sAction.append(")");

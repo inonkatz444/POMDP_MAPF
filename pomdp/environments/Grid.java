@@ -21,6 +21,7 @@ public class Grid extends POMDP {
     public final int HOLE = -1;
     public int DONE;
     private final double SUCCESS_REWARD = 10.0;
+    private final double FAILURE_REWARD = -5;
     private final double INTER_REWARD = -0.04;
 
     public Grid(int numOfAgents) {
@@ -399,15 +400,13 @@ public class Grid extends POMDP {
                 else {
                     return 0;
                 }
-            case 4:
+            default:
                 if (iState1 == iState2) {
                     return 1;
                 }
                 else {
                     return 0;
                 }
-            default:
-                return 0;
         }
     }
 
@@ -518,7 +517,7 @@ public class Grid extends POMDP {
                     entries.add(new Pair<>(iStartState, selfProb));
                 }
                 break;
-            case 4:
+            default:
                 entries.add(new Pair<>(iStartState, 1.0));
                 break;
         }
@@ -608,20 +607,29 @@ public class Grid extends POMDP {
 
     @Override
     public double R(int iStartState) {
-        if (iStartState == DONE)
-            return 0;
-        if (iStartState == getEndState())
-            return SUCCESS_REWARD;
-        return INTER_REWARD;
+        double reward = 0;
+        for (int iAction = 0; iAction < m_cActions; iAction++) {
+            reward += R(iStartState, iAction);
+        }
+        return reward / m_cActions;
     }
 
     @Override
     public double R(int iStartState, int iAction) {
-        return R(iStartState);
+        if (iStartState == DONE)
+            return 0;
+        if (iAction == getActionIndex("DONE_ACT")) {
+            if (iStartState == getEndState())
+                return SUCCESS_REWARD;
+            else {
+                return FAILURE_REWARD;
+            }
+        }
+        return INTER_REWARD;
     }
 
     @Override
     public double R(int iStartState, int iAction, int iEndState) {
-        return R(iStartState);
+        return R(iStartState, iAction);
     }
 }

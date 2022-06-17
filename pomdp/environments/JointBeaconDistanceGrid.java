@@ -212,7 +212,7 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         int numberOfTerminal = 0;
         for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
             if (iEndStateValues.get(iAgent) != SINGLE_DONE) {
-                if ((!agents.get(iAgent).canDone(this) && isInBorder(iEndStateValues.get(iAgent))) || agents.get(iAgent).getEndState() == agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this)) {
+                if ((!agents.get(iAgent).canDone(this) && isInBorder(iEndStateValues.get(iAgent))) || (agents.get(iAgent).getEndState() == agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this) && iAction == getActionIndex("DONE_ACT"))) {
                     numberOfTerminal++;
                 }
             }

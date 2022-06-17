@@ -144,7 +144,7 @@ public class GridAgent {
     }
 
     public void initAgentWise() throws InvalidModelFileFormatException{
-        grid.setRewardType( POMDP.RewardType.State );
+        grid.setRewardType( POMDP.RewardType.StateAction );
         grid.addTerminalState(grid.DONE);
 
         if (currentState < 0 || currentState >= grid.getStateCount()) {

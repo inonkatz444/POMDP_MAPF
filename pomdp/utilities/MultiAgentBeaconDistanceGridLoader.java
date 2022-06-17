@@ -213,10 +213,12 @@ public class MultiAgentBeaconDistanceGridLoader {
             m_pPOMDP.addBeacon(beacon_row, beacon_col, beacon_range);
             max_range = Math.max(max_range, beacon_range);
             num_beacons++;
+            m_pPOMDP.addAction("ping_to_<" + beacon_row + "," + beacon_col + ">");
             sLine = lrInput.readLine();
         }
 
-        m_pPOMDP.setObservationCount((int)Math.pow(max_range + 2, num_beacons) + 1);    // +1 for zero dist, +1 for inf dist, +1 for DONE obs
+        System.out.print( "|A| = " + m_pPOMDP.getActionCount() );
+        m_pPOMDP.setObservationCount(max_range + 3);    // +1 for zero dist, +1 for inf dist, +1 for DONE obs
         m_pPOMDP.initDynamicsFunctions();
         m_pPOMDP.setMaxDist(max_range);
     }
@@ -503,6 +505,7 @@ public class MultiAgentBeaconDistanceGridLoader {
                                 m_pPOMDP.addAction( sValue );
                                 idx++;
                             }
+                            m_pPOMDP.addAction("DONE_ACT");
                         }
                     }
                     else{//assume that action list is until next empty line
@@ -514,9 +517,7 @@ public class MultiAgentBeaconDistanceGridLoader {
                             m_pPOMDP.addAction(sActionLine);
                             sActionLine = lrInput.readLine().trim();
                         }
-
                     }
-                    System.out.print( "|A| = " + m_pPOMDP.getActionCount() );
 
                     cVars++;
                 }

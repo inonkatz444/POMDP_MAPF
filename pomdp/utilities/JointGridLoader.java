@@ -12,13 +12,9 @@ public class JointGridLoader {
     protected int numOfSingleStates;
     protected int numOfSingleActions;
     protected Function singleTransitions;
-    protected Map<Integer, String> idxToSSingleAction;
-    protected Map<String, Integer> sActionToIdx;
 
     public JointGridLoader(JointBeaconDistanceGrid pomdp) {
         m_pPOMDP = pomdp;
-        idxToSSingleAction = new HashMap<>();
-        sActionToIdx = new HashMap<>();
     }
 
     public Function load( String sFileName ) throws IOException, InvalidModelFileFormatException{
@@ -154,7 +150,7 @@ public class JointGridLoader {
             // add actions here
             sAction = new StringBuilder("(");
             for (int i = 0; i < numOfAgents; i++) {
-                sAction.append(idxToSSingleAction.get(actionValues.get(i))).append(", ");
+                sAction.append(m_pPOMDP.getAgents().get(i).getGrid().getActionName(actionValues.get(i))).append(", ");
             }
             sAction.delete(sAction.length()-2, sAction.length());
             sAction.append(")");
@@ -243,7 +239,7 @@ public class JointGridLoader {
      */
     protected void readTransition( LineReader lrInput, String sAction, StringTokenizer stLine ) throws InvalidModelFileFormatException{
         String sStartState = "", sEndState = "", sValue = "", sLine = "";
-        int iStartState = 0, iEndState = 0, iActionIdx = sActionToIdx.get( sAction ), iAction = 0;
+        int iStartState = 0, iEndState = 0, iActionIdx = m_pPOMDP.getAgents().get(0).getGrid().getActionIndex( sAction ), iAction = 0;
         double dValue = 0;
         int cStates = numOfSingleStates, cActions = numOfSingleActions;
 
@@ -475,33 +471,10 @@ public class JointGridLoader {
 
                     cVars++;
                 }
-                else if( sType.equals( "actions:" ) ){
-                    if(stLine.hasMoreElements()){
-
-                        sValue = stLine.nextToken();
-
-                        List<String> actions = new ArrayList<>();
-                        idx = 0;
-                        actions.add( sValue );
-                        idxToSSingleAction.put(idx, sValue);
-                        sActionToIdx.put(sValue, idx);
-                        idx++;
-                        while( stLine.hasMoreTokens() ){
-                            sValue = stLine.nextToken();
-                            actions.add( sValue );
-                            idxToSSingleAction.put(idx, sValue);
-                            sActionToIdx.put(sValue, idx);
-                            idx++;
-                        }
-                        numOfSingleActions = idx;
-                        m_pPOMDP.setNumOfSingleActions(numOfSingleActions);
-                    }
-
-                    cVars++;
-                }
 
             }
         }
+        m_pPOMDP.setNumOfSingleActions(m_pPOMDP.getAgents().get(0).getGrid().getActionCount());
     }
 
     public int getNumOfSingleStates() {
