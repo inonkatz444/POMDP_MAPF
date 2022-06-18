@@ -18,6 +18,8 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     private List<Integer>[] jointActionToAction;
     private List<Integer>[] jointObservationToObservation;
 
+    private CartesianIterator[][] cachedTransitions;
+
     public JointBeaconDistanceGrid(List<GridAgent> agents) {
         super(agents.size());
         endStates = new HashMap<>();
@@ -28,6 +30,7 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         jointStateToState = new List[m_cStates];
         jointActionToAction = new List[m_cActions];
         jointObservationToObservation = new List[m_cObservations];
+        cachedTransitions = new CartesianIterator[m_cStates][m_cActions];
     }
 
     public void addEndState(char id, int endState) {
@@ -120,24 +123,29 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
 
     @Override
     public Iterator<Map.Entry<Integer, Double>> getNonZeroTransitions(int iStartState, int iAction) {
-        Grid bigGrid;
-        int bigGridState;
-        List<Integer> startStates = decodeState(iStartState);
-        List<Integer> actions = decodeAction(iAction);
-        List<Iterable<Map.Entry<Integer, Double>>> res = new ArrayList<>();
+        if (cachedTransitions[iStartState][iAction] == null) {
+            Grid bigGrid;
+            int bigGridState;
+            List<Integer> startStates = decodeState(iStartState);
+            List<Integer> actions = decodeAction(iAction);
+            List<Iterable<Map.Entry<Integer, Double>>> res = new ArrayList<>();
 
-        for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-            bigGrid = agents.get(iAgent).getGrid();
-            bigGridState = bigGrid.fromJointGrid(startStates.get(iAgent), this);
+            for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
+                bigGrid = agents.get(iAgent).getGrid();
+                bigGridState = bigGrid.fromJointGrid(startStates.get(iAgent), this);
 //            if (startStates.get(iAgent) == SINGLE_DONE) {
 //                elements.add(new Pair<>(SINGLE_DONE, 1.0));
 //                res.add(elements);
 //                continue;
 //            }
-            res.add(getBigGridTransitions(bigGrid, bigGridState, actions.get(iAgent), startStates.get(iAgent)));
+                res.add(getBigGridTransitions(bigGrid, bigGridState, actions.get(iAgent), startStates.get(iAgent)));
+            }
+            cachedTransitions[iStartState][iAction] = new CartesianIterator(res, numOfSingleStates);
         }
-
-        return new CartesianIterator(res, numOfSingleStates);
+        else {
+            cachedTransitions[iStartState][iAction].initialize();
+        }
+        return cachedTransitions[iStartState][iAction];
     }
 
     private Iterable<Map.Entry<Integer, Double>> getBigGridTransitions(Grid bigGrid, int bigGridState, int action, int startState) {
@@ -147,7 +155,6 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
             Map.Entry<Integer, Double> e = it.next();
             int endState = e.getKey();
             if (endState == bigGrid.DONE) {
-                // cache data pairs
                 elements.add(new Pair<>(SINGLE_DONE, 1.0));
             }
             else if (isInBorder(startState) && !bigGrid.stateToLocation(endState).inBound(this)) {
@@ -200,9 +207,9 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     @Override
     public double R(int iStartState, int iAction, int iEndState) {
 
-        if (isTerminalState(iEndState)) {
-            return 0;
-        }
+//        if (isTerminalState(iEndState)) {
+//            return 0;
+//        }
 
         List<Integer> iStartStateValues = decodeState(iStartState);
         List<Integer> iActionValues = decodeAction(iAction);
@@ -211,21 +218,17 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         double reward = 0;
         int numberOfTerminal = 0;
         for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-            if (iEndStateValues.get(iAgent) != SINGLE_DONE) {
-                if ((!agents.get(iAgent).canDone(this) && isInBorder(iEndStateValues.get(iAgent))) || (agents.get(iAgent).getEndState() == agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this) && iAction == getActionIndex("DONE_ACT"))) {
-                    numberOfTerminal++;
-                }
+            if ((!agents.get(iAgent).canDone(this) && isInBorder(iStartStateValues.get(iAgent))) || (agents.get(iAgent).getEndState() == agents.get(iAgent).getGrid().fromJointGrid(iStartStateValues.get(iAgent), this) && iActionValues.get(iAgent) == agents.get(iAgent).getGrid().getActionIndex("DONE_ACT"))) {
+                numberOfTerminal++;
             }
         }
 
         for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-            if (iEndStateValues.get(iAgent) != SINGLE_DONE) {
-                if (numberOfTerminal >= numOfAgents - 1) {
-                    reward += agents.get(iAgent).getMDPValueFunction().getValue(agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this));
-                }
-                else {
-                    reward += agents.get(iAgent).getGrid().R(agents.get(iAgent).getGrid().fromJointGrid(iStartStateValues.get(iAgent), this), iActionValues.get(iAgent), agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this));
-                }
+            if (numberOfTerminal >= numOfAgents - 1) {
+                reward += agents.get(iAgent).getMDPValueFunction().getValue(agents.get(iAgent).getGrid().fromJointGrid(iStartStateValues.get(iAgent), this));
+            }
+            else {
+                reward += agents.get(iAgent).getGrid().R(agents.get(iAgent).getGrid().fromJointGrid(iStartStateValues.get(iAgent), this), iActionValues.get(iAgent), agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this));
             }
         }
 

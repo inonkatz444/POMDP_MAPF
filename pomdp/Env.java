@@ -2,10 +2,7 @@ package pomdp;
 
 import pomdp.utilities.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Env {
 
@@ -19,7 +16,7 @@ public class Env {
         boolean collisionDetected;
         for (GridAgent agent : agents) {
             agent.initRun(sModelName);
-            agent.solve(sMethodName, 100.0, 30, maxSteps);
+            agent.solve(sMethodName, 100.0, 15, maxSteps);
             if (!agent.hasConverged()) {
                 System.out.println("DEBUG: agent " + agent.getID() + " timed out!");
             }
@@ -34,7 +31,6 @@ public class Env {
                     potentialCollision = mightCollidingAgents(i, agents);
                     collisionDetected = !potentialCollision.isEmpty();
                     if (collisionDetected) {
-
                         break;
                     }
                     agent.step();
@@ -115,21 +111,47 @@ public class Env {
             if (iOtherAgent != iAgent) {
                 GridAgent otherAgent = agents.get(iOtherAgent);
                 if (agent.isClose(otherAgent)) {
-                    System.out.println("Agent " + agent.getID() + " and agent " + otherAgent.getID() + " are close!");
-                    agent.expandBeliefs(agent.getDistanceThreshold());
-                    otherAgent.expandBeliefs(otherAgent.getDistanceThreshold());
-                    Set<Integer> collisionStates = getCollisionStates(agent, otherAgent);
-                    if (collisionStates.size() > 0) {
-                        for (int collisionState : collisionStates) {
-                            if (collisionState != agent.getGrid().DONE) {
+//                    System.out.println("Agent " + agent.getID() + " and agent " + otherAgent.getID() + " are close!");
+//                    agent.expandBeliefs(agent.getDistanceThreshold());
+//                    otherAgent.expandBeliefs(otherAgent.getDistanceThreshold());
+//                    Set<Integer> collisionStates = getCollisionStates(agent, otherAgent);
+//                    if (collisionStates.size() > 0) {
+//                        for (int collisionState : collisionStates) {
+//                            System.out.println("Agent " + agent.getID() + " and agent " + otherAgent.getID() + " may collide in " + agent.getGrid().parseState(collisionState));
+//                        }
+//                        potentialCollision.addAgent(agent);
+//                        potentialCollision.addAgent(otherAgent);
+//                        potentialCollision.addCollisionStates(collisionStates);
+//                        break;
+//                    }
+                    agent.clearExpandedBeliefs();
+                    otherAgent.clearExpandedBeliefs();
+                    Set<Integer> collisionStates;
+                    for (int iStep = 0; iStep < agent.getDistanceThreshold(); iStep++) {
+                        otherAgent.expandBeliefsStep();
+                        collisionStates = getCollisionStates(agent, otherAgent);
+                        if (collisionStates.size() > 0) {
+                            for (int collisionState : collisionStates) {
                                 System.out.println("Agent " + agent.getID() + " and agent " + otherAgent.getID() + " may collide in " + agent.getGrid().parseState(collisionState));
                             }
+                            potentialCollision.addAgent(agent);
+                            potentialCollision.addAgent(otherAgent);
+                            potentialCollision.addCollisionStates(collisionStates);
+                            break;
                         }
-                        collisionStates.remove((Object)agent.getGrid().DONE);
-                        potentialCollision.addAgent(agent);
-                        potentialCollision.addAgent(otherAgent);
-                        potentialCollision.addCollisionStates(collisionStates);
-                        break;
+                        else {
+                            agent.expandBeliefsStep();
+                            collisionStates = getCollisionStates(agent, otherAgent);
+                            if (collisionStates.size() > 0) {
+                                for (int collisionState : collisionStates) {
+                                    System.out.println("Agent " + agent.getID() + " and agent " + otherAgent.getID() + " may collide in " + agent.getGrid().parseState(collisionState));
+                                }
+                                potentialCollision.addAgent(agent);
+                                potentialCollision.addAgent(otherAgent);
+                                potentialCollision.addCollisionStates(collisionStates);
+                                break;
+                            }
+                        }
                     }
                 }
             }

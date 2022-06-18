@@ -260,7 +260,8 @@ public class GridLoader{
             beacon_col = Integer.parseInt(stLine.nextToken());
             stLine.nextToken();     // :
             beacon_range = Integer.parseInt(stLine.nextToken());
-            m_pPOMDP.addBeacon(beacon_row, beacon_col, beacon_range);
+            Beacon b = new Beacon(beacon_row, beacon_col, beacon_range);
+            m_pPOMDP.addBeacon(b);
             sLine = lrInput.readLine();
         }
     }

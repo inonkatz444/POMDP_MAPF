@@ -75,6 +75,7 @@ public class MultiAgentBeaconDistanceGridLoader {
             }
         }
         m_pPOMDP.initGrid();
+        m_pPOMDP.initTransitionCaching();
         verifyFunctions();
 
         System.out.println( "Done loading model" );
@@ -201,6 +202,7 @@ public class MultiAgentBeaconDistanceGridLoader {
     protected void readBeacons(LineReader lrInput) throws IOException {
         String sLine = "";
         StringTokenizer stLine;
+        Beacon b;
         int beacon_row, beacon_col, beacon_range;
         int max_range = 0, num_beacons = 0;
         sLine = lrInput.readLine();
@@ -210,10 +212,12 @@ public class MultiAgentBeaconDistanceGridLoader {
             beacon_col = Integer.parseInt(stLine.nextToken());
             stLine.nextToken();     // :
             beacon_range = Integer.parseInt(stLine.nextToken());
-            m_pPOMDP.addBeacon(beacon_row, beacon_col, beacon_range);
+            b = new Beacon(beacon_row, beacon_col, beacon_range);
+            m_pPOMDP.addBeacon(b);
             max_range = Math.max(max_range, beacon_range);
             num_beacons++;
             m_pPOMDP.addAction("ping_to_<" + beacon_row + "," + beacon_col + ">");
+            m_pPOMDP.mapPingAction(m_pPOMDP.getActionCount()-1, b);
             sLine = lrInput.readLine();
         }
 
@@ -221,6 +225,7 @@ public class MultiAgentBeaconDistanceGridLoader {
         m_pPOMDP.setObservationCount(max_range + 3);    // +1 for zero dist, +1 for inf dist, +1 for DONE obs
         m_pPOMDP.initDynamicsFunctions();
         m_pPOMDP.setMaxDist(max_range);
+        System.out.println();
     }
 
     /**
@@ -527,7 +532,6 @@ public class MultiAgentBeaconDistanceGridLoader {
         if (Point.points == null) {
             Point.points = new Point[m_pPOMDP.getRows()][m_pPOMDP.getCols()];
         }
-        System.out.println();
     }
 
 }

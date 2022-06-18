@@ -85,7 +85,6 @@ public class GridAgent {
         END_STATE = grid.getEndState();
     }
 
-    // TODO: Change the observation generation in the belief expansion
     public Set<BeliefState> expandBelief(BeliefState bs) {
         int iObservation = 0, iAction;
         BeliefState bsSuccessor = null;
@@ -105,6 +104,21 @@ public class GridAgent {
             }
         }
         return unfolded;
+    }
+
+    public void clearExpandedBeliefs() {
+        expandedBeliefs.clear();
+        expandedBeliefs.add(currentBelief);
+    }
+
+    public void expandBeliefsStep() {
+        Queue<BeliefState> temp = new ArrayDeque<>();
+        temp.addAll(expandedBeliefs);
+        expandedBeliefs.clear();
+        while (!temp.isEmpty()) {
+            BeliefState belief = temp.remove();
+            expandedBeliefs.addAll(expandBelief(belief));
+        }
     }
 
     public void expandBeliefs(int steps) {
@@ -134,7 +148,7 @@ public class GridAgent {
         Set<Integer> possibleStates = new HashSet<>();
         for (int iState = 0; iState < grid.getStateCount(); iState++) {
             for (BeliefState belief : expandedBeliefs) {
-                if (belief.valueAt(iState) > 0) {
+                if (belief.valueAt(iState) > 0 && iState != grid.DONE) {
                     possibleStates.add(iState);
                     break;
                 }

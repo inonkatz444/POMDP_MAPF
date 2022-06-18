@@ -12,9 +12,16 @@ public class BeaconDistanceGrid extends Grid{
     protected int INF;
     protected int entry_options;
 
+    protected Map<Integer, Beacon> actionToBeacon;
+
     public BeaconDistanceGrid(int numOfAgents) {
         super(numOfAgents);
         noiseGenerator = RandomGenerator.getInstance();
+        actionToBeacon = new HashMap<>();
+    }
+
+    public void mapPingAction(int iAction, Beacon b) {
+        actionToBeacon.put(iAction, b);
     }
 
     public void setMaxDist(int maxDist) {
@@ -93,17 +100,18 @@ public class BeaconDistanceGrid extends Grid{
     }
 
     private Beacon pingActionToBeacon(int iAction) {
-        String[] coordinates = getActionName(iAction).substring(getActionName(iAction).indexOf('<')+1, getActionName(iAction).indexOf('>')).split(",");
-        int current_b_row = Integer.parseInt(coordinates[0]);
-        int current_b_col = Integer.parseInt(coordinates[1]);
-        Beacon current_b = null;
-        for (Beacon b : beacons) {
-            if (b.getLoc() == Point.getPoint(current_b_row, current_b_col)) {
-                current_b = b;
-                break;
-            }
-        }
-        return current_b;
+        // map between action indices to beacons (instead of parsing the action name)
+//        String[] coordinates = getActionName(iAction).substring(getActionName(iAction).indexOf('<')+1, getActionName(iAction).indexOf('>')).split(",");
+//        int current_b_row = Integer.parseInt(coordinates[0]);
+//        int current_b_col = Integer.parseInt(coordinates[1]);
+//        Beacon current_b = null;
+//        for (Beacon b : beacons) {
+//            if (b.getLoc() == Point.getPoint(current_b_row, current_b_col)) {
+//                current_b = b;
+//                break;
+//            }
+//        }
+        return actionToBeacon.get(iAction);
     }
 
 //    public int distsToObs(List<Integer> dists) {

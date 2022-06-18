@@ -260,7 +260,8 @@ public class BeaconDistanceGridLoader{
             beacon_col = Integer.parseInt(stLine.nextToken());
             stLine.nextToken();     // :
             beacon_range = Integer.parseInt(stLine.nextToken());
-            m_pPOMDP.addBeacon(beacon_row, beacon_col, beacon_range);
+            Beacon b = new Beacon(beacon_row, beacon_col, beacon_range);
+            m_pPOMDP.addBeacon(b);
             max_range = Math.max(max_range, beacon_range);
             num_beacons++;
             sLine = lrInput.readLine();

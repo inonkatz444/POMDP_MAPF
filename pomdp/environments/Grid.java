@@ -21,8 +21,10 @@ public class Grid extends POMDP {
     public final int HOLE = -1;
     public int DONE;
     private final double SUCCESS_REWARD = 10.0;
-    private final double FAILURE_REWARD = -5;
+    private final double FAILURE_REWARD = -2;
     private final double INTER_REWARD = -0.04;
+
+    List<Map.Entry<Integer, Double>>[][] cachedTransitions;
 
     public Grid(int numOfAgents) {
         super();
@@ -94,8 +96,8 @@ public class Grid extends POMDP {
         this.holes = holes;
     }
 
-    public void addBeacon(int beacon_row, int beacon_col, int range) {
-        beacons.add(new Beacon(beacon_row, beacon_col, range));
+    public void addBeacon(Beacon b) {
+        beacons.add(b);
     }
 
     public void setBeacons(List<Beacon> beacons) {
@@ -412,117 +414,120 @@ public class Grid extends POMDP {
 
     @Override
     public Iterator<Map.Entry<Integer, Double>> getNonZeroTransitions(int iStartState, int iAction) {
-        List<Map.Entry<Integer, Double>> entries = new ArrayList<>();
-        if (iStartState == getEndState() || iStartState == DONE) {
-            entries.add(new Pair<>(DONE, 1.0));
-            return entries.iterator();
+        if (cachedTransitions[iStartState][iAction] == null) {
+            List<Map.Entry<Integer, Double>> entries = new ArrayList<>();
+            if (iStartState == getEndState() || iStartState == DONE) {
+                entries.add(new Pair<>(DONE, 1.0));
+                return entries.iterator();
+            }
+
+            Point startLoc = stateToLocation(iStartState);
+            double selfProb = 0;
+            switch (iAction) {
+                case 0:
+                    if (validLocation(startLoc.first() - 1, startLoc.second())) {
+                        entries.add(new Pair<>(locationToState(startLoc.first() - 1, startLoc.second()), 0.8));
+                    }
+                    else {
+                        selfProb += 0.8;
+                    }
+                    if (validLocation(startLoc.first(), startLoc.second() - 1)) {
+                        entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() - 1), 0.1));
+                    }
+                    else {
+                        selfProb += 0.1;
+                    }
+                    if (validLocation(startLoc.first(), startLoc.second() + 1)) {
+                        entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() + 1), 0.1));
+                    }
+                    else {
+                        selfProb += 0.1;
+                    }
+
+                    if (selfProb > 0) {
+                        entries.add(new Pair<>(iStartState, selfProb));
+                    }
+                    break;
+                case 1:
+                    if (validLocation(startLoc.first() + 1, startLoc.second())) {
+                        entries.add(new Pair<>(locationToState(startLoc.first() + 1, startLoc.second()), 0.8));
+                    }
+                    else {
+                        selfProb += 0.8;
+                    }
+                    if (validLocation(startLoc.first(), startLoc.second() - 1)) {
+                        entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() - 1), 0.1));
+                    }
+                    else {
+                        selfProb += 0.1;
+                    }
+                    if (validLocation(startLoc.first(), startLoc.second() + 1)) {
+                        entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() + 1), 0.1));
+                    }
+                    else {
+                        selfProb += 0.1;
+                    }
+
+                    if (selfProb > 0) {
+                        entries.add(new Pair<>(iStartState, selfProb));
+                    }
+                    break;
+                case 2:
+                    if (validLocation(startLoc.first(), startLoc.second() + 1)) {
+                        entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() + 1), 0.8));
+                    }
+                    else {
+                        selfProb += 0.8;
+                    }
+                    if (validLocation(startLoc.first() - 1, startLoc.second())) {
+                        entries.add(new Pair<>(locationToState(startLoc.first() - 1, startLoc.second()), 0.1));
+                    }
+                    else {
+                        selfProb += 0.1;
+                    }
+                    if (validLocation(startLoc.first() + 1, startLoc.second())) {
+                        entries.add(new Pair<>(locationToState(startLoc.first() + 1, startLoc.second()), 0.1));
+                    }
+                    else {
+                        selfProb += 0.1;
+                    }
+
+                    if (selfProb > 0) {
+                        entries.add(new Pair<>(iStartState, selfProb));
+                    }
+                    break;
+                case 3:
+                    if (validLocation(startLoc.first(), startLoc.second() - 1)) {
+                        entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() - 1), 0.8));
+                    }
+                    else {
+                        selfProb += 0.8;
+                    }
+                    if (validLocation(startLoc.first() - 1, startLoc.second())) {
+                        entries.add(new Pair<>(locationToState(startLoc.first() - 1, startLoc.second()), 0.1));
+                    }
+                    else {
+                        selfProb += 0.1;
+                    }
+                    if (validLocation(startLoc.first() + 1, startLoc.second())) {
+                        entries.add(new Pair<>(locationToState(startLoc.first() + 1, startLoc.second()), 0.1));
+                    }
+                    else {
+                        selfProb += 0.1;
+                    }
+
+                    if (selfProb > 0) {
+                        entries.add(new Pair<>(iStartState, selfProb));
+                    }
+                    break;
+                default:
+                    entries.add(new Pair<>(iStartState, 1.0));
+                    break;
+            }
+            cachedTransitions[iStartState][iAction] = entries;
         }
 
-        Point startLoc = stateToLocation(iStartState);
-        double selfProb = 0;
-        switch (iAction) {
-            case 0:
-                if (validLocation(startLoc.first() - 1, startLoc.second())) {
-                    entries.add(new Pair<>(locationToState(startLoc.first() - 1, startLoc.second()), 0.8));
-                }
-                else {
-                    selfProb += 0.8;
-                }
-                if (validLocation(startLoc.first(), startLoc.second() - 1)) {
-                    entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() - 1), 0.1));
-                }
-                else {
-                    selfProb += 0.1;
-                }
-                if (validLocation(startLoc.first(), startLoc.second() + 1)) {
-                    entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() + 1), 0.1));
-                }
-                else {
-                    selfProb += 0.1;
-                }
-
-                if (selfProb > 0) {
-                    entries.add(new Pair<>(iStartState, selfProb));
-                }
-                break;
-            case 1:
-                if (validLocation(startLoc.first() + 1, startLoc.second())) {
-                    entries.add(new Pair<>(locationToState(startLoc.first() + 1, startLoc.second()), 0.8));
-                }
-                else {
-                    selfProb += 0.8;
-                }
-                if (validLocation(startLoc.first(), startLoc.second() - 1)) {
-                    entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() - 1), 0.1));
-                }
-                else {
-                    selfProb += 0.1;
-                }
-                if (validLocation(startLoc.first(), startLoc.second() + 1)) {
-                    entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() + 1), 0.1));
-                }
-                else {
-                    selfProb += 0.1;
-                }
-
-                if (selfProb > 0) {
-                    entries.add(new Pair<>(iStartState, selfProb));
-                }
-                break;
-            case 2:
-                if (validLocation(startLoc.first(), startLoc.second() + 1)) {
-                    entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() + 1), 0.8));
-                }
-                else {
-                    selfProb += 0.8;
-                }
-                if (validLocation(startLoc.first() - 1, startLoc.second())) {
-                    entries.add(new Pair<>(locationToState(startLoc.first() - 1, startLoc.second()), 0.1));
-                }
-                else {
-                    selfProb += 0.1;
-                }
-                if (validLocation(startLoc.first() + 1, startLoc.second())) {
-                    entries.add(new Pair<>(locationToState(startLoc.first() + 1, startLoc.second()), 0.1));
-                }
-                else {
-                    selfProb += 0.1;
-                }
-
-                if (selfProb > 0) {
-                    entries.add(new Pair<>(iStartState, selfProb));
-                }
-                break;
-            case 3:
-                if (validLocation(startLoc.first(), startLoc.second() - 1)) {
-                    entries.add(new Pair<>(locationToState(startLoc.first(), startLoc.second() - 1), 0.8));
-                }
-                else {
-                    selfProb += 0.8;
-                }
-                if (validLocation(startLoc.first() - 1, startLoc.second())) {
-                    entries.add(new Pair<>(locationToState(startLoc.first() - 1, startLoc.second()), 0.1));
-                }
-                else {
-                    selfProb += 0.1;
-                }
-                if (validLocation(startLoc.first() + 1, startLoc.second())) {
-                    entries.add(new Pair<>(locationToState(startLoc.first() + 1, startLoc.second()), 0.1));
-                }
-                else {
-                    selfProb += 0.1;
-                }
-
-                if (selfProb > 0) {
-                    entries.add(new Pair<>(iStartState, selfProb));
-                }
-                break;
-            default:
-                entries.add(new Pair<>(iStartState, 1.0));
-                break;
-        }
-
-        return entries.iterator();
+        return cachedTransitions[iStartState][iAction].iterator();
     }
 
     @Override
@@ -631,5 +636,9 @@ public class Grid extends POMDP {
     @Override
     public double R(int iStartState, int iAction, int iEndState) {
         return R(iStartState, iAction);
+    }
+
+    public void initTransitionCaching() {
+        cachedTransitions = new List[m_cStates][m_cActions];
     }
 }

@@ -2,10 +2,7 @@ package pomdp.utilities.datastructures;
 
 import pomdp.utilities.Pair;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CartesianIterator implements Iterator<Map.Entry<Integer, Double>> {
 
@@ -16,6 +13,8 @@ public class CartesianIterator implements Iterator<Map.Entry<Integer, Double>> {
     private int size;
     private boolean empty;
 
+    private static Map<Integer, Pair<Integer, Double>> cachedPairs = new HashMap<>();
+
     /**
      * Constructor
      *
@@ -24,8 +23,28 @@ public class CartesianIterator implements Iterator<Map.Entry<Integer, Double>> {
     public CartesianIterator(List<Iterable<Map.Entry<Integer, Double>>> iterables, int numOfSingleStates) {
         this.size = iterables.size();
         this.iterables = iterables;
-        this.iterators = new ArrayList<>();
+        this.iterators = new ArrayList<>(size);
         this.numOfSingleStates = numOfSingleStates;
+
+        // Initialize iterators
+        for (int i = 0; i < size; i++) {
+            iterators.add(iterables.get(i).iterator());
+            // If one of the iterators is empty then the whole Cartesian product is empty
+            if (!iterators.get(i).hasNext()) {
+                empty = true;
+                break;
+            }
+        }
+
+        // Initialize the tuple of the iteration values except the last one
+        if (!empty) {
+            values = new ArrayList<>(size);
+            for (int i = 0; i < size - 1; i++) setNextValue(i);
+        }
+    }
+
+    public void initialize() {
+        this.iterators.clear();
 
         // Initialize iterators
         for (int i = 0; i < size; i++) {
@@ -72,7 +91,14 @@ public class CartesianIterator implements Iterator<Map.Entry<Integer, Double>> {
             state += power * values.get(i).getKey();
             prob *= values.get(i).getValue();
         }
-        return new Pair<>(state, prob);
+
+        if (cachedPairs.containsKey(state)) {
+            cachedPairs.get(state).setSecond(prob);
+        }
+        else {
+            cachedPairs.put(state, new Pair<>(state, prob));
+        }
+        return cachedPairs.get(state);
     }
 
     /**

@@ -166,6 +166,7 @@ public class MultiAgentGridLoader {
     protected void readBeacons(LineReader lrInput) throws IOException {
         String sLine = "";
         StringTokenizer stLine;
+        Beacon b;
         int beacon_row, beacon_col, beacon_range;
         sLine = lrInput.readLine();
         while (!sLine.equals( "" )) {
@@ -174,7 +175,8 @@ public class MultiAgentGridLoader {
             beacon_col = Integer.parseInt(stLine.nextToken());
             stLine.nextToken();     // :
             beacon_range = Integer.parseInt(stLine.nextToken());
-            m_pPOMDP.addBeacon(beacon_row, beacon_col, beacon_range);
+            b = new Beacon(beacon_row, beacon_col, beacon_range);
+            m_pPOMDP.addBeacon(b);
             sLine = lrInput.readLine();
         }
     }
