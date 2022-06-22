@@ -37,8 +37,9 @@ public class PerseusValueIteration extends ValueIteration{
 		double dMaxDelta = 0.0;
 		long lStartTime = System.currentTimeMillis(), lCurrentTime = 0;
 		long lCPUTimeBefore = 0, lCPUTimeAfter = 0, lCPUTimeTotal = 0;
+		int convergenceCount = 0;
 		Runtime rtRuntime = Runtime.getRuntime();
-		Vector<BeliefState> vBeliefPoints = CreateBeliefSpaces.createRandomSpace( m_pPOMDP, m_rndGenerator.nextInt( 10000 ), 1000 );
+		Vector<BeliefState> vBeliefPoints = CreateBeliefSpaces.createRandomSpace( m_pPOMDP, m_rndGenerator.nextInt( 10000 ), 2000 );
 
 		if (vBeliefPoints == null) {
 			System.out.println("Couldn't find the required random belief points, exiting...");
@@ -66,10 +67,20 @@ public class PerseusValueIteration extends ValueIteration{
 			m_cCPUExecutionTime += ( lCPUTimeAfter - lCPUTimeBefore ) / 1000000;
 			lCPUTimeTotal += lCPUTimeAfter - lCPUTimeBefore;
 
+			if (dMaxDelta < 0.01) {
+				convergenceCount++;
+			}
+			else {
+				convergenceCount = 0;
+			}
+
 			if( ( cVnChanges < m_vValueFunction.getChangesCount() )){
 				cStepsWithoutChanges = 0;
 				if( !bDone )
 					bDone = checkADRConvergence( m_pPOMDP, dTargetValue, pComputedADRs );
+
+				if (!bDone)
+					bDone = convergenceCount >= 5;
 				rtRuntime.gc();
 				System.out.println( "Iteration " + iIteration + 
 						" |Vn| = " + m_vValueFunction.size() +
@@ -102,9 +113,10 @@ public class PerseusValueIteration extends ValueIteration{
 						"" );
 			
 			}
-			if( cStepsWithoutChanges == 50 )
-				bDone = true;
 
+			if (dMaxDelta == Double.POSITIVE_INFINITY) {
+				iIteration--;
+			}
 		}	
 		m_bConverged = true;
 

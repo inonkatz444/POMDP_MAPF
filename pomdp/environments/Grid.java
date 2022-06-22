@@ -261,16 +261,16 @@ public class Grid extends POMDP {
     public List<Integer> getNeighbors(int state) {
         List<Integer> neighbors = new ArrayList<>();
         Point loc = stateToLocation(state);
-        if (validLocation(Point.getPoint(loc.first()-1, loc.second()))) {
+        if (validLocation(loc.first()-1, loc.second())) {
             neighbors.add(locationToState(loc.first()-1, loc.second()));
         }
-        if (validLocation(Point.getPoint(loc.first()+1, loc.second()))) {
+        if (validLocation(loc.first()+1, loc.second())) {
             neighbors.add(locationToState(loc.first()+1, loc.second()));
         }
-        if (validLocation(Point.getPoint(loc.first(), loc.second()-1))) {
+        if (validLocation(loc.first(), loc.second()-1)) {
             neighbors.add(locationToState(loc.first(), loc.second()-1));
         }
-        if (validLocation(Point.getPoint(loc.first(), loc.second()+1))) {
+        if (validLocation(loc.first(), loc.second()+1)) {
             neighbors.add(locationToState(loc.first(), loc.second()+1));
         }
 
@@ -296,7 +296,7 @@ public class Grid extends POMDP {
     @Override
     public double tr(int iState1, int iAction, int iState2) {
         if (iState2 == DONE) {
-            if (getEndState() == iState1 || iState1 == DONE) {
+            if (getEndState() == iState1 || iState1 == DONE || iAction == getActionIndex("DONE_ACT")) {
                 return 1;
             }
             else {
@@ -307,6 +307,9 @@ public class Grid extends POMDP {
             return 0;
         }
         if (getEndState() == iState1) {
+            return 0;
+        }
+        if (iAction == getActionIndex("DONE_ACT")) {
             return 0;
         }
 
@@ -416,7 +419,7 @@ public class Grid extends POMDP {
     public Iterator<Map.Entry<Integer, Double>> getNonZeroTransitions(int iStartState, int iAction) {
         if (cachedTransitions[iStartState][iAction] == null) {
             List<Map.Entry<Integer, Double>> entries = new ArrayList<>();
-            if (iStartState == getEndState() || iStartState == DONE) {
+            if (iStartState == getEndState() || iStartState == DONE || iAction == getActionIndex("DONE_ACT")) {
                 entries.add(new Pair<>(DONE, 1.0));
                 return entries.iterator();
             }

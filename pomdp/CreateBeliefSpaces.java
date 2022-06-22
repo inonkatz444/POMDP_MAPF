@@ -65,12 +65,6 @@ public class CreateBeliefSpaces {
 			}
 			attempt++;
 		} while ((dMaxADR == 0 || (toReachStates != null && toReachStates.containsValue(false))) && attempt < maxAttempts);
-		if (attempt == maxAttempts) {
-			return null;
-		}
-		else {
-			System.out.println("Took " + attempt + " attempts.");
-		}
 		Logger.getInstance().log( "CreateBeliefSpaces", 0, "createRandomSpace", "The maximal ADR observed over " + cBeliefPoints + " points is " + dMaxADR );
 		return vPoints;
 	}

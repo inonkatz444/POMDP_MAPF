@@ -112,8 +112,7 @@ public class GridAgent {
     }
 
     public void expandBeliefsStep() {
-        Queue<BeliefState> temp = new ArrayDeque<>();
-        temp.addAll(expandedBeliefs);
+        Queue<BeliefState> temp = new ArrayDeque<>(expandedBeliefs);
         expandedBeliefs.clear();
         while (!temp.isEmpty()) {
             BeliefState belief = temp.remove();
@@ -224,7 +223,7 @@ public class GridAgent {
 
         done = done || (bsNext == null || ( bsNext.valueAt( currentNextState ) == 0 || ( cSameStates > 10 ) ));
 
-        System.out.println("Agent " + id + ": " + grid.getActionName(iAction) + " -> " + grid.parseState(currentNextState));
+        System.out.println("Agent " + id + ": " + grid.getActionName(iAction) + " -> " + grid.parseState(currentNextState) + " " + grid.parseObservation(currentObservation));
 
         currentState = currentNextState;
         currentBelief.release();
