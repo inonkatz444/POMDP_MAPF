@@ -220,6 +220,7 @@ public class MultiAgentBeaconDistanceGridLoader {
             m_pPOMDP.mapPingAction(m_pPOMDP.getActionCount()-1, b);
             sLine = lrInput.readLine();
         }
+        m_pPOMDP.addAction("DONE_ACT");
 
         System.out.print( "|A| = " + m_pPOMDP.getActionCount() );
         m_pPOMDP.setObservationCount(max_range + 3);    // +1 for zero dist, +1 for inf dist, +1 for DONE obs
@@ -510,7 +511,6 @@ public class MultiAgentBeaconDistanceGridLoader {
                                 m_pPOMDP.addAction( sValue );
                                 idx++;
                             }
-                            m_pPOMDP.addAction("DONE_ACT");
                         }
                     }
                     else{//assume that action list is until next empty line

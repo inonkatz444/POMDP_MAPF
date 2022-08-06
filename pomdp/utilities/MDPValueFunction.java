@@ -718,6 +718,9 @@ public class MDPValueFunction extends PolicyStrategy {
 		
 		if( m_avBestActions == null ){
 			for( iAction = 0 ; iAction < m_cActions ; iAction++ ){
+				if (m_pPOMDP.isForbiddenAction(iState, iAction)) {
+					continue;
+				}
 				dQValue = getQValue( iState, iAction );
 				if( dQValue > dMaxQValue ){
 					dMaxQValue = dQValue;

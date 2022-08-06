@@ -20,8 +20,8 @@ public class Grid extends POMDP {
 
     public final int HOLE = -1;
     public int DONE;
-    private final double SUCCESS_REWARD = 10.0;
-    private final double FAILURE_REWARD = -2;
+    private final double SUCCESS_REWARD = 50.0;
+    private final double FAILURE_REWARD = -20;
     private final double INTER_REWARD = -0.04;
 
     List<Map.Entry<Integer, Double>>[][] cachedTransitions;
@@ -188,7 +188,7 @@ public class Grid extends POMDP {
             open.remove((Object)current);
             closed.add(current);
         }
-        return -1;
+        return Integer.MAX_VALUE;
     }
 
     private double calculateND(double x, double stateSigma) {

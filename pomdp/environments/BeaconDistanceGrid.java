@@ -73,7 +73,7 @@ public class BeaconDistanceGrid extends Grid{
             return getObservationCount()-1;
         }
 
-        if (iAction <= 5) {
+        if (iAction <= 4) {
             return INF;
         }
 
@@ -186,7 +186,7 @@ public class BeaconDistanceGrid extends Grid{
             return 0;
         }
 
-        if (iAction <= 5) {
+        if (iAction <= 4) {
             return iObservation == INF ? 1 : 0;
         }
 

@@ -25,11 +25,14 @@ public class HeuristicSearchValueIteration extends ValueIteration {
 	
 	public HeuristicSearchValueIteration( POMDP pomdp, double dExplorationFactor ){
 		super( pomdp );
-		if( !m_vfMDP.persistQValues() ){
-			m_vfMDP = new MDPValueFunction( pomdp, 0.0 );
-			m_vfMDP.persistQValues( true );
-			m_vfMDP.valueIteration( 100, m_dEpsilon );
-		}
+		m_vfMDP = new MDPValueFunction( pomdp, 0.0 );
+		m_vfMDP.persistQValues( true );
+		m_vfMDP.valueIteration( 100, m_dEpsilon );
+//		if( !m_vfMDP.persistQValues() ){
+//			m_vfMDP = new MDPValueFunction( pomdp, 0.0 );
+//			m_vfMDP.persistQValues( true );
+//			m_vfMDP.valueIteration( 100, m_dEpsilon );
+//		}
 		m_vfUpperBound = new JigSawValueFunction( pomdp, m_vfMDP );
 		m_cNewPointComputations = 0;
 		m_cApplyHComputations = 0;

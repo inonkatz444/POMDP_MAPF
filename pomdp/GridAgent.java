@@ -8,31 +8,71 @@ import pomdp.environments.JointBeaconDistanceGrid;
 import pomdp.environments.POMDP;
 import pomdp.utilities.*;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
-public class GridAgent {
+public class GridAgent implements Comparable<GridAgent>{
     private static char autoInc = 'a';
     private BeaconDistanceGrid grid;
-    private PolicyStrategy policy;
-    private Map<Integer, Boolean> forbiddenStates;
+    private PolicyStrategy mainPolicy, escapePolicy, tempPolicy;
+    private Map<Integer, Boolean> forbiddenStates, tempForbiddenStates;
     private BeliefState currentBelief;
     private int currentState;
     private int cSameStates;
-    private int distanceThreshold;
+    private final int distanceThreshold;
     private final char id;
     private Set<BeliefState> expandedBeliefs;
     private int START_STATE, END_STATE;
-    private boolean retrain, isExpandedBeliefsRelevant;
+    private boolean isExpandedBeliefsRelevant;
+    private int forbiddenTimer;
+    private boolean isTimed;
+
+    private double sumOfDiscountedRewards;
+    private double discountFactor;
+    private final double gamma;
+
+    private TrackLogger agentLogger;
 
     public GridAgent(int distanceThreshold) {
         forbiddenStates = new HashMap<>();
+        tempForbiddenStates = new HashMap<>();
         this.distanceThreshold = distanceThreshold;
         id = autoInc++;
         expandedBeliefs = new HashSet<>();
         currentBelief = null;
-        retrain = true;
         isExpandedBeliefsRelevant = false;
+        forbiddenTimer = 0;
+        isTimed = false;
+        sumOfDiscountedRewards = 0;
+        discountFactor = 1;
+        gamma = 0.99;
+    }
+
+    // resets the agent to its initial state
+    public void reset() {
+        currentState = START_STATE;
+        currentBelief = null;
+        cSameStates = 0;
+        expandedBeliefs.clear();
+        forbiddenTimer = 0;
+        isTimed = false;
+        sumOfDiscountedRewards = 0;
+        discountFactor = 1;
+        forbiddenStates.clear();
+    }
+
+    public double getSumOfDiscountedRewards() {
+        return sumOfDiscountedRewards;
+    }
+
+    public void setLogger(String filename) {
+        try {
+            agentLogger = TrackLogger.getAgentInstance(id);
+            agentLogger.setOutputStream(filename);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public char getID() {
@@ -41,6 +81,40 @@ public class GridAgent {
 
     public int getDistanceThreshold() {
         return distanceThreshold;
+    }
+
+    public TrackLogger getAgentLogger() {
+        return agentLogger;
+    }
+
+    public void log(String sClassName, int iLevel, String sMethodName, boolean printToSystem, String sMessage) {
+        agentLogger.log(sClassName, iLevel, sMethodName, printToSystem, sMessage);
+        TrackLogger.getInstance().log(sClassName, iLevel, sMethodName, false, sMessage);
+    }
+
+    public int getForbiddenTimer() {
+        return forbiddenTimer;
+    }
+
+    private PolicyStrategy getRelevantPolicy() {
+        return isTimed ? escapePolicy : mainPolicy;
+    }
+
+    private PolicyStrategy getRelevantFuturePolicy(int iStep) {
+        if (!isTimed || getForbiddenTimer() - iStep < 0)
+            return mainPolicy;
+        return escapePolicy;
+    }
+
+    private void decreaseTimer() {
+        if (isTimed) {
+            setForbiddenTimer(getForbiddenTimer() - 1);
+            log("GridAgent", 0, "decreaseTimer", true, "Agent " + id + " timer: " + getForbiddenTimer());
+        }
+    }
+
+    public void setForbiddenTimer(int forbiddenTimer) {
+        this.forbiddenTimer = forbiddenTimer;
     }
 
     public String getStartStateString() {
@@ -55,20 +129,12 @@ public class GridAgent {
         forbiddenStates.put(iState, true);
     }
 
-    public void addForbiddenStates(List<Integer> iStates) {
+    public void addForbiddenStates(Set<Integer> iStates) {
         iStates.forEach(iState -> forbiddenStates.put(iState, true));
     }
 
     public boolean isForbidden(int iState) {
         return forbiddenStates.getOrDefault(iState, false);
-    }
-
-    public void retrain() {
-        retrain = true;
-    }
-
-    public boolean needsRetrain() {
-        return retrain;
     }
 
     public boolean isExpandedBeliefRelevant() {
@@ -81,20 +147,16 @@ public class GridAgent {
 
     public void load(String fileName) throws InvalidModelFileFormatException, IOException {
         grid.load(fileName, id);
+        grid.setNOOP(grid.getActionIndex("noop"));
         START_STATE = grid.getStartState(id);
         END_STATE = grid.getEndState();
     }
 
-    public Set<BeliefState> expandBelief(BeliefState bs) {
-        int iObservation = 0, iAction;
+    public Set<BeliefState> expandBelief(BeliefState bs, int iAction) {
+        int iObservation = 0;
         BeliefState bsSuccessor = null;
         double dProb = 0.0;
         Set<BeliefState> unfolded = new HashSet<>();
-
-        iAction = policy.getAction(bs);
-        if (iAction == -1) {
-            return unfolded;
-        }
 
         for( iObservation = 0 ; iObservation < grid.getObservationCount() ; iObservation++ ){
             dProb = bs.probabilityOGivenA( iAction, iObservation );
@@ -111,13 +173,25 @@ public class GridAgent {
         expandedBeliefs.add(currentBelief);
     }
 
-    public void expandBeliefsStep() {
+    // returns if the step changed the agent's belief state
+    public boolean expandBeliefsStep(int iStep) {
+        boolean hasMoved = false;
+        int iAction;
         Queue<BeliefState> temp = new ArrayDeque<>(expandedBeliefs);
         expandedBeliefs.clear();
         while (!temp.isEmpty()) {
             BeliefState belief = temp.remove();
-            expandedBeliefs.addAll(expandBelief(belief));
+            iAction = getRelevantFuturePolicy(iStep).getAction(belief);
+            if (iAction == -1) {
+                continue;
+            }
+            // if the action is movement
+            if (iAction <= 3) {
+                hasMoved = true;
+            }
+            expandedBeliefs.addAll(expandBelief(belief, iAction));
         }
+        return hasMoved || expandedBeliefs.stream().allMatch(b -> b.valueAt(grid.DONE) > 0);
     }
 
     public void expandBeliefs(int steps) {
@@ -131,7 +205,7 @@ public class GridAgent {
                 beliefs.clear();
                 while (!temp.isEmpty()) {
                     BeliefState belief = temp.remove();
-                    beliefs.addAll(expandBelief(belief));
+                    beliefs.addAll(expandBelief(belief, iExpandStep));
                 }
             }
             expandedBeliefs = beliefs;
@@ -168,7 +242,7 @@ public class GridAgent {
             throw new InvalidModelFileFormatException("Terminal: must be valid state - between 0 and " + grid.getStateCount());
         }
 
-        double reward = 0;
+//        double reward = 0;
         for (int iStartState = 0; iStartState < grid.getStateCount(); iStartState++) {
             grid.setStartStateProb(iStartState, currentBelief.valueAt(iStartState));
 //            if (!grid.isTerminalState(iStartState)) {
@@ -203,11 +277,16 @@ public class GridAgent {
     }
 
     public boolean step() {
-        int currentNextState, currentObservation;
-        BeliefState bsNext;
-        int iAction = policy.getAction(currentBelief);
+        int iAction = getRelevantPolicy().getAction(currentBelief);
         if( iAction == -1 )
             throw new Error( "Could not find optimal action for bs " + currentBelief );
+
+        return step(iAction);
+    }
+
+    public boolean step(int iAction) {
+        int currentNextState, currentObservation;
+        BeliefState bsNext;
 
         currentNextState = grid.execute( iAction, currentState );
         currentObservation = grid.observe( iAction, currentNextState );
@@ -215,6 +294,9 @@ public class GridAgent {
         boolean done = grid.endADR(currentNextState, 0);
 
         bsNext = currentBelief.nextBeliefState(iAction, currentObservation);
+        double reward = grid.R(currentState, iAction);
+        sumOfDiscountedRewards += reward * discountFactor;
+        discountFactor *= gamma;
 
         if( currentState != currentNextState )
             cSameStates = 0;
@@ -223,17 +305,21 @@ public class GridAgent {
 
         done = done || (bsNext == null || ( bsNext.valueAt( currentNextState ) == 0 || ( cSameStates > 10 ) ));
 
-        System.out.println("Agent " + id + ": " + grid.getActionName(iAction) + " -> " + grid.parseState(currentNextState) + " " + grid.parseObservation(currentObservation));
+        log("GridAgent", 0, "step", true, "Agent " + id + ": " + grid.getActionName(iAction) + " -> " + grid.parseState(currentNextState) + " O: " + grid.parseObservation(currentObservation) + " R: " + reward);
 
         currentState = currentNextState;
         currentBelief.release();
         currentBelief = bsNext;
 
         if (!done) {
-            System.out.println("Agent " + id + " current belief: " + currentBelief.toString());
+            log("GridAgent", 0, "step", true, "Agent " + id + " current belief: " + currentBelief.toString());
+        }
+        else {
+            log("GridAgent", 0, "step", true, "Agent " + id + " done! discounted reward: " + sumOfDiscountedRewards);
         }
 
         irrelevantExpandedBeliefs();
+        decreaseTimer();
 
         return done;
     }
@@ -261,6 +347,7 @@ public class GridAgent {
 
         irrelevantExpandedBeliefs();
 
+
         return done;
     }
 
@@ -277,10 +364,6 @@ public class GridAgent {
         return grid;
     }
 
-    public boolean hasConverged() {
-        return policy.hasConverged();
-    }
-
     // consider only feasible paths
     public boolean isClose(GridAgent other) {
         if (other.isDone()) {
@@ -288,15 +371,10 @@ public class GridAgent {
         }
 
         BeliefState otherBelief = other.getCurrentBelief();
-        Point thisLoc, otherLoc;
 
-        for (Map.Entry<Integer, Double> doubleEntry : currentBelief.getNonZeroEntries()) {
-            thisLoc = grid.stateToLocation(doubleEntry.getKey());
-            for (Map.Entry<Integer, Double> integerDoubleEntry : otherBelief.getNonZeroEntries()) {
-                otherLoc = other.getGrid().stateToLocation(integerDoubleEntry.getKey());
-                if (thisLoc.distance(otherLoc) < 2 * distanceThreshold) {
-                    return true;
-                }
+        for (Map.Entry<Integer, Double> integerDoubleEntry : otherBelief.getNonZeroEntries()) {
+            if (distanceTo(integerDoubleEntry.getKey()) <= 2 * distanceThreshold) {
+                return true;
             }
         }
 
@@ -333,8 +411,9 @@ public class GridAgent {
         return grid.getStateCount();
     }
 
-    public void solve(String methodName, double dTargetADR, int cMaxIterations, int maxSteps) {
-        System.out.println("Agent " + id + " solves:");
+    public double solve(String methodName, double dTargetADR, int cMaxIterations, int maxSteps) {
+
+        TrackLogger.getInstance().log("GridAgent", 0, "solve", true, "Agent " + id + " solves:");
 //        if( methodName.equals( "QMDP" ) ){
 //            MDPValueFunction vfQMDP = grid.getMDPValueFunction();
 //            vfQMDP.persistQValues( true );
@@ -345,14 +424,28 @@ public class GridAgent {
 //            this.policy = vfQMDP;
 //        }
 
+        double dDiscountedReward = 0;
         ValueIteration viAlgorithm = AlgorithmsFactory.getAlgorithm( methodName, grid );
         try{
             assert viAlgorithm != null;
             viAlgorithm.valueIteration( cMaxIterations, ExecutionProperties.getEpsilon(), dTargetADR );
-            double dDiscountedReward = grid.computeAverageDiscountedReward( 200, maxSteps, viAlgorithm, true , ExecutionProperties.useHighLevelMultiThread() || ExecutionProperties.useMultiThread() );
+            dDiscountedReward = grid.computeAverageDiscountedReward( 200, maxSteps, viAlgorithm, true , ExecutionProperties.useHighLevelMultiThread() || ExecutionProperties.useMultiThread() );
             Logger.getInstance().log( "GridAgent", 0, "main", "ADR = " + dDiscountedReward );
-            this.policy = viAlgorithm;
-            retrain = false;
+
+            if (dDiscountedReward >= 0) {
+                if (forbiddenStates.isEmpty()) {
+                    isTimed = false;
+                    this.mainPolicy = viAlgorithm;
+                }
+                else {
+                    isTimed = true;
+                    this.escapePolicy = viAlgorithm;
+                }
+                tempPolicy = null;
+            }
+            else {
+                tempPolicy = viAlgorithm;
+            }
         }
 
         catch( Exception e ){
@@ -368,6 +461,44 @@ public class GridAgent {
             System.out.print( "Stack trace: " );
             err.printStackTrace();
         }
+        return dDiscountedReward;
+    }
+
+    public void replaceWithTempPolicy() {
+        if (forbiddenStates.isEmpty()) {
+            isTimed = false;
+            this.mainPolicy = tempPolicy;
+        }
+        else {
+            isTimed = true;
+            this.escapePolicy = tempPolicy;
+        }
+        tempPolicy = null;
+    }
+
+    public void saveForbiddenStates() {
+        tempForbiddenStates.clear();
+        tempForbiddenStates.putAll(forbiddenStates);
+    }
+
+    public void restoreForbiddenStates() {
+        forbiddenStates.clear();
+        forbiddenStates.putAll(tempForbiddenStates);
+        grid.setForbiddenStates(forbiddenStates);
+    }
+
+    public int localize() {
+        int steps = 0;
+        for (int senseAction : grid.getSensingActions()) {
+            step(senseAction);
+            steps++;
+        }
+        return steps;
+    }
+
+    public void setNullPolicy() {
+        mainPolicy = new NullPolicy(grid);
+        isTimed = false;
     }
 
     public int distanceTo(int state) {
@@ -468,7 +599,6 @@ public class GridAgent {
         catch (InvalidModelFileFormatException | IOException e) {
             e.printStackTrace();
         }
-        policy = null;
         cSameStates = 0;
         grid.setForbiddenStates(forbiddenStates);
         Runtime.getRuntime().gc();
@@ -486,5 +616,26 @@ public class GridAgent {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public boolean isTimerSet() {
+        return isTimed;
+    }
+
+    public boolean finishEscaping() {
+        return isTimerSet() && getForbiddenTimer() <= 0;
+    }
+
+    public double stateProb(int iState) {
+        return currentBelief.valueAt(iState);
+    }
+
+    public int getEND_STATE() {
+        return END_STATE;
+    }
+
+    @Override
+    public int compareTo(GridAgent o) {
+        return o.distanceToGoal() - this.distanceToGoal();
     }
 }

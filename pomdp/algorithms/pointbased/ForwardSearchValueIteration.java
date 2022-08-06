@@ -1,10 +1,6 @@
 package pomdp.algorithms.pointbased;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.Vector;
+import java.util.*;
 import java.util.Map.Entry;
 
 import pomdp.algorithms.ValueIteration;
@@ -389,8 +385,6 @@ public class ForwardSearchValueIteration extends ValueIteration {
 			if( iMDPAction == iPOMDPAction )
 				iMDPAction = m_rndGenerator.nextInt( m_cActions );
 			*/
-			// TODO: Change the POMDP algorothm so it cannot choose actions that may lead to forbidden states from
-			//  any of the states with non-zero belief
 			iNextState = selectNextState( iState, iHeuristicAction );
 			iObservation = getObservation( iState, iHeuristicAction, iNextState );
 			bsNext = bsCurrent.nextBeliefState( iHeuristicAction, iObservation );
@@ -515,6 +509,124 @@ public class ForwardSearchValueIteration extends ValueIteration {
 		return Math.max( dDelta, dNextDelta );
 	}
 
+	private boolean isMovable(BeliefState bs) {
+		List<Integer> actions = m_pPOMDP.getRelevantActions(bs);
+		// get the minimum action from actions
+		int minAction = actions.get(0);
+		for (int i = 1; i < actions.size(); i++) {
+			if (actions.get(i) < minAction) {
+				minAction = actions.get(i);
+			}
+		}
+		return minAction <= 3;
+	}
+
+	// an iterative implementation of forwardSearch
+	protected double forwardSearchIter(BeliefState bsCurrent, int maxDepth) {
+		int iState = m_pPOMDP.chooseStartState();
+		double dDelta = 0.0, dMaxDelta = 0.0;
+		int iNextState = 0, iHeuristicAction = 0, iPOMDPAction = 0, iObservation = 0;
+		BeliefState bsNext = null;
+		AlphaVector avBackup = null;
+		double dPreviousValue = 0.0, dNewValue = 0.0;
+		Stack<BeliefState> beliefStateStack = new Stack<>();
+
+		for (int d = 0; d < maxDepth; d++) {
+			if (m_pPOMDP.terminalStatesDefined() && isTerminalState( iState )) {
+				m_iDepth = d;
+				System.out.println( "Ended at depth " + d + ". isTerminalState(" + iState + ")=" + isTerminalState( iState ) );
+				break;
+			}
+
+			while (!isMovable(bsCurrent) && d < maxDepth) {
+				for (int iPingAction : m_pPOMDP.getSensingActions()) {
+					iNextState = selectNextState( iState, iPingAction );
+					iObservation = getObservation( iState, iPingAction, iNextState );
+					bsNext = bsCurrent.nextBeliefState( iPingAction, iObservation );
+					beliefStateStack.push(bsNext);
+					bsCurrent = bsNext;
+					d++;
+
+				}
+			}
+			if (d == maxDepth) {
+				break;
+			}
+
+			iHeuristicAction = getAction( iState, bsCurrent, d );
+			iNextState = selectNextState( iState, iHeuristicAction );
+			iObservation = getObservation( iState, iHeuristicAction, iNextState );
+			bsNext = bsCurrent.nextBeliefState( iHeuristicAction, iObservation );
+
+			if( bsNext == null /*|| bsNext.equals( bsCurrent )*/ ){
+				//bsNext = bsCurrent.nextBeliefState( iHeuristicAction, iObservation );
+				System.out.println( "Ended at depth " + d + " due to an error" );
+				m_iDepth = d;
+				break;
+			}
+			if( bsNext.valueAt( iNextState ) == 0.0 ){
+				System.out.println( bsCurrent + ", " + m_pPOMDP.getStateName( iState ) + ", pr = " + bsCurrent.valueAt( iState ) );
+				System.out.println( bsNext + ", " + m_pPOMDP.getStateName( iNextState ) + ", pr = " + bsNext.valueAt( iNextState ) );
+				bsNext = bsCurrent.nextBeliefState( iHeuristicAction, iObservation );
+			}
+
+			beliefStateStack.push(bsNext);
+			bsCurrent = bsNext;
+			iState = iNextState;
+		}
+
+		while( !beliefStateStack.isEmpty() ){
+			BeliefState bs = beliefStateStack.pop();
+			avBackup = backup( bs );
+			dPreviousValue = m_vValueFunction.valueAt( bs );
+			dNewValue = avBackup.dotProduct( bs );
+			dDelta = dNewValue - dPreviousValue;
+
+			//System.out.println( iDepth + ") " + " v_old " + round( dPreviousValue, 3 ) + " v_new " + round( dNewValue, 3 ) +
+			//		" delta = " + round( dDelta, 3 ) + ", " + avBackup + " " + bsCurrent );
+
+			if( dDelta > 0.0 ){
+				m_vValueFunction.addPrunePointwiseDominated( avBackup );
+
+				//if( m_vLabeledBeliefs.contains( bsCurrent ) )
+				//	System.out.println( "*" );
+
+				//m_vValueFunction.addBounded( avBackup, 100 );
+				if( g_bCountUselessBackups ){
+					m_mCountLatestUselessUpdates.put( bs, 0 );
+					if( m_mCountUsefullUpdates.containsKey( bs ) ){
+						int cUsefulBackups = m_mCountUsefullUpdates.get( bs );
+						m_mCountUsefullUpdates.put( bs, cUsefulBackups + 1 );
+					}
+					else{
+						m_mCountUsefullUpdates.put( bs, 1 );
+					}
+				}
+			}
+			else{
+				if( dDelta <= 0.0 ){
+					//if( !m_vLabeledBeliefs.contains( bsCurrent ) )
+					//	m_vLabeledBeliefs.add( bsCurrent );
+				}
+				avBackup.release();
+				if( g_bCountUselessBackups ){
+					if( m_mCountUselessUpdates.containsKey( bs ) ){
+						int cUselessUpdates = m_mCountUselessUpdates.get( bs );
+						m_mCountUselessUpdates.put( bs, cUselessUpdates + 1 );
+						cUselessUpdates = m_mCountLatestUselessUpdates.get( bs );
+						m_mCountLatestUselessUpdates.put( bs, cUselessUpdates + 1 );
+					}
+					else{
+						m_mCountUselessUpdates.put( bs, 1 );
+						m_mCountLatestUselessUpdates.put( bs, 1 );
+					}
+				}
+			}
+			dMaxDelta = Math.max( dMaxDelta, dDelta );
+		}
+		return dMaxDelta;
+	}
+
 	private boolean isTerminalState( int iState ){
 		if( m_htType == HeuristicType.ObservationAwareMDP ){
 			int iUnderlyingState = m_pObservationAwareMDP.getUnderlyingState( iState );
@@ -530,12 +642,13 @@ public class ForwardSearchValueIteration extends ValueIteration {
 		return m_pPOMDP.getBeliefStateFactory().getDeterministicBeliefState( iState );
 	}
 	private int getAction( int iState, BeliefState bs, int iDepth ){
-		double dExplorationFactor = initEpsilon * Math.pow((maxEpsilon/initEpsilon), iDepth/100.0);
-//		double dExplorationFactor = initEpsilon + (maxEpsilon-initEpsilon)*(iDepth/100.0);
+		double dExplorationFactor = maxEpsilon * Math.pow((initEpsilon/maxEpsilon), iDepth/100.0);
+////		double dExplorationFactor = initEpsilon + (maxEpsilon-initEpsilon)*(iDepth/100.0);
+//		double dExplorationFactor = 0.6;
 		if( m_htType == HeuristicType.MDP ){
 			if( m_rndGenerator.nextDouble() < dExplorationFactor )
 				return m_vfMDP.getAction( iState );
-			return m_rndGenerator.nextInt( m_cActions );
+			return m_pPOMDP.getRandomAction(bs);
 		}
 		else if( m_htType == HeuristicType.ObservationAwareMDP ){
 			return m_pObservationAwareMDP.getAction( iState );
@@ -711,7 +824,8 @@ public class ForwardSearchValueIteration extends ValueIteration {
 		//BeliefState bsInitial = m_pPOMDP.getBeliefStateFactory().getDeterministicBeliefState( iInitialState );
 		m_iDepth = 0;
 		System.out.println( "Begin improve" );
-		double dDelta = forwardSearch( iInitialState, bsInitial, 0 );
+//		double dDelta = forwardSearch( iInitialState, bsInitial, 0 );
+		double dDelta = forwardSearchIter(bsInitial, 100);
 		System.out.println( "End improve, |V| = " + 
 				m_vValueFunction.size() + ", delta = " + dDelta );
 		return dDelta;

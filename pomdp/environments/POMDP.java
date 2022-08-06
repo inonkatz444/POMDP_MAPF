@@ -359,11 +359,14 @@ public class POMDP implements Serializable{
 
 	public void setActionCount( int cActions ){
 		m_cActions = cActions;
-		NOOP = cActions - 1;
 	}
 
-	public int getNOOP() {
-		return NOOP;
+	public int getDoneAction() {
+		return getActionIndex("DONE_ACT");
+	}
+
+	public void setNOOP(int NOOP) {
+		this.NOOP = NOOP;
 	}
 
 	public void addAction(String sAction ){
@@ -2092,31 +2095,79 @@ public class POMDP implements Serializable{
 	}
 
 	public boolean isForbidden(int iState) {
+		// TODO: when aborting to main policy, remove all forbidden states
 		return forbiddenStates.getOrDefault(iState, false);
 	}
 
-	public boolean isForbiddenAction(BeliefState bs, int iAction) {
-		int iStartState, iEndState;
+	public boolean isForbidden(BeliefState bs) {
+		int iState;
 		for (Map.Entry<Integer,Double> eBelief : bs.getNonZeroEntries()) {
-			iStartState = eBelief.getKey();
-			Iterator<Map.Entry<Integer,Double>> transIt = getNonZeroTransitions(iStartState, iAction);
-			while (transIt.hasNext()) {
-				iEndState = transIt.next().getKey();
-				if (isForbidden(iEndState)) {
-					return true;
-				}
+			iState = eBelief.getKey();
+			if (isForbidden(iState))
+				return true;
+		}
+		return false;
+	}
+
+	public boolean isForbiddenAction(int iState, int iAction) {
+		int iEndState;
+		Iterator<Map.Entry<Integer,Double>> transIt = getNonZeroTransitions(iState, iAction);
+		while (transIt.hasNext()) {
+			iEndState = transIt.next().getKey();
+			if (isForbidden(iEndState)) {
+				return true;
 			}
 		}
 		return false;
 	}
 
+	public boolean isForbiddenAction(BeliefState bs, int iAction) {
+		if (iAction == getActionIndex("DONE_ACT")) {
+			return false;
+		}
+
+		if (getSensingActions().contains(iAction)) {
+			BeliefState bsNext;
+			for (int iObservation = 0; iObservation < m_cObservations; iObservation++) {
+				if (bs.probabilityOGivenA(iAction, iObservation) > 0) {
+					bsNext = bs.nextBeliefState(iAction, iObservation);
+					if (isForbidden(bsNext)) {
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+
+		int iStartState;
+		for (Map.Entry<Integer,Double> eBelief : bs.getNonZeroEntries()) {
+			iStartState = eBelief.getKey();
+			if (isForbiddenAction(iStartState, iAction)) {
+				return true;
+			}
+		}
+		return false;
+//		BeliefState bsNext;
+//		for (int iObservation = 0; iObservation < m_cObservations; iObservation++) {
+//			if (bs.probabilityOGivenA(iAction, iObservation) > 0) {
+//				bsNext = bs.nextBeliefState(iAction, iObservation);
+//				if (isForbidden(bsNext)) {
+//					return true;
+//				}
+//			}
+//		}
+//		return false;
+	}
+
 	public List<Integer> getRelevantActions( BeliefState bs ) {
 		List<Integer> iActions = new ArrayList<>();
-		for (int iAction = 0; iAction < m_cActions; iAction++) {
+		for (int iAction : getMovableActions()) {
 			if (!isForbiddenAction(bs, iAction)) {
 				iActions.add(iAction);
 			}
 		}
+		iActions.addAll(getSensingActions());
+		iActions.add(getActionIndex("DONE_ACT"));
 		return iActions;
 	}
 
@@ -2124,6 +2175,24 @@ public class POMDP implements Serializable{
 		if( m_vTerminalStates == null )
 			m_vTerminalStates = new Vector<Integer>();
 		m_vTerminalStates.add( iTerminalState );
+	}
+
+	public List<Integer> getMovableActions() {
+		List<Integer> actions = new ArrayList<Integer>();
+		actions.add(getActionIndex("n"));
+		actions.add(getActionIndex("s"));
+		actions.add(getActionIndex("e"));
+		actions.add(getActionIndex("w"));
+		actions.add(getActionIndex("noop"));
+		return actions;
+	}
+
+	public List<Integer> getSensingActions() {
+		List<Integer> actions = new ArrayList<Integer>();
+		for (int pingAction = 5; pingAction < m_cActions - 1; pingAction++) {
+			actions.add(pingAction);
+		}
+		return actions;
 	}
 
 	public void addObservationSensitiveState(int iObservationState) {

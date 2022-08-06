@@ -54,11 +54,11 @@ public class UpperBoundValueFunctionApproximation {
 	}
 	
 	public int getAction( BeliefState bs ){
-		int iAction = 0, iObservation = 0, iMaxAction = -1;
+		int iObservation = 0, iMaxAction = -1;
 		double dMaxActionValue = Double.NEGATIVE_INFINITY, dPr = 0.0, dValueSum = 0.0;
 		BeliefState bsSuccessor = null;
 		
-		for( iAction = 0 ; iAction < m_pPOMDP.getActionCount() ; iAction++ ){
+		for( int iAction : m_pPOMDP.getRelevantActions(bs) ){
 			dValueSum = 0.0;
 			for( iObservation = 0 ;iObservation < m_pPOMDP.getObservationCount() ; iObservation++ ){
 				bsSuccessor = bs.nextBeliefState( iAction, iObservation );
