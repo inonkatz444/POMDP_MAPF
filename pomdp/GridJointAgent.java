@@ -4,6 +4,7 @@ import pomdp.algorithms.AlgorithmsFactory;
 import pomdp.algorithms.PolicyStrategy;
 import pomdp.algorithms.ValueIteration;
 import pomdp.environments.BeaconDistanceGrid;
+import pomdp.environments.Grid;
 import pomdp.environments.JointBeaconDistanceGrid;
 import pomdp.environments.POMDP;
 import pomdp.utilities.*;
@@ -31,12 +32,13 @@ public class GridJointAgent {
         END_STATES = new ArrayList<>();
     }
 
-    public void solve(String methodName, double dTargetADR, int cMaxIterations, int maxSteps) {
+    public double solve(String methodName, double dTargetADR, int cMaxIterations, int maxSteps) {
         ValueIteration viAlgorithm = AlgorithmsFactory.getAlgorithm( methodName, grid );
+        double dDiscountedReward = 0;
         try{
             assert viAlgorithm != null;
             viAlgorithm.valueIteration( cMaxIterations, ExecutionProperties.getEpsilon(), dTargetADR );
-            double dDiscountedReward = grid.computeAverageDiscountedReward( 200, maxSteps, viAlgorithm, true , ExecutionProperties.useHighLevelMultiThread() || ExecutionProperties.useMultiThread() );
+            dDiscountedReward = grid.computeAverageDiscountedReward( 200, maxSteps, viAlgorithm, true , ExecutionProperties.useHighLevelMultiThread() || ExecutionProperties.useMultiThread() );
             Logger.getInstance().log( "GridJointAgent", 0, "main", "ADR = " + dDiscountedReward );
             this.policy = viAlgorithm;
         }
@@ -54,26 +56,24 @@ public class GridJointAgent {
             System.out.print( "Stack trace: " );
             err.printStackTrace();
         }
+        return dDiscountedReward;
     }
 
-    public Function load(String sFileName) throws InvalidModelFileFormatException, IOException {
-        Function fTransition = p.load(sFileName);
+    public void load(String sFileName) throws InvalidModelFileFormatException, IOException {
+        p.load(sFileName);
         grid.getMDPValueFunction();
         grid.initBeliefStateFactory();
-        return fTransition;
     }
 
 //    public void initRun(String sModelName) {
 //        grid = new JointBeaconDistanceGrid(2);
 //        p = new JointGridLoader(grid);
 //        try {
-//            Function singleTransitions = load(ExecutionProperties.getPath() + sModelName + ".POMDP");
+//            load(ExecutionProperties.getPath() + sModelName + ".POMDP");
 //            int start_state = grid.encodeStates(grid.getAllStartStates());
 //            double[] belief_values = new double[grid.getStateCount()];
 //            belief_values[start_state] = 1.0;
 //            currentJointBelief = grid.getBeliefStateFactory().newBeliefState(belief_values);
-//            createTransitionsAndRewards(singleTransitions);
-//            verifyTransitions();
 ////            printGrid();
 //        }
 //        catch (InvalidModelFileFormatException | IOException e) {
@@ -88,18 +88,23 @@ public class GridJointAgent {
         BeaconDistanceGrid singleGrid = singleGrids.get(0);
         isDone = new boolean[agents.size()];
         int rows, cols;
-//        Function singleTransitions;
         grid = new JointBeaconDistanceGrid(agents);
         numOfAgents = agents.size();
-        Point[] boundaries = singleGrid.getBoundaryPoints(agents.stream().map(GridAgent::getCurrentBelief).toList(), data.getCollisionStates());
-        rows = boundaries[1].first() - boundaries[0].first() + 1;
-        cols = boundaries[1].second() - boundaries[0].second() + 1;
+
+//        Point[] boundaries = singleGrid.getBoundaryPoints(agents.stream().map(GridAgent::getCurrentBelief).toList(), data.getCollisionStates());
+//        rows = boundaries[1].first() - boundaries[0].first() + 1;
+//        cols = boundaries[1].second() - boundaries[0].second() + 1;
+//        grid.setOrigin(boundaries[0]);
+
+        rows = agents.get(0).getGrid().getRows();
+        cols = agents.get(0).getGrid().getCols();
+        grid.setOrigin(Point.getPoint(0, 0));
+
         grid.setRows(rows);
         grid.setCols(cols);
+        grid.setName(singleGrid.getName() + "_" + grid.getOrigin());
         grid.setNumOfSingleActions(agents.get(0).getGrid().getActionCount());
         grid.setDiscountFactor(DISCOUNT_FACTOR);
-        grid.setOrigin(boundaries[0]);
-        grid.setName(singleGrid.getName() + "_" + grid.getOrigin());
 
         List<Point> remainHoles = new ArrayList<>();
         for (Point hole : singleGrid.getHoles()) {
@@ -132,44 +137,6 @@ public class GridJointAgent {
 
         grid.setRewardType( POMDP.RewardType.StateActionState );
         grid.initStoredRewards();
-
-//        int[] transitionDims = {grid.getNumOfSingleStates(), grid.getNumOfSingleActions(), grid.getNumOfSingleStates()};
-//        singleTransitions = new SparseTabularFunction( transitionDims );
-//        Map.Entry<Integer, Double> eTrans;
-//        int iEndState;
-//        double dTrans;
-//        boolean found_trans;
-//        for (int iStartState = 0; iStartState < singleGrid.getStateCount(); iStartState++) {
-//            if (iStartState == singleGrid.DONE || singleGrid.stateToLocation(iStartState).inBound(grid)) {
-//                for (int iAction = 0; iAction < singleGrid.getActionCount(); iAction++) {
-//                    found_trans = false;
-//                    for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-//                        Iterator<Map.Entry<Integer, Double>> test_it = singleGrids.get(iAgent).getNonZeroTransitions(iStartState, iAction);
-//                        iEndState = test_it.next().getKey();
-//                        if (iEndState == 25) {
-//                            System.out.println();
-//                        }
-//                        if (iEndState != singleGrids.get(iAgent).DONE) {
-//                            for (Iterator<Map.Entry<Integer, Double>> it = singleGrids.get(iAgent).getNonZeroTransitions(iStartState, iAction); it.hasNext(); ) {
-//                                eTrans = it.next();
-//                                iEndState = eTrans.getKey();
-//                                dTrans = eTrans.getValue();
-//                                if (iEndState == singleGrids.get(iAgent).DONE || !singleGrids.get(iAgent).stateToLocation(iEndState).inBound(grid) || grid.isInBorder(toSmallGrid(iStartState))) {
-//                                    iEndState = singleGrids.get(iAgent).DONE;
-//                                }
-//                                singleTransitions.setValue(toSmallGrid(iStartState), iAction, toSmallGrid(iEndState),
-//                                        singleTransitions.valueAt(toSmallGrid(iStartState), iAction, toSmallGrid(iEndState)) + dTrans);
-//                            }
-//                            found_trans = true;
-//                            break;
-//                        }
-//                    }
-//                    if (!found_trans) {
-//                        singleTransitions.setValue(toSmallGrid(iStartState), iAction, grid.SINGLE_DONE, 1.0);
-//                    }
-//                }
-//            }
-//        }
 
         END_STATES = calculateIntermediateEndStates();
 

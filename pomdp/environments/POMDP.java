@@ -508,7 +508,7 @@ public class POMDP implements Serializable{
 			dADR = dSumDiscountedRewards / iTest;
 			dStdev = Math.sqrt( ( dSumSquares - ( iTest + 1 ) * dADR * dADR ) / cTests );
 			dStandardError = 2.0 * dStdev / Math.sqrt( cTests );
-			System.out.println();
+//			System.out.println();
 			Logger.getInstance().log( "POMDP", 0, "computeAverageDiscountedReward", "After " + iTest + " tests. ADR " + round( dADR, 3 ) +
 					", stdev " + round( dStdev, 5 ) + " SE " + round( dStandardError, 5 ) + " time " + lTotalCPU );
 		}
@@ -1154,7 +1154,7 @@ public class POMDP implements Serializable{
 		double dDiscountedReward = 0.0, dCurrentReward = 0.0, dDiscountFactor = 1.0;
 		int iStep = 0, iAction = 0, iObservation = 0;
 		int iState = chooseStartState(), iNextState = 0;
-		System.out.print(parseState(iState) + ", ");
+//		System.out.print(parseState(iState) + ", ");
 		BeliefState bsCurrentBelief = getBeliefStateFactory().getInitialBeliefState(), bsNext = null;
 
 		if (toReachStates != null) {
@@ -1217,7 +1217,7 @@ public class POMDP implements Serializable{
 			iNextState = execute( iAction, iState );
 			iObservation = observe( iAction, iNextState );
 
-			System.out.print(getActionName(iAction) + "->");
+//			System.out.print(getActionName(iAction) + "->");
 
 			if( aiActionCount != null )
 				aiActionCount[iAction]++;
@@ -1245,13 +1245,12 @@ public class POMDP implements Serializable{
 //				}
 //			}
 
-//			System.out.print(parseState(iNextState) + " " + Arrays.toString(getDists(iObservation)));
-			System.out.print(parseState(iNextState));
-			if (isForbidden(iNextState)) {
-				System.out.print(" FORBIDDEN! ");
-			}
-			System.out.print(" " + ((BeaconDistanceGrid)this).parseObservation(iObservation));
-			System.out.print(", ");
+//			System.out.print(parseState(iNextState));
+//			if (isForbidden(iNextState)) {
+//				System.out.print(" FORBIDDEN! ");
+//			}
+//			System.out.print(" " + ((BeaconDistanceGrid)this).parseObservation(iObservation));
+//			System.out.print(", ");
 
 			if( m_rtReward == RewardType.StateAction )
 				dCurrentReward = R( iState, iAction ); //R(s,a)
@@ -1289,7 +1288,7 @@ public class POMDP implements Serializable{
 			//bs1 = bs2;
 		}	
 		
-		System.out.println();
+//		System.out.println();
 
 
 		return dDiscountedReward;// + m_dMinReward * ( 1 / ( 1 - dDiscountFactor ) );

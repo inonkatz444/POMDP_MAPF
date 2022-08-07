@@ -11,13 +11,14 @@ public class JointGridLoader {
     protected int numOfAgents;
     protected int numOfSingleStates;
     protected int numOfSingleActions;
-    protected Function singleTransitions;
+    List<String> singleActions;
 
     public JointGridLoader(JointBeaconDistanceGrid pomdp) {
         m_pPOMDP = pomdp;
+        singleActions = new ArrayList<>();
     }
 
-    public Function load( String sFileName ) throws IOException, InvalidModelFileFormatException{
+    public void load( String sFileName ) throws IOException, InvalidModelFileFormatException{
         System.out.println( "Started loading model " + sFileName );
         LineReader lrInput = new LineReader( sFileName );
         String sLine = "";
@@ -44,10 +45,10 @@ public class JointGridLoader {
                     if( stLine.hasMoreTokens() ){
                         sType = stLine.nextToken();
                         switch (sType) {
-                            case "T:":
-                                sValue = stLine.nextToken();
-                                readTransition(lrInput, sValue, stLine);
-                                break;
+//                            case "T:":
+//                                sValue = stLine.nextToken();
+//                                readTransition(lrInput, sValue, stLine);
+//                                break;
                             case "O:":
                                 sValue = stLine.nextToken();
                                 readObservation(lrInput, sValue, stLine);
@@ -81,9 +82,9 @@ public class JointGridLoader {
         }
 
         m_pPOMDP.initGrid();
+        m_pPOMDP.initCaching();
 
         System.out.println( "Done loading model" );
-        return singleTransitions;
     }
 
     /**
@@ -120,58 +121,6 @@ public class JointGridLoader {
         this.numOfAgents = num_of_agents;
         m_pPOMDP.setStateCount( (int)Math.pow(numOfSingleStates, numOfAgents) );
         System.out.print( "|S| = " + m_pPOMDP.getStateCount() );
-
-        int[] transitionDims = {numOfSingleStates, numOfSingleActions, numOfSingleStates};
-        singleTransitions = new SparseTabularFunction( transitionDims );
-
-
-        int maxActionValue = numOfSingleActions-1;
-        List<Integer> actionValues = new ArrayList<>();
-
-        for (int i = 0; i < numOfAgents; i++) {
-            actionValues.add(0);
-        }
-
-        int actionChecksum;
-        boolean actionDone = false;
-        boolean actionChange;
-        int actionR;
-        StringBuilder sAction;
-
-        while (!actionDone) {
-            actionChecksum = 0;
-            for (int i = 0; i < numOfAgents; i++) {
-                actionChecksum += actionValues.get(i);
-            }
-            if (actionChecksum == numOfAgents*(maxActionValue)){
-                actionDone = true;
-            }
-
-            // add actions here
-            sAction = new StringBuilder("(");
-            for (int i = 0; i < numOfAgents; i++) {
-                sAction.append(m_pPOMDP.getAgents().get(i).getGrid().getActionName(actionValues.get(i))).append(", ");
-            }
-            sAction.delete(sAction.length()-2, sAction.length());
-            sAction.append(")");
-            m_pPOMDP.addAction(sAction.toString());
-            //
-
-            actionChange = true;
-            actionR = 0;
-            while (actionChange && actionR < numOfAgents) {
-                actionValues.set(actionR, actionValues.get(actionR)+1);
-                if (actionValues.get(actionR) > maxActionValue) {
-                    actionValues.set(actionR, 0);
-                }
-                else {
-                    actionChange = false;
-                }
-                actionR++;
-            }
-        }
-        System.out.print( "|A| = " + m_pPOMDP.getActionCount() );
-        System.out.println();
     }
 
     private void readEndStates(LineReader lrInput) throws IOException {
@@ -221,125 +170,177 @@ public class JointGridLoader {
             m_pPOMDP.addBeacon(b);
             max_range = Math.max(max_range, beacon_range);
             num_beacons++;
+            singleActions.add("ping_to_<" + beacon_row + "," + beacon_col + ">");
             sLine = lrInput.readLine();
         }
+        singleActions.add("DONE_ACT");
 
-        int numOfSingleObservations = (int)Math.pow(max_range + 2, num_beacons);    // +1 for zero dist, +1 for inf dist
+        m_pPOMDP.setNumOfSingleActions(singleActions.size());
+
+        int numOfSingleObservations = max_range + 2;    // +1 for zero dist, +1 for inf dist
         m_pPOMDP.setNumOfSingleObservations(numOfSingleObservations);
         m_pPOMDP.setObservationCount((int)Math.pow(numOfSingleObservations, numOfAgents));
         m_pPOMDP.initDynamicsFunctions();
         m_pPOMDP.setMaxDist(max_range);
-    }
 
-    /**
-     * Supporting the following formats:
-     * T: <action>  followed by a transition matrix
-     * T: <action> : <start state>  followed by a single line of transitions
-     * T: <action> : <start state> : <end state> %f
-     * TODO - add support for a wildcard asterix (*)
-     */
-    protected void readTransition( LineReader lrInput, String sAction, StringTokenizer stLine ) throws InvalidModelFileFormatException{
-        String sStartState = "", sEndState = "", sValue = "", sLine = "";
-        int iStartState = 0, iEndState = 0, iActionIdx = m_pPOMDP.getAgents().get(0).getGrid().getActionIndex( sAction ), iAction = 0;
-        double dValue = 0;
-        int cStates = numOfSingleStates, cActions = numOfSingleActions;
+        int maxActionValue = numOfSingleActions-1;
+        List<Integer> actionValues = new ArrayList<>();
 
-        if( stLine.hasMoreTokens() ){
-            String sTemp = stLine.nextToken();
-            sStartState = stLine.nextToken();
-            if( sStartState.equals( "*" ) )
-                iStartState = -1;
-            else
-                iStartState = m_pPOMDP.getStateIndex( sStartState );
-            if( stLine.hasMoreTokens() ){
-                stLine.nextToken();
-                sEndState = stLine.nextToken();
-                sValue = stLine.nextToken();
-                if( sEndState.equals( "*" ) )
-                    iEndState = -1;
-                else
-                    iEndState = m_pPOMDP.getStateIndex( sEndState );
-                dValue = Double.parseDouble( sValue );
+        for (int i = 0; i < numOfAgents; i++) {
+            actionValues.add(0);
+        }
 
-                if( dValue == 0.0 )
-                    return;
+        int actionChecksum;
+        boolean actionDone = false;
+        boolean actionChange;
+        int actionR;
+        StringBuilder sAction;
 
-                if( sAction.equals( "*" ) ){
-                    for( iAction = 0 ; iAction < cActions ; iAction++ ){
-                        singleTransitions.setValue( iStartState, iAction, iEndState, dValue );
-                    }
-                }
-                else{
-                    if( sStartState.equals( "*" ) ){
-                        for( iStartState = 0 ; iStartState < cStates ; iStartState++ ){
-                            singleTransitions.setValue( iStartState, iActionIdx, iEndState, dValue );
-                        }
-                    }
-                    else{
-                        singleTransitions.setValue( iStartState, iActionIdx, iEndState, dValue );
-                    }
-                }
-
+        while (!actionDone) {
+            actionChecksum = 0;
+            for (int i = 0; i < numOfAgents; i++) {
+                actionChecksum += actionValues.get(i);
             }
-            else{
-                try{
-                    sLine = lrInput.readLine();
-                    stLine = new StringTokenizer( sLine );
-                    for( iEndState = 0 ; iEndState < cStates ; iEndState++ ){
-                        sValue = stLine.nextToken();
-                        dValue = Double.parseDouble( sValue );
+            if (actionChecksum == numOfAgents*(maxActionValue)){
+                actionDone = true;
+            }
 
-                        if( dValue != 0.0 ){
-                            if( sAction.equals( "*" ) ){
-                                for( iAction = 0 ; iAction < cActions ; iAction++ ){
-                                    singleTransitions.setValue( iStartState, iAction, iEndState, dValue );
-                                }
-                            }
-                            else{
-                                singleTransitions.setValue( iStartState, iActionIdx, iEndState, dValue );
-                            }
-                        }
-                    }
+            // add actions here
+            sAction = new StringBuilder("(");
+            for (int i = 0; i < numOfAgents; i++) {
+                sAction.append(singleActions.get(i)).append(", ");
+            }
+            sAction.delete(sAction.length()-2, sAction.length());
+            sAction.append(")");
+            m_pPOMDP.addAction(sAction.toString());
+            //
+
+            actionChange = true;
+            actionR = 0;
+            while (actionChange && actionR < numOfAgents) {
+                actionValues.set(actionR, actionValues.get(actionR)+1);
+                if (actionValues.get(actionR) > maxActionValue) {
+                    actionValues.set(actionR, 0);
                 }
-                catch( NoSuchElementException e ){
-                    throw new InvalidModelFileFormatException( "insufficient number of transitions " + sLine );
+                else {
+                    actionChange = false;
                 }
-                catch( IOException e ){
-                    throw new InvalidModelFileFormatException();
-                }
+                actionR++;
             }
         }
-        else{
-            try{
-                for( iStartState = 0 ; iStartState < cStates ; iStartState++ ){
-                    sLine = lrInput.readLine();
-                    //System.out.println( sLine );
-                    stLine = new StringTokenizer( sLine );
-                    for( iEndState = 0 ; iEndState < cStates ; iEndState++ ){
-                        sValue = stLine.nextToken();
-                        dValue = Double.parseDouble( sValue );
-
-                        if( dValue != 0.0 ){
-                            if( sAction.equals( "*" ) ){
-                                for( iAction = 0 ; iAction < cActions ; iAction++ ){
-                                    singleTransitions.setValue( iStartState, iAction, iEndState, dValue );
-                                }
-                            }
-                            else{
-                                singleTransitions.setValue( iStartState, iActionIdx, iEndState, dValue );
-                            }
-                        }
-                    }
-                }
-            }
-            catch( NoSuchElementException e ){
-                throw new InvalidModelFileFormatException( "insufficient number of transitions " + sLine );
-            }
-            catch( IOException e ){
-                throw new InvalidModelFileFormatException();
-            }
-        }
+        System.out.print( "|A| = " + m_pPOMDP.getActionCount() );
+        System.out.println();
     }
+
+//    /**
+//     * Supporting the following formats:
+//     * T: <action>  followed by a transition matrix
+//     * T: <action> : <start state>  followed by a single line of transitions
+//     * T: <action> : <start state> : <end state> %f
+//     * TODO - add support for a wildcard asterix (*)
+//     */
+//    protected void readTransition( LineReader lrInput, String sAction, StringTokenizer stLine ) throws InvalidModelFileFormatException{
+//        String sStartState = "", sEndState = "", sValue = "", sLine = "";
+//        int iStartState = 0, iEndState = 0, iActionIdx = m_pPOMDP.getAgents().get(0).getGrid().getActionIndex( sAction ), iAction = 0;
+//        double dValue = 0;
+//        int cStates = numOfSingleStates, cActions = numOfSingleActions;
+//
+//        if( stLine.hasMoreTokens() ){
+//            String sTemp = stLine.nextToken();
+//            sStartState = stLine.nextToken();
+//            if( sStartState.equals( "*" ) )
+//                iStartState = -1;
+//            else
+//                iStartState = m_pPOMDP.getStateIndex( sStartState );
+//            if( stLine.hasMoreTokens() ){
+//                stLine.nextToken();
+//                sEndState = stLine.nextToken();
+//                sValue = stLine.nextToken();
+//                if( sEndState.equals( "*" ) )
+//                    iEndState = -1;
+//                else
+//                    iEndState = m_pPOMDP.getStateIndex( sEndState );
+//                dValue = Double.parseDouble( sValue );
+//
+//                if( dValue == 0.0 )
+//                    return;
+//
+//                if( sAction.equals( "*" ) ){
+//                    for( iAction = 0 ; iAction < cActions ; iAction++ ){
+//                        singleTransitions.setValue( iStartState, iAction, iEndState, dValue );
+//                    }
+//                }
+//                else{
+//                    if( sStartState.equals( "*" ) ){
+//                        for( iStartState = 0 ; iStartState < cStates ; iStartState++ ){
+//                            singleTransitions.setValue( iStartState, iActionIdx, iEndState, dValue );
+//                        }
+//                    }
+//                    else{
+//                        singleTransitions.setValue( iStartState, iActionIdx, iEndState, dValue );
+//                    }
+//                }
+//
+//            }
+//            else{
+//                try{
+//                    sLine = lrInput.readLine();
+//                    stLine = new StringTokenizer( sLine );
+//                    for( iEndState = 0 ; iEndState < cStates ; iEndState++ ){
+//                        sValue = stLine.nextToken();
+//                        dValue = Double.parseDouble( sValue );
+//
+//                        if( dValue != 0.0 ){
+//                            if( sAction.equals( "*" ) ){
+//                                for( iAction = 0 ; iAction < cActions ; iAction++ ){
+//                                    singleTransitions.setValue( iStartState, iAction, iEndState, dValue );
+//                                }
+//                            }
+//                            else{
+//                                singleTransitions.setValue( iStartState, iActionIdx, iEndState, dValue );
+//                            }
+//                        }
+//                    }
+//                }
+//                catch( NoSuchElementException e ){
+//                    throw new InvalidModelFileFormatException( "insufficient number of transitions " + sLine );
+//                }
+//                catch( IOException e ){
+//                    throw new InvalidModelFileFormatException();
+//                }
+//            }
+//        }
+//        else{
+//            try{
+//                for( iStartState = 0 ; iStartState < cStates ; iStartState++ ){
+//                    sLine = lrInput.readLine();
+//                    //System.out.println( sLine );
+//                    stLine = new StringTokenizer( sLine );
+//                    for( iEndState = 0 ; iEndState < cStates ; iEndState++ ){
+//                        sValue = stLine.nextToken();
+//                        dValue = Double.parseDouble( sValue );
+//
+//                        if( dValue != 0.0 ){
+//                            if( sAction.equals( "*" ) ){
+//                                for( iAction = 0 ; iAction < cActions ; iAction++ ){
+//                                    singleTransitions.setValue( iStartState, iAction, iEndState, dValue );
+//                                }
+//                            }
+//                            else{
+//                                singleTransitions.setValue( iStartState, iActionIdx, iEndState, dValue );
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//            catch( NoSuchElementException e ){
+//                throw new InvalidModelFileFormatException( "insufficient number of transitions " + sLine );
+//            }
+//            catch( IOException e ){
+//                throw new InvalidModelFileFormatException();
+//            }
+//        }
+//    }
 
     /**
      * Supporting the following formats:
@@ -473,9 +474,41 @@ public class JointGridLoader {
                     cVars++;
                 }
 
+                else if( sType.equals( "actions:" ) ){
+                    if(stLine.hasMoreElements()){
+
+                        sValue = stLine.nextToken();
+
+                        try{
+                            m_pPOMDP.setActionCount( Integer.parseInt( sValue ) );
+                        }
+                        catch( NumberFormatException e ){
+                            idx = 0;
+                            singleActions.add( sValue );
+                            idx++;
+                            while( stLine.hasMoreTokens() ){
+                                sValue = stLine.nextToken();
+                                singleActions.add( sValue );
+                                idx++;
+                            }
+                        }
+                    }
+                    else{//assume that action list is until next empty line
+                        String sActionLine = "";
+                        while(sActionLine.length() == 0){
+                            sActionLine = lrInput.readLine().trim();
+                        }
+                        while(sActionLine.length() > 0 && !lrInput.endOfFile()){
+                            m_pPOMDP.addAction(sActionLine);
+                            sActionLine = lrInput.readLine().trim();
+                        }
+                    }
+
+                    cVars++;
+                }
+
             }
         }
-        m_pPOMDP.setNumOfSingleActions(m_pPOMDP.getAgents().get(0).getGrid().getActionCount());
     }
 
     public int getNumOfSingleStates() {

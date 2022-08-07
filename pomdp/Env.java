@@ -11,7 +11,16 @@ public class Env {
         return !agents.stream().map(GridAgent::isDone).toList().contains(false);
     }
 
-//    private static boolean runMiniGrids(List<GridAgent> agents, String sMethodName, String sModelName, int maxSteps) {
+    private static double runOfflineJoint(List<GridAgent> agents, String sMethodName, String sModelName, int maxIterations, int maxSteps) {
+        agents.forEach(a -> a.initRun(sModelName));
+        GridJointAgent jointAgent = new GridJointAgent();
+        PotentialCollisionData data = new PotentialCollisionData();
+        data.addAgents(agents.toArray(GridAgent[]::new));
+        jointAgent.initRun(data);
+        return jointAgent.solve(sMethodName, 100.0, maxIterations, maxSteps);
+    }
+
+//    private static double runMiniGrids(List<GridAgent> agents, String sMethodName, String sModelName, int maxSteps) {
 //        int iStep, n = agents.size();
 //        PotentialCollisionData potentialCollision = null;
 //        boolean collisionDetected;
@@ -54,7 +63,7 @@ public class Env {
 //                iStep++;
 //            }
 //        }
-//        return AllDone(agents);
+//        return agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum);
 //    }
 
     public static double runForbidden(List<GridAgent> agents, String sMethodName, String sModelName, int solverIterations, int maxSteps, int initialTimer) {
@@ -78,7 +87,6 @@ public class Env {
                 }
             }
 
-            int timer = 0, TIMEOUT = 3;
             do {
                 mightCollide = mightCollidingAgents(agents);
                 if (!mightCollide.isEmpty()) {
@@ -107,27 +115,22 @@ public class Env {
                         }
                     } while (solvedADR < 0 && mightCollide.hasNextNonDominant());
                     if (solvedADR >= 0) {
+                        nonDominant.setForbiddenTimer(initialTimer);
+                        nonDominant.log("Env", 0, "runForbidden", false, "finished finding forbidden states");
                         break;
                     }
                     else {
-                        TrackLogger.getInstance().log("Env", 0, "runForbidden", true, "Localizing...");
-                        iStep += agents.get(agents.size()-1).localize();
-                        for (int i = agents.size()-2; i >= 0; i--) {
-                            agents.get(i).localize();
-                        }
-                    }
-                    if (timer == TIMEOUT) {
+//                        TrackLogger.getInstance().log("Env", 0, "runForbidden", true, "Localizing...");
+//                        iStep += agents.get(agents.size()-1).localize();
+//                        for (int i = agents.size()-2; i >= 0; i--) {
+//                            agents.get(i).localize();
+//                        }
                         mightCollide.getMostNonDominant().setNullPolicy();
+                        break;
                     }
-                    else {
-                        nonDominant.setForbiddenTimer(initialTimer);
-                        nonDominant.log("Env", 0, "runForbidden", false, "finished finding forbidden states");
-                    }
-//                mightCollide.removeAgent(nonDominant);
                 }
-                timer++;
             }
-            while (timer <= TIMEOUT && iStep < maxSteps);
+            while (!mightCollide.isEmpty() && iStep < maxSteps);
             for (GridAgent agent : agents) {
                 agent.step();
             }
@@ -385,10 +388,10 @@ public class Env {
 
     public static void main(String[] args) {
         JProf.getCurrentThreadCpuTimeSafe();
-        String sModelName = "two_paths_one_beacon";
+//        String sModelName = "two_paths_one_beacon";
 //        String sModelName = "room";
 //        String sModelName = "easy_10";
-//        String sModelName = "medium_10";
+        String sModelName = "medium_10";
 //        String sModelName = "hard_10";
 //        String sModelName = "switch_10_19";
 //        String sMethodName = "Perseus";
@@ -415,19 +418,25 @@ public class Env {
             agents.add(agent);
         }
 
-        int numOfTests = 1;
+        int numOfTests = 50;
         double[] ADRs = new double[numOfTests];
+        long totalTime = 0, startTime, endTime;
         for (int i = 0; i < numOfTests; i++) {
             int finalI = i;
             agents.forEach(a -> a.log("Env", 0, "main", false, "Test " + finalI));
             System.out.println("Test " + i);
+            startTime = System.currentTimeMillis();
             double sumOfDiscountedRewards = runForbidden(agents, sMethodName, sModelName, 100, 200, initialTimer);
+            endTime = System.currentTimeMillis();
             ADR += sumOfDiscountedRewards;
             ADRs[i] = Math.round(sumOfDiscountedRewards * 1000) / 1000.0;
             agents.forEach(GridAgent::reset);
+            TrackLogger.getInstance().log("Env", 0, "main", true, "Time of iteration " + i + ": " + (endTime - startTime) / 1000);
+            totalTime += (endTime - startTime);
         }
         TrackLogger.getInstance().log("Env", 0, "main", true, "Sum of discounted rewards: " + Arrays.toString(ADRs));
         TrackLogger.getInstance().log("Env", 0, "main", true, "ADR: " + ADR / numOfTests);
+        TrackLogger.getInstance().log("Env", 0, "main", true, "Time elapsed (s): " + (totalTime / 1000));
 //        boolean succeeded = runMiniGrids(agents, sMethodName, sModelName, 150);
 
 //        if (succeeded) {

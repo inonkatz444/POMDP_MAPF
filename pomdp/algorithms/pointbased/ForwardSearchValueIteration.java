@@ -292,23 +292,23 @@ public class ForwardSearchValueIteration extends ValueIteration {
 					//	bDone = true;
 					//}
 				}
-				sMsg = "FSVI: Iteration " + iIteration + 
-						" |Vn| = " + m_vValueFunction.size() +
-						" time " + 	( lCurrentTime - lStartTime ) / 1000 +
-						" V changes " + m_vValueFunction.getChangesCount() +
-						" max delta " + round( dMaxDelta, 3 ) +
-						" depth " + m_iDepth +
-						" V(b0) " + round( m_vValueFunction.valueAt( m_pPOMDP.getBeliefStateFactory().getInitialBeliefState() ), 2 ) +
-						" CPU time " + ( lCPUTimeAfter - lCPUTimeBefore ) / 1000000000 +
-						" CPU total " + m_lCPUTimeTotal  / 1000000000 +
-						" #backups " + m_cBackups + 
-						" |BS| " + m_pPOMDP.getBeliefStateFactory().getBeliefStateCount() +
-						" memory: " + 
-						" total " + rtRuntime.totalMemory() / 1000000 +
-						" free " + rtRuntime.freeMemory() / 1000000 +
-						" max " + rtRuntime.maxMemory() / 1000000 +
-						"";
-		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
+//				sMsg = "FSVI: Iteration " + iIteration +
+//						" |Vn| = " + m_vValueFunction.size() +
+//						" time " + 	( lCurrentTime - lStartTime ) / 1000 +
+//						" V changes " + m_vValueFunction.getChangesCount() +
+//						" max delta " + round( dMaxDelta, 3 ) +
+//						" depth " + m_iDepth +
+//						" V(b0) " + round( m_vValueFunction.valueAt( m_pPOMDP.getBeliefStateFactory().getInitialBeliefState() ), 2 ) +
+//						" CPU time " + ( lCPUTimeAfter - lCPUTimeBefore ) / 1000000000 +
+//						" CPU total " + m_lCPUTimeTotal  / 1000000000 +
+//						" #backups " + m_cBackups +
+//						" |BS| " + m_pPOMDP.getBeliefStateFactory().getBeliefStateCount() +
+//						" memory: " +
+//						" total " + rtRuntime.totalMemory() / 1000000 +
+//						" free " + rtRuntime.freeMemory() / 1000000 +
+//						" max " + rtRuntime.maxMemory() / 1000000 +
+//						"";
+//		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
 
 			
 			}
@@ -375,7 +375,7 @@ public class ForwardSearchValueIteration extends ValueIteration {
 		if( ( m_pPOMDP.terminalStatesDefined() && isTerminalState( iState ) ) 
 				||	( iDepth >= 100 ) ){
 			m_iDepth = iDepth;
-			System.out.println( "Ended at depth " + iDepth + ". isTerminalState(" + iState + ")=" + isTerminalState( iState ) );
+//			System.out.println( "Ended at depth " + iDepth + ". isTerminalState(" + iState + ")=" + isTerminalState( iState ) );
 		}
 		else{
 			iHeuristicAction = getAction( iState, bsCurrent, iDepth );
@@ -534,7 +534,7 @@ public class ForwardSearchValueIteration extends ValueIteration {
 		for (int d = 0; d < maxDepth; d++) {
 			if (m_pPOMDP.terminalStatesDefined() && isTerminalState( iState )) {
 				m_iDepth = d;
-				System.out.println( "Ended at depth " + d + ". isTerminalState(" + iState + ")=" + isTerminalState( iState ) );
+//				System.out.println( "Ended at depth " + d + ". isTerminalState(" + iState + ")=" + isTerminalState( iState ) );
 				break;
 			}
 
@@ -574,6 +574,8 @@ public class ForwardSearchValueIteration extends ValueIteration {
 			bsCurrent = bsNext;
 			iState = iNextState;
 		}
+
+//		System.out.println( "Ended at depth " + maxDepth + ". isTerminalState(" + iState + ")=" + isTerminalState( iState ) );
 
 		while( !beliefStateStack.isEmpty() ){
 			BeliefState bs = beliefStateStack.pop();
@@ -820,14 +822,14 @@ public class ForwardSearchValueIteration extends ValueIteration {
 			m_iLimitedBeliefMDPState = 0;
 			//System.out.println( iInitialState + " => " + m_pLimitedBeliefMDP.getStateName( m_iLimitedBeliefMDPState ) );
 		}
-		System.out.println( "Starting at state " + m_pPOMDP.getStateName( iInitialState ) );
+//		System.out.println( "Starting at state " + m_pPOMDP.getStateName( iInitialState ) );
 		//BeliefState bsInitial = m_pPOMDP.getBeliefStateFactory().getDeterministicBeliefState( iInitialState );
 		m_iDepth = 0;
-		System.out.println( "Begin improve" );
-//		double dDelta = forwardSearch( iInitialState, bsInitial, 0 );
-		double dDelta = forwardSearchIter(bsInitial, 100);
-		System.out.println( "End improve, |V| = " + 
-				m_vValueFunction.size() + ", delta = " + dDelta );
+//		System.out.println( "Begin improve" );
+		double dDelta = forwardSearch( iInitialState, bsInitial, 0 );
+//		double dDelta = forwardSearchIter(bsInitial, 100);
+//		System.out.println( "End improve, |V| = " +
+//				m_vValueFunction.size() + ", delta = " + dDelta );
 		return dDelta;
 	}
 	

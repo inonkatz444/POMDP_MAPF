@@ -392,7 +392,7 @@ public class MDPValueFunction extends PolicyStrategy {
 			dMaxValue = -1000.0;
 			dMinValue = 1000.0;
 
-			Logger.getInstance().logFull( "MDPVI", 0, "ComputeV", "Start iteration " + iIteration );
+//			Logger.getInstance().logFull( "MDPVI", 0, "ComputeV", "Start iteration " + iIteration );
 			for( int iState : getValidStates() ){
 				if( bFixedPolicy ){
 					iMaxAction = (int) m_avBestActions.valueAt( iState ); 
@@ -441,10 +441,10 @@ public class MDPValueFunction extends PolicyStrategy {
 
 			
 			//if( ( iIteration % 100 == 0 ) || ( dMaxDelta <= dEpsilon ) )
-				Logger.getInstance().logFull( "MDPVF", 0, "computeValueFunction", "After " + iIteration + 
-						" iterations, delta = " + dMaxDelta +
-						" min " + iMinState + " = " + dMinValue +
-						" max " + iMaxState + " = " + dMaxValue );
+//				Logger.getInstance().logFull( "MDPVF", 0, "computeValueFunction", "After " + iIteration +
+//						" iterations, delta = " + dMaxDelta +
+//						" min " + iMinState + " = " + dMinValue +
+//						" max " + iMaxState + " = " + dMaxValue );
 		}
 		
 		for( int j = 0 ; j < m_cStates ; j++ ){
@@ -467,7 +467,7 @@ public class MDPValueFunction extends PolicyStrategy {
 				}
 			}
 //			System.out.println( "s = " + getStateName( j ) + ", a = " + m_pPOMDP.getActionName(iMaxAction) + ", s' = " + (dMax != -10000 ? getStateName( iMax ) : -1) + ", V(s)=" + dMax );
-			System.out.println( "s = " + getStateName( j ) + ", a = " + m_pPOMDP.getActionName(iMaxAction) + ", s' = " + (dMax != -10000 ? getStateName( iMax ) : -1) + ", V(s)=" + getValue(j) );
+//			System.out.println( "s = " + getStateName( j ) + ", a = " + m_pPOMDP.getActionName(iMaxAction) + ", s' = " + (dMax != -10000 ? getStateName( iMax ) : -1) + ", V(s)=" + getValue(j) );
 		}
 
 		
