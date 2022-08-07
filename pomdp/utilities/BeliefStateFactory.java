@@ -64,7 +64,7 @@ public class BeliefStateFactory{
 	private void init(){
 		m_hmCachedBeliefStates = new TreeMap<BeliefState,BeliefState>(  getBeliefStateComparator( m_dEpsilon )  );
 		m_cBeliefPoints = 0;
-		m_bCacheBelifStates = false;
+		m_bCacheBelifStates = true;
 		BeliefState.g_cBeliefStateUpdates = 0;
 		m_bsInitialState = null;
 		m_bCountBeliefUpdates = true;
@@ -72,7 +72,6 @@ public class BeliefStateFactory{
 		m_cTimeInTau = 0;
 		m_abDeterministic = null;
 		m_cBeliefStateSize = 0;
-
 	}
 	
 	public BeliefStateFactory( POMDP pomdp ){
