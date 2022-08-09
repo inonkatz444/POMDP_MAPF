@@ -826,8 +826,8 @@ public class ForwardSearchValueIteration extends ValueIteration {
 		//BeliefState bsInitial = m_pPOMDP.getBeliefStateFactory().getDeterministicBeliefState( iInitialState );
 		m_iDepth = 0;
 //		System.out.println( "Begin improve" );
-		double dDelta = forwardSearch( iInitialState, bsInitial, 0 );
-//		double dDelta = forwardSearchIter(bsInitial, 100);
+//		double dDelta = forwardSearch( iInitialState, bsInitial, 0 );
+		double dDelta = forwardSearchIter(bsInitial, 100);
 //		System.out.println( "End improve, |V| = " +
 //				m_vValueFunction.size() + ", delta = " + dDelta );
 		return dDelta;

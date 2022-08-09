@@ -120,13 +120,13 @@ public class Env {
                         break;
                     }
                     else {
-//                        TrackLogger.getInstance().log("Env", 0, "runForbidden", true, "Localizing...");
-//                        iStep += agents.get(agents.size()-1).localize();
-//                        for (int i = agents.size()-2; i >= 0; i--) {
-//                            agents.get(i).localize();
-//                        }
-                        mightCollide.getMostNonDominant().setNullPolicy();
-                        break;
+                        TrackLogger.getInstance().log("Env", 0, "runForbidden", true, "Localizing...");
+                        iStep += agents.get(agents.size()-1).localize();
+                        for (int i = agents.size()-2; i >= 0; i--) {
+                            agents.get(i).localize();
+                        }
+//                        mightCollide.getMostNonDominant().setNullPolicy();
+//                        break;
                     }
                 }
             }
@@ -138,6 +138,11 @@ public class Env {
         }
         TrackLogger.getInstance().log("Env", 0, "runForbidden", true, "All agents are done, Sum of discounted rewards: " + agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum));
 
+        for (GridAgent a : agents) {
+            if (!a.isDone()) {
+                a.addPunishment();
+            }
+        }
         return agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum);
     }
 
@@ -208,7 +213,7 @@ public class Env {
         int iStep = 0;
         final int TIMEOUT = 10;
         int minMovingActionCounter = 0, maxMovingActionCounter = 0;
-        while (minMovingActionCounter < subsetAgents[0].getDistanceThreshold() && maxMovingActionCounter <= 2 * subsetAgents[0].getDistanceThreshold() && iStep <= TIMEOUT) {
+        while (minMovingActionCounter <= subsetAgents[0].getDistanceThreshold() && maxMovingActionCounter <= 2 * subsetAgents[0].getDistanceThreshold() && iStep <= TIMEOUT) {
             Set<Integer> collisionStates = getCollisionStates(subsetAgents);
             if (collisionStates.size() > 0) {
                 String ids = String.join(", ", Arrays.stream(subsetAgents).map(a -> "" + a.getID()).toArray(String[]::new));
@@ -437,21 +442,5 @@ public class Env {
         TrackLogger.getInstance().log("Env", 0, "main", true, "Sum of discounted rewards: " + Arrays.toString(ADRs));
         TrackLogger.getInstance().log("Env", 0, "main", true, "ADR: " + ADR / numOfTests);
         TrackLogger.getInstance().log("Env", 0, "main", true, "Time elapsed (s): " + (totalTime / 1000));
-//        boolean succeeded = runMiniGrids(agents, sMethodName, sModelName, 150);
-
-//        if (succeeded) {
-//            System.out.println("Solution found!");
-//        }
-//        else {
-//            System.out.println("Solution was not found...");
-//        }
-
-//        GridJointAgent a = new GridJointAgent();
-////        String sModelName = "open_world_5_5_0";
-////        String sModelName = "dummy_world";
-//        String sModelName = "joint_test";
-//        String sMethodName = "Perseus";
-//        a.initRun(sModelName);
-//        a.solve(sMethodName, 100, 20, 150);
     }
 }

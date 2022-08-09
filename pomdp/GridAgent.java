@@ -634,6 +634,10 @@ public class GridAgent implements Comparable<GridAgent>{
         return END_STATE;
     }
 
+    public void addPunishment() {
+        sumOfDiscountedRewards += grid.FAILURE_REWARD * discountFactor - grid.INTER_REWARD * discountFactor;
+    }
+
     @Override
     public int compareTo(GridAgent o) {
         return o.distanceToGoal() - this.distanceToGoal();

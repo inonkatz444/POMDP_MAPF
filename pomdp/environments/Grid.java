@@ -20,9 +20,9 @@ public class Grid extends POMDP {
 
     public final int HOLE = -1;
     public int DONE;
-    private final double SUCCESS_REWARD = 50.0;
-    private final double FAILURE_REWARD = -20;
-    private final double INTER_REWARD = -0.04;
+    public final double SUCCESS_REWARD = 50.0;
+    public final double FAILURE_REWARD = -20;
+    public final double INTER_REWARD = -0.04;
 
     List<Map.Entry<Integer, Double>>[][] cachedTransitions;
 
