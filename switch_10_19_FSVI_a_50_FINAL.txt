@@ -1,0 +1,938 @@
+Env:main:Test 0
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs24[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 1
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <1, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <3, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs5[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 2
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 3
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <3, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <4, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs472[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 4
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs13[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs14[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 5
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <1, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <1, 11> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 6
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <1, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 7
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <3, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <4, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs5[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 8
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 9
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <1, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs18[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <3, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs19[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <4, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs20[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 10
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <1, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 11
+Env:runForbidden:Agent a starts at <1, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -20.0
+Env:main:Test 12
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <3, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <3, 7> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs5[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 13
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs26[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <4, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs53[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <5, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs54[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 14
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 15
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 16
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 17
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <4, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <4, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs5[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 18
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <4, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <5, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs117[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 19
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs273[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 20
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 21
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 22
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 23
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <4, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <5, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs5[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 24
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <1, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <3, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <4, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs22[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 25
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <1, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 26
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <4, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs5[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <4, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs6[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 27
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 28
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <3, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <4, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs5[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 29
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <3, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <4, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs5[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 30
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <4, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs22[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <5, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs23[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 31
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 32
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 33
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 34
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <1, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+Env:main:Test 35
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <4, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <5, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs5[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 36
+Env:runForbidden:Agent a starts at <1, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -20.0
+Env:main:Test 37
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 38
+Env:runForbidden:Agent a starts at <1, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -20.0
+Env:main:Test 39
+Env:runForbidden:Agent a starts at <1, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -20.0
+Env:main:Test 40
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs17[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs18[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <4, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs19[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <5, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs20[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 41
+Env:runForbidden:Agent a starts at <1, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -20.0
+Env:main:Test 42
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <4, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs16[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <5, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs37[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 11>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 43
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 44
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.6816
+Env:main:Test 45
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <1, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <2, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs16[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <3, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs17[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <4, 10> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs18[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 12>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 11>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 46
+Env:runForbidden:Agent a starts at <1, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -20.0
+Env:main:Test 47
+Env:runForbidden:Agent a starts at <1, 9>
+GridAgent:step:Agent a: s -> <2, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs2[<1, 8>=0.1,<1, 10>=0.1,<2, 9>=0.8]
+GridAgent:step:Agent a: s -> <3, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs3[<1, 7>=0.01,<1, 9>=0.02,<1, 11>=0.01,<2, 8>=0.16,<2, 10>=0.16,<3, 9>=0.64]
+GridAgent:step:Agent a: s -> <4, 9> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs4[<2, 7>=0.023999,<2, 9>=0.047999,<2, 11>=0.023999,<3, 8>=0.191999,<3, 10>=0.191999,<4, 9>=0.511999]
+GridAgent:step:Agent a: s -> <4, 8> O: 8 R: -0.04
+GridAgent:step:Agent a current belief: bs5[<3, 7>=0.0384,<3, 9>=0.0768,<3, 11>=0.0384,<4, 8>=0.204799,<4, 10>=0.204799,<5, 9>=0.4096]
+Env:mightCollidingAgents:Agents a, b may collide in <3, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <3, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <7, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <4, 10>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 6>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 7>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 11>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 8>
+Env:mightCollidingAgents:Agents a, b may collide in <6, 10>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.36953616
+Env:main:Test 48
+Env:runForbidden:Agent a starts at <1, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -20.0
+Env:main:Test 49
+Env:runForbidden:Agent a starts at <1, 9>
+Env:mightCollidingAgents:Agents a, b may collide in <5, 9>
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -20.0
