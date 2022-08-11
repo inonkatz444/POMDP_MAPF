@@ -1154,7 +1154,7 @@ public class POMDP implements Serializable{
 		double dDiscountedReward = 0.0, dCurrentReward = 0.0, dDiscountFactor = 1.0;
 		int iStep = 0, iAction = 0, iObservation = 0;
 		int iState = chooseStartState(), iNextState = 0;
-//		System.out.print(parseState(iState) + ", ");
+		System.out.print(parseState(iState) + ", ");
 		BeliefState bsCurrentBelief = getBeliefStateFactory().getInitialBeliefState(), bsNext = null;
 
 		if (toReachStates != null) {
@@ -1217,7 +1217,7 @@ public class POMDP implements Serializable{
 			iNextState = execute( iAction, iState );
 			iObservation = observe( iAction, iNextState );
 
-//			System.out.print(getActionName(iAction) + "->");
+			System.out.print(getActionName(iAction) + "->");
 
 			if( aiActionCount != null )
 				aiActionCount[iAction]++;
@@ -1245,12 +1245,12 @@ public class POMDP implements Serializable{
 //				}
 //			}
 
-//			System.out.print(parseState(iNextState));
-//			if (isForbidden(iNextState)) {
-//				System.out.print(" FORBIDDEN! ");
-//			}
-//			System.out.print(" " + ((BeaconDistanceGrid)this).parseObservation(iObservation));
-//			System.out.print(", ");
+			System.out.print(parseState(iNextState));
+			if (isForbidden(iNextState)) {
+				System.out.print(" FORBIDDEN! ");
+			}
+			System.out.print(" " + ((BeaconDistanceGrid)this).parseObservation(iObservation));
+			System.out.print(", ");
 
 			if( m_rtReward == RewardType.StateAction )
 				dCurrentReward = R( iState, iAction ); //R(s,a)
@@ -1288,7 +1288,7 @@ public class POMDP implements Serializable{
 			//bs1 = bs2;
 		}	
 		
-//		System.out.println();
+		System.out.println();
 
 
 		return dDiscountedReward;// + m_dMinReward * ( 1 / ( 1 - dDiscountFactor ) );
@@ -2121,7 +2121,7 @@ public class POMDP implements Serializable{
 	}
 
 	public boolean isForbiddenAction(BeliefState bs, int iAction) {
-		if (iAction == getActionIndex("DONE_ACT")) {
+		if (iAction == getDoneAction()) {
 			return false;
 		}
 
@@ -2166,7 +2166,7 @@ public class POMDP implements Serializable{
 			}
 		}
 		iActions.addAll(getSensingActions());
-		iActions.add(getActionIndex("DONE_ACT"));
+		iActions.add(getDoneAction());
 		return iActions;
 	}
 

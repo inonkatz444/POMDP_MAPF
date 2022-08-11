@@ -4,11 +4,9 @@ import pomdp.algorithms.AlgorithmsFactory;
 import pomdp.algorithms.PolicyStrategy;
 import pomdp.algorithms.ValueIteration;
 import pomdp.environments.BeaconDistanceGrid;
-import pomdp.environments.Grid;
 import pomdp.environments.JointBeaconDistanceGrid;
 import pomdp.environments.POMDP;
 import pomdp.utilities.*;
-import pomdp.utilities.datastructures.Function;
 
 import java.io.IOException;
 import java.util.*;
@@ -25,7 +23,6 @@ public class GridJointAgent {
     private int numOfAgents;
     private List<BeaconDistanceGrid> singleGrids;
     private boolean[] isDone;
-
     private final double DISCOUNT_FACTOR = 0.99;
 
     public GridJointAgent() {
@@ -38,7 +35,7 @@ public class GridJointAgent {
         try{
             assert viAlgorithm != null;
             viAlgorithm.valueIteration( cMaxIterations, ExecutionProperties.getEpsilon(), dTargetADR );
-            dDiscountedReward = grid.computeAverageDiscountedReward( 200, maxSteps, viAlgorithm, true , ExecutionProperties.useHighLevelMultiThread() || ExecutionProperties.useMultiThread() );
+            dDiscountedReward = grid.computeAverageDiscountedReward( 50, maxSteps, viAlgorithm, true , ExecutionProperties.useHighLevelMultiThread() || ExecutionProperties.useMultiThread() );
             Logger.getInstance().log( "GridJointAgent", 0, "main", "ADR = " + dDiscountedReward );
             this.policy = viAlgorithm;
         }
@@ -82,23 +79,95 @@ public class GridJointAgent {
 //        Runtime.getRuntime().gc();
 //    }
 
-    public void initRun(PotentialCollisionData data) {
+    public void initOfflineRun(List<GridAgent> agents) {
+        this.agents = agents;
+        singleGrids = agents.stream().map(GridAgent::getGrid).toList();
+        BeaconDistanceGrid singleGrid = singleGrids.get(0);
+        isDone = new boolean[agents.size()];
+        int rows, cols;
+        grid = new JointBeaconDistanceGrid(agents, true);
+        numOfAgents = agents.size();
+
+        rows = agents.get(0).getGrid().getRows();
+        cols = agents.get(0).getGrid().getCols();
+        grid.setOrigin(Point.getPoint(0, 0));
+
+        grid.setRows(rows);
+        grid.setCols(cols);
+        grid.setName(singleGrid.getName() + "_" + grid.getOrigin());
+        grid.setNumOfSingleActions(agents.get(0).getGrid().getActionCount());
+        grid.setDiscountFactor(DISCOUNT_FACTOR);
+
+        List<Point> remainHoles = new ArrayList<>();
+        for (Point hole : singleGrid.getHoles()) {
+            if (hole.inBound(grid)) {
+                remainHoles.add(hole.relativeTo(grid.getOrigin()));
+            }
+        }
+        grid.setHoles(remainHoles);
+
+        grid.setNumOfSingleStates(rows*cols - remainHoles.size() + 1);  // +1 for DONE
+        grid.setStateCount( (int)Math.pow(grid.getNumOfSingleStates(), grid.getNumOfAgents()));
+        System.out.print( "|S| = " + grid.getStateCount() );
+
+        setActions();
+
+        grid.setBeacons(singleGrid.getBeacons());
+
+        int numOfSingleObservations = agents.get(0).getGrid().getObservationCount();
+        grid.setNumOfSingleObservations(numOfSingleObservations);
+        grid.setObservationCount((int)Math.pow(numOfSingleObservations, numOfAgents));
+        grid.initDynamicsFunctions();
+        grid.setMaxDist(singleGrid.getMaxDist());
+
+        try {
+            grid.initGrid();
+        } catch (InvalidModelFileFormatException e) {
+            e.printStackTrace();
+        }
+        grid.initCaching();
+
+        grid.setRewardType( POMDP.RewardType.StateActionState );
+        grid.initStoredRewards();
+
+        END_STATES = new ArrayList<>();
+        END_STATES.add(grid.encodeStates(agents.stream().map(a -> a.getGrid().DONE).toList()));
+        grid.addTerminalState(grid.encodeStates(agents.stream().map(a -> a.getGrid().DONE).toList()));
+
+        grid.initBeliefStateFactory();
+
+        currentJointBelief = joinBeliefs(agents.stream().map(GridAgent::getCurrentBelief).toList());
+        for (GridAgent agent : agents) {
+            if (!agent.getMDPValueFunction().hasConverged()) {
+                System.out.println("Solving Value Iteration for agent " + agent.getID() + ":");
+                agent.getMDPValueFunction().valueIteration(30, ExecutionProperties.getEpsilon());
+            }
+        }
+
+        for (int i = 0; i < numOfAgents; i++) {
+            isDone[i] = false;
+        }
+
+        setStartStateProb();
+
+        System.out.println(grid.getName());
+        System.out.println("Created grid with " + rows + " rows and " + cols + " columns");
+
+    }
+
+    public void initOnlineRun(PotentialCollisionData data) {
         this.agents = data.getAgents();
         singleGrids = agents.stream().map(GridAgent::getGrid).toList();
         BeaconDistanceGrid singleGrid = singleGrids.get(0);
         isDone = new boolean[agents.size()];
         int rows, cols;
-        grid = new JointBeaconDistanceGrid(agents);
+        grid = new JointBeaconDistanceGrid(agents, false);
         numOfAgents = agents.size();
 
-//        Point[] boundaries = singleGrid.getBoundaryPoints(agents.stream().map(GridAgent::getCurrentBelief).toList(), data.getCollisionStates());
-//        rows = boundaries[1].first() - boundaries[0].first() + 1;
-//        cols = boundaries[1].second() - boundaries[0].second() + 1;
-//        grid.setOrigin(boundaries[0]);
-
-        rows = agents.get(0).getGrid().getRows();
-        cols = agents.get(0).getGrid().getCols();
-        grid.setOrigin(Point.getPoint(0, 0));
+        Point[] boundaries = singleGrid.getBoundaryPoints(agents.stream().map(GridAgent::getCurrentBelief).toList(), data.getCollisionStates());
+        rows = boundaries[1].first() - boundaries[0].first() + 1;
+        cols = boundaries[1].second() - boundaries[0].second() + 1;
+        grid.setOrigin(boundaries[0]);
 
         grid.setRows(rows);
         grid.setCols(cols);
@@ -279,8 +348,6 @@ public class GridJointAgent {
                 stateR++;
             }
         }
-
-        jointProbs[grid.getStateCount()-1] = 0;
 
         return grid.getBeliefStateFactory().newBeliefState(jointProbs);
     }

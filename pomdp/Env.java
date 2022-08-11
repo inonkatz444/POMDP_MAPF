@@ -14,57 +14,53 @@ public class Env {
     private static double runOfflineJoint(List<GridAgent> agents, String sMethodName, String sModelName, int maxIterations, int maxSteps) {
         agents.forEach(a -> a.initRun(sModelName));
         GridJointAgent jointAgent = new GridJointAgent();
-        PotentialCollisionData data = new PotentialCollisionData();
-        data.addAgents(agents.toArray(GridAgent[]::new));
-        jointAgent.initRun(data);
+        jointAgent.initOfflineRun(agents);
         return jointAgent.solve(sMethodName, 100.0, maxIterations, maxSteps);
     }
 
-//    private static double runMiniGrids(List<GridAgent> agents, String sMethodName, String sModelName, int maxSteps) {
-//        int iStep, n = agents.size();
-//        PotentialCollisionData potentialCollision = null;
-//        boolean collisionDetected;
-//        for (GridAgent agent : agents) {
-//            agent.initRun(sModelName);
-//            agent.solve(sMethodName, 100.0, 15, maxSteps);
-//            if (!agent.hasConverged()) {
-//                System.out.println("DEBUG: agent " + agent.getID() + " timed out!");
-//            }
-//        }
-//        agents.forEach(agent -> System.out.println("Agent " + agent.getID() + " starts at " + agent.getStartStateString()));
-//        collisionDetected = false;
-//        iStep = 0;
-//        while ((iStep < maxSteps) && !AllDone(agents)) {
-//            for (int i = 0; i < n; i++) {
-//                GridAgent agent = agents.get(i);
-//                if (!agent.isDone()) {
-//                    potentialCollision = mightCollidingAgents(i, agents);
-//                    collisionDetected = !potentialCollision.isEmpty();
-//                    if (collisionDetected) {
-//                        break;
-//                    }
-//                    agent.step();
-//                }
-//            }
-//            System.out.println();
-//            if (collisionDetected) {
-//                GridJointAgent jointAgent = new GridJointAgent();
-//                jointAgent.initRun(potentialCollision);
-//                jointAgent.solve(sMethodName, 100.0, 30, maxSteps);
-//                boolean jointDone = false;
-//                while (iStep < maxSteps && !jointDone) {
-//                    jointDone = jointAgent.step();
-//                    iStep++;
-//                }
-//                System.out.println("The joint Agent is done... ");
-//                collisionDetected = false;
-//            }
-//            else {
-//                iStep++;
-//            }
-//        }
-//        return agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum);
-//    }
+    private static double runMiniGrids(List<GridAgent> agents, String sMethodName, String sModelName, int maxIterations, int maxSteps) {
+        List<GridAgent> agents_copy = agents.subList(0, agents.size());
+        int iStep;
+        PotentialCollisionData potentialCollision = null;
+        boolean collisionDetected;
+        for (GridAgent agent : agents) {
+            agent.initRun(sModelName);
+            agent.solve(sMethodName, 100.0, maxIterations, maxSteps);
+        }
+        agents.forEach(agent -> System.out.println("Agent " + agent.getID() + " starts at " + agent.getStartStateString()));
+        iStep = 0;
+        while ((iStep < maxSteps) && !AllDone(agents)) {
+
+            potentialCollision = mightCollidingAgents(agents);
+            if (!potentialCollision.isEmpty()) {
+                GridJointAgent jointAgent = new GridJointAgent();
+                jointAgent.initOnlineRun(potentialCollision);
+                jointAgent.solve(sMethodName, 100.0, maxIterations, maxSteps);
+                boolean jointDone = false;
+                while (iStep < maxSteps && !jointDone) {
+                    jointDone = jointAgent.step();
+                    iStep++;
+                }
+                System.out.println("The joint Agent is done... ");
+            }
+            else {
+                for (GridAgent agent : agents) {
+                    agent.step();
+                }
+                iStep++;
+            }
+            agents = agents.stream().filter(agent -> !agent.isDone()).toList();
+        }
+
+        for (GridAgent a : agents) {
+            if (!a.isDone()) {
+                a.addPunishment();
+            }
+        }
+        TrackLogger.getInstance().log("Env", 0, "runMiniGrid", true, "All agents are done, Sum of discounted rewards: " + agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum));
+
+        return agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum);
+    }
 
     public static double runForbidden(List<GridAgent> agents, String sMethodName, String sModelName, int solverIterations, int maxSteps, int initialTimer) {
         PotentialCollisionData mightCollide;
@@ -79,15 +75,16 @@ public class Env {
         for (int iStep = 0; iStep < maxSteps && !AllDone(agents); iStep++) {
             TrackLogger.getInstance().freeLog(0, printLetteredEnv(agents));
             System.out.println(printColoredEnv(agents));
-            for (GridAgent agent : agents) {
-                if (agent.finishEscaping()) {
-                    agent.clearForbiddenStates();
-                    agent.initRun(sModelName);
-                    agent.solve(sMethodName, 100.0, solverIterations, maxSteps);
-                }
-            }
 
             do {
+                for (GridAgent agent : agents) {
+                    if (agent.finishEscaping()) {
+                        agent.clearForbiddenStates();
+                        agent.initRun(sModelName);
+                        agent.solve(sMethodName, 100.0, solverIterations, maxSteps);
+                    }
+                }
+
                 mightCollide = mightCollidingAgents(agents);
                 if (!mightCollide.isEmpty()) {
                     double solvedADR;
@@ -98,7 +95,7 @@ public class Env {
                         nonDominant.saveForbiddenStates();
                         nonDominant.clearForbiddenStates();
 
-                        // adds all of the dominant's possible states to nonDominant's forbidden states
+                        // adds all the dominant's possible states to nonDominant's forbidden states
                         for (GridAgent a: agents) {
                             if (a != nonDominant) {
                                 a.clearExpandedBeliefs();
@@ -136,13 +133,13 @@ public class Env {
             }
             agents = agents.stream().filter(agent -> !agent.isDone()).toList();
         }
-        TrackLogger.getInstance().log("Env", 0, "runForbidden", true, "All agents are done, Sum of discounted rewards: " + agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum));
-
         for (GridAgent a : agents) {
             if (!a.isDone()) {
                 a.addPunishment();
             }
         }
+
+        TrackLogger.getInstance().log("Env", 0, "runForbidden", true, "All agents are done, Sum of discounted rewards: " + agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum));
         return agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum);
     }
 
@@ -395,14 +392,15 @@ public class Env {
         JProf.getCurrentThreadCpuTimeSafe();
 //        String sModelName = "two_paths_one_beacon";
 //        String sModelName = "room";
-//        String sModelName = "easy_10";
-        String sModelName = "medium_10";
+        String sModelName = "easy_10";
+//        String sModelName = "medium_10";
 //        String sModelName = "hard_10";
 //        String sModelName = "switch_10_19";
+//        String sModelName = "joint_test";
 //        String sMethodName = "Perseus";
         String sMethodName = "FSVI";
 //        String sMethodName = "HSVI";
-        int distanceThreshold = 3;
+        int distanceThreshold = 1;
         int initialTimer = 3;
         int num_of_agents = 2;
         double ADR = 0;
@@ -423,24 +421,27 @@ public class Env {
             agents.add(agent);
         }
 
-        int numOfTests = 50;
-        double[] ADRs = new double[numOfTests];
-        long totalTime = 0, startTime, endTime;
-        for (int i = 0; i < numOfTests; i++) {
-            int finalI = i;
-            agents.forEach(a -> a.log("Env", 0, "main", false, "Test " + finalI));
-            System.out.println("Test " + i);
-            startTime = System.currentTimeMillis();
-            double sumOfDiscountedRewards = runForbidden(agents, sMethodName, sModelName, 100, 200, initialTimer);
-            endTime = System.currentTimeMillis();
-            ADR += sumOfDiscountedRewards;
-            ADRs[i] = Math.round(sumOfDiscountedRewards * 1000) / 1000.0;
-            agents.forEach(GridAgent::reset);
-            TrackLogger.getInstance().log("Env", 0, "main", true, "Time of iteration " + i + ": " + (endTime - startTime) / 1000);
-            totalTime += (endTime - startTime);
-        }
-        TrackLogger.getInstance().log("Env", 0, "main", true, "Sum of discounted rewards: " + Arrays.toString(ADRs));
-        TrackLogger.getInstance().log("Env", 0, "main", true, "ADR: " + ADR / numOfTests);
-        TrackLogger.getInstance().log("Env", 0, "main", true, "Time elapsed (s): " + (totalTime / 1000));
+        double dADR = runOfflineJoint(agents, sMethodName, sModelName, 100, 200);
+        System.out.println(dADR);
+
+//        int numOfTests = 50;
+//        double[] ADRs = new double[numOfTests];
+//        long totalTime = 0, startTime, endTime;
+//        for (int i = 0; i < numOfTests; i++) {
+//            int finalI = i;
+//            agents.forEach(a -> a.log("Env", 0, "main", false, "Test " + finalI));
+//            System.out.println("Test " + i);
+//            startTime = System.currentTimeMillis();
+//            double sumOfDiscountedRewards = runForbidden(agents, sMethodName, sModelName, 100, 200, initialTimer);
+//            endTime = System.currentTimeMillis();
+//            ADR += sumOfDiscountedRewards;
+//            ADRs[i] = Math.round(sumOfDiscountedRewards * 1000) / 1000.0;
+//            agents.forEach(GridAgent::reset);
+//            TrackLogger.getInstance().log("Env", 0, "main", true, "Time of iteration " + i + ": " + (endTime - startTime) / 1000);
+//            totalTime += (endTime - startTime);
+//        }
+//        TrackLogger.getInstance().log("Env", 0, "main", true, "Sum of discounted rewards: " + Arrays.toString(ADRs));
+//        TrackLogger.getInstance().log("Env", 0, "main", true, "ADR: " + ADR / numOfTests);
+//        TrackLogger.getInstance().log("Env", 0, "main", true, "Time elapsed (s): " + (totalTime / 1000));
     }
 }

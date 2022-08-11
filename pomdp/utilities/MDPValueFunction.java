@@ -116,9 +116,6 @@ public class MDPValueFunction extends PolicyStrategy {
 		int iAction = 0, iMaxAction = -1;
 		double dMaxQValue = 0.0, dQValue = 0.0, dDelta = 0.0;
 
-		if (iStartState == 134) {
-			System.out.println();
-		}
 		dMaxQValue = Double.NEGATIVE_INFINITY;
 		for( iAction = 0 ; iAction < m_cActions ; iAction++ ){
 			dQValue = computeStateActionValue( iStartState, iAction );

@@ -97,17 +97,17 @@ public class GridAgent implements Comparable<GridAgent>{
     }
 
     private PolicyStrategy getRelevantPolicy() {
-        return isTimed ? escapePolicy : mainPolicy;
+        return isTimerSet() ? escapePolicy : mainPolicy;
     }
 
     private PolicyStrategy getRelevantFuturePolicy(int iStep) {
-        if (!isTimed || getForbiddenTimer() - iStep < 0)
+        if (!isTimerSet() || getForbiddenTimer() - iStep < 0)
             return mainPolicy;
         return escapePolicy;
     }
 
     private void decreaseTimer() {
-        if (isTimed) {
+        if (isTimerSet()) {
             setForbiddenTimer(getForbiddenTimer() - 1);
             log("GridAgent", 0, "decreaseTimer", true, "Agent " + id + " timer: " + getForbiddenTimer());
         }
@@ -285,14 +285,25 @@ public class GridAgent implements Comparable<GridAgent>{
     }
 
     public boolean step(int iAction) {
+        return step(iAction, isTimerSet());
+    }
+
+    public boolean step(int iAction, boolean reduceTimer) {
         int currentNextState, currentObservation;
-        BeliefState bsNext;
 
         currentNextState = grid.execute( iAction, currentState );
         currentObservation = grid.observe( iAction, currentNextState );
 
-        boolean done = grid.endADR(currentNextState, 0);
+        return step(iAction, currentNextState, currentObservation, reduceTimer);
+    }
 
+    public boolean step(int iAction, int currentNextState, int currentObservation) {
+        return step(iAction, currentNextState, currentObservation, isTimerSet());
+    }
+
+    public boolean step(int iAction, int currentNextState, int currentObservation, boolean reduceTimer) {
+        BeliefState bsNext;
+        boolean done = grid.endADR(currentNextState, 0);
         bsNext = currentBelief.nextBeliefState(iAction, currentObservation);
         double reward = grid.R(currentState, iAction);
         sumOfDiscountedRewards += reward * discountFactor;
@@ -319,34 +330,9 @@ public class GridAgent implements Comparable<GridAgent>{
         }
 
         irrelevantExpandedBeliefs();
-        decreaseTimer();
-
-        return done;
-    }
-
-    public boolean step(int iAction, int currentNextState, int currentObservation) {
-        boolean done = grid.endADR(currentNextState, 0);
-        BeliefState bsNext = currentBelief.nextBeliefState(iAction, currentObservation);
-
-        if( currentState != currentNextState )
-            cSameStates = 0;
-        else
-            cSameStates++;
-
-        done = done || (bsNext == null || ( bsNext.valueAt( currentNextState ) == 0 || ( cSameStates > 10 ) ));
-
-        System.out.println("Agent " + id + ": " + grid.getActionName(iAction) + " -> " + grid.parseState(currentNextState) + " " + grid.parseObservation(currentObservation));
-
-        currentState = currentNextState;
-        currentBelief.release();
-        currentBelief = bsNext;
-
-        if (!done) {
-            System.out.println("Agent " + id + " current belief: " + currentBelief.toString());
+        if (reduceTimer) {
+            decreaseTimer();
         }
-
-        irrelevantExpandedBeliefs();
-
 
         return done;
     }
@@ -490,7 +476,7 @@ public class GridAgent implements Comparable<GridAgent>{
     public int localize() {
         int steps = 0;
         for (int senseAction : grid.getSensingActions()) {
-            step(senseAction);
+            step(senseAction, false);
             steps++;
         }
         return steps;

@@ -19,11 +19,13 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     private List<Integer>[] jointObservationToObservation;
 
     private CartesianIterator[][] cachedTransitions;
+    private boolean isOffline;
 
-    public JointBeaconDistanceGrid(List<GridAgent> agents) {
+    public JointBeaconDistanceGrid(List<GridAgent> agents, boolean isOffline) {
         super(agents.size());
         endStates = new HashMap<>();
         this.agents = agents;
+        this.isOffline = isOffline;
     }
 
     public void initCaching() {
@@ -43,6 +45,11 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
 
     public List<GridAgent> getAgents() {
         return agents;
+    }
+
+    @Override
+    public MDPValueFunction getMDPValueFunction() {
+        return super.getMDPValueFunction();
     }
 
     @Override
@@ -191,6 +198,18 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
 
     @Override
     public double R(int iStartState, int iAction) {
+
+        if (isOffline) {
+            List<Integer> iStartStateValues = decodeState(iStartState);
+            List<Integer> iActionValues = decodeAction(iAction);
+
+            double reward = 0;
+            for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
+                reward += agents.get(iAgent).getGrid().R(iStartStateValues.get(iAgent), iActionValues.get(iAgent));
+            }
+            return reward;
+        }
+
         double dReward = m_adStoredRewards[iStartState][iAction];
         if( dReward == MIN_INF ) {
             double dSumRewards = 0;
@@ -206,6 +225,9 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
 
     @Override
     public double R(int iStartState, int iAction, int iEndState) {
+        if (isOffline) {
+            return R(iStartState, iAction);
+        }
 
 //        if (isTerminalState(iEndState)) {
 //            return 0;
@@ -364,6 +386,121 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
             encoded += power * decoded.get(i);
         }
         return encoded;
+    }
+
+    @Override
+    public List<Integer> getMovableActions() {
+        List<Integer> movableActions = new ArrayList<>();
+        int maxActionValue = getNumOfSingleActions()-1;
+        List<Integer> actionValues = new ArrayList<>();
+
+        for (int i = 0; i < numOfAgents; i++) {
+            actionValues.add(0);
+        }
+
+        int actionChecksum;
+        boolean actionDone = false;
+        boolean actionChange;
+        int actionR;
+        StringBuilder sAction;
+
+        while (!actionDone) {
+            actionChecksum = 0;
+            for (int i = 0; i < numOfAgents; i++) {
+                actionChecksum += actionValues.get(i);
+            }
+            if (actionChecksum == numOfAgents*(maxActionValue)){
+                actionDone = true;
+            }
+
+            // add movable actions here
+            boolean found = false;
+            // check if one of the agent's action is movable
+            for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
+                if (agents.get(iAgent).getGrid().getMovableActions().contains(actionValues.get(iAgent))) {
+                    found = true;
+                    break;
+                }
+            }
+            if (found) {
+                movableActions.add(encodeActions(actionValues));
+            }
+            //
+
+            actionChange = true;
+            actionR = 0;
+            while (actionChange && actionR < numOfAgents) {
+                actionValues.set(actionR, actionValues.get(actionR)+1);
+                if (actionValues.get(actionR) > maxActionValue) {
+                    actionValues.set(actionR, 0);
+                }
+                else {
+                    actionChange = false;
+                }
+                actionR++;
+            }
+        }
+        return movableActions;
+    }
+
+    @Override
+    public List<Integer> getSensingActions() {
+        List<Integer> sensingActions = new ArrayList<>();
+        int maxActionValue = getNumOfSingleActions()-1;
+        List<Integer> actionValues = new ArrayList<>();
+
+        for (int i = 0; i < numOfAgents; i++) {
+            actionValues.add(0);
+        }
+
+        int actionChecksum;
+        boolean actionDone = false;
+        boolean actionChange;
+        int actionR;
+        StringBuilder sAction;
+
+        while (!actionDone) {
+            actionChecksum = 0;
+            for (int i = 0; i < numOfAgents; i++) {
+                actionChecksum += actionValues.get(i);
+            }
+            if (actionChecksum == numOfAgents*(maxActionValue)){
+                actionDone = true;
+            }
+
+            // add movable actions here
+            boolean allPing = true;
+            // check if one of the agent's action is movable
+            for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
+                if (!agents.get(iAgent).getGrid().getSensingActions().contains(actionValues.get(iAgent)) && actionValues.get(iAgent) != SINGLE_DONE) {
+                    allPing = false;
+                    break;
+                }
+            }
+            if (allPing) {
+                sensingActions.add(encodeActions(actionValues));
+            }
+            //
+
+            actionChange = true;
+            actionR = 0;
+            while (actionChange && actionR < numOfAgents) {
+                actionValues.set(actionR, actionValues.get(actionR)+1);
+                if (actionValues.get(actionR) > maxActionValue) {
+                    actionValues.set(actionR, 0);
+                }
+                else {
+                    actionChange = false;
+                }
+                actionR++;
+            }
+        }
+        return sensingActions;
+    }
+
+    @Override
+    public int getDoneAction() {
+        return encodeActions(agents.stream().map(a -> a.getGrid().getDoneAction()).toList());
     }
 
     public int encodeStates(List<Integer> stateValues) {
