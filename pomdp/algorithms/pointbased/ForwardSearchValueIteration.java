@@ -292,23 +292,23 @@ public class ForwardSearchValueIteration extends ValueIteration {
 					//	bDone = true;
 					//}
 				}
-//				sMsg = "FSVI: Iteration " + iIteration +
-//						" |Vn| = " + m_vValueFunction.size() +
-//						" time " + 	( lCurrentTime - lStartTime ) / 1000 +
-//						" V changes " + m_vValueFunction.getChangesCount() +
-//						" max delta " + round( dMaxDelta, 3 ) +
-//						" depth " + m_iDepth +
-//						" V(b0) " + round( m_vValueFunction.valueAt( m_pPOMDP.getBeliefStateFactory().getInitialBeliefState() ), 2 ) +
-//						" CPU time " + ( lCPUTimeAfter - lCPUTimeBefore ) / 1000000000 +
-//						" CPU total " + m_lCPUTimeTotal  / 1000000000 +
-//						" #backups " + m_cBackups +
-//						" |BS| " + m_pPOMDP.getBeliefStateFactory().getBeliefStateCount() +
-//						" memory: " +
-//						" total " + rtRuntime.totalMemory() / 1000000 +
-//						" free " + rtRuntime.freeMemory() / 1000000 +
-//						" max " + rtRuntime.maxMemory() / 1000000 +
-//						"";
-//		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
+				sMsg = "FSVI: Iteration " + iIteration +
+						" |Vn| = " + m_vValueFunction.size() +
+						" time " + 	( lCurrentTime - lStartTime ) / 1000 +
+						" V changes " + m_vValueFunction.getChangesCount() +
+						" max delta " + round( dMaxDelta, 3 ) +
+						" depth " + m_iDepth +
+						" V(b0) " + round( m_vValueFunction.valueAt( m_pPOMDP.getBeliefStateFactory().getInitialBeliefState() ), 2 ) +
+						" CPU time " + ( lCPUTimeAfter - lCPUTimeBefore ) / 1000000000 +
+						" CPU total " + m_lCPUTimeTotal  / 1000000000 +
+						" #backups " + m_cBackups +
+						" |BS| " + m_pPOMDP.getBeliefStateFactory().getBeliefStateCount() +
+						" memory: " +
+						" total " + rtRuntime.totalMemory() / 1000000 +
+						" free " + rtRuntime.freeMemory() / 1000000 +
+						" max " + rtRuntime.maxMemory() / 1000000 +
+						"";
+		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
 
 			
 			}

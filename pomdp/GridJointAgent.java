@@ -35,7 +35,7 @@ public class GridJointAgent {
         try{
             assert viAlgorithm != null;
             viAlgorithm.valueIteration( cMaxIterations, ExecutionProperties.getEpsilon(), dTargetADR );
-            dDiscountedReward = grid.computeAverageDiscountedReward( 50, maxSteps, viAlgorithm, true , ExecutionProperties.useHighLevelMultiThread() || ExecutionProperties.useMultiThread() );
+            dDiscountedReward = grid.computeAverageDiscountedReward( 200, maxSteps, viAlgorithm, true , ExecutionProperties.useHighLevelMultiThread() || ExecutionProperties.useMultiThread() );
             Logger.getInstance().log( "GridJointAgent", 0, "main", "ADR = " + dDiscountedReward );
             this.policy = viAlgorithm;
         }
@@ -221,6 +221,7 @@ public class GridJointAgent {
 
         for (int i = 0; i < numOfAgents; i++) {
             isDone[i] = false;
+            agents.get(i).resetSameStates();
         }
 
         setStartStateProb();

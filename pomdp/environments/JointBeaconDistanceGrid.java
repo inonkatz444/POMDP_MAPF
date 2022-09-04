@@ -240,14 +240,14 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         double reward = 0;
         int numberOfTerminal = 0;
         for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-            if ((!agents.get(iAgent).canDone(this) && isInBorder(iStartStateValues.get(iAgent))) || (agents.get(iAgent).getEndState() == agents.get(iAgent).getGrid().fromJointGrid(iStartStateValues.get(iAgent), this) && iActionValues.get(iAgent) == agents.get(iAgent).getGrid().getActionIndex("DONE_ACT"))) {
+            if ((!agents.get(iAgent).canDone(this) && isInBorder(iEndStateValues.get(iAgent))) || (agents.get(iAgent).getEndState() == agents.get(iAgent).getGrid().fromJointGrid(iStartStateValues.get(iAgent), this) && iActionValues.get(iAgent) == agents.get(iAgent).getGrid().getActionIndex("DONE_ACT"))) {
                 numberOfTerminal++;
             }
         }
 
         for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
             if (numberOfTerminal >= numOfAgents - 1) {
-                reward += agents.get(iAgent).getMDPValueFunction().getValue(agents.get(iAgent).getGrid().fromJointGrid(iStartStateValues.get(iAgent), this));
+                reward += agents.get(iAgent).getMDPValueFunction().getValue(agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this));
             }
             else {
                 reward += agents.get(iAgent).getGrid().R(agents.get(iAgent).getGrid().fromJointGrid(iStartStateValues.get(iAgent), this), iActionValues.get(iAgent), agents.get(iAgent).getGrid().fromJointGrid(iEndStateValues.get(iAgent), this));

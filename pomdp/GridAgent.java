@@ -324,6 +324,7 @@ public class GridAgent implements Comparable<GridAgent>{
 
         if (!done) {
             log("GridAgent", 0, "step", true, "Agent " + id + " current belief: " + currentBelief.toString());
+
         }
         else {
             log("GridAgent", 0, "step", true, "Agent " + id + " done! discounted reward: " + sumOfDiscountedRewards);
@@ -589,6 +590,10 @@ public class GridAgent implements Comparable<GridAgent>{
         grid.setForbiddenStates(forbiddenStates);
         Runtime.getRuntime().gc();
         System.out.println("Agent " + id + " initialized");
+    }
+
+    public void resetSameStates() {
+        cSameStates = 0;
     }
 
     @Override

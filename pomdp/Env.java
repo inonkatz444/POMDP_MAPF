@@ -29,8 +29,9 @@ public class Env {
         }
         agents.forEach(agent -> System.out.println("Agent " + agent.getID() + " starts at " + agent.getStartStateString()));
         iStep = 0;
+        TrackLogger.getInstance().freeLog(0, printLetteredEnv(agents));
+        System.out.println(printColoredEnv(agents));
         while ((iStep < maxSteps) && !AllDone(agents)) {
-
             potentialCollision = mightCollidingAgents(agents);
             if (!potentialCollision.isEmpty()) {
                 GridJointAgent jointAgent = new GridJointAgent();
@@ -40,7 +41,11 @@ public class Env {
                 while (iStep < maxSteps && !jointDone) {
                     jointDone = jointAgent.step();
                     iStep++;
+                    TrackLogger.getInstance().freeLog(0, printLetteredEnv(agents));
+                    System.out.println(printColoredEnv(agents));
                 }
+                jointAgent = null;
+                Runtime.getRuntime().gc();
                 System.out.println("The joint Agent is done... ");
             }
             else {
@@ -48,6 +53,8 @@ public class Env {
                     agent.step();
                 }
                 iStep++;
+                TrackLogger.getInstance().freeLog(0, printLetteredEnv(agents));
+                System.out.println(printColoredEnv(agents));
             }
             agents = agents.stream().filter(agent -> !agent.isDone()).toList();
         }
@@ -122,6 +129,8 @@ public class Env {
                         for (int i = agents.size()-2; i >= 0; i--) {
                             agents.get(i).localize();
                         }
+                        TrackLogger.getInstance().freeLog(0, printLetteredEnv(agents));
+                        System.out.println(printColoredEnv(agents));
 //                        mightCollide.getMostNonDominant().setNullPolicy();
 //                        break;
                     }
@@ -392,9 +401,10 @@ public class Env {
         JProf.getCurrentThreadCpuTimeSafe();
 //        String sModelName = "two_paths_one_beacon";
 //        String sModelName = "room";
-        String sModelName = "easy_10";
+//        String sModelName = "easy_10";
 //        String sModelName = "medium_10";
 //        String sModelName = "hard_10";
+        String sModelName = "hard_5";
 //        String sModelName = "switch_10_19";
 //        String sModelName = "joint_test";
 //        String sMethodName = "Perseus";
@@ -421,8 +431,10 @@ public class Env {
             agents.add(agent);
         }
 
-        double dADR = runOfflineJoint(agents, sMethodName, sModelName, 100, 200);
-        System.out.println(dADR);
+        long startTime = System.currentTimeMillis();
+        runOfflineJoint(agents, sMethodName, sModelName, 100, 200);
+        long endTime = System.currentTimeMillis();
+        TrackLogger.getInstance().log("Env", 0, "main", true, "Time elapsed (s): " + ((endTime-startTime) / 1000));
 
 //        int numOfTests = 50;
 //        double[] ADRs = new double[numOfTests];
@@ -432,7 +444,7 @@ public class Env {
 //            agents.forEach(a -> a.log("Env", 0, "main", false, "Test " + finalI));
 //            System.out.println("Test " + i);
 //            startTime = System.currentTimeMillis();
-//            double sumOfDiscountedRewards = runForbidden(agents, sMethodName, sModelName, 100, 200, initialTimer);
+//            double sumOfDiscountedRewards = runMiniGrids(agents, sMethodName, sModelName, 100, 200);
 //            endTime = System.currentTimeMillis();
 //            ADR += sumOfDiscountedRewards;
 //            ADRs[i] = Math.round(sumOfDiscountedRewards * 1000) / 1000.0;

@@ -483,6 +483,7 @@ public class POMDP implements Serializable{
 				dCurrentSum += dDiscountedReward;
 				dSumSquares += ( dDiscountedReward * dDiscountedReward );
 				dSumDiscountedRewards += dDiscountedReward;
+				System.out.print(" R: " + dDiscountedReward);
 					
 				//if( bOutputMessages && ( iTest % 100 == 0 ) ){
 				//	System.out.print( ( iTest / 100 ) % 10 );
@@ -1289,7 +1290,6 @@ public class POMDP implements Serializable{
 		}	
 		
 		System.out.println();
-
 
 		return dDiscountedReward;// + m_dMinReward * ( 1 / ( 1 - dDiscountFactor ) );
 	}
