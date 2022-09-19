@@ -34,6 +34,8 @@ public class GridAgent implements Comparable<GridAgent>{
 
     private TrackLogger agentLogger;
 
+    private boolean solved;
+
     public GridAgent(int distanceThreshold) {
         forbiddenStates = new HashMap<>();
         tempForbiddenStates = new HashMap<>();
@@ -47,6 +49,7 @@ public class GridAgent implements Comparable<GridAgent>{
         sumOfDiscountedRewards = 0;
         discountFactor = 1;
         gamma = 0.99;
+        solved = false;
     }
 
     // resets the agent to its initial state
@@ -60,6 +63,7 @@ public class GridAgent implements Comparable<GridAgent>{
         sumOfDiscountedRewards = 0;
         discountFactor = 1;
         forbiddenStates.clear();
+        solved = false;
     }
 
     public double getSumOfDiscountedRewards() {
@@ -330,12 +334,20 @@ public class GridAgent implements Comparable<GridAgent>{
             log("GridAgent", 0, "step", true, "Agent " + id + " done! discounted reward: " + sumOfDiscountedRewards);
         }
 
+        if (currentState == getEndState()) {
+            solved = true;
+        }
+
         irrelevantExpandedBeliefs();
         if (reduceTimer) {
             decreaseTimer();
         }
 
         return done;
+    }
+
+    public boolean isSolved() {
+        return solved;
     }
 
     public boolean canDone(JointBeaconDistanceGrid jointGrid) {
@@ -432,6 +444,16 @@ public class GridAgent implements Comparable<GridAgent>{
             }
             else {
                 tempPolicy = viAlgorithm;
+                if (mainPolicy == null || getForbiddenTimer() <= 0) {
+                    if (forbiddenStates.isEmpty()) {
+                        isTimed = false;
+                        this.mainPolicy = viAlgorithm;
+                    }
+                    else {
+                        isTimed = true;
+                        this.escapePolicy = viAlgorithm;
+                    }
+                }
             }
         }
 
@@ -619,10 +641,6 @@ public class GridAgent implements Comparable<GridAgent>{
 
     public double stateProb(int iState) {
         return currentBelief.valueAt(iState);
-    }
-
-    public int getEND_STATE() {
-        return END_STATE;
     }
 
     public void addPunishment() {

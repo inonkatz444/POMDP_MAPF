@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
 import pomdp.algorithms.PolicyStrategy;
 import pomdp.utilities.*;
 import pomdp.utilities.concurrent.ComputeDiscountedReward;
@@ -141,7 +143,7 @@ public class POMDP implements Serializable{
 	}
 
 	public List<Integer> getAllStartStates() {
-		return startStates.values().stream().toList();
+		return new ArrayList<>(startStates.values());
 	}
 
 	public void setEndState(int endState) {
@@ -362,7 +364,7 @@ public class POMDP implements Serializable{
 	}
 
 	public int getDoneAction() {
-		return getActionIndex("DONE_ACT");
+		return getActionCount() - 1;
 	}
 
 	public void setNOOP(int NOOP) {
@@ -483,7 +485,7 @@ public class POMDP implements Serializable{
 				dCurrentSum += dDiscountedReward;
 				dSumSquares += ( dDiscountedReward * dDiscountedReward );
 				dSumDiscountedRewards += dDiscountedReward;
-				System.out.print(" R: " + dDiscountedReward);
+//				System.out.print(" R: " + dDiscountedReward);
 					
 				//if( bOutputMessages && ( iTest % 100 == 0 ) ){
 				//	System.out.print( ( iTest / 100 ) % 10 );
@@ -1148,6 +1150,7 @@ public class POMDP implements Serializable{
 
 	public int getRandomAction(BeliefState bsCurrent) {
 		List<Integer> iActions = getRelevantActions(bsCurrent);
+//		iActions.remove(Integer.valueOf(getDoneAction()));
 		return iActions.get(m_rndGenerator.nextInt(iActions.size()));
 	}
 	
@@ -1155,7 +1158,7 @@ public class POMDP implements Serializable{
 		double dDiscountedReward = 0.0, dCurrentReward = 0.0, dDiscountFactor = 1.0;
 		int iStep = 0, iAction = 0, iObservation = 0;
 		int iState = chooseStartState(), iNextState = 0;
-		System.out.print(parseState(iState) + ", ");
+//		System.out.print(parseState(iState) + ", ");
 		BeliefState bsCurrentBelief = getBeliefStateFactory().getInitialBeliefState(), bsNext = null;
 
 		if (toReachStates != null) {
@@ -1218,7 +1221,7 @@ public class POMDP implements Serializable{
 			iNextState = execute( iAction, iState );
 			iObservation = observe( iAction, iNextState );
 
-			System.out.print(getActionName(iAction) + "->");
+//			System.out.print(getActionName(iAction) + "->");
 
 			if( aiActionCount != null )
 				aiActionCount[iAction]++;
@@ -1232,26 +1235,12 @@ public class POMDP implements Serializable{
 				toReachStates.replace(iNextState, true);
 			}
 
-//			if (this instanceof JointBeaconDistanceGrid) {
-//				int numOfDoneAgents = 0;
-//				JointBeaconDistanceGrid jointGrid = ((JointBeaconDistanceGrid)this);
-//				List<Integer> iNextStateValues = jointGrid.decodeState(iNextState);
-//				for (int i = 0; i < jointGrid.getNumOfAgents(); i++) {
-//					if (!jointGrid.getAgents().get(i).getGrid().stateToLocation(jointGrid.getAgents().get(i).getGrid().getEndState()).inBound(jointGrid) || jointGrid.getAgents().get(i).getGrid().getEndState() == jointGrid.getAgents().get(i).getGrid().fromJointGrid(iNextStateValues.get(i), jointGrid)) {
-//						numOfDoneAgents++;
-//					}
-//				}
-//				if (toReachStates != null && numOfDoneAgents >= jointGrid.getNumOfAgents() - 1) {
-//					toReachStates.replace(-1, true);
-//				}
+//			System.out.print(parseState(iNextState));
+//			if (isForbidden(iNextState)) {
+//				System.out.print(" FORBIDDEN! ");
 //			}
-
-			System.out.print(parseState(iNextState));
-			if (isForbidden(iNextState)) {
-				System.out.print(" FORBIDDEN! ");
-			}
-			System.out.print(" " + ((BeaconDistanceGrid)this).parseObservation(iObservation));
-			System.out.print(", ");
+//			System.out.print(" " + ((BeaconDistanceGrid)this).parseObservation(iObservation));
+//			System.out.print(", ");
 
 			if( m_rtReward == RewardType.StateAction )
 				dCurrentReward = R( iState, iAction ); //R(s,a)
@@ -1289,7 +1278,7 @@ public class POMDP implements Serializable{
 			//bs1 = bs2;
 		}	
 		
-		System.out.println();
+//		System.out.println();
 
 		return dDiscountedReward;// + m_dMinReward * ( 1 / ( 1 - dDiscountFactor ) );
 	}
@@ -2162,6 +2151,18 @@ public class POMDP implements Serializable{
 		List<Integer> iActions = new ArrayList<>();
 		for (int iAction : getMovableActions()) {
 			if (!isForbiddenAction(bs, iAction)) {
+				iActions.add(iAction);
+			}
+		}
+		iActions.addAll(getSensingActions());
+		iActions.add(getDoneAction());
+		return iActions;
+	}
+
+	public List<Integer> getRelevantActions( int iState ) {
+		List<Integer> iActions = new ArrayList<>();
+		for (int iAction : getMovableActions()) {
+			if (!isForbiddenAction(iState, iAction)) {
 				iActions.add(iAction);
 			}
 		}

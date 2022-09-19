@@ -296,7 +296,7 @@ public class Grid extends POMDP {
     @Override
     public double tr(int iState1, int iAction, int iState2) {
         if (iState2 == DONE) {
-            if (getEndState() == iState1 || iState1 == DONE || iAction == getActionIndex("DONE_ACT")) {
+            if (getEndState() == iState1 || iState1 == DONE || iAction == getDoneAction()) {
                 return 1;
             }
             else {
@@ -309,7 +309,7 @@ public class Grid extends POMDP {
         if (getEndState() == iState1) {
             return 0;
         }
-        if (iAction == getActionIndex("DONE_ACT")) {
+        if (iAction == getDoneAction()) {
             return 0;
         }
 
@@ -419,7 +419,7 @@ public class Grid extends POMDP {
     public Iterator<Map.Entry<Integer, Double>> getNonZeroTransitions(int iStartState, int iAction) {
         if (cachedTransitions[iStartState][iAction] == null) {
             List<Map.Entry<Integer, Double>> entries = new ArrayList<>();
-            if (iStartState == getEndState() || iStartState == DONE || iAction == getActionIndex("DONE_ACT")) {
+            if (iStartState == getEndState() || iStartState == DONE || iAction == getDoneAction()) {
                 entries.add(new Pair<>(DONE, 1.0));
                 return entries.iterator();
             }
@@ -626,7 +626,7 @@ public class Grid extends POMDP {
     public double R(int iStartState, int iAction) {
         if (iStartState == DONE)
             return 0;
-        if (iAction == getActionIndex("DONE_ACT")) {
+        if (iAction == getDoneAction()) {
             if (iStartState == getEndState())
                 return SUCCESS_REWARD;
             else {

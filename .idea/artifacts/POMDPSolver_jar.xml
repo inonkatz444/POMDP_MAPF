@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="POMDPSolver:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/POMDPSolver_jar</output-path>
+    <root id="archive" name="POMDPSolver.jar">
+      <element id="module-output" name="POMDPSolver" />
+    </root>
+  </artifact>
+</component>

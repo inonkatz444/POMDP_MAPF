@@ -10,6 +10,7 @@ import pomdp.utilities.*;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class GridJointAgent {
     private JointBeaconDistanceGrid grid;
@@ -81,7 +82,7 @@ public class GridJointAgent {
 
     public void initOfflineRun(List<GridAgent> agents) {
         this.agents = agents;
-        singleGrids = agents.stream().map(GridAgent::getGrid).toList();
+        singleGrids = agents.stream().map(GridAgent::getGrid).collect(Collectors.toList());
         BeaconDistanceGrid singleGrid = singleGrids.get(0);
         isDone = new boolean[agents.size()];
         int rows, cols;
@@ -131,12 +132,12 @@ public class GridJointAgent {
         grid.initStoredRewards();
 
         END_STATES = new ArrayList<>();
-        END_STATES.add(grid.encodeStates(agents.stream().map(a -> a.getGrid().DONE).toList()));
-        grid.addTerminalState(grid.encodeStates(agents.stream().map(a -> a.getGrid().DONE).toList()));
+        END_STATES.add(grid.encodeStates(agents.stream().map(a -> a.getGrid().DONE).collect(Collectors.toList())));
+        grid.addTerminalState(grid.encodeStates(agents.stream().map(a -> a.getGrid().DONE).collect(Collectors.toList())));
 
         grid.initBeliefStateFactory();
 
-        currentJointBelief = joinBeliefs(agents.stream().map(GridAgent::getCurrentBelief).toList());
+        currentJointBelief = joinBeliefs(agents.stream().map(GridAgent::getCurrentBelief).collect(Collectors.toList()));
         for (GridAgent agent : agents) {
             if (!agent.getMDPValueFunction().hasConverged()) {
                 System.out.println("Solving Value Iteration for agent " + agent.getID() + ":");
@@ -157,14 +158,14 @@ public class GridJointAgent {
 
     public void initOnlineRun(PotentialCollisionData data) {
         this.agents = data.getAgents();
-        singleGrids = agents.stream().map(GridAgent::getGrid).toList();
+        singleGrids = agents.stream().map(GridAgent::getGrid).collect(Collectors.toList());
         BeaconDistanceGrid singleGrid = singleGrids.get(0);
         isDone = new boolean[agents.size()];
         int rows, cols;
         grid = new JointBeaconDistanceGrid(agents, false);
         numOfAgents = agents.size();
 
-        Point[] boundaries = singleGrid.getBoundaryPoints(agents.stream().map(GridAgent::getCurrentBelief).toList(), data.getCollisionStates());
+        Point[] boundaries = singleGrid.getBoundaryPoints(agents.stream().map(GridAgent::getCurrentBelief).collect(Collectors.toList()), data.getCollisionStates());
         rows = boundaries[1].first() - boundaries[0].first() + 1;
         cols = boundaries[1].second() - boundaries[0].second() + 1;
         grid.setOrigin(boundaries[0]);
@@ -211,7 +212,7 @@ public class GridJointAgent {
 
         grid.initBeliefStateFactory();
 
-        currentJointBelief = joinBeliefs(agents.stream().map(GridAgent::getCurrentBelief).toList());
+        currentJointBelief = joinBeliefs(agents.stream().map(GridAgent::getCurrentBelief).collect(Collectors.toList()));
         for (GridAgent agent : agents) {
             if (!agent.getMDPValueFunction().hasConverged()) {
                 System.out.println("Solving Value Iteration for agent " + agent.getID() + ":");
@@ -447,7 +448,7 @@ public class GridJointAgent {
             }
         }
 
-        done = done || (bsNext == null || ( bsNext.valueAt( currentNextState ) == 0 || ( cSameStates > 10 ) || !agents.stream().map(GridAgent::isDone).toList().contains(false)));
+        done = done || (bsNext == null || ( bsNext.valueAt( currentNextState ) == 0 || ( cSameStates > 10 ) || !agents.stream().map(GridAgent::isDone).collect(Collectors.toList()).contains(false)));
 
         currentState = currentNextState;
         currentJointBelief.release();
@@ -470,6 +471,6 @@ public class GridJointAgent {
             grid.setStartStateProb(iState, currentJointBelief.valueAt(iState));
         }
 
-        currentState = grid.encodeStates(agents.stream().map(a -> toSmallGrid(a.getCurrentState())).toList());
+        currentState = grid.encodeStates(agents.stream().map(a -> toSmallGrid(a.getCurrentState())).collect(Collectors.toList()));
     }
 }

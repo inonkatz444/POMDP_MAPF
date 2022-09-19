@@ -5,6 +5,7 @@ import pomdp.utilities.*;
 import pomdp.utilities.datastructures.CartesianIterator;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
     protected int numOfSingleStates;
@@ -240,7 +241,7 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
         double reward = 0;
         int numberOfTerminal = 0;
         for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
-            if ((!agents.get(iAgent).canDone(this) && isInBorder(iEndStateValues.get(iAgent))) || (agents.get(iAgent).getEndState() == agents.get(iAgent).getGrid().fromJointGrid(iStartStateValues.get(iAgent), this) && iActionValues.get(iAgent) == agents.get(iAgent).getGrid().getActionIndex("DONE_ACT"))) {
+            if ((!agents.get(iAgent).canDone(this) && isInBorder(iEndStateValues.get(iAgent))) || (agents.get(iAgent).getEndState() == agents.get(iAgent).getGrid().fromJointGrid(iStartStateValues.get(iAgent), this) && iActionValues.get(iAgent) == agents.get(iAgent).getGrid().getDoneAction())) {
                 numberOfTerminal++;
             }
         }
@@ -500,7 +501,7 @@ public class JointBeaconDistanceGrid extends BeaconDistanceGrid{
 
     @Override
     public int getDoneAction() {
-        return encodeActions(agents.stream().map(a -> a.getGrid().getDoneAction()).toList());
+        return encodeActions(agents.stream().map(a -> a.getGrid().getDoneAction()).collect(Collectors.toList()));
     }
 
     public int encodeStates(List<Integer> stateValues) {

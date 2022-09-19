@@ -282,7 +282,7 @@ public class ForwardSearchValueIteration extends ValueIteration {
 						" free " + rtRuntime.freeMemory() / 1000000 +
 						" max " + rtRuntime.maxMemory() / 1000000 +
 						"";
-		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
+//		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
 				
 			}
 			else{
@@ -308,7 +308,7 @@ public class ForwardSearchValueIteration extends ValueIteration {
 						" free " + rtRuntime.freeMemory() / 1000000 +
 						" max " + rtRuntime.maxMemory() / 1000000 +
 						"";
-		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
+//		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
 
 			
 			}
@@ -325,7 +325,7 @@ public class ForwardSearchValueIteration extends ValueIteration {
 				" backups = " + m_cBackups + 
 				" GComputations = " + AlphaVector.getGComputationsCount() +
 				" Dot products = " + m_cDotProducts;
-        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
+//        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
 
 		if( g_bCountUselessBackups )
 			writeUselessBackupsStatistics();
@@ -531,6 +531,8 @@ public class ForwardSearchValueIteration extends ValueIteration {
 		double dPreviousValue = 0.0, dNewValue = 0.0;
 		Stack<BeliefState> beliefStateStack = new Stack<>();
 
+		beliefStateStack.add(bsCurrent);
+
 		for (int d = 0; d < maxDepth; d++) {
 			if (m_pPOMDP.terminalStatesDefined() && isTerminalState( iState )) {
 				m_iDepth = d;
@@ -571,7 +573,7 @@ public class ForwardSearchValueIteration extends ValueIteration {
 			}
 
 			beliefStateStack.push(bsNext);
-			bsCurrent = bsNext;
+			bsCurrent = bsNext.copy();
 			iState = iNextState;
 		}
 

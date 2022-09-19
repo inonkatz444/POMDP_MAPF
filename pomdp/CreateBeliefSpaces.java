@@ -42,7 +42,7 @@ public class CreateBeliefSpaces {
 //				toReachStates.put(-1, false);
 //			}
 			switch (pomdp.getName()) {
-				case "two_paths_one_beacon" -> {
+				case "two_paths_one_beacon":
 					toReachStates = new HashMap<>();
 					if (!(pomdp.isForbidden(38) || pomdp.isForbidden(56) || pomdp.isForbidden(69) || pomdp.isForbidden(96))) {
 						toReachStates.put(51, false);
@@ -52,10 +52,12 @@ public class CreateBeliefSpaces {
 						toReachStates.put(52, false);
 						toReachStates.put(87, false);
 					}
-				}
-				case "room" -> toReachStates = null;
-				default -> {
-				}
+					break;
+				case "room":
+					toReachStates = null;
+					break;
+				default:
+					break;
 			}
 			while( vPoints.size() < cBeliefPoints ){
 				double dADR = pomdp.computeDiscountedReward( cBeliefPoints - vPoints.size(), pvRandom, vPoints, true, null, toReachStates);

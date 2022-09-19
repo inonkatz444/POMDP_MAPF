@@ -173,13 +173,22 @@ def generate_transitions(env: str):
 
     return transitions
 
-env = """#######
-#     #
-#     #
-##   ##
-#     #
-#     #
-#######"""
+env = """#############
+#       @   #
+#       2   #
+#           #
+#           #
+#           #
+####5### ####
+#### ### ####
+#### ### ####
+#### ###5####
+#           #
+#           #
+#           #
+#   2       #
+#   $       #
+#############"""
 
 transitions = generate_transitions(env)
 with open('transitions', "w") as transitions_file:

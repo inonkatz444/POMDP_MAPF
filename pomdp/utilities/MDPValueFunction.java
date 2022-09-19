@@ -118,6 +118,9 @@ public class MDPValueFunction extends PolicyStrategy {
 
 		dMaxQValue = Double.NEGATIVE_INFINITY;
 		for( iAction = 0 ; iAction < m_cActions ; iAction++ ){
+			if (m_pPOMDP.isForbiddenAction(iStartState, iAction)) {
+				continue;
+			}
 			dQValue = computeStateActionValue( iStartState, iAction );
 			if( dQValue > dMaxQValue ){
 				iMaxAction = iAction;
@@ -263,6 +266,9 @@ public class MDPValueFunction extends PolicyStrategy {
 					dMaxQValue = Double.NEGATIVE_INFINITY;
 					iMaxAction = -1;
 					for( iAction = 0 ; iAction < m_cActions ; iAction++ ){
+						if (m_pPOMDP.isForbiddenAction(iState, iAction)) {
+							continue;
+						}
 						dQValue = getQValue( iState, iAction ) ;
 						if( dQValue > dMaxQValue ){
 							dMaxQValue = dQValue;
@@ -368,6 +374,9 @@ public class MDPValueFunction extends PolicyStrategy {
 			}
 			else{
 				for( iAction = 0 ; iAction < m_cActions ; iAction++ ){
+					if (m_pPOMDP.isForbiddenAction(iState, iAction)) {
+						continue;
+					}
 					dValue = R( iState, iAction );
 					if( dValue > dMaxValue ){
 						dMaxValue = dValue;
@@ -399,12 +408,6 @@ public class MDPValueFunction extends PolicyStrategy {
 					setValue( iState, dMaxValue );
 				}
 				else{
-					/*
-					if( iState == 117 ){
-						System.out.println( m_adValues.elementAt( iState ) );
-						updateState( iState );
-					}
-					*/
 					dDelta = updateState( iState );
 					
 					
@@ -447,6 +450,9 @@ public class MDPValueFunction extends PolicyStrategy {
 		for( int j = 0 ; j < m_cStates ; j++ ){
 			double dMax = 0.0;
 			for( iAction = 0 ; iAction < m_cActions ; iAction++ ){
+				if (m_pPOMDP.isForbiddenAction(j, iAction)) {
+					continue;
+				}
 				double dQValue = getQValue( j, iAction );
 				if( dQValue > dMax ){
 					dMax = dQValue;
