@@ -258,12 +258,15 @@ public class GridJointAgent {
             }
 
             encodedState = grid.encodeStates(stateValues);
+            if (encodedState == 124) {
+                System.out.println();
+            }
             numOfTerminalAgents = 0;
             for (int iAgent = 0; iAgent < numOfAgents; iAgent++) {
                 if (stateValues.get(iAgent) == grid.SINGLE_DONE) {
                     numOfTerminalAgents++;
                 }
-                else if (!canDone[iAgent] && grid.isInBorder(stateValues.get(iAgent)) && agents.get(iAgent).getGrid().tr(stateValues.get(iAgent), -1, agents.get(iAgent).getGrid().DONE) == 0) {
+                else if (!canDone[iAgent] && grid.isInBorder(stateValues.get(iAgent)) /* && agents.get(iAgent).getGrid().tr(agents.get(iAgent).getGrid().fromJointGrid(stateValues.get(iAgent), grid), -1, agents.get(iAgent).getGrid().DONE) == 0 */) {
                     numOfTerminalAgents++;
                 }
             }

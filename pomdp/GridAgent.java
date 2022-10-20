@@ -35,6 +35,7 @@ public class GridAgent implements Comparable<GridAgent>{
     private TrackLogger agentLogger;
 
     private boolean solved;
+    private boolean timedOut;
 
     public GridAgent(int distanceThreshold) {
         forbiddenStates = new HashMap<>();
@@ -50,6 +51,7 @@ public class GridAgent implements Comparable<GridAgent>{
         discountFactor = 1;
         gamma = 0.99;
         solved = false;
+        timedOut = false;
     }
 
     // resets the agent to its initial state
@@ -64,6 +66,7 @@ public class GridAgent implements Comparable<GridAgent>{
         discountFactor = 1;
         forbiddenStates.clear();
         solved = false;
+        timedOut = false;
     }
 
     public double getSumOfDiscountedRewards() {
@@ -444,7 +447,7 @@ public class GridAgent implements Comparable<GridAgent>{
             }
             else {
                 tempPolicy = viAlgorithm;
-                if (mainPolicy == null || getForbiddenTimer() <= 0) {
+                if (mainPolicy == null) {
                     if (forbiddenStates.isEmpty()) {
                         isTimed = false;
                         this.mainPolicy = viAlgorithm;
@@ -645,6 +648,14 @@ public class GridAgent implements Comparable<GridAgent>{
 
     public void addPunishment() {
         sumOfDiscountedRewards += grid.FAILURE_REWARD * discountFactor - grid.INTER_REWARD * discountFactor;
+    }
+
+    public void setTimedOut() {
+        timedOut = true;
+    }
+
+    public boolean isTimedOut() {
+        return timedOut;
     }
 
     @Override

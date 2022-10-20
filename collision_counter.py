@@ -12,5 +12,5 @@ def count_collisions(file):
     return count
 
 if __name__ == "__main__":
-    with open("easy_5_FSVI_track.txt", "r") as f:
+    with open("medium_5_FSVIiter_deadlockping_ping_50_FINAL.txt", "r") as f:
         print(count_collisions(f))

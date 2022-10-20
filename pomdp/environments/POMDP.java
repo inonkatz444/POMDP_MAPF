@@ -485,7 +485,6 @@ public class POMDP implements Serializable{
 				dCurrentSum += dDiscountedReward;
 				dSumSquares += ( dDiscountedReward * dDiscountedReward );
 				dSumDiscountedRewards += dDiscountedReward;
-//				System.out.print(" R: " + dDiscountedReward);
 					
 				//if( bOutputMessages && ( iTest % 100 == 0 ) ){
 				//	System.out.print( ( iTest / 100 ) % 10 );
@@ -1255,8 +1254,11 @@ public class POMDP implements Serializable{
 				cRewards++;
 
 			bDone = endADR( iNextState, dCurrentReward );
-			if( bDone )
-				dDiscountFactor = 0.0;
+//			if( bDone ) {
+//				dDiscountFactor = 0.0;
+//				System.out.print("activated DONE_ACT ");
+//				System.out.print(" R: " + dDiscountedReward);
+//			}
 			
 			bsNext = bsCurrentBelief.nextBeliefState( iAction, iObservation );
 			 
@@ -1267,9 +1269,11 @@ public class POMDP implements Serializable{
 				cSameStates = 0;
 			else
 				cSameStates++;
-			if ( bsNext == null || ( bsNext.valueAt( iNextState ) == 0 ) || ( cSameStates > 10 ) ){
-				bDone = true;
-			}
+//			if ( bsNext == null || ( bsNext.valueAt( iNextState ) == 0 ) || ( cSameStates > 10 ) ){
+//				bDone = true;
+//				System.out.print("Same state... ");
+//				System.out.print(" R: " + dDiscountedReward);
+//			}
 
 			iState = iNextState;
 			bsCurrentBelief.release();
@@ -1277,7 +1281,12 @@ public class POMDP implements Serializable{
 			
 			//bs1 = bs2;
 		}	
-		
+
+//		if (iStep == cMaxStepsToGoal) {
+//			System.out.print("Max steps reached");
+//			System.out.print(" R: " + dDiscountedReward);
+//		}
+//
 //		System.out.println();
 
 		return dDiscountedReward;// + m_dMinReward * ( 1 / ( 1 - dDiscountFactor ) );
@@ -2116,7 +2125,7 @@ public class POMDP implements Serializable{
 
 		if (getSensingActions().contains(iAction)) {
 			BeliefState bsNext;
-			for (int iObservation = 0; iObservation < m_cObservations; iObservation++) {
+			for (int iObservation = 0; iObservation < m_cObservations - 1; iObservation++) {
 				if (bs.probabilityOGivenA(iAction, iObservation) > 0) {
 					bsNext = bs.nextBeliefState(iAction, iObservation);
 					if (isForbidden(bsNext)) {

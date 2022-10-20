@@ -8,18 +8,7 @@ import pomdp.environments.DeterministicPOMDP;
 import pomdp.environments.FactoredPOMDP;
 import pomdp.environments.POMDP;
 import pomdp.environments.FactoredPOMDP.BeliefType;
-import pomdp.utilities.AlphaVector;
-import pomdp.utilities.BeliefState;
-import pomdp.utilities.BeliefStateFactory;
-import pomdp.utilities.ExecutionProperties;
-import pomdp.utilities.HeuristicPolicy;
-import pomdp.utilities.JProf;
-import pomdp.utilities.LimitedBeliefSpaceMDP;
-import pomdp.utilities.Logger;
-import pomdp.utilities.MDPValueFunction;
-import pomdp.utilities.ObsevationAwareMDPValueFunction;
-import pomdp.utilities.Pair;
-import pomdp.utilities.TabularAlphaVector;
+import pomdp.utilities.*;
 import pomdp.utilities.factored.AlgebraicDecisionDiagramVertex;
 import pomdp.utilities.factored.FactoredBeliefState;
 import pomdp.utilities.factored.FactoredBeliefStateComparator;
@@ -282,7 +271,7 @@ public class ForwardSearchValueIteration extends ValueIteration {
 						" free " + rtRuntime.freeMemory() / 1000000 +
 						" max " + rtRuntime.maxMemory() / 1000000 +
 						"";
-//		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
+		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
 				
 			}
 			else{
@@ -308,7 +297,7 @@ public class ForwardSearchValueIteration extends ValueIteration {
 						" free " + rtRuntime.freeMemory() / 1000000 +
 						" max " + rtRuntime.maxMemory() / 1000000 +
 						"";
-//		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
+		        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
 
 			
 			}
@@ -325,7 +314,7 @@ public class ForwardSearchValueIteration extends ValueIteration {
 				" backups = " + m_cBackups + 
 				" GComputations = " + AlphaVector.getGComputationsCount() +
 				" Dot products = " + m_cDotProducts;
-//        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
+        Logger.getInstance().log( "FSVI", 0, "VI", sMsg );
 
 		if( g_bCountUselessBackups )
 			writeUselessBackupsStatistics();
@@ -522,8 +511,8 @@ public class ForwardSearchValueIteration extends ValueIteration {
 	}
 
 	// an iterative implementation of forwardSearch
-	protected double forwardSearchIter(BeliefState bsCurrent, int maxDepth) {
-		int iState = m_pPOMDP.chooseStartState();
+	protected double forwardSearchIter(BeliefState bsCurrent, int iInitialState, int maxDepth) {
+		int iState = iInitialState;
 		double dDelta = 0.0, dMaxDelta = 0.0;
 		int iNextState = 0, iHeuristicAction = 0, iPOMDPAction = 0, iObservation = 0;
 		BeliefState bsNext = null;
@@ -544,6 +533,7 @@ public class ForwardSearchValueIteration extends ValueIteration {
 				for (int iPingAction : m_pPOMDP.getSensingActions()) {
 					iNextState = selectNextState( iState, iPingAction );
 					iObservation = getObservation( iState, iPingAction, iNextState );
+					double R = m_pPOMDP.R( iState, iPingAction, iNextState );
 					bsNext = bsCurrent.nextBeliefState( iPingAction, iObservation );
 					beliefStateStack.push(bsNext);
 					bsCurrent = bsNext;
@@ -551,13 +541,14 @@ public class ForwardSearchValueIteration extends ValueIteration {
 
 				}
 			}
-			if (d == maxDepth) {
+			if (d >= maxDepth) {
 				break;
 			}
 
 			iHeuristicAction = getAction( iState, bsCurrent, d );
 			iNextState = selectNextState( iState, iHeuristicAction );
 			iObservation = getObservation( iState, iHeuristicAction, iNextState );
+			double R = m_pPOMDP.R( iState, iHeuristicAction, iNextState );
 			bsNext = bsCurrent.nextBeliefState( iHeuristicAction, iObservation );
 
 			if( bsNext == null /*|| bsNext.equals( bsCurrent )*/ ){
@@ -829,10 +820,11 @@ public class ForwardSearchValueIteration extends ValueIteration {
 		m_iDepth = 0;
 //		System.out.println( "Begin improve" );
 //		double dDelta = forwardSearch( iInitialState, bsInitial, 0 );
-		double dDelta = forwardSearchIter(bsInitial, 100);
+		double dDelta = forwardSearchIter(bsInitial, iInitialState, 100);
 //		System.out.println( "End improve, |V| = " +
 //				m_vValueFunction.size() + ", delta = " + dDelta );
 		return dDelta;
 	}
 	
 }
+

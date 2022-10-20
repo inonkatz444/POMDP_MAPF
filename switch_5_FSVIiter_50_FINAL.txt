@@ -1,0 +1,6291 @@
+Env:main:Test 0
+Env:main:Test 0
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <2, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.042432,<1, 3>=0.078642,<2, 2>=0.354596,<2, 4>=0.339462,<3, 1>=0.042432,<3, 3>=0.127298,<4, 2>=0.010608]
+#######
+#  b  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 4> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.079024,<1, 3>=0.146458,<2, 2>=0.094340,<2, 4>=0.632196,<3, 1>=0.011289,<3, 3>=0.033867]
+#######
+#  B  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 4> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.090004,<1, 3>=0.166807,<2, 2>=0.015349,<2, 4>=0.720032]
+#######
+#  B  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: w -> <2, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.016680,<1, 0>=0.072003,<1, 2>=0.134980,<1, 4>=0.072003,<2, 1>=0.021463,<2, 3>=0.593257,<3, 4>=0.072003]
+#######
+# bBb #
+#b b b#
+# b b #
+#b b b#
+# bbb #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.163515,<2, 1>=0.026001,<2, 3>=0.718669,<3, 4>=0.087224]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+# bbb #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.041990,<2, 1>=0.033385,<2, 3>=0.922761]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.036930,<1, 3>=0.092276,<2, 0>=0.026708,<2, 2>=0.742594,<3, 3>=0.092276]
+#######
+#  b  #
+# b b #
+#b b  #
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.884161,<3, 3>=0.109867]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.707328,<2, 1>=0.093015,<2, 3>=0.176310,<3, 2>=0.011739,<3, 4>=0.010986]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.334805,<2, 1>=0.220139,<2, 3>=0.417271,<3, 2>=0.027783]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 41.518932442732044
+Env:runForbidden:All agents are done, Sum of discounted rewards: 21.678932442732044
+Env:main:Time of iteration 0: 11
+Env:main:Test 1
+Env:main:Test 1
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 1> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 1: 10
+Env:main:Test 2
+Env:main:Test 2
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 3> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <4, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.440270,<2, 3>=0.440270,<3, 2>=0.110067]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <2, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.353155,<1, 3>=0.353155,<2, 0>=0.044027,<2, 2>=0.176108,<2, 4>=0.044027,<3, 1>=0.011006,<3, 3>=0.011006]
+#######
+#  b  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.429280,<1, 3>=0.429280,<2, 0>=0.053517,<2, 2>=0.030581,<2, 4>=0.053517]
+#######
+#  B  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.042928,<0, 3>=0.042928,<1, 2>=0.346482,<1, 4>=0.348776,<2, 1>=0.085933,<2, 3>=0.067584,<2, 4>=0.042813]
+#######
+# bBb #
+#b b b#
+# b bb#
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.097567,<0, 3>=0.097567,<1, 0>=0.012163,<1, 4>=0.792701]
+#######
+# bBb #
+#b   b#
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <2, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.079270,<0, 2>=0.078053,<0, 4>=0.079270,<1, 3>=0.643918,<2, 4>=0.079270]
+#######
+#bbbbb#
+#bb b #
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <2, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.086904,<0, 3>=0.139686,<1, 0>=0.025639,<1, 2>=0.558746,<1, 4>=0.017196,<2, 3>=0.138628]
+#######
+#bbbbb#
+#bbbbb#
+#bb b #
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.357229,<0, 3>=0.191397,<0, 4>=0.035343,<1, 0>=0.035131,<1, 2>=0.153118,<1, 4>=0.023562,<2, 3>=0.189947]
+#######
+#bbBbb#
+#bbbbb#
+#bb b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.409105,<2, 0>=0.069551,<2, 3>=0.507507]
+#######
+#  B  #
+# bbb #
+#bb b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.101499,<2, 0>=0.258835,<2, 3>=0.629563]
+#######
+#  B  #
+# bbb #
+#bb b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.014161,<2, 0>=0.541705,<2, 3>=0.439196]
+#######
+#  B  #
+# bbb #
+#bb b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <2, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 0>=0.054803,<1, 1>=0.011664,<1, 3>=0.043919,<2, 0>=0.436046,<2, 2>=0.352773,<3, 0>=0.054170,<3, 3>=0.043919]
+#######
+# bbb #
+#bbbb #
+#bbbb #
+#bb b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.020584,<1, 3>=0.077504,<2, 0>=0.769489,<2, 2>=0.088933,<3, 0>=0.031864,<3, 3>=0.011072]
+#######
+#  B  #
+# bbb #
+#bbbb #
+#bb b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 3>=0.013712,<2, 0>=0.953023,<2, 2>=0.015735,<3, 3>=0.013712]
+#######
+#  B  #
+# bbb #
+#bbbb #
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.010970,<1, 0>=0.762782,<1, 2>=0.014323,<2, 0>=0.095304,<2, 1>=0.096959,<2, 3>=0.012543]
+#######
+# bbb #
+#bbbbb#
+#bbbbb#
+#b b b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.014100,<1, 0>=0.980392]
+#######
+# bBb #
+#b   b#
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.098039,<0, 4>=0.011456,<1, 1>=0.784688,<2, 0>=0.098039]
+#######
+#bbbbb#
+# b bb#
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.157409,<0, 4>=0.011614,<1, 0>=0.019666,<1, 2>=0.629637,<2, 1>=0.157371]
+#######
+#bbbbb#
+#bbbbb#
+# b bb#
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.790007,<2, 1>=0.197454,<3, 0>=0.012337]
+#######
+#  B  #
+#  b  #
+# b b #
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 37.58232987347838
+Env:runForbidden:All agents are done, Sum of discounted rewards: 17.74232987347838
+Env:main:Time of iteration 2: 9
+Env:main:Test 3
+Env:main:Test 3
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -19.063682390415998
+Env:runForbidden:All agents are done, Sum of discounted rewards: -38.903682390415995
+Env:main:Time of iteration 3: 8
+Env:main:Test 4
+Env:main:Test 4
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.049459,<2, 1>=0.463678,<2, 3>=0.463678,<3, 2>=0.023183]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.046367,<1, 3>=0.085935,<2, 2>=0.378207,<2, 4>=0.370942,<3, 1>=0.046367,<3, 3>=0.064914]
+#######
+#  b  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.080850,<1, 3>=0.149842,<2, 2>=0.094209,<2, 4>=0.646800,<3, 1>=0.011550,<3, 3>=0.016170]
+#######
+#  B  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.090335,<1, 3>=0.167422,<2, 2>=0.015037,<2, 4>=0.722687]
+#######
+#  B  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: w -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.016742,<1, 0>=0.072268,<1, 2>=0.135441,<1, 4>=0.072268,<2, 1>=0.021247,<2, 3>=0.595150,<3, 4>=0.072268]
+#######
+# bBb #
+#b b b#
+# b b #
+#b b b#
+# bbb #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 43.864783072670974
+Env:runForbidden:All agents are done, Sum of discounted rewards: 24.024783072670974
+Env:main:Time of iteration 4: 8
+Env:main:Test 5
+Env:main:Test 5
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 3> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.049459,<2, 1>=0.463678,<2, 3>=0.463678,<3, 2>=0.023183]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.010299,<2, 1>=0.482780,<2, 3>=0.482780,<3, 2>=0.024139]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.048278,<1, 3>=0.056517,<2, 2>=0.389668,<2, 4>=0.386224,<3, 1>=0.048278,<3, 3>=0.067589]
+#######
+#  b  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.085662,<1, 3>=0.100282,<2, 2>=0.098772,<2, 4>=0.685300,<3, 1>=0.012237,<3, 3>=0.017132]
+#######
+#  B  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 1> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.300868,<1, 3>=0.352216,<2, 2>=0.346915]
+#######
+#  B  #
+# b b #
+#  b  #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.428194,<1, 3>=0.501272,<2, 2>=0.070532]
+#######
+#  B  #
+# b b #
+#  b  #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.042819,<0, 3>=0.050127,<1, 0>=0.342555,<1, 2>=0.408071,<2, 1>=0.099245,<2, 3>=0.050127]
+#######
+# bBb #
+#b b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.098321,<0, 3>=0.115102,<1, 0>=0.786575]
+#######
+# bBb #
+#b    #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <2, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.078657,<0, 2>=0.078657,<0, 3>=0.011510,<0, 4>=0.092081,<1, 1>=0.639092,<1, 3>=0.011510,<2, 0>=0.078657]
+#######
+#bbbbb#
+# b b #
+#b    #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.876357,<1, 3>=0.015783,<2, 0>=0.107859]
+#######
+#  B  #
+# b b #
+#b    #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <3, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.087635,<1, 0>=0.010785,<1, 2>=0.701085,<1, 4>=0.012626,<2, 1>=0.173923,<3, 0>=0.010785]
+#######
+# bBb #
+#b b b#
+# b b #
+#b    #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <3, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.790068,<2, 1>=0.195997,<3, 0>=0.012154]
+#######
+#  B  #
+#  b  #
+# b b #
+#b    #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 0>=1.0]
+#######
+#  B  #
+#     #
+#     #
+#b    #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <3, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 0>=0.1,<3, 1>=0.8,<4, 0>=0.1]
+#######
+#  B  #
+#     #
+#b    #
+# b   #
+#b    #
+#######
+
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 0>=0.079999,<2, 1>=0.649999,<3, 0>=0.159999,<3, 2>=0.079999]
+#######
+#  B  #
+#b    #
+#bb   #
+#b b  #
+#bb   #
+#######
+
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.064,<1, 0>=0.016,<1, 1>=0.528,<2, 0>=0.194,<2, 2>=0.129,<3, 0>=0.024,<3, 1>=0.032]
+#######
+#b B  #
+#bb   #
+#bbb  #
+#bb b #
+#bbb  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.758823,<3, 1>=0.188235,<3, 3>=0.047058]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.607058,<2, 1>=0.226470,<2, 3>=0.113529,<3, 0>=0.018823,<3, 2>=0.028235]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 38.00235340755391
+Env:runForbidden:All agents are done, Sum of discounted rewards: 18.162353407553912
+Env:main:Time of iteration 5: 11
+Env:main:Test 6
+Env:main:Test 6
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 46.83992806765399
+Env:runForbidden:All agents are done, Sum of discounted rewards: 26.999928067653993
+Env:main:Time of iteration 6: 9
+Env:main:Test 7
+Env:main:Test 7
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 7: 11
+Env:main:Test 8
+Env:main:Test 8
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 1> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.440270,<2, 3>=0.440270,<3, 2>=0.110067]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <2, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.353155,<1, 3>=0.353155,<2, 0>=0.044027,<2, 2>=0.176108,<2, 4>=0.044027,<3, 1>=0.011006,<3, 3>=0.011006]
+#######
+#  b  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.429280,<1, 3>=0.429280,<2, 0>=0.053517,<2, 2>=0.030581,<2, 4>=0.053517]
+#######
+#  B  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <2, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.042928,<0, 3>=0.042928,<1, 2>=0.346482,<1, 4>=0.348776,<2, 1>=0.085933,<2, 3>=0.067584,<2, 4>=0.042813]
+#######
+# bBb #
+#b b b#
+# b bb#
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.674704,<2, 1>=0.167337,<2, 3>=0.131606,<3, 0>=0.010421,<3, 4>=0.013398]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.309730,<2, 1>=0.384090,<2, 3>=0.302077]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.082351,<2, 1>=0.510612,<2, 3>=0.401584]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <2, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.116942,<1, 3>=0.040158,<2, 0>=0.408490,<2, 2>=0.330047,<3, 1>=0.055422,<3, 3>=0.040158]
+#######
+#  b  #
+# b b #
+#b b  #
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.186668,<1, 3>=0.064102,<2, 0>=0.652047,<2, 2>=0.075262,<3, 1>=0.012638]
+#######
+#  B  #
+# b b #
+#b b  #
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.203630,<1, 3>=0.069927,<2, 0>=0.711297,<2, 2>=0.011728]
+#######
+#  B  #
+# b b #
+#b b  #
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: e -> <1, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.020363,<1, 0>=0.071129,<1, 2>=0.164077,<1, 4>=0.055941,<2, 1>=0.589598,<2, 3>=0.016518,<3, 0>=0.071129]
+#######
+# bBb #
+#b b b#
+# b b #
+#b b b#
+# bbb #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.025577,<1, 0>=0.089346,<1, 2>=0.041219,<1, 4>=0.070268,<2, 1>=0.740593,<2, 3>=0.020748]
+#######
+# bBb #
+#b b b#
+# b b #
+#  b  #
+#  b  #
+#######
+
+GridAgent:step:Agent b: e -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.024584,<0, 4>=0.014053,<1, 1>=0.148093,<1, 3>=0.035928,<1, 4>=0.056214,<2, 2>=0.596942,<2, 4>=0.023625,<3, 1>=0.074059]
+#######
+#bbbbb#
+# b bb#
+#b b b#
+# bbb #
+#  bb #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.472866,<1, 3>=0.114721,<2, 0>=0.028528,<2, 2>=0.272292,<2, 4>=0.075437,<3, 1>=0.033781]
+#######
+#  B  #
+# b b #
+#b b b#
+# bbb #
+#  bb #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.642814,<1, 3>=0.155952,<2, 0>=0.038781,<2, 2>=0.052879,<2, 4>=0.102550]
+#######
+#  B  #
+# b b #
+#b b b#
+# bbb #
+#  bb #
+#######
+
+GridAgent:step:Agent b: e -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.064281,<0, 3>=0.015595,<1, 2>=0.519539,<1, 4>=0.135016,<2, 1>=0.095962,<2, 3>=0.057941,<2, 4>=0.082040,<3, 2>=0.010539,<3, 4>=0.010597]
+#######
+# bBb #
+#b b b#
+# bbbb#
+#b bbb#
+# bbbb#
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.752135,<2, 1>=0.138924,<2, 3>=0.083881,<3, 4>=0.015342]
+#######
+#  B  #
+#  b  #
+# bbb #
+#b bbb#
+# bbb #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.399769,<2, 1>=0.369200,<2, 3>=0.222920]
+#######
+#  B  #
+#  b  #
+# bbb #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.999999]
+#######
+#  B  #
+#  b  #
+#  b  #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.799999,<1, 1>=0.099999,<1, 3>=0.099999]
+#######
+#  b  #
+# bbb #
+# b b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 38.00235340755391
+Env:runForbidden:All agents are done, Sum of discounted rewards: 18.162353407553912
+Env:main:Time of iteration 8: 7
+Env:main:Test 9
+Env:main:Test 9
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.440270,<2, 3>=0.440270,<3, 2>=0.110067]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.353155,<1, 3>=0.353155,<2, 0>=0.044027,<2, 2>=0.176108,<2, 4>=0.044027,<3, 1>=0.011006,<3, 3>=0.011006]
+#######
+#  b  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.429280,<1, 3>=0.429280,<2, 0>=0.053517,<2, 2>=0.030581,<2, 4>=0.053517]
+#######
+#  B  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.042928,<0, 3>=0.042928,<1, 2>=0.346482,<1, 4>=0.348776,<2, 1>=0.085933,<2, 3>=0.067584,<2, 4>=0.042813]
+#######
+# bBb #
+#b b b#
+# b bb#
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 4> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.053941,<0, 3>=0.053941,<1, 2>=0.087074,<1, 4>=0.438256,<2, 1>=0.107979,<2, 3>=0.084923,<2, 4>=0.161393]
+#######
+# bBb #
+#b b b#
+# b bb#
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 4> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.043045,<0, 3>=0.043045,<1, 2>=0.013897,<1, 4>=0.349729,<2, 1>=0.086168,<2, 3>=0.067769,<2, 4>=0.386378]
+#######
+# bBb #
+#b b b#
+# b bb#
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 4> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.071444,<0, 3>=0.071444,<1, 4>=0.580461,<2, 1>=0.143016,<2, 3>=0.112479]
+#######
+# bBb #
+#b b b#
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.097567,<0, 3>=0.097567,<1, 0>=0.012163,<1, 4>=0.792701]
+#######
+# bBb #
+#b   b#
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.079270,<0, 2>=0.078053,<0, 4>=0.079270,<1, 3>=0.643918,<2, 4>=0.079270]
+#######
+#bbbbb#
+#bb b #
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.013289,<1, 3>=0.877079,<2, 4>=0.107973]
+#######
+#  B  #
+# b b #
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <0, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.087707,<1, 0>=0.010797,<1, 2>=0.701663,<1, 4>=0.010797,<2, 3>=0.174087,<3, 4>=0.010797]
+#######
+# bBb #
+#b b b#
+#bb b #
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <0, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.012012,<0, 3>=0.792792,<1, 0>=0.097597,<1, 4>=0.097597]
+#######
+# bBb #
+#b   b#
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: s -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.080480,<0, 4>=0.079279,<1, 1>=0.019369,<1, 3>=0.643993,<2, 0>=0.078078,<2, 4>=0.078078]
+#######
+#b b b#
+#bb bb#
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.139010,<1, 0>=0.033965,<1, 2>=0.560287,<1, 4>=0.017112,<2, 0>=0.068990,<2, 3>=0.137965]
+#######
+#bbBbb#
+#b bbb#
+#bb bb#
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 39.72530488394795
+Env:runForbidden:All agents are done, Sum of discounted rewards: 19.88530488394795
+Env:main:Time of iteration 9: 7
+Env:main:Test 10
+Env:main:Test 10
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.049459,<2, 1>=0.463678,<2, 3>=0.463678,<3, 2>=0.023183]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.010299,<2, 1>=0.482780,<2, 3>=0.482780,<3, 2>=0.024139]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.048278,<1, 3>=0.056517,<2, 2>=0.389668,<2, 4>=0.386224,<3, 1>=0.048278,<3, 3>=0.067589]
+#######
+#  b  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.767139,<3, 1>=0.095044,<3, 3>=0.133062]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.613711,<2, 1>=0.152749,<2, 3>=0.183164,<3, 2>=0.026612,<3, 4>=0.013306]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.252936,<2, 1>=0.314773,<2, 3>=0.377448,<3, 2>=0.054840]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.063420,<2, 1>=0.394625,<2, 3>=0.473200,<3, 2>=0.068753]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.067111,<2, 1>=0.417594,<2, 3>=0.500742,<3, 2>=0.014550]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.014183,<2, 1>=0.441286,<2, 3>=0.529152,<3, 2>=0.015376]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.044128,<1, 3>=0.064262,<2, 2>=0.355985,<2, 4>=0.423322,<3, 1>=0.044128,<3, 3>=0.065216]
+#######
+#  b  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.073743,<1, 3>=0.107388,<2, 2>=0.084983,<2, 4>=0.707413,<3, 1>=0.010534,<3, 3>=0.015569]
+#######
+#  B  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.081532,<1, 3>=0.118731,<2, 2>=0.013422,<2, 4>=0.782132]
+#######
+#  B  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: w -> <2, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.011873,<1, 0>=0.065225,<1, 2>=0.096327,<1, 4>=0.078213,<2, 1>=0.019057,<2, 3>=0.637824,<3, 4>=0.078213]
+#######
+# bBb #
+#b b b#
+# b b #
+#b b b#
+# bbb #
+#######
+
+GridAgent:step:Agent b: w -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.013045,<0, 2>=0.019131,<1, 0>=0.052180,<1, 1>=0.079783,<1, 3>=0.127540,<2, 0>=0.021902,<2, 2>=0.520224,<2, 4>=0.015642,<3, 3>=0.126377]
+#######
+#bbbbb#
+#bb b #
+#b b b#
+#bbbb #
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.798244,<3, 3>=0.193916]
+#######
+#  B  #
+#     #
+#  b  #
+# bbb #
+#  b  #
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.638595,<2, 1>=0.085445,<2, 3>=0.234957,<3, 2>=0.020743,<3, 4>=0.019391]
+#######
+#  B  #
+#  b  #
+# bbb #
+#bbbbb#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 38.855171316757385
+Env:runForbidden:All agents are done, Sum of discounted rewards: 19.015171316757385
+Env:main:Time of iteration 10: 9
+Env:main:Test 11
+Env:main:Test 11
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 11: 10
+Env:main:Test 12
+Env:main:Test 12
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.206451,<2, 1>=0.387096,<2, 3>=0.387096,<3, 2>=0.019354]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 46.33152878697746
+Env:runForbidden:All agents are done, Sum of discounted rewards: 26.491528786977458
+Env:main:Time of iteration 12: 10
+Env:main:Test 13
+Env:main:Test 13
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 1> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 46.83992806765399
+Env:runForbidden:All agents are done, Sum of discounted rewards: 26.999928067653993
+Env:main:Time of iteration 13: 10
+Env:main:Test 14
+Env:main:Test 14
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 14: 8
+Env:main:Test 15
+Env:main:Test 15
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.036209,<1, 1>=0.343988,<1, 3>=0.343988,<2, 0>=0.042432,<2, 2>=0.169731,<2, 4>=0.042432,<3, 1>=0.010608,<3, 3>=0.010608]
+#######
+#  b  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.429920,<1, 3>=0.429920,<2, 0>=0.053032,<2, 2>=0.030304,<2, 4>=0.053032]
+#######
+#  B  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.042992,<0, 3>=0.042992,<1, 2>=0.346967,<1, 4>=0.349239,<2, 1>=0.085607,<2, 3>=0.067425,<2, 4>=0.042426]
+#######
+# bBb #
+#b b b#
+# b bb#
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 4> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.064407,<0, 3>=0.064407,<1, 2>=0.103960,<1, 4>=0.523206,<2, 1>=0.128251,<2, 3>=0.101011]
+#######
+# bBb #
+#b b b#
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.097592,<0, 3>=0.097592,<1, 0>=0.012038,<1, 4>=0.792776]
+#######
+# bBb #
+#b   b#
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: s -> <2, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.019518,<1, 1>=0.079277,<1, 3>=0.157351,<1, 4>=0.079277,<2, 4>=0.634221]
+#######
+#b b b#
+#bb bb#
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <2, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.024011,<1, 0>=0.067644,<1, 2>=0.128387,<1, 3>=0.064684,<1, 4>=0.065680,<2, 3>=0.533525,<3, 4>=0.064684]
+#######
+#bbBbb#
+#b bbb#
+#bb bb#
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.174518,<2, 1>=0.010990,<2, 3>=0.725228,<3, 4>=0.087926]
+#######
+#  B  #
+#  b  #
+# b b #
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045263,<2, 1>=0.014253,<2, 3>=0.940483]
+#######
+#  B  #
+#  b  #
+# b b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.014788,<2, 3>=0.975818]
+#######
+#  B  #
+#  b  #
+# b b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.012770,<1, 3>=0.781594,<2, 2>=0.099060,<2, 4>=0.097581]
+#######
+#  b  #
+# b b #
+#b b b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.014070,<1, 3>=0.861188,<2, 2>=0.015592,<2, 4>=0.107519]
+#######
+#  B  #
+# b b #
+#b b b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.086118,<1, 0>=0.011419,<1, 2>=0.690509,<1, 4>=0.010751,<2, 1>=0.013881,<2, 3>=0.172134,<3, 4>=0.010751]
+#######
+# bBb #
+#b b b#
+#bb b #
+#b b b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 40.16697463025046
+Env:runForbidden:All agents are done, Sum of discounted rewards: 20.326974630250458
+Env:main:Time of iteration 15: 8
+Env:main:Test 16
+Env:main:Test 16
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <4, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <3, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 0>=0.428571,<3, 4>=0.428571,<4, 0>=0.017857,<4, 1>=0.053571,<4, 3>=0.053571,<4, 4>=0.017857]
+#######
+#  B  #
+#     #
+#     #
+#b   b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: n -> <2, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 0>=0.342857,<2, 4>=0.342857,<3, 0>=0.057142,<3, 1>=0.085714,<3, 3>=0.085714,<3, 4>=0.057142,<4, 2>=0.010714]
+#######
+#  B  #
+#     #
+#b   b#
+#bb bb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: n -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 0>=0.274285,<1, 4>=0.274285,<2, 0>=0.080000,<2, 1>=0.102857,<2, 3>=0.102857,<2, 4>=0.080000,<3, 0>=0.020000,<3, 2>=0.025714,<3, 4>=0.020000]
+#######
+#  B  #
+#b   b#
+#bb bb#
+#bbbbb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 0>=0.5,<1, 4>=0.5]
+#######
+#  B  #
+#b   b#
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.05,<0, 4>=0.05,<1, 1>=0.4,<1, 4>=0.4,<2, 0>=0.05,<2, 4>=0.05]
+#######
+#b B b#
+# b  b#
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.08,<0, 4>=0.085,<1, 0>=0.01,<1, 2>=0.32,<1, 4>=0.33,<2, 1>=0.08,<2, 4>=0.08]
+#######
+#bbB b#
+#b b b#
+# b  b#
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.156862,<0, 4>=0.166666,<1, 0>=0.019607,<1, 4>=0.647058]
+#######
+#bbB b#
+#b   b#
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.136274,<0, 1>=0.015686,<0, 3>=0.133333,<0, 4>=0.081372,<1, 0>=0.016666,<1, 1>=0.015686,<1, 3>=0.517647,<1, 4>=0.016666,<2, 4>=0.064705]
+#######
+#bbBbb#
+#bb bb#
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.026143,<1, 3>=0.862745,<2, 4>=0.107843]
+#######
+#  B  #
+# b b #
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.086274,<1, 0>=0.021241,<1, 2>=0.690196,<1, 4>=0.010784,<2, 3>=0.172549,<3, 4>=0.010784]
+#######
+# bBb #
+#b b b#
+#bb b #
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.787472,<2, 3>=0.196868,<3, 4>=0.012304]
+#######
+#  B  #
+#  b  #
+# b b #
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 41.97871963912327
+Env:runForbidden:All agents are done, Sum of discounted rewards: 22.13871963912327
+Env:main:Time of iteration 16: 7
+Env:main:Test 17
+Env:main:Test 17
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -19.2158407984
+Env:runForbidden:All agents are done, Sum of discounted rewards: -39.0558407984
+Env:main:Time of iteration 17: 7
+Env:main:Test 18
+Env:main:Test 18
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 18: 8
+Env:main:Test 19
+Env:main:Test 19
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 46.83992806765399
+Env:runForbidden:All agents are done, Sum of discounted rewards: 26.999928067653993
+Env:main:Time of iteration 19: 8
+Env:main:Test 20
+Env:main:Test 20
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+GridAgent:step:Agent a: s -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 0>=0.01,<0, 2>=0.02,<0, 4>=0.01,<1, 1>=0.16,<1, 3>=0.16,<2, 2>=0.64]
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=1.0]
+#######
+#a a a#
+# a a #
+#  a  #
+#  b  #
+#  A  #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <3, 2>
+Env:mightCollidingAgents:Agents a, b may collide in <1, 2>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 1>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 3>
+GridAgent:solve:Agent b solves:
+GridAgent:solve:Agent a solves:
+GridAgent:step:Agent a: s -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<1, 0>=0.023999,<1, 2>=0.047999,<1, 4>=0.023999,<2, 1>=0.191999,<2, 3>=0.191999,<3, 2>=0.511999]
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -19.6816
+#######
+#aa aa#
+#a a a#
+# a a #
+#  a  #
+#  A  #
+#######
+
+GridAgent:step:Agent a: ping_to_<3,2> -> <3, 2> O: 0 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<3, 2>=1.0]
+#######
+#     #
+#     #
+#     #
+#  a  #
+#  A  #
+#######
+
+GridAgent:step:Agent a: s -> <3, 3> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<3, 1>=0.1,<3, 3>=0.1,<4, 2>=0.8]
+#######
+#     #
+#     #
+#     #
+# a a #
+#  a  #
+#######
+
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.2158407984
+Env:runForbidden:All agents are done, Sum of discounted rewards: -38.8974407984
+Env:main:Time of iteration 20: 9
+Env:main:Test 21
+Env:main:Test 21
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 3> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -19.2158407984
+Env:runForbidden:All agents are done, Sum of discounted rewards: -39.0558407984
+Env:main:Time of iteration 21: 10
+Env:main:Test 22
+Env:main:Test 22
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -19.2158407984
+Env:runForbidden:All agents are done, Sum of discounted rewards: -39.0558407984
+Env:main:Time of iteration 22: 7
+Env:main:Test 23
+Env:main:Test 23
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <4, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <3, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 0>=0.428571,<3, 4>=0.428571,<4, 0>=0.017857,<4, 1>=0.053571,<4, 3>=0.053571,<4, 4>=0.017857]
+#######
+#  B  #
+#     #
+#     #
+#b   b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: e -> <3, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 0>=0.042857,<2, 4>=0.042857,<3, 1>=0.348214,<3, 4>=0.344642,<4, 0>=0.044642,<4, 1>=0.019642,<4, 2>=0.042857,<4, 4>=0.101785]
+#######
+#  B  #
+#     #
+#b   b#
+#bb bb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: e -> <3, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.069107,<2, 4>=0.06875,<3, 2>=0.282857,<3, 4>=0.294464,<4, 1>=0.0725,<4, 2>=0.02,<4, 3>=0.035357,<4, 4>=0.130357]
+#######
+#  B  #
+#b   b#
+#bb bb#
+#bbbbb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 0>=0.016023,<3, 4>=0.539241,<4, 1>=0.132766,<4, 3>=0.064748,<4, 4>=0.238718]
+#######
+#  B  #
+#     #
+#     #
+#b   b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: n -> <3, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 0>=0.012818,<2, 4>=0.431393,<3, 1>=0.107815,<3, 3>=0.105722,<3, 4>=0.244898,<4, 0>=0.014126,<4, 2>=0.019751,<4, 3>=0.023871,<4, 4>=0.030346]
+#######
+#  B  #
+#     #
+#b   b#
+#bb bb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: n -> <2, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 0>=0.010255,<1, 4>=0.345114,<2, 1>=0.087534,<2, 3>=0.127717,<2, 4>=0.239058,<3, 0>=0.022923,<3, 2>=0.037155,<3, 3>=0.043587,<3, 4>=0.059339]
+#######
+#  B  #
+#b   b#
+#bb bb#
+#bbbbb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: n -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 4>=0.276091,<1, 1>=0.071052,<1, 3>=0.136685,<1, 4>=0.225758,<2, 0>=0.027892,<2, 2>=0.051249,<2, 3>=0.058775,<2, 4>=0.084149,<3, 3>=0.013657,<3, 4>=0.014630]
+#######
+#b B b#
+#bb bb#
+#bbbbb#
+#bbbbb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.015853,<0, 4>=0.533527,<1, 0>=0.014357,<1, 4>=0.436261]
+#######
+#b B b#
+#b   b#
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.015704,<0, 3>=0.426821,<0, 4>=0.096978,<1, 0>=0.013071,<1, 3>=0.349009,<1, 4>=0.053352,<2, 4>=0.043626]
+#######
+#b Bbb#
+#b  bb#
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 3>=0.885650,<2, 4>=0.110706]
+#######
+#  B  #
+#   b #
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.088565,<1, 2>=0.708520,<1, 4>=0.011070,<2, 3>=0.177130,<3, 4>=0.011070]
+#######
+#  Bb #
+#b b b#
+#b  b #
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.789802,<2, 3>=0.197450,<3, 4>=0.012340]
+#######
+#  B  #
+#  b  #
+#   b #
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -17.487091094142826
+Env:runForbidden:All agents are done, Sum of discounted rewards: -37.32709109414283
+Env:main:Time of iteration 23: 9
+Env:main:Test 24
+Env:main:Test 24
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 24: 9
+Env:main:Test 25
+Env:main:Test 25
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 25: 10
+Env:main:Test 26
+Env:main:Test 26
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 3> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 26: 9
+Env:main:Test 27
+Env:main:Test 27
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <4, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.042432,<1, 3>=0.078642,<2, 2>=0.354596,<2, 4>=0.339462,<3, 1>=0.042432,<3, 3>=0.127298,<4, 2>=0.010608]
+#######
+#  b  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.662876,<3, 1>=0.079323,<3, 3>=0.237969,<4, 2>=0.019830]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: n -> <2, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.530301,<2, 1>=0.129746,<2, 3>=0.256663,<3, 2>=0.047593,<3, 4>=0.023796]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.196384,<2, 1>=0.240242,<2, 3>=0.475246,<3, 2>=0.088126]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.046597,<2, 1>=0.285021,<2, 3>=0.563828,<3, 2>=0.104552]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.296058,<2, 3>=0.585660,<3, 2>=0.108600]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.237814,<1, 3>=0.469496,<2, 0>=0.029605,<2, 2>=0.175052,<2, 4>=0.058566,<3, 1>=0.010860,<3, 3>=0.010860]
+#######
+#  b  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.288752,<1, 3>=0.570058,<2, 0>=0.035947,<2, 2>=0.030363,<2, 4>=0.071110]
+#######
+#  B  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.028875,<0, 3>=0.057005,<1, 0>=0.234596,<1, 2>=0.459083,<2, 0>=0.028757,<2, 1>=0.053354,<2, 3>=0.114082]
+#######
+# bBb #
+#b b b#
+#bb b #
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.717296,<2, 1>=0.083364,<2, 3>=0.178248,<3, 4>=0.011110]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.352920,<2, 1>=0.205082,<2, 3>=0.438504]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.098352,<2, 1>=0.285763,<2, 3>=0.611016]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 40.613105687121674
+Env:runForbidden:All agents are done, Sum of discounted rewards: 20.773105687121674
+Env:main:Time of iteration 27: 10
+Env:main:Test 28
+Env:main:Test 28
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -19.2158407984
+Env:runForbidden:All agents are done, Sum of discounted rewards: -39.0558407984
+Env:main:Time of iteration 28: 9
+Env:main:Test 29
+Env:main:Test 29
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.440270,<2, 3>=0.440270,<3, 2>=0.110067]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.353155,<1, 3>=0.353155,<2, 0>=0.044027,<2, 2>=0.176108,<2, 4>=0.044027,<3, 1>=0.011006,<3, 3>=0.011006]
+#######
+#  b  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.888888,<3, 1>=0.055555,<3, 3>=0.055555]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.711111,<2, 1>=0.133333,<2, 3>=0.133333,<3, 2>=0.011111]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 44.34826572997068
+Env:runForbidden:All agents are done, Sum of discounted rewards: 24.508265729970677
+Env:main:Time of iteration 29: 9
+Env:main:Test 30
+Env:main:Test 30
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 1> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 30: 9
+Env:main:Test 31
+Env:main:Test 31
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <4, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.440270,<2, 3>=0.440270,<3, 2>=0.110067]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <3, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.353155,<1, 3>=0.353155,<2, 0>=0.044027,<2, 2>=0.176108,<2, 4>=0.044027,<3, 1>=0.011006,<3, 3>=0.011006]
+#######
+#  b  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <3, 1> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.888888,<3, 1>=0.055555,<3, 3>=0.055555]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <2, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.711111,<2, 1>=0.133333,<2, 3>=0.133333,<3, 2>=0.011111]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.338624,<2, 1>=0.317460,<2, 3>=0.317460,<3, 2>=0.026455]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.092888,<2, 1>=0.435413,<2, 3>=0.435413,<3, 2>=0.036284]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.020068,<2, 1>=0.470366,<2, 3>=0.470366,<3, 2>=0.039197]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.478041,<2, 3>=0.478041,<3, 2>=0.039836]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.382841,<1, 3>=0.382841,<2, 0>=0.047804,<2, 2>=0.127477,<2, 4>=0.047804]
+#######
+#  b  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.434730,<1, 3>=0.434730,<2, 0>=0.054283,<2, 2>=0.020679,<2, 4>=0.054283]
+#######
+#  B  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.043473,<0, 3>=0.043473,<1, 0>=0.353212,<1, 2>=0.349852,<2, 0>=0.043426,<2, 1>=0.060081,<2, 3>=0.086964]
+#######
+# bBb #
+#b b b#
+#bb b #
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 0> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.065354,<0, 3>=0.065354,<1, 0>=0.530996,<1, 2>=0.105188,<2, 1>=0.090322,<2, 3>=0.130736]
+#######
+# bBb #
+#b b b#
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.097563,<0, 3>=0.097563,<1, 0>=0.792690,<1, 4>=0.012182]
+#######
+# bBb #
+#b   b#
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.079269,<0, 2>=0.078050,<0, 4>=0.079269,<1, 1>=0.643908,<2, 0>=0.079269]
+#######
+#bbbbb#
+# b bb#
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.139684,<0, 4>=0.086904,<1, 0>=0.017195,<1, 2>=0.558736,<1, 4>=0.025652,<2, 1>=0.138625]
+#######
+#bbbbb#
+#bbbbb#
+# b bb#
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.790123,<2, 1>=0.196034,<3, 0>=0.012158]
+#######
+#  B  #
+#  b  #
+# b b #
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 38.855171316757385
+Env:runForbidden:All agents are done, Sum of discounted rewards: 19.015171316757385
+Env:main:Time of iteration 31: 9
+Env:main:Test 32
+Env:main:Test 32
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 46.83992806765399
+Env:runForbidden:All agents are done, Sum of discounted rewards: 26.999928067653993
+Env:main:Time of iteration 32: 7
+Env:main:Test 33
+Env:main:Test 33
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 46.83992806765399
+Env:runForbidden:All agents are done, Sum of discounted rewards: 26.999928067653993
+Env:main:Time of iteration 33: 9
+Env:main:Test 34
+Env:main:Test 34
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 34: 7
+Env:main:Test 35
+Env:main:Test 35
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <3, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 0>=0.428571,<3, 4>=0.428571,<4, 0>=0.017857,<4, 1>=0.053571,<4, 3>=0.053571,<4, 4>=0.017857]
+#######
+#  B  #
+#     #
+#     #
+#b   b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: w -> <3, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 0>=0.042857,<2, 4>=0.042857,<3, 0>=0.344642,<3, 3>=0.348214,<4, 0>=0.101785,<4, 2>=0.042857,<4, 3>=0.019642,<4, 4>=0.044642]
+#######
+#  B  #
+#     #
+#b   b#
+#bb bb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: n -> <2, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 0>=0.034285,<1, 4>=0.034285,<2, 0>=0.279999,<2, 3>=0.282857,<3, 0>=0.116428,<3, 1>=0.038749,<3, 2>=0.069642,<3, 3>=0.015892,<3, 4>=0.070714,<4, 0>=0.010714,<4, 1>=0.014464]
+#######
+#  B  #
+#b   b#
+#bb bb#
+#bbbbb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: w -> <2, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 0>=0.055428,<1, 3>=0.055714,<2, 0>=0.245928,<2, 2>=0.233249,<2, 4>=0.010499,<3, 0>=0.153214,<3, 1>=0.058017,<3, 2>=0.012964,<3, 3>=0.085732,<4, 0>=0.032857,<4, 2>=0.014214]
+#######
+#b B b#
+#bb bb#
+#bbbbb#
+#bbbbb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 3>=0.118510,<2, 0>=0.523117,<2, 2>=0.070878,<2, 4>=0.022334,<3, 0>=0.108634,<3, 1>=0.017630,<3, 3>=0.026051,<4, 0>=0.069890,<4, 4>=0.016409]
+#######
+#  B  #
+# b b #
+#bbbbb#
+#bbbbb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 0> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 3>=0.027142,<2, 0>=0.838659,<2, 2>=0.016233,<2, 4>=0.035806,<3, 1>=0.028264,<3, 3>=0.041765]
+#######
+#  B  #
+# b b #
+#bbbbb#
+# bbb #
+#  b  #
+#######
+
+GridAgent:step:Agent b: n -> <1, 0> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.021713,<1, 0>=0.670969,<1, 2>=0.015742,<1, 4>=0.031359,<2, 0>=0.084012,<2, 1>=0.108100,<2, 3>=0.038616,<3, 2>=0.012542]
+#######
+# bBb #
+#bbbbb#
+#bbbbb#
+#bbbbb#
+# b b #
+#######
+
+GridAgent:step:Agent b: e -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.067096,<0, 4>=0.020506,<1, 1>=0.547619,<1, 3>=0.018627,<1, 4>=0.026963,<2, 0>=0.067379,<2, 1>=0.067337,<2, 2>=0.089309,<2, 4>=0.037498,<3, 1>=0.013140,<3, 3>=0.013965]
+#######
+#bbbbb#
+#bbbbb#
+#bbbbb#
+#bbbbb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.764217,<1, 3>=0.025994,<2, 0>=0.094030,<2, 1>=0.031323,<2, 2>=0.017804,<2, 4>=0.052329]
+#######
+#  B  #
+# bbb #
+#bbbbb#
+#bbbbb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: e -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.076421,<1, 2>=0.613154,<1, 4>=0.026028,<2, 1>=0.151907,<2, 2>=0.025109,<2, 3>=0.017121,<2, 4>=0.042461]
+#######
+# bbb #
+#bbbbb#
+#bbbbb#
+#bbbbb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.638080,<2, 1>=0.158083,<2, 2>=0.011198,<2, 3>=0.017817,<2, 4>=0.132561]
+#######
+#  B  #
+# bbb #
+#bbbbb#
+#bbbbb#
+#bbbbb#
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.759105,<2, 1>=0.188066,<2, 3>=0.021197,<3, 0>=0.011690,<3, 4>=0.011155]
+#######
+#  B  #
+#  b  #
+# bbb #
+#bbbbb#
+# bbb #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -17.487091094142826
+Env:runForbidden:All agents are done, Sum of discounted rewards: -37.32709109414283
+Env:main:Time of iteration 35: 9
+Env:main:Test 36
+Env:main:Test 36
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 3> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 46.83992806765399
+Env:runForbidden:All agents are done, Sum of discounted rewards: 26.999928067653993
+Env:main:Time of iteration 36: 9
+Env:main:Test 37
+Env:main:Test 37
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=1.0]
+#######
+#  B  #
+#     #
+#  b  #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.8,<2, 1>=0.1,<2, 3>=0.1]
+#######
+#  B  #
+#  b  #
+# b b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 46.83992806765399
+Env:runForbidden:All agents are done, Sum of discounted rewards: 26.999928067653993
+Env:main:Time of iteration 37: 9
+Env:main:Test 38
+Env:main:Test 38
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 3> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <4, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <4, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.440270,<2, 3>=0.440270,<3, 2>=0.110067]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.353155,<1, 3>=0.353155,<2, 0>=0.044027,<2, 2>=0.176108,<2, 4>=0.044027,<3, 1>=0.011006,<3, 3>=0.011006]
+#######
+#  b  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.888888,<3, 1>=0.055555,<3, 3>=0.055555]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.711111,<2, 1>=0.133333,<2, 3>=0.133333,<3, 2>=0.011111]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 44.34826572997068
+Env:runForbidden:All agents are done, Sum of discounted rewards: 24.508265729970677
+Env:main:Time of iteration 38: 7
+Env:main:Test 39
+Env:main:Test 39
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 46.83992806765399
+Env:runForbidden:All agents are done, Sum of discounted rewards: 26.999928067653993
+Env:main:Time of iteration 39: 12
+Env:main:Test 40
+Env:main:Test 40
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.206451,<2, 1>=0.387096,<2, 3>=0.387096,<3, 2>=0.019354]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.049459,<2, 1>=0.463678,<2, 3>=0.463678,<3, 2>=0.023183]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 45.828213499107676
+Env:runForbidden:All agents are done, Sum of discounted rewards: 25.988213499107676
+Env:main:Time of iteration 40: 8
+Env:main:Test 41
+Env:main:Test 41
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 1> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 41: 8
+Env:main:Test 42
+Env:main:Test 42
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.206451,<2, 1>=0.387096,<2, 3>=0.387096,<3, 2>=0.019354]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -18.913045566511837
+Env:runForbidden:All agents are done, Sum of discounted rewards: -38.75304556651184
+Env:main:Time of iteration 42: 8
+Env:main:Test 43
+Env:main:Test 43
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 1> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 43: 9
+Env:main:Test 44
+Env:main:Test 44
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <4, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <3, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.440270,<2, 3>=0.440270,<3, 2>=0.110067]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.353155,<1, 3>=0.353155,<2, 0>=0.044027,<2, 2>=0.176108,<2, 4>=0.044027,<3, 1>=0.011006,<3, 3>=0.011006]
+#######
+#  b  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.429280,<1, 3>=0.429280,<2, 0>=0.053517,<2, 2>=0.030581,<2, 4>=0.053517]
+#######
+#  B  #
+# b b #
+#b b b#
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.042928,<0, 3>=0.042928,<1, 2>=0.346482,<1, 4>=0.348776,<2, 1>=0.085933,<2, 3>=0.067584,<2, 4>=0.042813]
+#######
+# bBb #
+#b b b#
+# b bb#
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 4> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.097567,<0, 3>=0.097567,<1, 0>=0.012163,<1, 4>=0.792701]
+#######
+# bBb #
+#b   b#
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.079270,<0, 2>=0.078053,<0, 4>=0.079270,<1, 3>=0.643918,<2, 4>=0.079270]
+#######
+#bbbbb#
+#bb b #
+#b   b#
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <2, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 0>=0.086904,<0, 3>=0.139686,<1, 0>=0.025639,<1, 2>=0.558746,<1, 4>=0.017196,<2, 3>=0.138628]
+#######
+#bbbbb#
+#bbbbb#
+#bb b #
+#b   b#
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.319661,<1, 0>=0.058674,<1, 2>=0.255729,<1, 4>=0.039352,<2, 3>=0.317240]
+#######
+# bBb #
+#bbbbb#
+# b b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.444444,<2, 3>=0.551346]
+#######
+#  B  #
+#  b  #
+# b b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.137931,<2, 3>=0.855537]
+#######
+#  B  #
+#  b  #
+# b b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 3> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.031007,<2, 3>=0.961651]
+#######
+#  B  #
+#  b  #
+# b b #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.025540,<1, 3>=0.096165,<2, 2>=0.772421,<3, 3>=0.096165]
+#######
+#  b  #
+# b b #
+#b b  #
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.101444,<1, 3>=0.381960,<2, 0>=0.023326,<2, 2>=0.438285,<3, 3>=0.054565]
+#######
+#  B  #
+# b b #
+#b b  #
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.175752,<1, 3>=0.661749,<2, 0>=0.040413,<2, 2>=0.108476,<3, 3>=0.013505]
+#######
+#  B  #
+# b b #
+#b b  #
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.196293,<1, 3>=0.739090,<2, 0>=0.045137,<2, 2>=0.017307]
+#######
+#  B  #
+# b b #
+#b b  #
+# b b #
+#     #
+#######
+
+GridAgent:step:Agent b: w -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 1>=0.019629,<0, 3>=0.073909,<1, 0>=0.161548,<1, 2>=0.593002,<2, 0>=0.036109,<2, 1>=0.033477,<2, 3>=0.074124]
+#######
+# bBb #
+#b b  #
+#bb b #
+#b b  #
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -16.69782853829848
+Env:runForbidden:All agents are done, Sum of discounted rewards: -36.537828538298484
+Env:main:Time of iteration 44: 7
+Env:main:Test 45
+Env:main:Test 45
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 1> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 45: 8
+Env:main:Test 46
+Env:main:Test 46
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <1, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.206451,<2, 1>=0.387096,<2, 3>=0.387096,<3, 2>=0.019354]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.049459,<2, 1>=0.463678,<2, 3>=0.463678,<3, 2>=0.023183]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -18.763915110846717
+Env:runForbidden:All agents are done, Sum of discounted rewards: -38.603915110846714
+Env:main:Time of iteration 46: 9
+Env:main:Test 47
+Env:main:Test 47
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <0, 1> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <2, 1> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.191616,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.089820]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <2, 1> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.045261,<2, 1>=0.424328,<2, 3>=0.424328,<3, 2>=0.106082]
+#######
+#  B  #
+#  b  #
+# b b #
+#  b  #
+#     #
+#######
+
+GridAgent:step:Agent b: e -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 1>=0.042432,<1, 3>=0.078642,<2, 2>=0.354596,<2, 4>=0.339462,<3, 1>=0.042432,<3, 3>=0.127298,<4, 2>=0.010608]
+#######
+#  b  #
+# b b #
+#  b b#
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: ping_to_<3,2> -> <2, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.662876,<3, 1>=0.079323,<3, 3>=0.237969,<4, 2>=0.019830]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#  b  #
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.530301,<2, 1>=0.129746,<2, 3>=0.256663,<3, 2>=0.047593,<3, 4>=0.023796]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+# b b #
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 1 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <1, 3> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -18.47011320014087
+Env:runForbidden:All agents are done, Sum of discounted rewards: -38.31011320014087
+Env:main:Time of iteration 47: 8
+Env:main:Test 48
+Env:main:Test 48
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <2, 2>
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -19.84
+GridAgent:step:Agent b: n -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=0.639999,<3, 1>=0.159999,<3, 3>=0.159999,<4, 2>=0.019999]
+#######
+#  B  #
+#     #
+#  b  #
+# b b #
+#b b b#
+#######
+
+GridAgent:step:Agent b: n -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=0.512,<2, 1>=0.191999,<2, 3>=0.191999,<3, 0>=0.023999,<3, 2>=0.047999,<3, 4>=0.023999]
+#######
+#  B  #
+#  b  #
+# b b #
+#b b b#
+#bb bb#
+#######
+
+GridAgent:step:Agent b: ping_to_<1,2> -> <1, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<1, 2>=1.0]
+#######
+#  B  #
+#  b  #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: n -> <0, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.8,<1, 1>=0.1,<1, 3>=0.1]
+#######
+#  b  #
+# b b #
+#     #
+#     #
+#     #
+#######
+
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 50.0
+GridAgent:step:Agent b done! discounted reward: 47.3534626946
+Env:runForbidden:All agents are done, Sum of discounted rewards: 27.513462694599998
+Env:main:Time of iteration 48: 7
+Env:main:Test 49
+Env:main:Test 49
+GridAgent:solve:Agent a solves:
+GridAgent:solve:Agent b solves:
+Env:runForbidden:Agent a starts at <0, 2>
+Env:runForbidden:Agent b starts at <4, 2>
+#######
+#  a  #
+#     #
+#     #
+#     #
+#  Ab  #
+#######
+
+GridAgent:step:Agent a: s -> <1, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 1>=0.1,<0, 3>=0.1,<1, 2>=0.8]
+GridAgent:step:Agent b: n -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=0.8,<4, 1>=0.1,<4, 3>=0.1]
+#######
+# aBa #
+#  a  #
+#     #
+#  b  #
+# bAb #
+#######
+
+GridAgent:step:Agent a: s -> <2, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<0, 0>=0.01,<0, 2>=0.02,<0, 4>=0.01,<1, 1>=0.16,<1, 3>=0.16,<2, 2>=0.64]
+GridAgent:step:Agent b: ping_to_<1,2> -> <3, 2> O: 2 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<3, 2>=1.0]
+#######
+#a a a#
+# a a #
+#  a  #
+#  b  #
+#  A  #
+#######
+
+Env:mightCollidingAgents:Agents a, b may collide in <3, 2>
+Env:mightCollidingAgents:Agents a, b may collide in <1, 2>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 1>
+Env:mightCollidingAgents:Agents a, b may collide in <2, 3>
+GridAgent:solve:Agent b solves:
+GridAgent:solve:Agent a solves:
+GridAgent:step:Agent a: s -> <3, 2> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<1, 0>=0.023999,<1, 2>=0.047999,<1, 4>=0.023999,<2, 1>=0.191999,<2, 3>=0.191999,<3, 2>=0.511999]
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent b done! discounted reward: -19.6816
+#######
+#aa aa#
+#a a a#
+# a a #
+#  a  #
+#  A  #
+#######
+
+GridAgent:step:Agent a: ping_to_<3,2> -> <3, 2> O: 2 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<1, 2>=0.089820,<2, 1>=0.359281,<2, 3>=0.359281,<3, 2>=0.191616]
+#######
+#     #
+#  a  #
+# a a #
+#  a  #
+#  A  #
+#######
+
+GridAgent:step:Agent a: ping_to_<1,2> -> <3, 2> O: 2 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<1, 2>=0.019354,<2, 1>=0.387096,<2, 3>=0.387096,<3, 2>=0.206451]
+#######
+#     #
+#  a  #
+# a a #
+#  a  #
+#  A  #
+#######
+
+GridAgent:step:Agent a: ping_to_<3,2> -> <3, 2> O: 0 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<3, 2>=1.0]
+#######
+#     #
+#     #
+#     #
+#  a  #
+#  A  #
+#######
+
+GridAgent:step:Agent a: s -> <3, 1> O: 4 R: -0.04
+GridAgent:step:Agent a current belief: bs-1[<3, 1>=0.1,<3, 3>=0.1,<4, 2>=0.8]
+#######
+#     #
+#     #
+#     #
+# a a #
+#  a  #
+#######
+
+GridAgent:step:Agent a: DONE_ACT -> DONE O: DONE_OBS R: -20.0
+GridAgent:step:Agent a done! discounted reward: -18.913045566511837
+Env:runForbidden:All agents are done, Sum of discounted rewards: -38.594645566511836
+Env:main:Time of iteration 49: 9
+Env:main:Sum of discounted rewards: [21.679, 27.513, 17.742, -38.904, 24.025, 18.162, 27.0, 27.513, 18.162, 19.885, 19.015, 27.513, 26.492, 27.0, 27.513, 20.327, 22.139, -39.056, 27.513, 27.0, -38.897, -39.056, -39.056, -37.327, 27.513, 27.513, 27.513, 20.773, -39.056, 24.508, 27.513, 19.015, 27.0, 27.0, 27.513, -37.327, 27.0, 27.0, 24.508, 27.0, 25.988, 27.513, -38.753, 27.513, -36.538, 27.513, -38.604, -38.31, 27.513, -38.595]
+Env:main:ADR: 8.482623182731887
+Env:main:std: 3.9514236479401417
+Env:main:0% Solved
+Env:main:0% of the tests timed out
+Env:main:100% of the tests resulted in one or more agents to give up
+Env:main:Time elapsed (s): 459
+Env:main:Average runtime (s): 9.18
+Env:main:parameters:
+Env:main:	initialTimer: 3
+Env:main:	distanceThreshold: 1

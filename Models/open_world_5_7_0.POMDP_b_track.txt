@@ -1,0 +1,20 @@
+Env:runForbidden:Agent b starts at <1, 4>
+Env:mightCollidingAgents:Agent a and agent b may collide in <1, 3>
+GridAgent:step:Agent b: w -> <1, 3> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 4>=0.1,<1, 3>=0.8,<2, 4>=0.1]
+GridAgent:step:Agent b: w -> <1, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.159999,<1, 2>=0.639999,<1, 4>=0.019999,<2, 3>=0.159999]
+Env:mightCollidingAgents:Agent a and agent b may collide in <2, 3>
+Env:mightCollidingAgents:Agent a and agent b may collide in <1, 2>
+GridAgent:step:Agent b: ping_to_<2,4> -> <1, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 3>=0.2,<1, 2>=0.8]
+Env:mightCollidingAgents:Agent a and agent b may collide in <2, 2>
+GridAgent:step:Agent b: s -> <2, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<0, 2>=0.02,<0, 4>=0.02,<1, 1>=0.08,<1, 3>=0.24,<2, 2>=0.64]
+GridAgent:step:Agent b: ping_to_<2,2> -> <2, 2> O: 0 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 2>=1.0]
+Env:mightCollidingAgents:Agent a and agent b may collide in <3, 2>
+GridAgent:step:Agent b: s -> <3, 2> O: 3 R: -0.04
+GridAgent:step:Agent b current belief: bs-1[<2, 1>=0.1,<2, 3>=0.1,<3, 2>=0.8]
+GridAgent:step:Agent b: DONE_ACT -> DONE O: DONE_OBS R: 100.0
+GridAgent:step:Agent b done! discounted reward: 93.91393553770398

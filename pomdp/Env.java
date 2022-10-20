@@ -1,6 +1,5 @@
 package pomdp;
 
-import pomdp.environments.Grid;
 import pomdp.utilities.*;
 
 import java.util.*;
@@ -12,6 +11,46 @@ public class Env {
         return !agents.stream().map(GridAgent::isDone).collect(Collectors.toList()).contains(false);
     }
 
+    private static int regularStep(GridAgent agent) {
+        agent.step();
+        return 1;
+    }
+
+    private static int localizedStep(GridAgent agent) {
+        agent.step();
+        int steps = agent.localize();
+        return steps;
+    }
+
+    private static int step(GridAgent agent, boolean localized) {
+        if (localized)
+            return localizedStep(agent);
+        return regularStep(agent);
+    }
+
+    private static int regularStep(List<GridAgent> agents) {
+        for (GridAgent a : agents) {
+            a.step();
+        }
+        return 1;
+    }
+
+    private static int localizedStep(List<GridAgent> agents) {
+        int steps = 0;
+        for (GridAgent a : agents) {
+            a.step();
+            steps = a.localize();
+        }
+        return steps;
+    }
+
+    private static int step(List<GridAgent> agents, boolean localized) {
+        if (localized) {
+            return localizedStep(agents);
+        }
+        return regularStep(agents);
+    }
+
     private static double runOfflineJoint(List<GridAgent> agents, String sMethodName, String sModelName, int maxIterations, int maxSteps) {
         agents.forEach(a -> a.initRun(sModelName));
         GridJointAgent jointAgent = new GridJointAgent();
@@ -19,9 +58,11 @@ public class Env {
         return jointAgent.solve(sMethodName, 100.0, maxIterations, maxSteps);
     }
 
-    private static double runMiniGrids(List<GridAgent> agents, String sMethodName, String sModelName, int maxIterations, int maxSteps) {
+    private static int runMiniGrids(List<GridAgent> agents, String sMethodName, String sModelName, int maxIterations, int maxSteps) {
         List<GridAgent> agents_copy = agents.subList(0, agents.size());
         int iStep;
+        final int SUCCESS = 0, TIMEOUT = 1;
+        int status = SUCCESS;
         PotentialCollisionData potentialCollision = null;
         boolean collisionDetected;
         for (GridAgent agent : agents) {
@@ -63,16 +104,19 @@ public class Env {
         for (GridAgent a : agents) {
             if (!a.isDone()) {
                 a.addPunishment();
+                status = TIMEOUT;
             }
         }
         TrackLogger.getInstance().log("Env", 0, "runMiniGrid", true, "All agents are done, Sum of discounted rewards: " + agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum));
 
-        return agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum);
+        return status;
     }
 
-    public static double runForbidden(List<GridAgent> agents, String sMethodName, String sModelName, int solverIterations, int maxSteps, int initialTimer) {
+    public static int runForbidden(List<GridAgent> agents, String sMethodName, String sModelName, int solverIterations, int maxSteps, int initialTimer, boolean localizedStep) {
         PotentialCollisionData mightCollide;
         List<GridAgent> agents_copy = agents.subList(0, agents.size());
+        final int SUCCESS = 0, TIMEOUT = 1, GIVENUP = 2;
+        int status = SUCCESS;
 
         for (GridAgent agent : agents) {
             agent.initRun(sModelName);
@@ -84,76 +128,139 @@ public class Env {
             TrackLogger.getInstance().freeLog(0, printLetteredEnv(agents));
             System.out.println(printColoredEnv(agents));
 
-            do {
-                for (GridAgent agent : agents) {
-                    if (agent.finishEscaping()) {
-                        agent.clearForbiddenStates();
-                        agent.initRun(sModelName);
-                        agent.solve(sMethodName, 100.0, solverIterations, maxSteps);
-                    }
-                }
-
-                mightCollide = mightCollidingAgents(agents);
-                if (!mightCollide.isEmpty()) {
-                    double solvedADR;
-                    GridAgent nonDominant;
-//                Set<Integer> collisionStates = mightCollide.getCollisionStates();
-                    do {
-                        nonDominant = mightCollide.getNextNonDominant();
-                        nonDominant.saveForbiddenStates();
-                        nonDominant.clearForbiddenStates();
-
-                        // adds all the dominant's possible states to nonDominant's forbidden states
-                        for (GridAgent a: agents) {
-                            if (a != nonDominant) {
-                                a.clearExpandedBeliefs();
-                                for (int iPotentialStep = 0; iPotentialStep <= mightCollide.getCollisionStep(); iPotentialStep++) {
-                                    nonDominant.addForbiddenStates(a.getPossibleStates());
-                                    a.expandBeliefsStep(iPotentialStep);
-                                }
-                            }
-                        }
-                        nonDominant.initRun(sModelName);
-                        solvedADR = nonDominant.solve(sMethodName, 100.0, solverIterations, maxSteps);
-                        if (solvedADR < 0) {
-                            nonDominant.restoreForbiddenStates();
-                        }
-                    } while (solvedADR < 0 && mightCollide.hasNextNonDominant());
-                    if (solvedADR >= 0) {
-                        nonDominant.setForbiddenTimer(initialTimer);
-                        nonDominant.log("Env", 0, "runForbidden", false, "finished finding forbidden states");
-                        break;
-                    }
-                    else {
-                        TrackLogger.getInstance().log("Env", 0, "runForbidden", true, "Localizing...");
-                        iStep += agents.get(agents.size()-1).localize();
-                        for (int i = agents.size()-2; i >= 0; i--) {
-                            agents.get(i).localize();
-                        }
-                        TrackLogger.getInstance().freeLog(0, printLetteredEnv(agents));
-                        System.out.println(printColoredEnv(agents));
-//                        mightCollide.getMostNonDominant().setNullPolicy();
+//            do {
+//                for (GridAgent agent : agents) {
+//                    if (agent.finishEscaping()) {
+//                        agent.clearForbiddenStates();
+//                        agent.initRun(sModelName);
+//                        agent.solve(sMethodName, 100.0, solverIterations, maxSteps);
+//                    }
+//                }
+//
+//                mightCollide = mightCollidingAgents(agents);
+//                if (!mightCollide.isEmpty()) {
+//                    double solvedADR;
+//                    GridAgent nonDominant;
+////                Set<Integer> collisionStates = mightCollide.getCollisionStates();
+//                    do {
+//                        nonDominant = mightCollide.getNextNonDominant();
+//                        nonDominant.saveForbiddenStates();
+//                        nonDominant.clearForbiddenStates();
+//
+//                        // adds all the dominant's possible states to nonDominant's forbidden states
+//                        for (GridAgent a: agents) {
+//                            if (a != nonDominant) {
+//                                a.clearExpandedBeliefs();
+//                                for (int iPotentialStep = 0; iPotentialStep <= mightCollide.getCollisionStep(); iPotentialStep++) {
+//                                    nonDominant.addForbiddenStates(a.getPossibleStates());
+//                                    a.expandBeliefsStep(iPotentialStep);
+//                                }
+//                            }
+//                        }
+//                        nonDominant.initRun(sModelName);
+//                        solvedADR = nonDominant.solve(sMethodName, 100.0, solverIterations, maxSteps);
+//                        if (solvedADR < 0) {
+//                            nonDominant.restoreForbiddenStates();
+//                        }
+//                    } while (solvedADR < 0 && mightCollide.hasNextNonDominant());
+//                    if (solvedADR >= 0) {
+//                        nonDominant.setForbiddenTimer(initialTimer);
+//                        nonDominant.log("Env", 0, "runForbidden", false, "finished finding forbidden states");
 //                        break;
-                    }
+//                    }
+//                    else {
+//                        TrackLogger.getInstance().log("Env", 0, "runForbidden", true, "Localizing...");
+//                        iStep += agents.get(agents.size()-1).localize();
+//                        for (int i = agents.size()-2; i >= 0; i--) {
+//                            agents.get(i).localize();
+//                        }
+//                        TrackLogger.getInstance().freeLog(0, printLetteredEnv(agents));
+//                        System.out.println(printColoredEnv(agents));
+////                        mightCollide.getMostNonDominant().setNullPolicy();
+////                        status = GIVENUP;
+////                        break;
+//                    }
+//                }
+//            }
+//            while (!mightCollide.isEmpty() && iStep < maxSteps);
+//            if (!(iStep < maxSteps)) {
+//                status = TIMEOUT;
+//                break;
+//            }
+//            for (GridAgent agent : agents) {
+//                agent.step();
+//            }
+
+            for (GridAgent agent : agents) {
+                if (agent.finishEscaping()) {
+                    agent.clearForbiddenStates();
+                    agent.initRun(sModelName);
+                    agent.solve(sMethodName, 100.0, solverIterations, maxSteps);
                 }
             }
-            while (!mightCollide.isEmpty() && iStep < maxSteps);
-            if (!(iStep < maxSteps)) {
-                break;
+
+            mightCollide = findNextSafeStep(agents, sMethodName, sModelName, solverIterations, maxSteps, initialTimer);
+
+            if (mightCollide.isEmpty()) {
+                int steps = step(agents, localizedStep);
+                iStep += (steps - 1);
             }
-            for (GridAgent agent : agents) {
-                agent.step();
+            else {
+                TrackLogger.getInstance().log("Env", 0, "runForbidden", true, "Localizing...");
+                iStep += agents.get(agents.size()-1).localize() - 1;
+                for (int i = agents.size()-2; i >= 0; i--) {
+                    agents.get(i).localize();
+                }
+//                mightCollide.getMostNonDominant().setNullPolicy();
+//                status = GIVENUP;
             }
             agents = agents.stream().filter(agent -> !agent.isDone()).collect(Collectors.toList());
         }
+
         for (GridAgent a : agents) {
             if (!a.isDone()) {
                 a.addPunishment();
+                a.setTimedOut();
+                status = TIMEOUT;
             }
         }
 
         TrackLogger.getInstance().log("Env", 0, "runForbidden", true, "All agents are done, Sum of discounted rewards: " + agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum));
-        return agents_copy.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum);
+        return status;
+    }
+
+    private static PotentialCollisionData findNextSafeStep(List<GridAgent> agents, String sMethodName, String sModelName, int solverIterations, int maxSteps, int initialTimer) {
+        PotentialCollisionData inConflict = mightCollidingAgents(agents);
+        Set<GridAgent> Rtry = new HashSet<>();
+        double solvedADR;
+        while (!inConflict.isEmpty() && inConflict.getAgents().stream().anyMatch(e -> !Rtry.contains(e))) {
+            GridAgent nonDominant = inConflict.getNextNonDominant();
+            Rtry.add(nonDominant);
+            nonDominant.saveForbiddenStates();
+            nonDominant.clearForbiddenStates();
+
+            // adds all the dominant's possible states to nonDominant's forbidden states
+            for (GridAgent a: agents) {
+                if (a != nonDominant) {
+                    a.clearExpandedBeliefs();
+                    for (int iPotentialStep = 0; iPotentialStep <= inConflict.getCollisionStep(); iPotentialStep++) {
+                        nonDominant.addForbiddenStates(a.getPossibleStates());
+                        a.expandBeliefsStep(iPotentialStep);
+                    }
+                }
+            }
+            nonDominant.initRun(sModelName);
+            solvedADR = nonDominant.solve(sMethodName, 100.0, solverIterations, maxSteps);
+            if (solvedADR >= 0) {
+                nonDominant.setForbiddenTimer(initialTimer);
+                nonDominant.log("Env", 0, "runForbidden", false, "finished finding forbidden states");
+                inConflict = mightCollidingAgents(agents);
+            }
+            else {
+                nonDominant.restoreForbiddenStates();
+            }
+        }
+        return inConflict;
     }
 
     private static GridAgent chooseNonDominant(PotentialCollisionData mightCollide) {
@@ -203,14 +310,91 @@ public class Env {
 //            }
 //        }
 
-        for (int k = agents.size(); k > 1; k--) {
-            potentialCollision = processSubsets(agents.toArray(new GridAgent[0]), k);
-            if (!potentialCollision.isEmpty()) {
-                return potentialCollision;
+//        for (int k = agents.size(); k > 1; k--) {
+//            potentialCollision = processCombinations(agents.toArray(new GridAgent[0]), k);
+//            if (!potentialCollision.isEmpty()) {
+//                return potentialCollision;
+//            }
+//        }
+//
+//        return potentialCollision;
+
+        List<PotentialCollisionData> collisions = new ArrayList<>();
+        for (int iAgent1 = 0; iAgent1 < agents.size(); iAgent1++) {
+            for (int iAgent2 = iAgent1 + 1; iAgent2 < agents.size(); iAgent2++) {
+                PotentialCollisionData collisionData = checkCollision(agents.get(iAgent1), agents.get(iAgent2));
+                if (!collisionData.isEmpty()) {
+                    collisions.add(collisionData);
+                }
+                System.out.println();
+            }
+        }
+        if (collisions.size() == 0) {
+            return potentialCollision;
+        }
+
+        // return a single collision, but merge with others if you can (possibly need to iterate multiple times for sequential merges)
+        boolean merged = true;
+        while (merged) {
+            merged = false;
+            int j = 1;
+            while (j < collisions.size()) {
+                if (collisions.get(0).mergePotentialCollision(collisions.get(j))) {
+                    collisions.remove(j);
+                    merged = true;
+                }
+                else {
+                    j++;
+                }
             }
         }
 
+        logCollision(collisions.get(0));
+        return collisions.get(0);
+    }
+
+    private static PotentialCollisionData checkCollision(GridAgent gridAgent1, GridAgent gridAgent2) {
+        PotentialCollisionData potentialCollision = new PotentialCollisionData();
+        final int TIMEOUT = 10;
+        Set<Integer> collisionStates;
+        gridAgent1.clearExpandedBeliefs();
+        gridAgent2.clearExpandedBeliefs();
+        int agentMovingActionCounter = 0, otherMovingActionCounter = 0;
+        int iStep = 0;
+        while (Math.min(agentMovingActionCounter, otherMovingActionCounter) <= gridAgent1.getDistanceThreshold() && Math.max(agentMovingActionCounter, otherMovingActionCounter) <= 2 * gridAgent1.getDistanceThreshold() && iStep <= TIMEOUT) {
+            collisionStates = getCollisionStates(gridAgent1, gridAgent2);
+            if (collisionStates.size() > 0) {
+//                for (int collisionState : collisionStates) {
+//                    gridAgent1.log("Env", 0, "mightCollidingAgents", true, "Agent " + gridAgent1.getID() + " and agent " + gridAgent2.getID() + " may collide in " + gridAgent1.getGrid().parseState(collisionState));
+//                    gridAgent2.getAgentLogger().log("Env", 0, "mightCollidingAgents", false, "Agent " + gridAgent1.getID() + " and agent " + gridAgent2.getID() + " may collide in " + gridAgent1.getGrid().parseState(collisionState));
+//                }
+                potentialCollision.addAgent(gridAgent1);
+                potentialCollision.addAgent(gridAgent2);
+                potentialCollision.addCollisionStates(collisionStates);
+                potentialCollision.setCollisionStep(iStep);
+                return potentialCollision;
+            }
+            if (gridAgent1.expandBeliefsStep(iStep)) {
+                agentMovingActionCounter++;
+            }
+            if (gridAgent2.expandBeliefsStep(iStep)) {
+                otherMovingActionCounter++;
+            }
+            iStep++;
+        }
         return potentialCollision;
+    }
+
+    private static void logCollision(PotentialCollisionData data) {
+        List<GridAgent> collisionAgents = data.getAgents();
+        Set<Integer> collisionStates = data.getCollisionStates();
+        String ids = String.join(", ", collisionAgents.stream().map(a -> "" + a.getID()).toArray(String[]::new));
+        for (int collisionState : collisionStates) {
+            collisionAgents.get(0).log("Env", 0, "mightCollidingAgents", true, "Agents " + ids + " may collide in " + collisionAgents.get(0).getGrid().parseState(collisionState));
+            for (int i = 1; i < collisionAgents.size(); i++) {
+                collisionAgents.get(i).getAgentLogger().log("Env", 0, "mightCollidingAgents", false, "Agents " + ids + " may collide in " + collisionAgents.get(i).getGrid().parseState(collisionState));
+            }
+        }
     }
 
     static PotentialCollisionData CheckMultiCollision(GridAgent[] subsetAgents) {
@@ -258,28 +442,28 @@ public class Env {
 
             iStep++;
         }
+        System.out.println();
         return potentialCollision;
     }
 
-    static PotentialCollisionData processSubsets(GridAgent[] agents, int k) {
+    static PotentialCollisionData processCombinations(GridAgent[] agents, int k) {
         GridAgent[] subsetAgents = new GridAgent[k];
-        return processLargerSubsets(agents, subsetAgents, 0, 0);
+        return combinationUtil(agents, subsetAgents, 0, 0, k);
     }
 
-    static PotentialCollisionData processLargerSubsets(GridAgent[] agents, GridAgent[] subsetAgents, int subsetSize, int nextIndex) {
-        if (subsetSize == subsetAgents.length) {
+    static PotentialCollisionData combinationUtil(GridAgent[] agents, GridAgent[] subsetAgents, int start, int index, int k) {
+        if (index == k) {
             return CheckMultiCollision(subsetAgents);
-        } else {
-            PotentialCollisionData ret;
-            for (int j = nextIndex; j < agents.length; j++) {
-                subsetAgents[subsetSize] = agents[j];
-                ret = processLargerSubsets(agents, subsetAgents, subsetSize + 1, j + 1);
-                if (ret != null) {
-                    return ret;
-                }
+        }
+
+        for (int i = start; i < agents.length && (agents.length - i) >= (k - index); i++) {
+            subsetAgents[index] = agents[i];
+            PotentialCollisionData potentialCollision = combinationUtil(agents, subsetAgents, i + 1, index + 1, k);
+            if (!potentialCollision.isEmpty()) {
+                return potentialCollision;
             }
         }
-        return null;
+        return new PotentialCollisionData();
     }
 
     private static Set<Integer> getCollisionStates(GridAgent[] agents) {
@@ -291,6 +475,15 @@ public class Env {
             System.out.println("Agent " + agents[i].getID() + " possible states: " + possibleStates.stream().map(state -> agents[finalI].getGrid().parseState(state)).collect(Collectors.toList()).toString());
             collisionStates.retainAll(possibleStates);
         }
+        return collisionStates;
+    }
+
+    private static Set<Integer> getCollisionStates(GridAgent agent1, GridAgent agent2) {
+        Set<Integer> collisionStates = agent1.getPossibleStates();
+        System.out.println("Agent " + agent1.getID() + " possible states: " + collisionStates.stream().map(state -> agent1.getGrid().parseState(state)).collect(Collectors.toList()).toString());
+        Set<Integer> possibleStates = agent2.getPossibleStates();
+        System.out.println("Agent " + agent2.getID() + " possible states: " + possibleStates.stream().map(state -> agent1.getGrid().parseState(state)).collect(Collectors.toList()).toString());
+        collisionStates.retainAll(possibleStates);
         return collisionStates;
     }
 
@@ -402,6 +595,7 @@ public class Env {
     }
 
     public static void main(String[] args) {
+        final int SUCCESS = 0, TIMEOUT = 1, GIVENUP = 2;
         JProf.getCurrentThreadCpuTimeSafe();
 //        String sModelName = "two_paths_one_beacon";
 //        String sModelName = "room";
@@ -417,8 +611,14 @@ public class Env {
 
 //        String sModelName = "switch_5";
 //        String sModelName = "switch_10_19";
-
+//
 //        String sModelName = "hallways_14_11";
+
+//        String sModelName = "medium_10_3a";
+//        String sModelName = "medium_10_3a_bc";
+//        String sModelName = "medium_10_4a";
+
+//        String sModelName = "hard_10_4a";
 
 //        String sModelName = "joint_test";
 //        String sMethodName = "Perseus";
@@ -427,7 +627,7 @@ public class Env {
         int distanceThreshold = 1;
         int initialTimer = 3;
         int num_of_agents = 2;
-        double ADR = 0;
+        boolean localizedStep = true;
 
         try{
             Logger.getInstance().setOutputStream( sModelName + "_" + sMethodName + ".txt" );
@@ -445,8 +645,10 @@ public class Env {
             agents.add(agent);
         }
 
+        double ADR = 0;
+
 //        long startTime = System.currentTimeMillis();
-//        ADR = runOfflineJoint(agents, sMethodName, sModelName, 115, 200);
+//        ADR = runOfflineJoint(agents, sMethodName, sModelName, 80, 200);
 //        long endTime = System.currentTimeMillis();
 //        TrackLogger.getInstance().log("Env", 0, "main", true, "ADR: " + ADR);
 //        TrackLogger.getInstance().log("Env", 0, "main", true, "Time elapsed (s): " + ((endTime-startTime) / 1000));
@@ -454,20 +656,26 @@ public class Env {
         int numOfTests = 50;
         double[] ADRs = new double[numOfTests];
         long totalTime = 0, startTime, endTime;
-        double percentageSolved = 0;
+        double percentageTimedOut = 0, percentageGivenUp = 0;
+        int[] numOfSolved = new int[num_of_agents+1];
         for (int i = 0; i < numOfTests; i++) {
             int finalI = i;
             agents.forEach(a -> a.log("Env", 0, "main", false, "Test " + finalI));
             System.out.println("Test " + i);
             startTime = System.currentTimeMillis();
-            double sumOfDiscountedRewards = runForbidden(agents, sMethodName, sModelName, 100, 200, initialTimer);
+            int status = runForbidden(agents, sMethodName, sModelName, 100, 200, initialTimer, localizedStep);
+//            int status = runMiniGrids(agents, sMethodName, sModelName, 100, 200);
             endTime = System.currentTimeMillis();
-            ADR += sumOfDiscountedRewards;
-            ADRs[i] = Math.round(sumOfDiscountedRewards * 1000) / 1000.0;
+            ADR += agents.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum);
+            ADRs[i] = Math.round(agents.stream().reduce(0.0, (acc, agent) -> acc + agent.getSumOfDiscountedRewards(), Double::sum) * 1000) / 1000.0;
             TrackLogger.getInstance().log("Env", 0, "main", true, "Time of iteration " + i + ": " + (endTime - startTime) / 1000);
             totalTime += (endTime - startTime);
-            if (agents.stream().allMatch(GridAgent::isSolved)) {
-                percentageSolved++;
+            numOfSolved[(int)agents.stream().filter(GridAgent::isSolved).count()]++;
+            if (agents.stream().anyMatch(GridAgent::isTimedOut)) {
+                percentageTimedOut++;
+            }
+            if (status == GIVENUP) {
+                percentageGivenUp++;
             }
             agents.forEach(GridAgent::reset);
         }
@@ -482,7 +690,11 @@ public class Env {
         TrackLogger.getInstance().log("Env", 0, "main", true, "Sum of discounted rewards: " + Arrays.toString(ADRs));
         TrackLogger.getInstance().log("Env", 0, "main", true, "ADR: " + ADR);
         TrackLogger.getInstance().log("Env", 0, "main", true, "std: " + std);
-        TrackLogger.getInstance().log("Env", 0, "main", true, (int)(percentageSolved * 100 / numOfTests) + "% Solved");
+        for (int i = 0; i <= num_of_agents; i++) {
+            TrackLogger.getInstance().log("Env", 0, "main", true, (numOfSolved[i] * 100 / numOfTests) + "% of the problems solved by " + i + " agents");
+        }
+        TrackLogger.getInstance().log("Env", 0, "main", true, (int)(percentageTimedOut * 100 / numOfTests) + "% of the tests timed out");
+        TrackLogger.getInstance().log("Env", 0, "main", true, (int)(percentageGivenUp * 100 / numOfTests) + "% of the tests resulted in one or more agents to give up");
         TrackLogger.getInstance().log("Env", 0, "main", true, "Time elapsed (s): " + (totalTime / 1000));
         TrackLogger.getInstance().log("Env", 0, "main", true, "Average runtime (s): " + (totalTime / 1000) * 1.0 / numOfTests);
         TrackLogger.getInstance().log("Env", 0, "main", true, "parameters:");

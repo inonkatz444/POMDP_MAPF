@@ -3,6 +3,7 @@ package pomdp.utilities;
 import pomdp.GridAgent;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class PotentialCollisionData {
     private List<GridAgent> agents;
@@ -82,5 +83,20 @@ public class PotentialCollisionData {
             isReset = true;
         }
         return agents.get(nonDominantIndex++);
+    }
+
+    public boolean mergePotentialCollision(PotentialCollisionData other) {
+        // merge only if it happens at the same time step
+        if (collisionStep == other.collisionStep && agents.stream().anyMatch(other.agents::contains)) {
+            agents.addAll(other.getAgents());
+            agents = new ArrayList<>(new HashSet<>(agents));
+            collisionStates.addAll(other.getCollisionStates());
+            return true;
+        }
+        return false;
+    }
+
+    public boolean containsAgent(GridAgent a) {
+        return agents.contains(a);
     }
 }

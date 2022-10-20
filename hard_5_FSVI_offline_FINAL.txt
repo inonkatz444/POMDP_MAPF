@@ -1,0 +1,370 @@
+Sun Oct 2 01:09:08 IDT 2022
+
+SLURM_JOBID:		 4491781
+SLURM_JOB_NODELIST:	 cs-cpu-21 
+
+
+Initializing generator Generator with random seed 42
+Started loading model Models/hard_5.POMDP
+|S| = 26|A| = 8
+beacons: [Beacon{loc=<2, 3>}, Beacon{loc=<3, 2>}]
+Grid Load Complete!
+Done loading model
+unable to load dll java.lang.UnsatisfiedLinkError: no lpsolve55j in java.library.path: [/usr/java/packages/lib, /usr/lib64, /lib64, /lib, /usr/lib]
+
+Legend:
+    #: Wall
+    <number>: beacon with influence range <number>
+    <lower-case letter>: agent <lower-case letter> current state
+    <upper-case letter>: agent <lower-case letter> goal
+    *: forbidden state
+
+    #######
+    #     #
+    # a   #
+    #   3 #
+    #  3A #
+    #     #
+    #######
+
+Agent a initialized
+Started loading model Models/hard_5.POMDP
+|S| = 26|A| = 8
+beacons: [Beacon{loc=<2, 3>}, Beacon{loc=<3, 2>}]
+Grid Load Complete!
+Done loading model
+
+Legend:
+    #: Wall
+    <number>: beacon with influence range <number>
+    <lower-case letter>: agent <lower-case letter> current state
+    <upper-case letter>: agent <lower-case letter> goal
+    *: forbidden state
+
+    #######
+    #     #
+    #   b #
+    #   3 #
+    # B3  #
+    #     #
+    #######
+
+Agent b initialized
+|S| = 676|A| = 64
+beacons: [Beacon{loc=<2, 3>}, Beacon{loc=<3, 2>}]
+Grid Load Complete!
+Solving Value Iteration for agent a:
+Starting MDP value iteration
+MDPVI:ComputeV:Starting to compute value function, memory:  total 33 free 20 max 34359
+MDPVF:VI:MDP value iteration done - iterations 0 delta 4.687461853052355E-4, memory:  total 33 free 17 max 34359
+Solving Value Iteration for agent b:
+Starting MDP value iteration
+MDPVI:ComputeV:Starting to compute value function, memory:  total 33 free 17 max 34359
+MDPVF:VI:MDP value iteration done - iterations 0 delta 4.0325164794552393E-4, memory:  total 33 free 17 max 34359
+hard_5_<0, 0>
+Created grid with 5 rows and 5 columns
+#Steps per trials = 986
+Init value function to min
+Min R value = 0.0 init value = 0.0
+Starting MDP value iteration
+MDPVI:ComputeV:Starting to compute value function, memory:  total 310 free 247 max 34359
+MDPVF:VI:MDP value iteration done - iterations 0 delta 3.5347061157153803E-4, memory:  total 1660 free 1526 max 34359
+FSVI:initHeurisitc:Initialization time was 2539
+FSVI:VI:Starting FSVI target ADR = 100.0
+FSVI:VI:FSVI: Iteration 0 |Vn| = 1 time 1 V changes 1 max delta -0.001 depth 8 V(b0) 0.0 CPU time 1 CPU total 1 #backups 9 |BS| 1 memory:  total 1660 free 1343 max 34359
+FSVI:VI:FSVI: Iteration 1 |Vn| = 19 time 21 V changes 19 max delta 40.675 depth 30 V(b0) 23.16 CPU time 21 CPU total 23 #backups 40 |BS| 1 memory:  total 6828 free 5811 max 34359
+FSVI:VI:FSVI: Iteration 2 |Vn| = 35 time 20 V changes 35 max delta 27.196 depth 18 V(b0) 34.39 CPU time 20 CPU total 44 #backups 59 |BS| 1 memory:  total 8984 free 5756 max 34359
+FSVI:VI:FSVI: Iteration 3 |Vn| = 50 time 19 V changes 50 max delta 15.395 depth 28 V(b0) 35.14 CPU time 19 CPU total 64 #backups 88 |BS| 1 memory:  total 9999 free 5641 max 34359
+FSVI:VI:FSVI: Iteration 4 |Vn| = 55 time 9 V changes 55 max delta 3.686 depth 8 V(b0) 35.14 CPU time 9 CPU total 73 #backups 97 |BS| 1 memory:  total 9999 free 4486 max 34359
+FSVI:VI:FSVI: Iteration 5 |Vn| = 62 time 11 V changes 62 max delta 16.75 depth 12 V(b0) 35.14 CPU time 11 CPU total 85 #backups 110 |BS| 1 memory:  total 9999 free 7094 max 34359
+FSVI:VI:FSVI: Iteration 6 |Vn| = 70 time 7 V changes 70 max delta 22.503 depth 16 V(b0) 37.59 CPU time 7 CPU total 92 #backups 127 |BS| 1 memory:  total 9999 free 3558 max 34359
+FSVI:VI:FSVI: Iteration 7 |Vn| = 71 time 7 V changes 71 max delta 2.474 depth 0 V(b0) 37.59 CPU time 7 CPU total 100 #backups 232 |BS| 1 memory:  total 10980 free 7444 max 34359
+FSVI:VI:FSVI: Iteration 8 |Vn| = 83 time 11 V changes 83 max delta 3.284 depth 19 V(b0) 39.28 CPU time 11 CPU total 111 #backups 252 |BS| 1 memory:  total 10980 free 2597 max 34359
+FSVI:VI:FSVI: Iteration 9 |Vn| = 90 time 12 V changes 90 max delta 2.217 depth 14 V(b0) 39.28 CPU time 12 CPU total 123 #backups 267 |BS| 1 memory:  total 10980 free 5064 max 34359
+FSVI:VI:FSVI: Iteration 10 |Vn| = 97 time 5 V changes 97 max delta 32.905 depth 0 V(b0) 39.28 CPU time 5 CPU total 129 #backups 371 |BS| 1 memory:  total 10980 free 2356 max 34359
+FSVI:VI:FSVI: Iteration 11 |Vn| = 107 time 9 V changes 107 max delta 11.777 depth 15 V(b0) 39.8 CPU time 9 CPU total 138 #backups 387 |BS| 1 memory:  total 12046 free 5882 max 34359
+FSVI:VI:FSVI: Iteration 12 |Vn| = 120 time 16 V changes 120 max delta 3.768 depth 18 V(b0) 40.16 CPU time 16 CPU total 154 #backups 406 |BS| 1 memory:  total 12046 free 4582 max 34359
+FSVI:VI:FSVI: Iteration 13 |Vn| = 126 time 7 V changes 126 max delta 8.597 depth 8 V(b0) 41.64 CPU time 7 CPU total 162 #backups 415 |BS| 1 memory:  total 12046 free 3956 max 34359
+FSVI:VI:FSVI: Iteration 14 |Vn| = 142 time 25 V changes 142 max delta 43.594 depth 0 V(b0) 41.64 CPU time 25 CPU total 187 #backups 516 |BS| 1 memory:  total 12943 free 6609 max 34359
+FSVI:VI:FSVI: Iteration 15 |Vn| = 153 time 13 V changes 153 max delta 4.621 depth 0 V(b0) 41.64 CPU time 13 CPU total 201 #backups 617 |BS| 1 memory:  total 12943 free 5140 max 34359
+FSVI:VI:FSVI: Iteration 16 |Vn| = 179 time 29 V changes 179 max delta 45.823 depth 36 V(b0) 44.52 CPU time 29 CPU total 230 #backups 654 |BS| 1 memory:  total 12943 free 4905 max 34359
+FSVI:VI:FSVI: Iteration 17 |Vn| = 199 time 33 V changes 199 max delta 29.076 depth 29 V(b0) 44.82 CPU time 33 CPU total 264 #backups 684 |BS| 1 memory:  total 12943 free 4197 max 34359
+FSVI:VI:FSVI: Iteration 18 |Vn| = 206 time 11 V changes 206 max delta 1.9 depth 15 V(b0) 46.7 CPU time 11 CPU total 275 #backups 700 |BS| 1 memory:  total 12943 free 3240 max 34359
+FSVI:VI:FSVI: Iteration 19 |Vn| = 228 time 29 V changes 228 max delta 15.979 depth 26 V(b0) 48.04 CPU time 29 CPU total 305 #backups 727 |BS| 1 memory:  total 12943 free 3182 max 34359
+FSVI:VI:FSVI: Iteration 20 |Vn| = 245 time 26 V changes 245 max delta 5.887 depth 20 V(b0) 49.06 CPU time 26 CPU total 332 #backups 748 |BS| 1 memory:  total 12943 free 1699 max 34359
+FSVI:VI:FSVI: Iteration 21 |Vn| = 262 time 19 V changes 262 max delta 2.644 depth 21 V(b0) 49.18 CPU time 19 CPU total 351 #backups 770 |BS| 1 memory:  total 12943 free 1789 max 34359
+FSVI:VI:FSVI: Iteration 22 |Vn| = 275 time 18 V changes 275 max delta 2.68 depth 14 V(b0) 49.24 CPU time 18 CPU total 369 #backups 785 |BS| 1 memory:  total 13807 free 1561 max 34359
+FSVI:VI:FSVI: Iteration 23 |Vn| = 284 time 20 V changes 284 max delta 6.245 depth 11 V(b0) 49.24 CPU time 20 CPU total 390 #backups 797 |BS| 1 memory:  total 13807 free 1131 max 34359
+FSVI:VI:FSVI: Iteration 24 |Vn| = 286 time 6 V changes 287 max delta 9.021 depth 15 V(b0) 49.24 CPU time 6 CPU total 396 #backups 813 |BS| 1 memory:  total 14629 free 2081 max 34359
+FSVI:VI:FSVI: Iteration 25 |Vn| = 292 time 6 V changes 293 max delta 0.899 depth 15 V(b0) 49.24 CPU time 6 CPU total 403 #backups 829 |BS| 1 memory:  total 14629 free 1876 max 34359
+FSVI:VI:FSVI: Iteration 26 |Vn| = 299 time 7 V changes 300 max delta 0.423 depth 8 V(b0) 49.65 CPU time 7 CPU total 410 #backups 838 |BS| 1 memory:  total 15426 free 2404 max 34359
+FSVI:VI:FSVI: Iteration 27 |Vn| = 303 time 7 V changes 305 max delta 3.647 depth 10 V(b0) 49.67 CPU time 7 CPU total 418 #backups 849 |BS| 1 memory:  total 15426 free 1882 max 34359
+FSVI:VI:FSVI: Iteration 28 |Vn| = 310 time 13 V changes 312 max delta 0.64 depth 16 V(b0) 49.67 CPU time 13 CPU total 431 #backups 866 |BS| 1 memory:  total 15426 free 1810 max 34359
+FSVI:VI:FSVI: Iteration 29 |Vn| = 317 time 21 V changes 319 max delta 3.735 depth 0 V(b0) 49.67 CPU time 21 CPU total 453 #backups 967 |BS| 1 memory:  total 15426 free 1635 max 34359
+FSVI:VI:FSVI: Iteration 30 |Vn| = 339 time 30 V changes 341 max delta 13.187 depth 29 V(b0) 49.67 CPU time 30 CPU total 484 #backups 997 |BS| 1 memory:  total 15510 free 304 max 34359
+FSVI:VI:FSVI: Iteration 31 |Vn| = 350 time 21 V changes 352 max delta 4.436 depth 12 V(b0) 49.67 CPU time 21 CPU total 505 #backups 1010 |BS| 1 memory:  total 16206 free 135 max 34359
+FSVI:VI:FSVI: Iteration 32 |Vn| = 372 time 33 V changes 376 max delta 7.811 depth 24 V(b0) 49.84 CPU time 33 CPU total 538 #backups 1035 |BS| 1 memory:  total 17288 free 438 max 34359
+FSVI:VI:FSVI: Iteration 33 |Vn| = 386 time 20 V changes 390 max delta 24.984 depth 0 V(b0) 50.33 CPU time 20 CPU total 558 #backups 1139 |BS| 1 memory:  total 17716 free 868 max 34359
+FSVI:VI:FSVI: Iteration 34 |Vn| = 412 time 36 V changes 416 max delta 24.9 depth 32 V(b0) 50.35 CPU time 36 CPU total 595 #backups 1172 |BS| 1 memory:  total 18731 free 259 max 34359
+FSVI:VI:FSVI: Iteration 35 |Vn| = 418 time 20 V changes 425 max delta 9.796 depth 10 V(b0) 50.35 CPU time 20 CPU total 615 #backups 1183 |BS| 1 memory:  total 19436 free 969 max 34359
+FSVI:VI:FSVI: Iteration 36 |Vn| = 429 time 15 V changes 436 max delta 16.269 depth 20 V(b0) 50.35 CPU time 15 CPU total 631 #backups 1204 |BS| 1 memory:  total 19914 free 494 max 34359
+FSVI:VI:FSVI: Iteration 37 |Vn| = 433 time 13 V changes 440 max delta 29.511 depth 0 V(b0) 50.35 CPU time 13 CPU total 645 #backups 1307 |BS| 1 memory:  total 20325 free 759 max 34359
+FSVI:VI:FSVI: Iteration 38 |Vn| = 440 time 12 V changes 448 max delta 9.32 depth 18 V(b0) 50.36 CPU time 12 CPU total 657 #backups 1326 |BS| 1 memory:  total 20585 free 854 max 34359
+FSVI:VI:FSVI: Iteration 39 |Vn| = 453 time 20 V changes 461 max delta 7.107 depth 18 V(b0) 50.36 CPU time 20 CPU total 678 #backups 1345 |BS| 1 memory:  total 21013 free 527 max 34359
+FSVI:VI:FSVI: Iteration 40 |Vn| = 461 time 18 V changes 471 max delta 3.828 depth 15 V(b0) 50.36 CPU time 18 CPU total 696 #backups 1361 |BS| 1 memory:  total 21516 free 358 max 34359
+FSVI:VI:FSVI: Iteration 41 |Vn| = 475 time 35 V changes 485 max delta 0.514 depth 0 V(b0) 50.42 CPU time 35 CPU total 732 #backups 1464 |BS| 1 memory:  total 21894 free 547 max 34359
+FSVI:VI:FSVI: Iteration 42 |Vn| = 494 time 28 V changes 504 max delta 3.978 depth 0 V(b0) 50.53 CPU time 28 CPU total 760 #backups 1565 |BS| 1 memory:  total 22405 free 881 max 34359
+FSVI:VI:FSVI: Iteration 43 |Vn| = 503 time 15 V changes 513 max delta 2.008 depth 11 V(b0) 51.08 CPU time 15 CPU total 775 #backups 1577 |BS| 1 memory:  total 22858 free 521 max 34359
+FSVI:VI:FSVI: Iteration 44 |Vn| = 515 time 24 V changes 525 max delta 22.858 depth 22 V(b0) 51.08 CPU time 24 CPU total 799 #backups 1600 |BS| 1 memory:  total 23672 free 656 max 34359
+FSVI:VI:FSVI: Iteration 45 |Vn| = 518 time 6 V changes 528 max delta 1.269 depth 5 V(b0) 51.08 CPU time 6 CPU total 806 #backups 1606 |BS| 1 memory:  total 23915 free 1172 max 34359
+FSVI:VI:FSVI: Iteration 46 |Vn| = 534 time 32 V changes 544 max delta 2.348 depth 0 V(b0) 51.08 CPU time 32 CPU total 838 #backups 1709 |BS| 1 memory:  total 24293 free 267 max 34359
+FSVI:VI:FSVI: Iteration 47 |Vn| = 545 time 19 V changes 555 max delta 11.915 depth 15 V(b0) 51.28 CPU time 19 CPU total 858 #backups 1725 |BS| 1 memory:  total 24989 free 1181 max 34359
+FSVI:VI:FSVI: Iteration 48 |Vn| = 559 time 25 V changes 569 max delta 26.359 depth 28 V(b0) 51.28 CPU time 25 CPU total 883 #backups 1754 |BS| 1 memory:  total 25694 free 744 max 34359
+FSVI:VI:FSVI: Iteration 49 |Vn| = 564 time 17 V changes 574 max delta 26.58 depth 0 V(b0) 51.28 CPU time 17 CPU total 901 #backups 1858 |BS| 1 memory:  total 26096 free 568 max 34359
+FSVI:VI:FSVI: Iteration 50 |Vn| = 569 time 9 V changes 580 max delta 0.669 depth 15 V(b0) 51.28 CPU time 9 CPU total 910 #backups 1874 |BS| 1 memory:  total 26214 free 460 max 34359
+FSVI:VI:FSVI: Iteration 51 |Vn| = 581 time 19 V changes 592 max delta 5.445 depth 16 V(b0) 51.28 CPU time 19 CPU total 929 #backups 1891 |BS| 1 memory:  total 26835 free 522 max 34359
+FSVI:VI:FSVI: Iteration 52 |Vn| = 586 time 9 V changes 597 max delta 3.213 depth 16 V(b0) 51.78 CPU time 9 CPU total 939 #backups 1908 |BS| 1 memory:  total 27120 free 1295 max 34359
+FSVI:VI:FSVI: Iteration 53 |Vn| = 589 time 7 V changes 601 max delta 1.115 depth 5 V(b0) 51.78 CPU time 7 CPU total 947 #backups 1914 |BS| 1 memory:  total 27271 free 205 max 34359
+FSVI:VI:FSVI: Iteration 54 |Vn| = 601 time 22 V changes 613 max delta 5.048 depth 24 V(b0) 51.81 CPU time 22 CPU total 970 #backups 1939 |BS| 1 memory:  total 27883 free 306 max 34359
+FSVI:VI:FSVI: Iteration 55 |Vn| = 609 time 16 V changes 621 max delta 5.404 depth 9 V(b0) 51.81 CPU time 16 CPU total 987 #backups 1949 |BS| 1 memory:  total 28336 free 204 max 34359
+FSVI:VI:FSVI: Iteration 56 |Vn| = 617 time 15 V changes 629 max delta 5.16 depth 10 V(b0) 51.81 CPU time 15 CPU total 1002 #backups 1960 |BS| 1 memory:  total 28831 free 710 max 34359
+FSVI:VI:FSVI: Iteration 57 |Vn| = 617 time 2 V changes 629 max delta 0.0 depth 14 V(b0) 51.81 CPU time 2 CPU total 1005 #backups 1975 |BS| 1 memory:  total 28940 free 1038 max 34359
+FSVI:VI:FSVI: Iteration 58 |Vn| = 621 time 5 V changes 633 max delta 0.181 depth 14 V(b0) 51.98 CPU time 5 CPU total 1010 #backups 1990 |BS| 1 memory:  total 28982 free 1082 max 34359
+FSVI:VI:FSVI: Iteration 59 |Vn| = 621 time 4 V changes 633 max delta 0.0 depth 15 V(b0) 51.98 CPU time 4 CPU total 1015 #backups 2006 |BS| 1 memory:  total 29125 free 277 max 34359
+FSVI:VI:FSVI: Iteration 60 |Vn| = 632 time 12 V changes 644 max delta 6.872 depth 19 V(b0) 51.98 CPU time 12 CPU total 1028 #backups 2026 |BS| 1 memory:  total 29360 free 524 max 34359
+FSVI:VI:FSVI: Iteration 61 |Vn| = 636 time 16 V changes 648 max delta 3.639 depth 0 V(b0) 51.98 CPU time 16 CPU total 1044 #backups 2129 |BS| 1 memory:  total 29687 free 1501 max 34359
+FSVI:VI:FSVI: Iteration 62 |Vn| = 638 time 4 V changes 650 max delta 0.194 depth 8 V(b0) 51.98 CPU time 4 CPU total 1049 #backups 2138 |BS| 1 memory:  total 29712 free 894 max 34359
+FSVI:VI:FSVI: Iteration 63 |Vn| = 667 time 31 V changes 679 max delta 18.774 depth 0 V(b0) 52.48 CPU time 31 CPU total 1081 #backups 2242 |BS| 1 memory:  total 30417 free 947 max 34359
+FSVI:VI:FSVI: Iteration 64 |Vn| = 676 time 17 V changes 688 max delta 5.163 depth 0 V(b0) 52.6 CPU time 17 CPU total 1098 #backups 2346 |BS| 1 memory:  total 30802 free 1027 max 34359
+FSVI:VI:FSVI: Iteration 65 |Vn| = 686 time 23 V changes 698 max delta 4.385 depth 18 V(b0) 52.6 CPU time 23 CPU total 1121 #backups 2365 |BS| 1 memory:  total 31448 free 1019 max 34359
+FSVI:VI:FSVI: Iteration 66 |Vn| = 698 time 19 V changes 710 max delta 3.383 depth 13 V(b0) 52.72 CPU time 19 CPU total 1141 #backups 2379 |BS| 1 memory:  total 32010 free 480 max 34359
+FSVI:VI:FSVI: Iteration 67 |Vn| = 704 time 18 V changes 716 max delta 32.873 depth 0 V(b0) 52.72 CPU time 18 CPU total 1160 #backups 2483 |BS| 1 memory:  total 32371 free 657 max 34359
+FSVI:VI:FSVI: Iteration 68 |Vn| = 716 time 19 V changes 728 max delta 5.117 depth 19 V(b0) 52.73 CPU time 19 CPU total 1179 #backups 2503 |BS| 1 memory:  total 32908 free 1551 max 34359
+FSVI:VI:FSVI: Iteration 69 |Vn| = 718 time 11 V changes 732 max delta 0.681 depth 7 V(b0) 52.73 CPU time 11 CPU total 1190 #backups 2511 |BS| 1 memory:  total 33202 free 1218 max 34359
+FSVI:VI:Finished FSVI - time : 1190 |V| = 718 backups = 2511 GComputations = 1216281 Dot products = 0
+activated DONE_ACT  R: 91.16816083745289
+0: 91.16816083745289 : Infinity
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 92.16985943177059
+activated DONE_ACT  R: 89.71766402892172
+activated DONE_ACT  R: 90.19631185964842
+activated DONE_ACT  R: 21.10589388765041
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 28.14937083951938
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 84.47788875979265
+activated DONE_ACT  R: 90.19631185964842
+10: 90.19631185964842 : 86.06859440167632
+activated DONE_ACT  R: 26.266248973700606
+activated DONE_ACT  R: 20.812259317436112
+activated DONE_ACT  R: 86.4985034172279
+activated DONE_ACT  R: 25.923586483963593
+activated DONE_ACT  R: 90.17647922907835
+activated DONE_ACT  R: 22.605886876220207
+activated DONE_ACT  R: 88.22276729241969
+activated DONE_ACT  R: 25.923586483963593
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 25.35664014907388
+20: 25.35664014907388 : 68.182003153865
+activated DONE_ACT  R: 24.760021657753885
+activated DONE_ACT  R: -37.383158766652706
+activated DONE_ACT  R: 29.245017785421748
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 30.134045357423776
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 87.85046122970948
+activated DONE_ACT  R: 13.425686258839292
+activated DONE_ACT  R: 90.19631185964842
+activated DONE_ACT  R: 82.27534894994456
+30: 82.27534894994456 : 62.21600396947647
+activated DONE_ACT  R: 70.70126892327397
+activated DONE_ACT  R: 19.956506403448948
+activated DONE_ACT  R: 90.19631185964842
+activated DONE_ACT  R: 27.861415586836582
+activated DONE_ACT  R: 86.05683367092539
+Same state...  R: -1.456744499222153
+activated DONE_ACT  R: 24.801100682254972
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 26.796295682491944
+activated DONE_ACT  R: -37.383158766652706
+40: -37.383158766652706 : 56.629452736618795
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 85.00360668072588
+activated DONE_ACT  R: 90.19631185964842
+activated DONE_ACT  R: 24.951737506159134
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 87.74890594000024
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 22.605886876220207
+activated DONE_ACT  R: 28.00611671883799
+activated DONE_ACT  R: 89.71766402892172
+50: 89.71766402892172 : 59.33825643175249
+activated DONE_ACT  R: 29.375882895437307
+activated DONE_ACT  R: -36.953381934495326
+activated DONE_ACT  R: 90.67979451694814
+activated DONE_ACT  R: 86.9446344740991
+activated DONE_ACT  R: 43.61989348035959
+activated DONE_ACT  R: 86.30793422330055
+activated DONE_ACT  R: 28.475993315906265
+activated DONE_ACT  R: 88.774679937607
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 85.18670010373482
+60: 85.18670010373482 : 59.341551890632914
+activated DONE_ACT  R: 92.16985943177059
+activated DONE_ACT  R: 23.653307570983817
+activated DONE_ACT  R: 21.253929063738624
+activated DONE_ACT  R: 88.774679937607
+activated DONE_ACT  R: 27.861415586836582
+Same state...  R: -1.5221770542299313
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 28.514515999514533
+activated DONE_ACT  R: 89.24380267650227
+70: 89.24380267650227 : 58.753982404651495
+activated DONE_ACT  R: -37.095203513969906
+activated DONE_ACT  R: 89.21434874105194
+activated DONE_ACT  R: 90.19631185964842
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 86.4985034172279
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 28.29119241899396
+activated DONE_ACT  R: 90.67979451694814
+activated DONE_ACT  R: 28.14937083951938
+activated DONE_ACT  R: 27.431381732638712
+80: 27.431381732638712 : 58.73100987515711
+activated DONE_ACT  R: -36.81297857081549
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 87.74890594000024
+activated DONE_ACT  R: 27.861415586836582
+activated DONE_ACT  R: 89.71766402892172
+activated DONE_ACT  R: 87.74890594000024
+activated DONE_ACT  R: 30.37677527767189
+activated DONE_ACT  R: 25.923586483963593
+Same state...  R: -1.456744499222153
+activated DONE_ACT  R: 90.67979451694814
+90: 90.67979451694814 : 57.68262528393698
+activated DONE_ACT  R: 84.25483310269748
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 85.84350271179424
+activated DONE_ACT  R: 23.653307570983817
+activated DONE_ACT  R: 24.951737506159134
+activated DONE_ACT  R: 90.67979451694814
+activated DONE_ACT  R: 28.00611671883799
+activated DONE_ACT  R: 83.52537957664649
+activated DONE_ACT  R: 91.18819379762468
+activated DONE_ACT  R: 87.80693313823093
+100: 87.80693313823093 : 58.825142350317044
+activated DONE_ACT  R: 25.923586483963593
+activated DONE_ACT  R: 82.14569426937373
+activated DONE_ACT  R: 89.75220195717881
+activated DONE_ACT  R: 25.923586483963593
+activated DONE_ACT  R: 27.861415586836582
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 92.16985943177059
+activated DONE_ACT  R: -36.40013666065466
+activated DONE_ACT  R: -37.383158766652706
+activated DONE_ACT  R: 28.14937083951938
+110: 28.14937083951938 : 57.01658923176779
+activated DONE_ACT  R: 88.22276729241969
+activated DONE_ACT  R: 21.696861430109596
+activated DONE_ACT  R: 90.67979451694814
+activated DONE_ACT  R: 82.27534894994456
+activated DONE_ACT  R: 27.861415586836582
+activated DONE_ACT  R: 92.16985943177059
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 27.861415586836582
+120: 27.861415586836582 : 58.13413967334734
+activated DONE_ACT  R: 89.69299657177865
+activated DONE_ACT  R: -37.38909445855546
+activated DONE_ACT  R: 90.19631185964842
+activated DONE_ACT  R: 86.30793422330055
+activated DONE_ACT  R: -36.225345072443105
+activated DONE_ACT  R: 27.861415586836582
+Same state...  R: -1.456744499222153
+activated DONE_ACT  R: 27.861415586836582
+activated DONE_ACT  R: 28.00611671883799
+activated DONE_ACT  R: 24.260993203171505
+130: 24.260993203171505 : 55.96317508093747
+activated DONE_ACT  R: 84.33388219453136
+activated DONE_ACT  R: 86.4985034172279
+Same state...  R: -1.456744499222153
+Same state...  R: -1.7774291248068257
+activated DONE_ACT  R: 88.31024842610071
+activated DONE_ACT  R: 24.9160220418034
+activated DONE_ACT  R: 25.43522016345884
+activated DONE_ACT  R: 14.094033019714182
+Same state...  R: -1.6510857308507556
+activated DONE_ACT  R: 25.28458333955468
+140: 25.28458333955468 : 54.42285709835274
+activated DONE_ACT  R: -36.40013666065466
+activated DONE_ACT  R: 87.279783201105
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 24.442160689383954
+activated DONE_ACT  R: -36.8042514788302
+activated DONE_ACT  R: -37.095203513969906
+activated DONE_ACT  R: 27.213307712957423
+activated DONE_ACT  R: 22.605886876220207
+activated DONE_ACT  R: 28.14937083951938
+activated DONE_ACT  R: -37.383158766652706
+150: -37.383158766652706 : 51.68250609003944
+activated DONE_ACT  R: 89.71766402892172
+activated DONE_ACT  R: 27.861415586836582
+activated DONE_ACT  R: -37.383158766652706
+activated DONE_ACT  R: 29.13038496080918
+activated DONE_ACT  R: 25.923586483963593
+activated DONE_ACT  R: 88.74048738863249
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 90.67979451694814
+activated DONE_ACT  R: 25.224453169260183
+activated DONE_ACT  R: 27.166954534372486
+160: 27.166954534372486 : 51.31628535154037
+activated DONE_ACT  R: 25.923586483963593
+activated DONE_ACT  R: 89.28307921828355
+activated DONE_ACT  R: 92.16985943177059
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 88.22276729241969
+activated DONE_ACT  R: 25.923586483963593
+activated DONE_ACT  R: 24.117739082490115
+activated DONE_ACT  R: 28.223652107915743
+activated DONE_ACT  R: 29.621230086284594
+170: 29.621230086284594 : 51.74369104769681
+activated DONE_ACT  R: 89.71766402892172
+activated DONE_ACT  R: 24.9160220418034
+activated DONE_ACT  R: 24.47308967543243
+activated DONE_ACT  R: 87.26053961949549
+activated DONE_ACT  R: 86.05683367092539
+activated DONE_ACT  R: 20.812259317436112
+activated DONE_ACT  R: 89.24380267650227
+activated DONE_ACT  R: 25.923586483963593
+activated DONE_ACT  R: 25.923586483963593
+activated DONE_ACT  R: 91.16816083745289
+180: 91.16816083745289 : 52.01068346080196
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 87.85046122970948
+Same state...  R: -1.456744499222153
+activated DONE_ACT  R: 85.38371551540301
+activated DONE_ACT  R: 22.150697551792884
+activated DONE_ACT  R: -37.383158766652706
+activated DONE_ACT  R: 86.4985034172279
+activated DONE_ACT  R: 25.560053706323416
+Same state...  R: -1.5221770542299313
+activated DONE_ACT  R: 86.89195661741238
+190: 86.89195661741238 : 51.61612890262931
+activated DONE_ACT  R: 88.774679937607
+activated DONE_ACT  R: 27.861415586836582
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 29.487707884452583
+activated DONE_ACT  R: 24.586861821385362
+activated DONE_ACT  R: 19.513574037077976
+activated DONE_ACT  R: 78.82089743623271
+activated DONE_ACT  R: 91.16816083745289
+activated DONE_ACT  R: 91.16816083745289
+POMDP:computeAverageDiscountedReward:After 200 tests. ADR 51.748, stdev 40.78143 SE 5.76736 time 251
+GridJointAgent:main:ADR = 51.74807055357762
+Env:main:ADR: 51.74807055357762
+Env:main:Time elapsed (s): 1445
+50.5%
+4.5%

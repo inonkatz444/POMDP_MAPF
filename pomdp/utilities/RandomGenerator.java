@@ -65,7 +65,7 @@ public class RandomGenerator  implements Serializable{
 
 	public static RandomGenerator getInstance() {
 		if (instance == null) {
-			instance = new RandomGenerator("Generator", 40);
+			instance = new RandomGenerator("Generator", 42);
 		}
 		return instance;
 	}
